@@ -82,3 +82,23 @@ export const navLinks = [
   { href: "/card", label: "Digital Card" },
   { href: "/contact", label: "Contact" },
 ];
+
+export const coveredAreas = {
+  districts: ["Kannur", "Kasaragod"],
+  localities: [
+    "Alakode",
+    "Nellipara",
+    "Kappimala",
+    "Ottathai",
+    "Arangam",
+    "Karthikapuram",
+    "Manakkadavu",
+    "Udayagiri",
+    "Cherupuzha",
+    "Chittarikkal",
+    "Bheemanady",
+    "Vellarikundu",
+    "Parappa",
+    "Nileshwaram",
+  ],
+};

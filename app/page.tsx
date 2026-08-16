@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import {
   branches,
+  coveredAreas,
   defaultEnquiryMessage,
   owners,
   primaryPhone,
@@ -13,7 +14,7 @@ import { CallButton } from "@/components/CallButton";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { ProductCard } from "@/components/ProductCard";
 import { LocationCard } from "@/components/LocationCard";
-import { CheckIcon, LeafIcon } from "@/components/icons";
+import { CheckIcon, LeafIcon, MapPinIcon } from "@/components/icons";
 
 const benefits = [
   {
@@ -271,6 +272,69 @@ export default function Home() {
           {branches.map((branch) => (
             <LocationCard key={branch.slug} branch={branch} />
           ))}
+        </div>
+      </section>
+
+      {/* Areas We Cover */}
+      <section className="border-t border-green-100 bg-gradient-to-b from-white via-green-50/40 to-white">
+        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+          <div className="flex flex-col items-center text-center">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-3.5 py-1 text-xs font-bold text-emerald-800">
+              <MapPinIcon className="h-3.5 w-3.5 text-emerald-700" />
+              Wholesale Delivery &amp; Supply Network
+            </span>
+            <h2 className="mt-4 text-3xl font-bold tracking-tight text-green-950 sm:text-4xl">
+              Areas We Cover
+            </h2>
+            <p className="mt-3 max-w-2xl text-base text-neutral-600">
+              BT Banana supplies wholesale bananas and banana seeds (Vazhavithu) across key locations in <strong className="font-semibold text-green-900">Kannur</strong> and <strong className="font-semibold text-green-900">Kasaragod</strong> districts in Kerala.
+            </p>
+          </div>
+
+          {/* District Highlights Header Cards */}
+          <div className="mt-10 grid gap-6 sm:grid-cols-2">
+            <div className="flex items-center gap-4 rounded-2xl border border-green-100 bg-white p-5 shadow-sm">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-amber-400 text-green-950 shadow-sm">
+                <MapPinIcon className="h-6 w-6" />
+              </div>
+              <div>
+                <h3 className="text-lg font-bold text-green-950">Kannur District</h3>
+                <p className="text-xs font-semibold text-green-700">Primary Hub: Alakode &amp; Nellipara</p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-4 rounded-2xl border border-green-100 bg-white p-5 shadow-sm">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-green-700 text-white shadow-sm">
+                <MapPinIcon className="h-6 w-6" />
+              </div>
+              <div>
+                <h3 className="text-lg font-bold text-green-950">Kasaragod District</h3>
+                <p className="text-xs font-semibold text-green-700">Northern Kerala Wholesale Network</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Covered Locations Grid */}
+          <div className="mt-8 rounded-3xl border border-green-100 bg-white p-6 shadow-sm sm:p-8">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-green-900">
+              Key Towns &amp; Localities Supplied:
+            </h3>
+            <div className="mt-4 flex flex-wrap gap-2.5">
+              {coveredAreas.localities.map((location) => (
+                <div
+                  key={location}
+                  className="flex items-center gap-2 rounded-xl border border-green-200/80 bg-green-50/60 px-4 py-2.5 text-sm font-semibold text-green-950 transition hover:bg-green-100 hover:border-green-300"
+                >
+                  <MapPinIcon className="h-4 w-4 text-emerald-600 shrink-0" />
+                  <span>{location}</span>
+                </div>
+              ))}
+            </div>
+
+            <p className="mt-6 text-xs text-neutral-500">
+              Don&apos;t see your specific location listed? If you are located nearby in Kannur or Kasaragod districts, call or WhatsApp us directly to check supply availability.
+            </p>
+          </div>
         </div>
       </section>
 
