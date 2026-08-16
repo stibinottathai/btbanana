@@ -1,11 +1,13 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
+import Image from "next/image";
 import { toPng } from "html-to-image";
 import QRCode from "qrcode";
 import {
   formatPhone,
   owners,
+  SITE_DOMAIN,
   SITE_NAME,
   SITE_URL,
   telHref,
@@ -318,9 +320,13 @@ export function DigitalCard() {
                 {/* Header: Logo & Business Title */}
                 <div className="relative z-10 flex items-start justify-between gap-2">
                   <div className="flex items-center gap-2.5">
-                    <div className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl ${theme.logoBg}`}>
-                      <LeafIcon className="h-5 w-5" />
-                    </div>
+                    <Image
+                      src="/images/logo.png"
+                      alt="BT Banana Logo"
+                      width={36}
+                      height={36}
+                      className="h-9 w-9 object-contain shrink-0"
+                    />
                     <div>
                       <h1 className="text-base sm:text-lg font-black tracking-tight leading-none">
                         {SITE_NAME}
@@ -377,7 +383,7 @@ export function DigitalCard() {
                   </span>
                   <span className={`flex items-center gap-1 font-bold ${theme.textPrimary}`}>
                     <GlobeIcon className="h-3 w-3 shrink-0" />
-                    <span>btbanana.in</span>
+                    <span>{SITE_DOMAIN}</span>
                   </span>
                 </div>
               </div>
@@ -393,7 +399,13 @@ export function DigitalCard() {
                 <div className="flex flex-col justify-between h-full flex-1">
                   <div>
                     <div className="flex items-center gap-1.5">
-                      <LeafIcon className="h-4 w-4" />
+                      <Image
+                        src="/images/logo.png"
+                        alt="BT Banana Logo"
+                        width={24}
+                        height={24}
+                        className="h-6 w-6 object-contain shrink-0"
+                      />
                       <span className="text-sm sm:text-base font-black tracking-tight">
                         {SITE_NAME}
                       </span>

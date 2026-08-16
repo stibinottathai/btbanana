@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
   navLinks,
@@ -70,9 +71,14 @@ export function Header() {
             className="flex shrink-0 items-center gap-2.5"
             onClick={() => setOpen(false)}
           >
-            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-green-600 to-green-800 text-white shadow-sm">
-              <LeafIcon className="h-5 w-5" />
-            </span>
+            <Image
+              src="/images/logo.png"
+              alt="BT Banana Logo"
+              width={40}
+              height={40}
+              className="h-10 w-10 object-contain"
+              priority
+            />
             <span className="flex flex-col leading-tight">
               <span className="text-base font-extrabold text-green-950 sm:text-lg">
                 {SITE_NAME}

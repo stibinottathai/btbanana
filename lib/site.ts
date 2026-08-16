@@ -1,5 +1,7 @@
+export const SITE_DOMAIN = "www.btbanana.com";
+
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://btbanana.in";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.btbanana.com";
 
 export const SITE_NAME = "BT Banana";
 

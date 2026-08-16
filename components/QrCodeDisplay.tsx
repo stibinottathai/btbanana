@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import QRCode from "qrcode";
 import { generateVCardString } from "@/lib/vcard";
 import { SITE_URL } from "@/lib/site";
@@ -68,6 +69,18 @@ export function QrCodeDisplay({
     <div
       className={`flex flex-col items-center rounded-2xl border border-emerald-100 bg-gradient-to-b from-white to-emerald-50/40 p-6 shadow-lg backdrop-blur ${className}`}
     >
+      {/* Brand Header */}
+      <div className="mb-3 flex items-center gap-2">
+        <Image
+          src="/images/logo.png"
+          alt="BT Banana Logo"
+          width={28}
+          height={28}
+          className="h-7 w-7 object-contain"
+        />
+        <span className="text-sm font-bold text-emerald-950">BT Banana Digital QR</span>
+      </div>
+
       {/* Mode Switcher */}
       <div className="mb-4 flex rounded-xl bg-emerald-900/5 p-1 text-xs font-semibold text-emerald-950">
         <button
@@ -96,14 +109,26 @@ export function QrCodeDisplay({
         </button>
       </div>
 
-      {/* QR Code Container */}
+      {/* QR Code Container with Centered Logo Badge */}
       <div className="relative flex h-52 w-52 items-center justify-center rounded-2xl border border-emerald-200/80 bg-white p-3 shadow-md ring-4 ring-emerald-50">
         {qrDataUrl ? (
-          <img
-            src={qrDataUrl}
-            alt="BT Banana Digital Business Card QR Code"
-            className="h-full w-full object-contain rounded-lg"
-          />
+          <div className="relative flex h-full w-full items-center justify-center">
+            <img
+              src={qrDataUrl}
+              alt="BT Banana Digital Business Card QR Code"
+              className="h-full w-full rounded-lg object-contain"
+            />
+            {/* Center Logo Badge */}
+            <div className="absolute flex h-10 w-10 items-center justify-center rounded-full bg-white p-1 shadow-md border border-emerald-200">
+              <Image
+                src="/images/logo.png"
+                alt="BT Banana Logo"
+                width={32}
+                height={32}
+                className="h-full w-full object-contain"
+              />
+            </div>
+          </div>
         ) : (
           <div className="flex h-full w-full items-center justify-center text-xs text-neutral-400">
             Generating QR...

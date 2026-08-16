@@ -45,6 +45,11 @@ export const metadata: Metadata = {
     title: `${SITE_NAME} | Wholesale Bananas & Banana Seeds in Kerala`,
     description: SITE_DESCRIPTION,
   },
+  icons: {
+    icon: "/images/logo.png",
+    shortcut: "/images/logo.png",
+    apple: "/images/logo.png",
+  },
   twitter: {
     card: "summary",
     title: `${SITE_NAME} | Wholesale Bananas & Banana Seeds in Kerala`,

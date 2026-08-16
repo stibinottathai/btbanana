@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   branches,
   navLinks,
@@ -15,7 +16,16 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <p className="text-lg font-bold text-white">{SITE_NAME}</p>
+            <div className="flex items-center gap-2.5">
+              <Image
+                src="/images/logo.png"
+                alt="BT Banana Logo"
+                width={36}
+                height={36}
+                className="h-9 w-9 object-contain"
+              />
+              <p className="text-xl font-bold text-white">{SITE_NAME}</p>
+            </div>
             <p className="mt-1 text-sm text-green-300">
               Wholesale Bananas &amp; Banana Seeds
             </p>
