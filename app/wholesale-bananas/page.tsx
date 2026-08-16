@@ -5,19 +5,43 @@ import { CallButton } from "@/components/CallButton";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { ProductCard } from "@/components/ProductCard";
 import { LocationCard } from "@/components/LocationCard";
+import { Faq } from "@/components/Faq";
 import { CheckIcon } from "@/components/icons";
 import { branches, primaryPhone, primaryWhatsApp, SITE_URL } from "@/lib/site";
 import { products } from "@/lib/products";
 
+const wholesaleFaqs = [
+  {
+    question: "Is BT Banana a wholesale banana shop?",
+    answer:
+      "Yes — wholesale bulk supply is our core business. We supply different banana varieties to traders, retailers, and other businesses from our Alakode and Nellipara branches in Kannur district, Kerala.",
+  },
+  {
+    question: "Which banana varieties do you supply wholesale?",
+    answer:
+      "We supply Nendran banana, plantain varieties, and other banana varieties depending on the season. Enquire directly for what's currently in stock.",
+  },
+  {
+    question: "Do you supply wholesale bananas outside Alakode and Nellipara?",
+    answer:
+      "Yes — we regularly supply customers across Kannur and Kasaragod districts, including Kannur, Thaliparamba, Cherupuzha, and Vellarikundu. Contact us to check supply to your area.",
+  },
+  {
+    question: "How do I get wholesale banana pricing?",
+    answer:
+      "We don't list fixed prices online since availability changes. Call or WhatsApp us with the variety and quantity you need, and we'll confirm current wholesale pricing.",
+  },
+];
+
 export const metadata: Metadata = {
-  title: "Wholesale Banana Supplier in Kerala",
+  title: "Wholesale Banana Shop & Supplier in Kerala",
   description:
-    "BT Banana is a wholesale banana supplier in Kerala, supplying different banana varieties in bulk to traders, retailers, and businesses from Alakode and Nellipara, near Kannur.",
+    "BT Banana is a wholesale banana shop and supplier in Kerala, supplying different banana varieties in bulk to traders, retailers, and businesses from Alakode and Nellipara, near Kannur.",
   alternates: {
     canonical: "/wholesale-bananas",
   },
   openGraph: {
-    title: "Wholesale Banana Supplier in Kerala | BT Banana",
+    title: "Wholesale Banana Shop & Supplier in Kerala | BT Banana",
     description:
       "Wholesale banana supply from Alakode and Nellipara, Kerala — different banana varieties, reasonable pricing, bulk enquiries welcome.",
     url: `${SITE_URL}/wholesale-bananas`,
@@ -117,6 +141,10 @@ export default function WholesaleBananasPage() {
             </ul>
           </div>
         </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+        <Faq items={wholesaleFaqs} />
       </section>
 
       <section className="border-t border-green-100 bg-green-50/50">

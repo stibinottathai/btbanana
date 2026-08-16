@@ -5,7 +5,14 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { MobileStickyCTA } from "@/components/MobileStickyCTA";
 import { JsonLd } from "@/components/JsonLd";
-import { branches, owners, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
+import {
+  branches,
+  coveredAreas,
+  owners,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_URL,
+} from "@/lib/site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,14 +32,28 @@ export const metadata: Metadata = {
   },
   description: SITE_DESCRIPTION,
   keywords: [
-    "banana wholesale Kerala",
+    "best banana shop in Kannur",
+    "best banana shop in Kasaragod",
+    "best banana shop in Alakode",
+    "best banana shop in Cherupuzha",
+    "best banana shop in Thaliparamba",
+    "wholesale banana shop Alakode",
+    "wholesale banana shop Kannur",
+    "wholesale banana shop Vellarikundu",
+    "banana shop Alakode",
     "banana supplier Alakode",
-    "banana wholesale Nellipara",
-    "banana supplier Kannur",
-    "banana seeds Kerala",
+    "banana shops in Vellarikundu",
+    "banana shop Cherupuzha",
+    "banana shop Udayagiri",
+    "banana shop Manakkadavu",
+    "banana shop Karthikapuram",
+    "banana seeds Kerala delivery",
+    "banana seeds Kannur",
+    "banana seeds Alakode",
     "vazhavithu Kerala",
-    "banana seed supplier",
-    "wholesale banana supplier",
+    "banana seed supplier Kerala",
+    "wholesale banana supplier Kerala",
+    "banana wholesale Nellipara",
   ],
   alternates: {
     canonical: "/",
@@ -59,12 +80,31 @@ export const metadata: Metadata = {
 
 const localBusinessJsonLd = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
+  "@type": ["LocalBusiness", "Store"],
   name: SITE_NAME,
   description: SITE_DESCRIPTION,
   url: SITE_URL,
+  image: `${SITE_URL}/images/logo.png`,
+  priceRange: "₹₹",
   telephone: owners.map((o) => `+91${o.phone}`),
-  areaServed: ["Alakode", "Nellipara", "Kannur", "Kerala"],
+  areaServed: [
+    ...coveredAreas.districts,
+    ...coveredAreas.localities,
+  ].map((place) => ({
+    "@type": "Place",
+    name: place,
+  })),
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Alakode",
+    addressRegion: "Kerala",
+    addressCountry: "IN",
+  },
+  founder: owners.map((o) => ({
+    "@type": "Person",
+    name: o.name,
+    jobTitle: o.role,
+  })),
   department: branches.map((branch) => ({
     "@type": "LocalBusiness",
     name: branch.name,

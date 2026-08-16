@@ -4,20 +4,44 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CallButton } from "@/components/CallButton";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { LocationCard } from "@/components/LocationCard";
+import { Faq } from "@/components/Faq";
 import { CheckIcon } from "@/components/icons";
 import { branches, primaryPhone, primaryWhatsApp, SITE_URL } from "@/lib/site";
 
+const bananaSeedFaqs = [
+  {
+    question: "Do you deliver banana seeds (Vazhavithu) across Kerala?",
+    answer:
+      "We can arrange delivery of banana seeds / Vazhavithu to other parts of Kerala depending on the quantity and your location — contact us directly by phone or WhatsApp to check delivery to your area.",
+  },
+  {
+    question: "Where can I buy banana seeds near Kannur?",
+    answer:
+      "BT Banana supplies banana seeds / Vazhavithu from our Alakode and Nellipara branches in Kannur district, serving customers across Kannur and neighbouring Kasaragod district.",
+  },
+  {
+    question: "What is the price of banana seeds / Vazhavithu?",
+    answer:
+      "We don't list fixed prices online since availability and rates change. Contact us by phone or WhatsApp for the current wholesale price on banana seeds.",
+  },
+  {
+    question: "Do you supply banana seeds in bulk to farmers and traders?",
+    answer:
+      "Yes — we supply banana Vazhavithu in both small and bulk quantities to individual farmers, growers, and agricultural traders sourcing planting material.",
+  },
+];
+
 export const metadata: Metadata = {
-  title: "Banana Seeds / Vazhavithu Supplier in Kerala",
+  title: "Banana Seeds in Kerala — Vazhavithu Supplier, All-Kerala Delivery",
   description:
-    "BT Banana supplies banana seeds (Vazhavithu / വാഴവിത്ത്) — banana planting material — at reasonable wholesale prices from Alakode and Nellipara, Kerala. Enquire for availability.",
+    "BT Banana supplies banana seeds (Vazhavithu / വാഴവിത്ത്) — banana planting material — at reasonable wholesale prices from Alakode and Nellipara, Kannur, with delivery arranged across Kerala. Enquire for availability.",
   alternates: {
     canonical: "/banana-seeds",
   },
   openGraph: {
-    title: "Banana Seeds / Vazhavithu Supplier in Kerala | BT Banana",
+    title: "Banana Seeds in Kerala — Vazhavithu Supplier | BT Banana",
     description:
-      "Banana seeds / Vazhavithu (banana planting material) supplied wholesale from Alakode and Nellipara, Kerala.",
+      "Banana seeds / Vazhavithu (banana planting material) supplied wholesale from Alakode and Nellipara, Kannur, with delivery arranged across Kerala.",
     url: `${SITE_URL}/banana-seeds`,
   },
 };
@@ -122,6 +146,10 @@ export default function BananaSeedsPage() {
           rates can change — reach out by phone or WhatsApp for the current
           wholesale price on banana seeds.
         </p>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+        <Faq items={bananaSeedFaqs} />
       </section>
 
       <section className="border-t border-green-100 bg-green-50/50">

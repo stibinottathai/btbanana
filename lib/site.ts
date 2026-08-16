@@ -100,5 +100,6 @@ export const coveredAreas = {
     "Vellarikundu",
     "Parappa",
     "Nileshwaram",
+    "Thaliparamba",
   ],
 };

@@ -9,6 +9,7 @@ import {
   formatPhone,
   telHref,
 } from "@/lib/site";
+import { serviceLocations } from "@/lib/locations";
 
 export function Footer() {
   return (
@@ -85,11 +86,28 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 border-t border-green-900 pt-6 text-xs text-green-400">
+        <div className="mt-10 border-t border-green-900 pt-6">
+          <p className="text-sm font-semibold uppercase tracking-wide text-green-300">
+            Banana Shop &amp; Wholesale Supply Near You
+          </p>
+          <div className="mt-3 flex flex-wrap gap-x-4 gap-y-2 text-sm">
+            {serviceLocations.map((location) => (
+              <Link
+                key={location.slug}
+                href={`/locations/${location.slug}`}
+                className="text-green-200 hover:text-white"
+              >
+                Banana Shop in {location.name}
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-8 border-t border-green-900 pt-6 text-xs text-green-400">
           <p>
             &copy; {new Date().getFullYear()} {SITE_NAME}. Wholesale banana
             and banana seed (Vazhavithu) supplier serving Alakode, Nellipara,
-            and Kannur, Kerala.
+            Kannur, and Kasaragod, Kerala.
           </p>
         </div>
       </div>

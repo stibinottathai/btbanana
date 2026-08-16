@@ -14,7 +14,32 @@ import { CallButton } from "@/components/CallButton";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { ProductCard } from "@/components/ProductCard";
 import { LocationCard } from "@/components/LocationCard";
+import { Faq } from "@/components/Faq";
 import { CheckIcon, LeafIcon, MapPinIcon } from "@/components/icons";
+import { serviceLocations } from "@/lib/locations";
+
+const homeFaqs = [
+  {
+    question: "Which is the best banana shop in Kannur or Alakode?",
+    answer:
+      "BT Banana is a wholesale banana and banana seed (Vazhavithu) supplier based in Alakode and Nellipara, Kannur district, Kerala — supplying farmers, traders, and retailers at reasonable prices with direct phone and WhatsApp contact.",
+  },
+  {
+    question: "Does BT Banana sell banana seeds (Vazhavithu)?",
+    answer:
+      "Yes. We supply banana seeds — locally known as Vazhavithu — as planting material for farmers and growers, with delivery arranged across Kerala depending on quantity and location.",
+  },
+  {
+    question: "Do you supply wholesale bananas to Kasaragod district?",
+    answer:
+      "Yes — our Alakode branch is close to the Kannur–Kasaragod border, and we regularly supply customers across Kasaragod district, including Vellarikundu and nearby areas.",
+  },
+  {
+    question: "How do I contact BT Banana for an enquiry?",
+    answer:
+      "Call or WhatsApp Thomas M.J or Albin Augustine directly, or use the enquiry form on our Contact page — we'll confirm current availability and pricing.",
+  },
+];
 
 const benefits = [
   {
@@ -320,15 +345,33 @@ export default function Home() {
               Key Towns &amp; Localities Supplied:
             </h3>
             <div className="mt-4 flex flex-wrap gap-2.5">
-              {coveredAreas.localities.map((location) => (
-                <div
-                  key={location}
-                  className="flex items-center gap-2 rounded-xl border border-green-200/80 bg-green-50/60 px-4 py-2.5 text-sm font-semibold text-green-950 transition hover:bg-green-100 hover:border-green-300"
-                >
-                  <MapPinIcon className="h-4 w-4 text-emerald-600 shrink-0" />
-                  <span>{location}</span>
-                </div>
-              ))}
+              {coveredAreas.localities.map((location) => {
+                const locationPage = serviceLocations.find(
+                  (l) => l.name === location
+                );
+                const className =
+                  "flex items-center gap-2 rounded-xl border border-green-200/80 bg-green-50/60 px-4 py-2.5 text-sm font-semibold text-green-950 transition hover:bg-green-100 hover:border-green-300";
+
+                if (locationPage) {
+                  return (
+                    <Link
+                      key={location}
+                      href={`/locations/${locationPage.slug}`}
+                      className={className}
+                    >
+                      <MapPinIcon className="h-4 w-4 text-emerald-600 shrink-0" />
+                      <span>{location}</span>
+                    </Link>
+                  );
+                }
+
+                return (
+                  <div key={location} className={className}>
+                    <MapPinIcon className="h-4 w-4 text-emerald-600 shrink-0" />
+                    <span>{location}</span>
+                  </div>
+                );
+              })}
             </div>
 
             <p className="mt-6 text-xs text-neutral-500">
@@ -336,6 +379,11 @@ export default function Home() {
             </p>
           </div>
         </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+        <Faq items={homeFaqs} />
       </section>
 
       {/* Contact / Enquiry */}
