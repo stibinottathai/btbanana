@@ -4,6 +4,7 @@ import { serviceLocations } from "@/lib/locations";
 
 const routes = [
   { path: "", priority: 1, changeFrequency: "monthly" as const },
+  { path: "/about", priority: 0.9, changeFrequency: "monthly" as const },
   { path: "/products", priority: 0.9, changeFrequency: "monthly" as const },
   {
     path: "/products/nendran-banana",

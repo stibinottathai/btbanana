@@ -75,12 +75,12 @@ export const defaultEnquiryMessage =
 
 export const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/products", label: "Products" },
-  { href: "/banana-seeds", label: "Banana Seeds" },
   { href: "/wholesale-bananas", label: "Wholesale Bananas" },
+  { href: "/banana-seeds", label: "Banana Seeds" },
+  { href: "/about", label: "About Us" },
   { href: "/locations", label: "Locations" },
+  { href: "/contact", label: "Contact Us" },
   { href: "/card", label: "Digital Card" },
-  { href: "/contact", label: "Contact" },
 ];
 
 export const coveredAreas = {

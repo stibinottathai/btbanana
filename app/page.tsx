@@ -15,6 +15,7 @@ import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { ProductCard } from "@/components/ProductCard";
 import { LocationCard } from "@/components/LocationCard";
 import { Faq } from "@/components/Faq";
+import { Reveal } from "@/components/Reveal";
 import { CheckIcon, LeafIcon, MapPinIcon, UserIcon } from "@/components/icons";
 import { serviceLocations } from "@/lib/locations";
 
@@ -46,6 +47,33 @@ const heroTrustPoints = [
   { icon: CheckIcon, label: "Premium Quality" },
   { icon: UserIcon, label: "Trusted by Farmers" },
 ];
+
+const aboutStats = [
+  { value: String(branches.length), label: "Branches in Kerala" },
+  {
+    value: String(products.filter((product) => product.detailHref).length),
+    label: "Named varieties",
+  },
+  { value: String(coveredAreas.districts.length), label: "Districts served" },
+];
+
+const aboutHighlights = [
+  "Wholesale banana supply",
+  "Different banana varieties",
+  "Banana seed / Vazhavithu supply",
+  "Reasonable pricing",
+  "Alakode branch",
+  "Nellipara branch",
+];
+
+function getInitials(name: string): string {
+  return name
+    .split(" ")
+    .map((part) => part[0])
+    .slice(0, 2)
+    .join("")
+    .toUpperCase();
+}
 
 const benefits = [
   {
@@ -172,12 +200,29 @@ export default function Home() {
       {/* About */}
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
         <div className="grid gap-10 lg:grid-cols-3">
-          <div className="lg:col-span-1">
-            <h2 className="text-3xl font-bold text-green-950">
+          <Reveal className="lg:col-span-1">
+            <span className="inline-flex items-center gap-2 rounded-full bg-green-100 px-4 py-1.5 text-sm font-medium text-green-800">
+              <LeafIcon className="h-4 w-4" />
+              Who We Are
+            </span>
+            <h2 className="mt-4 text-3xl font-bold tracking-tight text-green-950">
               About BT Banana
             </h2>
-          </div>
-          <div className="lg:col-span-2">
+            <dl className="mt-8 space-y-5 border-t border-green-900/10 pt-6">
+              {aboutStats.map((stat) => (
+                <div key={stat.label} className="flex items-baseline gap-3">
+                  <dt className="text-3xl font-bold text-green-800">
+                    {stat.value}
+                  </dt>
+                  <dd className="text-sm font-medium leading-snug text-neutral-600">
+                    {stat.label}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </Reveal>
+
+          <Reveal delay={120} className="lg:col-span-2">
             <p className="text-lg leading-8 text-neutral-700">
               BT Banana is a wholesale banana supplier based in Kerala,
               supplying different varieties of bananas along with banana
@@ -192,32 +237,51 @@ export default function Home() {
               banana planting material to start your own cultivation, you can
               reach out to us directly for current availability and pricing.
             </p>
-            <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-              {[
-                "Wholesale banana supply",
-                "Different banana varieties",
-                "Banana seed / Vazhavithu supply",
-                "Reasonable pricing",
-                "Alakode branch",
-                "Nellipara branch",
-              ].map((item) => (
-                <li
+
+            <div className="mt-8 grid gap-3 sm:grid-cols-2">
+              {aboutHighlights.map((item) => (
+                <div
                   key={item}
-                  className="flex items-center gap-2 text-sm font-medium text-green-900"
+                  className="flex items-center gap-3 rounded-xl border border-green-100 bg-green-50/60 px-4 py-3"
                 >
-                  <CheckIcon className="h-4 w-4 shrink-0 text-green-700" />
-                  {item}
-                </li>
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-green-700 text-white">
+                    <CheckIcon className="h-3.5 w-3.5" />
+                  </span>
+                  <span className="text-sm font-semibold text-green-950">
+                    {item}
+                  </span>
+                </div>
               ))}
-            </ul>
-          </div>
+            </div>
+
+            <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4 rounded-2xl border border-neutral-100 bg-neutral-50 p-5">
+              <p className="text-xs font-bold uppercase tracking-wider text-neutral-500">
+                Run Directly By
+              </p>
+              <div className="flex flex-wrap gap-5">
+                {owners.map((owner) => (
+                  <div key={owner.phone} className="flex items-center gap-2.5">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-green-800 text-xs font-bold text-white">
+                      {getInitials(owner.name)}
+                    </span>
+                    <div className="leading-tight">
+                      <p className="text-sm font-bold text-green-950">
+                        {owner.name}
+                      </p>
+                      <p className="text-xs text-neutral-500">{owner.role}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 
       {/* Products overview */}
       <section className="border-y border-green-100 bg-green-50/50">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-          <div className="flex flex-wrap items-end justify-between gap-4">
+          <Reveal className="flex flex-wrap items-end justify-between gap-4">
             <h2 className="text-3xl font-bold text-green-950">
               What We Supply
             </h2>
@@ -227,10 +291,16 @@ export default function Home() {
             >
               View all products →
             </Link>
-          </div>
+          </Reveal>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {products.map((product) => (
-              <ProductCard key={product.slug} product={product} />
+            {products.map((product, index) => (
+              <Reveal
+                key={product.slug}
+                delay={(index % 3) * 100}
+                className="grid"
+              >
+                <ProductCard product={product} />
+              </Reveal>
             ))}
           </div>
         </div>
@@ -239,7 +309,7 @@ export default function Home() {
       {/* Vazhavithu section */}
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
         <div className="grid items-center gap-10 overflow-hidden rounded-3xl bg-amber-50 lg:grid-cols-2">
-          <div className="relative h-64 lg:h-full lg:min-h-[420px]">
+          <Reveal className="relative h-64 lg:h-full lg:min-h-[420px]">
             <Image
               src="/images/vazhavithu.png"
               alt="Freshly harvested banana seeds / Vazhavithu planting material with a young banana sapling"
@@ -247,8 +317,8 @@ export default function Home() {
               sizes="(min-width: 1024px) 50vw, 100vw"
               className="object-cover"
             />
-          </div>
-          <div className="p-8 sm:p-12 lg:pl-0">
+          </Reveal>
+          <Reveal delay={120} className="p-8 sm:p-12 lg:pl-0">
             <h2 className="text-3xl font-bold text-green-950">
               Banana Seeds / Vazhavithu
             </h2>
@@ -282,32 +352,37 @@ export default function Home() {
                 className="px-5 py-2.5 text-sm"
               />
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* Why choose us */}
       <section className="border-y border-green-100 bg-green-50/50">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-          <h2 className="text-3xl font-bold text-green-950">
-            Why Choose BT Banana
-          </h2>
+          <Reveal>
+            <h2 className="text-3xl font-bold text-green-950">
+              Why Choose BT Banana
+            </h2>
+          </Reveal>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {benefits.map((benefit) => (
-              <div
+            {benefits.map((benefit, index) => (
+              <Reveal
                 key={benefit.title}
-                className="rounded-2xl border border-green-100 bg-white p-6"
+                delay={(index % 3) * 100}
+                className="grid"
               >
-                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-green-100 text-green-800">
-                  <CheckIcon className="h-5 w-5" />
-                </span>
-                <h3 className="mt-4 font-semibold text-green-900">
-                  {benefit.title}
-                </h3>
-                <p className="mt-2 text-sm leading-6 text-neutral-600">
-                  {benefit.description}
-                </p>
-              </div>
+                <div className="rounded-2xl border border-green-100 bg-white p-6">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-green-100 text-green-800">
+                    <CheckIcon className="h-5 w-5" />
+                  </span>
+                  <h3 className="mt-4 font-semibold text-green-900">
+                    {benefit.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-6 text-neutral-600">
+                    {benefit.description}
+                  </p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -315,7 +390,7 @@ export default function Home() {
 
       {/* Locations */}
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-        <div className="flex flex-wrap items-end justify-between gap-4">
+        <Reveal className="flex flex-wrap items-end justify-between gap-4">
           <h2 className="text-3xl font-bold text-green-950">
             Our Branches
           </h2>
@@ -325,10 +400,16 @@ export default function Home() {
           >
             View location details →
           </Link>
-        </div>
+        </Reveal>
         <div className="mt-8 grid gap-6 sm:grid-cols-2">
-          {branches.map((branch) => (
-            <LocationCard key={branch.slug} branch={branch} />
+          {branches.map((branch, index) => (
+            <Reveal
+              key={branch.slug}
+              delay={(index % 2) * 100}
+              className="grid"
+            >
+              <LocationCard branch={branch} />
+            </Reveal>
           ))}
         </div>
       </section>
@@ -336,7 +417,7 @@ export default function Home() {
       {/* Areas We Cover */}
       <section className="border-t border-green-100 bg-gradient-to-b from-white via-green-50/40 to-white">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-          <div className="flex flex-col items-center text-center">
+          <Reveal className="flex flex-col items-center text-center">
             <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-3.5 py-1 text-xs font-bold text-emerald-800">
               <MapPinIcon className="h-3.5 w-3.5 text-emerald-700" />
               Wholesale Delivery &amp; Supply Network
@@ -347,33 +428,37 @@ export default function Home() {
             <p className="mt-3 max-w-2xl text-base text-neutral-600">
               BT Banana supplies wholesale bananas and banana seeds (Vazhavithu) across key locations in <strong className="font-semibold text-green-900">Kannur</strong> and <strong className="font-semibold text-green-900">Kasaragod</strong> districts in Kerala.
             </p>
-          </div>
+          </Reveal>
 
           {/* District Highlights Header Cards */}
           <div className="mt-10 grid gap-6 sm:grid-cols-2">
-            <div className="flex items-center gap-4 rounded-2xl border border-green-100 bg-white p-5 shadow-sm">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-amber-400 text-green-950 shadow-sm">
-                <MapPinIcon className="h-6 w-6" />
+            <Reveal className="grid">
+              <div className="flex items-center gap-4 rounded-2xl border border-green-100 bg-white p-5 shadow-sm">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-amber-400 text-green-950 shadow-sm">
+                  <MapPinIcon className="h-6 w-6" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-green-950">Kannur District</h3>
+                  <p className="text-xs font-semibold text-green-700">Primary Hub: Alakode &amp; Nellipara</p>
+                </div>
               </div>
-              <div>
-                <h3 className="text-lg font-bold text-green-950">Kannur District</h3>
-                <p className="text-xs font-semibold text-green-700">Primary Hub: Alakode &amp; Nellipara</p>
-              </div>
-            </div>
+            </Reveal>
 
-            <div className="flex items-center gap-4 rounded-2xl border border-green-100 bg-white p-5 shadow-sm">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-green-700 text-white shadow-sm">
-                <MapPinIcon className="h-6 w-6" />
+            <Reveal delay={100} className="grid">
+              <div className="flex items-center gap-4 rounded-2xl border border-green-100 bg-white p-5 shadow-sm">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-green-700 text-white shadow-sm">
+                  <MapPinIcon className="h-6 w-6" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-green-950">Kasaragod District</h3>
+                  <p className="text-xs font-semibold text-green-700">Northern Kerala Wholesale Network</p>
+                </div>
               </div>
-              <div>
-                <h3 className="text-lg font-bold text-green-950">Kasaragod District</h3>
-                <p className="text-xs font-semibold text-green-700">Northern Kerala Wholesale Network</p>
-              </div>
-            </div>
+            </Reveal>
           </div>
 
           {/* Covered Locations Grid */}
-          <div className="mt-8 rounded-3xl border border-green-100 bg-white p-6 shadow-sm sm:p-8">
+          <Reveal className="mt-8 rounded-3xl border border-green-100 bg-white p-6 shadow-sm sm:p-8">
             <h3 className="text-xs font-bold uppercase tracking-wider text-green-900">
               Key Towns &amp; Localities Supplied:
             </h3>
@@ -410,44 +495,51 @@ export default function Home() {
             <p className="mt-6 text-xs text-neutral-500">
               Don&apos;t see your specific location listed? If you are located nearby in Kannur or Kasaragod districts, call or WhatsApp us directly to check supply availability.
             </p>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* FAQ */}
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-        <Faq items={homeFaqs} />
+        <Reveal>
+          <Faq items={homeFaqs} />
+        </Reveal>
       </section>
 
       {/* Contact / Enquiry */}
       <section className="border-t border-green-100 bg-green-950 text-white">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-          <h2 className="text-3xl font-bold">Get In Touch</h2>
-          <p className="mt-3 max-w-2xl text-green-100">
-            {SITE_DESCRIPTION} Call or WhatsApp us directly for wholesale
-            banana or banana seed enquiries.
-          </p>
+          <Reveal>
+            <h2 className="text-3xl font-bold">Get In Touch</h2>
+            <p className="mt-3 max-w-2xl text-green-100">
+              {SITE_DESCRIPTION} Call or WhatsApp us directly for wholesale
+              banana or banana seed enquiries.
+            </p>
+          </Reveal>
           <div className="mt-8 grid gap-6 sm:grid-cols-2">
-            {owners.map((owner) => (
-              <div
+            {owners.map((owner, index) => (
+              <Reveal
                 key={owner.phone}
-                className="rounded-2xl bg-green-900/60 p-6"
+                delay={(index % 2) * 100}
+                className="grid"
               >
-                <p className="text-lg font-semibold">{owner.name}</p>
-                <p className="text-sm text-green-300">{owner.role}</p>
-                <div className="mt-4 flex flex-wrap gap-3">
-                  <CallButton
-                    phone={owner.phone}
-                    label={`Call ${owner.name.split(" ")[0]}`}
-                    variant="outline"
-                    className="border-white/40 px-5 py-2.5 text-sm text-white hover:bg-white/10"
-                  />
-                  <WhatsAppButton
-                    phone={owner.phone}
-                    className="px-5 py-2.5 text-sm"
-                  />
+                <div className="rounded-2xl bg-green-900/60 p-6">
+                  <p className="text-lg font-semibold">{owner.name}</p>
+                  <p className="text-sm text-green-300">{owner.role}</p>
+                  <div className="mt-4 flex flex-wrap gap-3">
+                    <CallButton
+                      phone={owner.phone}
+                      label={`Call ${owner.name.split(" ")[0]}`}
+                      variant="outline"
+                      className="border-white/40 px-5 py-2.5 text-sm text-white hover:bg-white/10"
+                    />
+                    <WhatsAppButton
+                      phone={owner.phone}
+                      className="px-5 py-2.5 text-sm"
+                    />
+                  </div>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
           <Link
