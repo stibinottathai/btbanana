@@ -101,8 +101,8 @@ export default function PalayankodanBananaPage() {
         </div>
         <div className="relative hidden aspect-[4/3] overflow-hidden rounded-3xl shadow-lg sm:block">
           <Image
-            src="/images/banana-plant-terrace.jpg"
-            alt="Banana plants growing in Kerala — BT Banana supplies Palayankodan banana wholesale"
+            src="/images/mysoor_poovan .png"
+            alt="Palayankodan / Mysore Poovan banana variety supplied wholesale by BT Banana, Kerala"
             fill
             priority
             sizes="(min-width: 1024px) 50vw, 100vw"

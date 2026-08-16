@@ -99,7 +99,7 @@ export default function NendranBananaPage() {
         </div>
         <div className="relative hidden aspect-[4/3] overflow-hidden rounded-3xl shadow-lg sm:block">
           <Image
-            src="/images/nendran.png"
+            src="/images/wholesale.png"
             alt="Nendran bananas, Kerala's most widely used variety, supplied wholesale by BT Banana, Alakode"
             fill
             priority

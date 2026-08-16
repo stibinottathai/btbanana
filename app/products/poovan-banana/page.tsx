@@ -98,8 +98,8 @@ export default function PoovanBananaPage() {
         </div>
         <div className="relative hidden aspect-[4/3] overflow-hidden rounded-3xl shadow-lg sm:block">
           <Image
-            src="/images/banana-on-tree.jpg"
-            alt="Bananas growing on the plant in Kerala — BT Banana supplies Poovan banana wholesale"
+            src="/images/poovan.jpg"
+            alt="Poovan banana variety supplied wholesale by BT Banana, Kerala"
             fill
             priority
             sizes="(min-width: 1024px) 50vw, 100vw"

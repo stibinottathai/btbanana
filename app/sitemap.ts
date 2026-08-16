@@ -12,6 +12,11 @@ const routes = [
     changeFrequency: "monthly" as const,
   },
   {
+    path: "/products/njali-poovan-banana",
+    priority: 0.8,
+    changeFrequency: "monthly" as const,
+  },
+  {
     path: "/products/palayankodan-banana",
     priority: 0.8,
     changeFrequency: "monthly" as const,
