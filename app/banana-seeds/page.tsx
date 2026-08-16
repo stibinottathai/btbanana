@@ -20,9 +20,24 @@ const bananaSeedFaqs = [
       "BT Banana supplies banana seeds / Vazhavithu from our Alakode and Nellipara branches in Kannur district, serving customers across Kannur and neighbouring Kasaragod district.",
   },
   {
+    question: "Do you supply banana seedlings / planting material in Nellipara?",
+    answer:
+      "Yes — our Nellipara branch stocks banana seeds / Vazhavithu (planting material and seedlings) alongside our Alakode branch, subject to current availability.",
+  },
+  {
+    question: "Is there a banana seed supplier for Kasaragod district?",
+    answer:
+      "Yes — we supply banana seeds / Vazhavithu to customers across Kasaragod district from our Alakode branch, close to the Kannur–Kasaragod border. Contact us to discuss quantity and delivery.",
+  },
+  {
     question: "What is the price of banana seeds / Vazhavithu?",
     answer:
       "We don't list fixed prices online since availability and rates change. Contact us by phone or WhatsApp for the current wholesale price on banana seeds.",
+  },
+  {
+    question: "Do you supply Nendran banana seeds / planting material specifically?",
+    answer:
+      "Nendran is the most commonly grown variety from the banana Vazhavithu we supply, since it's the most widely cultivated banana in Kerala — confirm current availability with us directly.",
   },
   {
     question: "Do you supply banana seeds in bulk to farmers and traders?",
@@ -56,13 +71,13 @@ export default function BananaSeedsPage() {
       <section className="mx-auto grid max-w-6xl items-center gap-8 px-4 py-8 sm:px-6 lg:grid-cols-2">
         <div>
           <h1 className="text-4xl font-bold tracking-tight text-green-950 sm:text-5xl">
-            Banana Seeds / Vazhavithu
+            Banana Seeds &amp; Seedlings / Vazhavithu
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-8 text-neutral-700">
-            BT Banana supplies banana seeds — known locally as{" "}
+            BT Banana supplies banana seeds and seedlings — known locally as{" "}
             <span className="font-semibold">Vazhavithu (വാഴവിത്ത്)</span> —
             at reasonable wholesale prices from our Alakode and Nellipara
-            branches in Kerala.
+            branches in Kannur, Kerala.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <CallButton phone={primaryPhone} label="Call for Availability" />
@@ -75,7 +90,7 @@ export default function BananaSeedsPage() {
         <div className="relative hidden aspect-[4/3] overflow-hidden rounded-3xl shadow-lg sm:block">
           <Image
             src="/images/vazhavithu.png"
-            alt="Freshly harvested banana seeds / Vazhavithu planting material with a young banana sapling"
+            alt="Banana seeds / Vazhavithu planting material and seedlings supplied by BT Banana, Alakode, Kannur"
             fill
             priority
             sizes="(min-width: 1024px) 50vw, 100vw"
@@ -93,10 +108,10 @@ export default function BananaSeedsPage() {
               </h2>
               <p className="mt-4 leading-7 text-neutral-700">
                 Vazhavithu is the Malayalam term for banana planting
-                material — the young banana plants or suckers that farmers
-                plant to start a new banana crop. It&apos;s the starting
-                point for any banana cultivation, and the quality of the
-                planting material has a direct effect on the crop that
+                material — the young banana plants, suckers, or seedlings
+                that farmers plant to start a new banana crop. It&apos;s the
+                starting point for any banana cultivation, and the quality of
+                the planting material has a direct effect on the crop that
                 follows.
               </p>
               <p className="mt-4 leading-7 text-neutral-700">

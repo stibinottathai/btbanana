@@ -5,6 +5,26 @@ import { serviceLocations } from "@/lib/locations";
 const routes = [
   { path: "", priority: 1, changeFrequency: "monthly" as const },
   { path: "/products", priority: 0.9, changeFrequency: "monthly" as const },
+  {
+    path: "/products/nendran-banana",
+    priority: 0.8,
+    changeFrequency: "monthly" as const,
+  },
+  {
+    path: "/products/palayankodan-banana",
+    priority: 0.8,
+    changeFrequency: "monthly" as const,
+  },
+  {
+    path: "/products/robusta-banana",
+    priority: 0.8,
+    changeFrequency: "monthly" as const,
+  },
+  {
+    path: "/products/poovan-banana",
+    priority: 0.8,
+    changeFrequency: "monthly" as const,
+  },
   { path: "/banana-seeds", priority: 0.9, changeFrequency: "monthly" as const },
   {
     path: "/wholesale-bananas",

@@ -50,7 +50,7 @@ const benefits = [
   {
     title: "Multiple Banana Varieties",
     description:
-      "From Nendran to plantain varieties, we deal in different types of bananas depending on availability.",
+      "Nendran, Palayankodan, Robusta, Poovan, and plantain varieties — we deal in different types of bananas depending on availability.",
   },
   {
     title: "Banana Seeds / Vazhavithu Available",

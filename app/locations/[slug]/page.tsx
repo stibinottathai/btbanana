@@ -27,8 +27,8 @@ export async function generateMetadata({
   const location = getLocationBySlug(slug);
   if (!location) return {};
 
-  const title = `Banana Shop in ${location.name} — Wholesale Bananas & Seeds`;
-  const description = `Looking for the best banana shop in ${location.name}? BT Banana supplies wholesale bananas and banana seeds (Vazhavithu) to ${location.name} from our nearby Kerala branches — call or WhatsApp for pricing.`;
+  const title = `Wholesale Banana Shop in ${location.name} — Bananas & Banana Seeds`;
+  const description = `Looking for a wholesale banana supplier or banana wholesaler in ${location.name}? BT Banana supplies fresh wholesale bananas and banana seeds (Vazhavithu) to ${location.name} from our nearby Kerala branches — call or WhatsApp for pricing.`;
 
   return {
     title,
@@ -91,7 +91,7 @@ export default async function LocationPage({
           {location.region}
         </p>
         <h1 className="mt-5 text-4xl font-bold tracking-tight text-green-950 sm:text-5xl">
-          Banana Shop in {location.name}
+          Wholesale Banana Shop in {location.name}
         </h1>
         <p className="mt-5 max-w-2xl text-lg leading-8 text-neutral-700">
           {location.intro}
@@ -123,10 +123,12 @@ export default async function LocationPage({
               Wholesale Bananas in {location.name}
             </h2>
             <p className="mt-4 leading-7 text-neutral-700">
-              We supply different banana varieties in bulk to traders,
-              retailers, and businesses in and around {location.name}, with
-              reasonable, transparent wholesale pricing. Availability depends
-              on the season — contact us directly for current stock.
+              As a banana wholesaler supplying {location.name}, we deal in
+              fresh banana varieties — including Nendran, Palayankodan,
+              Robusta, and Poovan — in bulk for traders, retailers, and
+              businesses in and around the area, with reasonable, transparent
+              wholesale pricing. Availability depends on the season — contact
+              us directly for current stock.
             </p>
           </div>
           <div>
@@ -134,17 +136,17 @@ export default async function LocationPage({
               Banana Seeds / Vazhavithu in {location.name}
             </h2>
             <p className="mt-4 leading-7 text-neutral-700">
-              Need banana planting material? We supply banana seeds — locally
-              known as Vazhavithu (വാഴവിത്ത്) — to farmers and growers near{" "}
-              {location.name} at reasonable wholesale prices, subject to
-              current availability.
+              Need banana planting material or seedlings? We supply banana
+              seeds — locally known as Vazhavithu (വാഴവിത്ത്) — to farmers and
+              growers near {location.name} at reasonable wholesale prices,
+              subject to current availability.
             </p>
           </div>
         </div>
         <ul className="mt-8 grid gap-3 sm:grid-cols-2">
           {[
-            `Serving ${location.name} and nearby areas`,
-            "Wholesale bananas & banana seeds (Vazhavithu)",
+            `Wholesale banana supplier near ${location.name}`,
+            "Fresh bananas & banana seeds (Vazhavithu / seedlings)",
             "Reasonable, transparent pricing",
             "Direct phone & WhatsApp contact",
           ].map((item) => (

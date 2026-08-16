@@ -17,14 +17,20 @@ const wholesaleFaqs = [
       "Yes — wholesale bulk supply is our core business. We supply different banana varieties to traders, retailers, and other businesses from our Alakode and Nellipara branches in Kannur district, Kerala.",
   },
   {
-    question: "Which banana varieties do you supply wholesale?",
+    question: "Is BT Banana a banana wholesaler, or do you also sell retail?",
     answer:
-      "We supply Nendran banana, plantain varieties, and other banana varieties depending on the season. Enquire directly for what's currently in stock.",
+      "We primarily operate as a banana wholesaler, supplying bulk quantities to traders, retailers, and businesses rather than small one-off retail purchases.",
   },
   {
-    question: "Do you supply wholesale bananas outside Alakode and Nellipara?",
+    question: "Which banana varieties do you supply wholesale?",
     answer:
-      "Yes — we regularly supply customers across Kannur and Kasaragod districts, including Kannur, Thaliparamba, Cherupuzha, and Vellarikundu. Contact us to check supply to your area.",
+      "We supply Nendran, Palayankodan, Robusta, and Poovan banana varieties, along with plantain and other varieties depending on the season. Enquire directly for what's currently in stock.",
+  },
+  {
+    question:
+      "Is there a wholesale banana supplier in Kannur district or Kasaragod district?",
+    answer:
+      "Yes — BT Banana is a wholesale banana supplier based in Kannur district (Alakode and Nellipara), and we regularly supply customers across both Kannur and Kasaragod districts, including Kannur town, Thaliparamba, Cherupuzha, and Vellarikundu.",
   },
   {
     question: "How do I get wholesale banana pricing?",
@@ -34,16 +40,16 @@ const wholesaleFaqs = [
 ];
 
 export const metadata: Metadata = {
-  title: "Wholesale Banana Shop & Supplier in Kerala",
+  title: "Wholesale Banana Shop, Supplier & Wholesaler in Kerala",
   description:
-    "BT Banana is a wholesale banana shop and supplier in Kerala, supplying different banana varieties in bulk to traders, retailers, and businesses from Alakode and Nellipara, near Kannur.",
+    "BT Banana is a wholesale banana shop, supplier, and banana wholesaler in Kerala, supplying fresh banana varieties in bulk to traders, retailers, and businesses across Kannur and Kasaragod districts from Alakode and Nellipara.",
   alternates: {
     canonical: "/wholesale-bananas",
   },
   openGraph: {
-    title: "Wholesale Banana Shop & Supplier in Kerala | BT Banana",
+    title: "Wholesale Banana Shop, Supplier & Wholesaler in Kerala | BT Banana",
     description:
-      "Wholesale banana supply from Alakode and Nellipara, Kerala — different banana varieties, reasonable pricing, bulk enquiries welcome.",
+      "Wholesale banana supply from Alakode and Nellipara, Kerala — different banana varieties, reasonable pricing, bulk enquiries welcome across Kannur and Kasaragod districts.",
     url: `${SITE_URL}/wholesale-bananas`,
   },
 };
@@ -62,12 +68,12 @@ export default function WholesaleBananasPage() {
       <section className="mx-auto grid max-w-6xl items-center gap-8 px-4 py-8 sm:px-6 lg:grid-cols-2">
         <div>
           <h1 className="text-4xl font-bold tracking-tight text-green-950 sm:text-5xl">
-            Wholesale Banana Supplier in Kerala
+            Wholesale Banana Supplier &amp; Banana Wholesaler in Kerala
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-8 text-neutral-700">
-            BT Banana supplies bananas in bulk from our Alakode and
+            BT Banana supplies fresh bananas in bulk from our Alakode and
             Nellipara branches, serving traders, retailers, and other
-            businesses across the local area near Kannur, Kerala.
+            businesses across Kannur district and Kasaragod district, Kerala.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <CallButton phone={primaryPhone} label="Get Wholesale Price" />
@@ -80,7 +86,7 @@ export default function WholesaleBananasPage() {
         <div className="relative hidden aspect-[4/3] overflow-hidden rounded-3xl shadow-lg sm:block">
           <Image
             src="/images/wholesale.png"
-            alt="Wholesale bananas supplied in bulk by BT Banana"
+            alt="Fresh wholesale bananas supplied in bulk by BT Banana, a banana wholesaler in Alakode, Kannur"
             fill
             priority
             sizes="(min-width: 1024px) 50vw, 100vw"
@@ -150,10 +156,11 @@ export default function WholesaleBananasPage() {
       <section className="border-t border-green-100 bg-green-50/50">
         <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
           <h2 className="text-2xl font-bold text-green-950">
-            Banana Supply Near Kannur, Alakode &amp; Nellipara
+            Banana Supplier Near Kannur, Alakode &amp; Nellipara
           </h2>
           <p className="mt-3 max-w-2xl text-neutral-700">
-            We supply wholesale bananas from two branches in Kerala.
+            We supply wholesale bananas from two branches in Kerala, serving
+            customers across Kannur and Kasaragod districts.
           </p>
           <div className="mt-8 grid gap-6 sm:grid-cols-2">
             {branches.map((branch) => (
