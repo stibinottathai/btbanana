@@ -31,6 +31,16 @@ const routes = [
     priority: 0.8,
     changeFrequency: "monthly" as const,
   },
+  {
+    path: "/products/plantain-varieties",
+    priority: 0.8,
+    changeFrequency: "monthly" as const,
+  },
+  {
+    path: "/products/other-banana-varieties",
+    priority: 0.8,
+    changeFrequency: "monthly" as const,
+  },
   { path: "/banana-seeds", priority: 0.9, changeFrequency: "monthly" as const },
   {
     path: "/wholesale-bananas",

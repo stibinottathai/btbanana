@@ -97,6 +97,7 @@ export const products: Product[] = [
     category: "banana",
     image: "/images/variety.png",
     imageAlt: "Different plantain varieties supplied wholesale by BT Banana",
+    detailHref: "/products/plantain-varieties",
   },
   {
     slug: "other-banana-varieties",
@@ -109,6 +110,7 @@ export const products: Product[] = [
     category: "banana",
     image: "/images/banana-fruit-inflorescence.jpg",
     imageAlt: "Banana fruit and flower on the plant",
+    detailHref: "/products/other-banana-varieties",
   },
   {
     slug: "banana-seeds-vazhavithu",
@@ -121,6 +123,7 @@ export const products: Product[] = [
     category: "seed",
     image: "/images/vazhavithu.png",
     imageAlt: "Freshly harvested banana seeds / Vazhavithu planting material with a young banana sapling",
+    detailHref: "/banana-seeds",
   },
 ];
 

@@ -51,7 +51,7 @@ const heroTrustPoints = [
 const aboutStats = [
   { value: String(branches.length), label: "Branches in Kerala" },
   {
-    value: "4",
+    value: "5",
     label: "Named varieties",
   },
   { value: String(coveredAreas.districts.length), label: "Districts served" },

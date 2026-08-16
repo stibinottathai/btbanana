@@ -128,9 +128,9 @@ export default function AboutPage() {
               </div>
               <div className="rounded-2xl border border-green-100 bg-white p-4 shadow-sm">
                 <p className="text-2xl font-extrabold text-amber-600">
-                  4 Named Varieties
+                  5 Named Varieties
                 </p>
-                <p className="text-xs font-semibold text-neutral-600">Nendran, Palayankodan, Robusta &amp; Poovan</p>
+                <p className="text-xs font-semibold text-neutral-600">Nendran, Njali Poovan, Palayankodan, Robusta &amp; Poovan</p>
               </div>
               <div className="rounded-2xl border border-green-100 bg-white p-4 shadow-sm">
                 <p className="text-2xl font-extrabold text-green-900">
