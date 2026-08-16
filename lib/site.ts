@@ -73,5 +73,6 @@ export const navLinks = [
   { href: "/banana-seeds", label: "Banana Seeds" },
   { href: "/wholesale-bananas", label: "Wholesale Bananas" },
   { href: "/locations", label: "Locations" },
+  { href: "/card", label: "Digital Card" },
   { href: "/contact", label: "Contact" },
 ];

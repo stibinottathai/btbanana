@@ -8,7 +8,6 @@ import {
   formatPhone,
   telHref,
 } from "@/lib/site";
-import { photoCredits } from "@/lib/photo-credits";
 
 export function Footer() {
   return (
@@ -81,40 +80,6 @@ export function Footer() {
             &copy; {new Date().getFullYear()} {SITE_NAME}. Wholesale banana
             and banana seed (Vazhavithu) supplier serving Alakode, Nellipara,
             and Kannur, Kerala.
-          </p>
-          <p className="mt-3 leading-5">
-            Photos:{" "}
-            {photoCredits.map((credit, index) => (
-              <span key={credit.fileName}>
-                <a
-                  href={credit.sourceUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline hover:text-green-200"
-                >
-                  {credit.caption}
-                </a>{" "}
-                by{" "}
-                <a
-                  href={credit.authorUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline hover:text-green-200"
-                >
-                  {credit.author}
-                </a>{" "}
-                (
-                <a
-                  href={credit.licenseUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline hover:text-green-200"
-                >
-                  {credit.license}
-                </a>
-                , resized){index < photoCredits.length - 1 ? "; " : "."}
-              </span>
-            ))}
           </p>
         </div>
       </div>

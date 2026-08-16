@@ -47,7 +47,7 @@ export const products: Product[] = [
       "Nendran banana is one of the banana varieties we supply wholesale. It is widely used in Kerala households and by traders for everyday cooking needs. Enquire for current availability and wholesale pricing.",
     suitableFor: "Traders, retailers, and households buying in bulk",
     category: "banana",
-    image: "/images/nendran-banana.jpg",
+    image: "/images/nendran.png",
     imageAlt: "Nendran bananas, a variety widely used in Kerala cooking",
   },
   {

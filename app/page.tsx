@@ -74,25 +74,37 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative overflow-hidden rounded-3xl shadow-xl">
-            <div className="relative aspect-[4/5] w-full sm:aspect-[5/4]">
-              <Image
-                src="/images/hero-banana-bunch.jpg"
-                alt="Fresh bunch of bananas ready for wholesale supply"
-                fill
-                priority
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-green-950/80 via-green-950/10 to-transparent" />
-            </div>
-            <div className="absolute inset-x-0 bottom-0 p-6 text-white sm:p-8">
-              <p className="text-xl font-semibold">
-                Bananas &amp; Vazhavithu, wholesale
-              </p>
-              <p className="mt-1 text-sm text-green-100">
-                Reasonable pricing. Local supply. Direct contact.
-              </p>
+          <div className="relative group">
+            {/* Ambient Background Glow */}
+            <div className="absolute -inset-1.5 rounded-3xl bg-gradient-to-r from-green-600/30 via-emerald-500/20 to-amber-500/30 blur-xl opacity-75 group-hover:opacity-100 transition duration-500" />
+
+            {/* Main Image Frame with Premium Multi-layer Border & Shadow */}
+            <div className="relative overflow-hidden rounded-3xl border-4 border-white bg-white shadow-[0_20px_50px_rgba(6,78,59,0.2)] ring-1 ring-green-900/10">
+              <div className="relative aspect-[3/2] w-full">
+                <Image
+                  src="/images/main1.png"
+                  alt="Wholesale bananas and banana seeds (Vazhavithu) - BT Banana Kerala"
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="object-contain transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-green-950/70 via-green-950/10 to-transparent" />
+              </div>
+
+              {/* Overlay Content */}
+              <div className="absolute inset-x-0 bottom-0 p-6 text-white sm:p-8">
+                <div className="mb-2 inline-flex items-center gap-1.5 rounded-full border border-white/30 bg-white/20 px-3 py-1 text-xs font-semibold text-white backdrop-blur-md">
+                  <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+                  Wholesale Bananas &amp; Seeds
+                </div>
+                <p className="text-xl font-bold tracking-tight text-white drop-shadow-sm sm:text-2xl">
+                  Bananas &amp; Vazhavithu
+                </p>
+                <p className="mt-1 text-sm font-medium text-green-100/90">
+                  Reasonable pricing • Local supply • Direct contact
+                </p>
+              </div>
             </div>
           </div>
         </div>
