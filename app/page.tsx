@@ -15,7 +15,7 @@ import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { ProductCard } from "@/components/ProductCard";
 import { LocationCard } from "@/components/LocationCard";
 import { Faq } from "@/components/Faq";
-import { CheckIcon, LeafIcon, MapPinIcon } from "@/components/icons";
+import { CheckIcon, LeafIcon, MapPinIcon, UserIcon } from "@/components/icons";
 import { serviceLocations } from "@/lib/locations";
 
 const homeFaqs = [
@@ -39,6 +39,12 @@ const homeFaqs = [
     answer:
       "Call or WhatsApp Thomas M.J or Albin Augustine directly, or use the enquiry form on our Contact page — we'll confirm current availability and pricing.",
   },
+];
+
+const heroTrustPoints = [
+  { icon: LeafIcon, label: "Fresh & Natural" },
+  { icon: CheckIcon, label: "Premium Quality" },
+  { icon: UserIcon, label: "Trusted by Farmers" },
 ];
 
 const benefits = [
@@ -78,14 +84,20 @@ export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="border-b border-green-100 bg-gradient-to-b from-green-50 to-white">
-        <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-14 sm:px-6 sm:py-20 lg:grid-cols-2 lg:py-24">
+      <section className="relative overflow-hidden bg-gradient-to-b from-green-50 via-green-50/50 to-white">
+        {/* Decorative ambient background */}
+        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+          <div className="absolute -top-24 -left-24 h-80 w-80 rounded-full bg-green-300/30 blur-3xl" />
+          <div className="absolute -bottom-24 right-0 h-96 w-96 rounded-full bg-amber-300/25 blur-3xl" />
+        </div>
+
+        <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-4 pt-10 pb-16 sm:px-6 sm:pt-14 sm:pb-24 lg:grid-cols-2 lg:gap-16 lg:pt-16 lg:pb-28">
           <div>
-            <p className="inline-flex items-center gap-2 rounded-full bg-green-100 px-4 py-1.5 text-sm font-medium text-green-800">
-              <LeafIcon className="h-4 w-4" />
+            <p className="inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-1.5 text-sm font-medium text-green-800 shadow-sm ring-1 ring-green-900/10 backdrop-blur">
+              <LeafIcon className="h-4 w-4 text-green-600" />
               Alakode &amp; Nellipara, Kerala
             </p>
-            <h1 className="mt-5 text-4xl font-bold leading-tight tracking-tight text-green-950 sm:text-5xl">
+            <h1 className="mt-5 text-4xl font-bold leading-[1.1] tracking-tight text-green-950 sm:text-5xl lg:text-6xl">
               Wholesale Bananas &amp; Banana Seeds in Kerala
             </h1>
             <p className="mt-5 max-w-xl text-lg leading-8 text-neutral-700">
@@ -95,40 +107,61 @@ export default function Home() {
               Nellipara branches.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
-              <CallButton phone={primaryPhone} />
-              <WhatsAppButton phone={primaryWhatsApp} message={defaultEnquiryMessage} />
+              <CallButton
+                phone={primaryPhone}
+                className="shadow-md shadow-green-900/10 transition-shadow hover:shadow-lg"
+              />
+              <WhatsAppButton
+                phone={primaryWhatsApp}
+                message={defaultEnquiryMessage}
+                className="shadow-md shadow-green-900/10 transition-shadow hover:shadow-lg"
+              />
+            </div>
+
+            {/* Trust strip */}
+            <div className="mt-10 grid max-w-md grid-cols-3 gap-4 border-t border-green-900/10 pt-6">
+              {heroTrustPoints.map(({ icon: Icon, label }) => (
+                <div key={label} className="flex flex-col items-start gap-2">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-green-100 text-green-700">
+                    <Icon className="h-4.5 w-4.5" />
+                  </span>
+                  <p className="text-xs font-semibold leading-snug text-green-900">
+                    {label}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
 
           <div className="relative group">
             {/* Ambient Background Glow */}
-            <div className="absolute -inset-1.5 rounded-3xl bg-gradient-to-r from-green-600/30 via-emerald-500/20 to-amber-500/30 blur-xl opacity-75 group-hover:opacity-100 transition duration-500" />
+            <div className="absolute -inset-2 rounded-[2rem] bg-gradient-to-br from-green-600/30 via-emerald-500/15 to-amber-500/30 blur-2xl opacity-75 transition duration-500 group-hover:opacity-100" />
 
             {/* Main Image Frame with Premium Multi-layer Border & Shadow */}
             <div className="relative overflow-hidden rounded-3xl border-4 border-white bg-white shadow-[0_20px_50px_rgba(6,78,59,0.2)] ring-1 ring-green-900/10">
               <div className="relative aspect-[3/2] w-full">
                 <Image
-                  src="/images/main1.png"
-                  alt="Wholesale bananas and banana seeds (Vazhavithu) - BT Banana Kerala"
+                  src="/images/nendran.png"
+                  alt="Fresh bananas supplied wholesale by BT Banana, Alakode & Nellipara, Kerala"
                   fill
                   priority
                   sizes="(min-width: 1024px) 50vw, 100vw"
-                  className="object-contain transition-transform duration-700 ease-out group-hover:scale-105"
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-green-950/70 via-green-950/10 to-transparent" />
               </div>
+            </div>
 
-              {/* Overlay Content */}
-              <div className="absolute inset-x-0 bottom-0 p-6 text-white sm:p-8">
-                <div className="mb-2 inline-flex items-center gap-1.5 rounded-full border border-white/30 bg-white/20 px-3 py-1 text-xs font-semibold text-white backdrop-blur-md">
-                  <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-                  Wholesale Bananas &amp; Seeds
-                </div>
-                <p className="text-xl font-bold tracking-tight text-white drop-shadow-sm sm:text-2xl">
-                  Bananas &amp; Vazhavithu
+            {/* Floating trust card */}
+            <div className="absolute -bottom-6 left-6 right-6 flex items-center gap-3 rounded-2xl bg-white/95 p-4 shadow-xl ring-1 ring-green-900/10 backdrop-blur sm:right-auto sm:left-8 sm:w-auto">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-amber-400 text-green-950">
+                <LeafIcon className="h-5 w-5" />
+              </span>
+              <div>
+                <p className="text-sm font-bold leading-tight text-green-950">
+                  Quality You Can Trust
                 </p>
-                <p className="mt-1 text-sm font-medium text-green-100/90">
-                  Reasonable pricing • Local supply • Direct contact
+                <p className="text-xs font-medium text-neutral-500">
+                  From Root to Fruit
                 </p>
               </div>
             </div>
