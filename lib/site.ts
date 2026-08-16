@@ -24,24 +24,28 @@ export type Branch = {
   name: string;
   place: string;
   description: string;
-  /** Google Maps URL — only set when an actual verified link is available. */
-  mapsUrl?: string;
+  mapQuery: string;
+  mapsUrl: string;
 };
 
 export const branches: Branch[] = [
   {
     slug: "alakode",
     name: "BT Banana – Alakode",
-    place: "Alakode, Kerala",
+    place: "Alakode, Kannur, Kerala",
     description:
       "Our Alakode branch supplies wholesale bananas and banana seeds (Vazhavithu) to farmers, traders, retailers, and other customers in and around Alakode.",
+    mapQuery: "Alakode, Kannur, Kerala",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Alakode+Kannur+Kerala",
   },
   {
     slug: "nellipara",
     name: "BT Banana – Nellipara",
-    place: "Nellipara, Kerala",
+    place: "Nellipara, Alakode, Kerala",
     description:
       "Our Nellipara branch supplies wholesale bananas and banana seeds (Vazhavithu) to farmers, traders, retailers, and other customers in and around Nellipara.",
+    mapQuery: "Nellipara, Alakode, Kannur, Kerala",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Nellipara+Alakode+Kannur+Kerala",
   },
 ];
 

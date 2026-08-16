@@ -55,8 +55,8 @@ export default function WholesaleBananasPage() {
         </div>
         <div className="relative hidden aspect-[4/3] overflow-hidden rounded-3xl shadow-lg sm:block">
           <Image
-            src="/images/banana-plant-terrace.jpg"
-            alt="Banana plant under cultivation in Kerala, supplied wholesale by BT Banana"
+            src="/images/wholesale.png"
+            alt="Wholesale bananas supplied in bulk by BT Banana"
             fill
             priority
             sizes="(min-width: 1024px) 50vw, 100vw"

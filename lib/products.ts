@@ -23,8 +23,8 @@ export const products: Product[] = [
       "BT Banana supplies bananas in bulk quantities to traders, retailers, and other businesses. We deal in different banana varieties and offer reasonable wholesale pricing, with supply available from our Alakode and Nellipara branches.",
     suitableFor: "Traders, retailers, and businesses buying in bulk",
     category: "banana",
-    image: "/images/banana-on-tree.jpg",
-    imageAlt: "Bunch of bananas growing on a banana tree, ready for wholesale supply",
+    image: "/images/wholesale.png",
+    imageAlt: "Wholesale bananas supplied in bulk by BT Banana",
   },
   {
     slug: "banana-seeds-vazhavithu",
@@ -59,8 +59,8 @@ export const products: Product[] = [
       "Alongside dessert bananas, we supply plantain varieties in wholesale quantities. Availability depends on the season — enquire with us directly for current stock and pricing.",
     suitableFor: "Traders, retailers, and businesses buying in bulk",
     category: "banana",
-    image: "/images/banana-plant-terrace.jpg",
-    imageAlt: "Banana plant under terrace cultivation in Kerala",
+    image: "/images/variety.png",
+    imageAlt: "Different plantain varieties supplied wholesale by BT Banana",
   },
   {
     slug: "other-banana-varieties",
