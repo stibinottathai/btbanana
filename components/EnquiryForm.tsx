@@ -7,6 +7,7 @@ import { PhoneIcon, WhatsAppIcon } from "./icons";
 interface EnquiryFormProps {
   defaultProduct?: string;
   className?: string;
+  pageSource?: string;
 }
 
 const productOptions = [
@@ -22,12 +23,28 @@ const productOptions = [
   "Other Wholesale Bulk Requirement",
 ];
 
-export function EnquiryForm({ defaultProduct, className = "" }: EnquiryFormProps) {
+const buyerTypeOptions = [
+  "Trader / Wholesale Merchant",
+  "Retailer / Fruit Shop / Supermarket",
+  "Banana Chips Manufacturer",
+  "Bakery / Hot Chips Stall",
+  "Farmer / Planter",
+  "Caterer / Wedding Cook",
+  "Other Commercial Buyer",
+];
+
+export function EnquiryForm({
+  defaultProduct,
+  className = "",
+  pageSource,
+}: EnquiryFormProps) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [buyerType, setBuyerType] = useState(buyerTypeOptions[0]);
   const [product, setProduct] = useState(defaultProduct || productOptions[0]);
   const [quantity, setQuantity] = useState("");
   const [location, setLocation] = useState("");
+  const [expectedDate, setExpectedDate] = useState("");
   const [message, setMessage] = useState("");
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -35,11 +52,14 @@ export function EnquiryForm({ defaultProduct, className = "" }: EnquiryFormProps
 
     const lines = [
       `*New BT Banana Wholesale Enquiry*`,
+      pageSource ? `🏷️ *Page:* ${pageSource}` : null,
       name ? `👤 *Name:* ${name}` : null,
       phone ? `📞 *Phone:* ${phone}` : null,
+      buyerType ? `🏢 *Buyer Type:* ${buyerType}` : null,
       `📦 *Requirement:* ${product}`,
       quantity ? `⚖️ *Quantity:* ${quantity}` : null,
       location ? `📍 *Destination / Town:* ${location}` : null,
+      expectedDate ? `📅 *Expected Date:* ${expectedDate}` : null,
       message ? `💬 *Notes:* ${message}` : null,
       `\n_Sent via btbanana.com_`,
     ].filter(Boolean);
@@ -99,41 +119,65 @@ export function EnquiryForm({ defaultProduct, className = "" }: EnquiryFormProps
           </div>
         </div>
 
-        <div>
-          <label
-            htmlFor="enquiry-product"
-            className="mb-1 block text-xs font-bold uppercase tracking-wider text-neutral-700"
-          >
-            Product / Variety Needed *
-          </label>
-          <select
-            id="enquiry-product"
-            name="product"
-            value={product}
-            onChange={(e) => setProduct(e.target.value)}
-            className="w-full rounded-xl border border-neutral-300 bg-white px-3.5 py-2.5 text-sm text-neutral-900 transition focus:border-green-600 focus:outline-none focus:ring-2 focus:ring-green-600/20"
-          >
-            {productOptions.map((opt) => (
-              <option key={opt} value={opt}>
-                {opt}
-              </option>
-            ))}
-          </select>
+        <div className="grid gap-4 sm:grid-cols-2">
+          <div>
+            <label
+              htmlFor="enquiry-buyer-type"
+              className="mb-1 block text-xs font-bold uppercase tracking-wider text-neutral-700"
+            >
+              Business / Buyer Type *
+            </label>
+            <select
+              id="enquiry-buyer-type"
+              name="buyerType"
+              value={buyerType}
+              onChange={(e) => setBuyerType(e.target.value)}
+              className="w-full rounded-xl border border-neutral-300 bg-white px-3.5 py-2.5 text-sm text-neutral-900 transition focus:border-green-600 focus:outline-none focus:ring-2 focus:ring-green-600/20"
+            >
+              {buyerTypeOptions.map((type) => (
+                <option key={type} value={type}>
+                  {type}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div>
+            <label
+              htmlFor="enquiry-product"
+              className="mb-1 block text-xs font-bold uppercase tracking-wider text-neutral-700"
+            >
+              Product / Variety Needed *
+            </label>
+            <select
+              id="enquiry-product"
+              name="product"
+              value={product}
+              onChange={(e) => setProduct(e.target.value)}
+              className="w-full rounded-xl border border-neutral-300 bg-white px-3.5 py-2.5 text-sm text-neutral-900 transition focus:border-green-600 focus:outline-none focus:ring-2 focus:ring-green-600/20"
+            >
+              {productOptions.map((opt) => (
+                <option key={opt} value={opt}>
+                  {opt}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid gap-4 sm:grid-cols-3">
           <div>
             <label
               htmlFor="enquiry-quantity"
               className="mb-1 block text-xs font-bold uppercase tracking-wider text-neutral-700"
             >
-              Approx Quantity Needed
+              Approx Quantity
             </label>
             <input
               id="enquiry-quantity"
               name="quantity"
               type="text"
-              placeholder="e.g. 500 kg, 2 Tons, 300 suckers"
+              placeholder="e.g. 500 kg, 2 Tons"
               value={quantity}
               onChange={(e) => setQuantity(e.target.value)}
               className="w-full rounded-xl border border-neutral-300 px-3.5 py-2.5 text-sm text-neutral-900 transition focus:border-green-600 focus:outline-none focus:ring-2 focus:ring-green-600/20"
@@ -145,15 +189,33 @@ export function EnquiryForm({ defaultProduct, className = "" }: EnquiryFormProps
               htmlFor="enquiry-location"
               className="mb-1 block text-xs font-bold uppercase tracking-wider text-neutral-700"
             >
-              Your Town / Destination
+              Destination / Town
             </label>
             <input
               id="enquiry-location"
               name="location"
               type="text"
-              placeholder="e.g. Alakode, Payyanur, Kannur, Wayanad"
+              placeholder="e.g. Alakode, Kannur"
               value={location}
               onChange={(e) => setLocation(e.target.value)}
+              className="w-full rounded-xl border border-neutral-300 px-3.5 py-2.5 text-sm text-neutral-900 transition focus:border-green-600 focus:outline-none focus:ring-2 focus:ring-green-600/20"
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="enquiry-date"
+              className="mb-1 block text-xs font-bold uppercase tracking-wider text-neutral-700"
+            >
+              Expected Buying Date
+            </label>
+            <input
+              id="enquiry-date"
+              name="expectedDate"
+              type="text"
+              placeholder="e.g. Tomorrow, Weekly"
+              value={expectedDate}
+              onChange={(e) => setExpectedDate(e.target.value)}
               className="w-full rounded-xl border border-neutral-300 px-3.5 py-2.5 text-sm text-neutral-900 transition focus:border-green-600 focus:outline-none focus:ring-2 focus:ring-green-600/20"
             />
           </div>
@@ -172,7 +234,7 @@ export function EnquiryForm({ defaultProduct, className = "" }: EnquiryFormProps
             rows={3}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            placeholder="E.g. Chips grade (high starch), bunch weight preference, delivery schedule, or tissue culture requirement."
+            placeholder="E.g. Chips grade (high starch), bunch weight preference, delivery schedule, or sucker count."
             className="w-full rounded-xl border border-neutral-300 px-3.5 py-2.5 text-sm text-neutral-900 transition focus:border-green-600 focus:outline-none focus:ring-2 focus:ring-green-600/20"
           />
         </div>
@@ -182,7 +244,7 @@ export function EnquiryForm({ defaultProduct, className = "" }: EnquiryFormProps
           className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#25D366] px-6 py-3.5 text-base font-bold text-white shadow-md transition-all hover:bg-[#1fb958] hover:shadow-lg active:scale-[0.99]"
         >
           <WhatsAppIcon className="h-5 w-5" />
-          Request Instant WhatsApp Quote
+          Request Instant Wholesale Quote via WhatsApp
         </button>
       </form>
 

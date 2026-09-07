@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Branch } from "@/lib/site";
 import { owners, primaryWhatsApp, defaultEnquiryMessage } from "@/lib/site";
 import { CallButton } from "./CallButton";
@@ -14,21 +15,34 @@ export function LocationCard({ branch }: { branch: Branch }) {
       id={branch.slug}
       className="flex flex-col overflow-hidden rounded-3xl border border-green-100 bg-white p-6 shadow-sm sm:p-8"
     >
-      <div className="flex items-center gap-3">
-        <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-green-100 text-green-800">
-          <MapPinIcon className="h-6 w-6" />
-        </span>
-        <div>
-          <h3 className="text-xl font-bold text-green-950">
-            {branch.name}
-          </h3>
-          <p className="text-sm font-medium text-green-700">{branch.place}</p>
+      <div className="flex items-center justify-between gap-3">
+        <div className="flex items-center gap-3">
+          <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-green-100 text-green-800">
+            <MapPinIcon className="h-6 w-6" />
+          </span>
+          <div>
+            <h3 className="text-xl font-bold text-green-950">
+              <Link href={`/locations/${branch.slug}`} className="hover:text-green-800 hover:underline">
+                {branch.name}
+              </Link>
+            </h3>
+            <p className="text-sm font-medium text-green-700">{branch.place}</p>
+          </div>
         </div>
       </div>
 
       <p className="mt-4 text-sm leading-6 text-neutral-600">
         {branch.description}
       </p>
+
+      <div className="mt-2">
+        <Link
+          href={`/locations/${branch.slug}`}
+          className="inline-flex items-center gap-1 text-xs font-bold text-green-800 hover:text-green-950 hover:underline"
+        >
+          View {branch.name.replace("BT Banana – ", "")} Branch Page &amp; Service Details →
+        </Link>
+      </div>
 
       {/* Embedded Interactive Google Map */}
       <div className="mt-5 overflow-hidden rounded-2xl border border-green-100 bg-neutral-100 shadow-inner">

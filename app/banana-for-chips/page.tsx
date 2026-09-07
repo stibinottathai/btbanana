@@ -17,14 +17,14 @@ import { Reveal } from "@/components/Reveal";
 import { CheckIcon, LeafIcon } from "@/components/icons";
 
 export const metadata: Metadata = {
-  title: "Banana for Chips Wholesale Kerala | Raw Green Nendran (Pacha Ethakka) Supplier",
+  title: "Raw Nendran Banana for Chips Wholesale in Kerala | BT Banana",
   description:
     "Wholesale supplier of raw green Nendran bananas (Pacha Ethakka / പച്ച ഏത്തക്ക) for banana chips makers, hot chips units, and snack manufacturers in Kerala. High starch, crisp frying, direct from Alakode & Nellipara, Kannur.",
   alternates: {
     canonical: `${SITE_URL}/banana-for-chips`,
   },
   openGraph: {
-    title: "Banana for Chips Wholesale Kerala | Raw Green Nendran Supplier | BT Banana",
+    title: "Raw Nendran Banana for Chips Wholesale in Kerala | BT Banana",
     description:
       "Bulk supplier of raw green Nendran bananas for banana chips manufacturers and hot chips shops across Kerala. Farm-fresh, high starch content, direct wholesale rates.",
     url: `${SITE_URL}/banana-for-chips`,
@@ -138,8 +138,8 @@ const chipsSpecs = [
     desc: "Ensures uniform slicing on manual or automated mandolines with minimal trimming waste.",
   },
   {
-    title: "Consistent Year-Round Supply",
-    desc: "Direct farm network in North Kerala guarantees uninterrupted supply even during peak festive seasons like Onam.",
+    title: "Seasonal Bulk Availability",
+    desc: "Sourced through direct farm network across North Kerala. Availability may vary based on season, quality, market arrivals and quantity.",
   },
 ];
 
@@ -264,6 +264,61 @@ export default function BananaForChipsPage() {
         </div>
       </section>
 
+      {/* Raw Nendran Chips Grading Specifications Table */}
+      <section className="py-14 bg-white border-y border-green-100">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <Reveal className="text-center max-w-2xl mx-auto">
+            <h2 className="text-2xl font-bold text-green-950 sm:text-3xl">
+              Raw Nendran Quality Specifications for Kerala Chips
+            </h2>
+            <p className="mt-2 text-sm text-neutral-600">
+              Technical parameters required for commercial chips manufacturing and hot chips frying:
+            </p>
+          </Reveal>
+
+          <div className="mt-8 overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm">
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-sm text-neutral-800">
+                <thead className="bg-green-950 text-xs font-bold uppercase tracking-wider text-white">
+                  <tr>
+                    <th className="px-6 py-4">Specification</th>
+                    <th className="px-6 py-4">BT Banana Chips Grade (Pacha Ethakka)</th>
+                    <th className="px-6 py-4">Why It Matters to Chips Makers</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-neutral-100 text-xs sm:text-sm">
+                  <tr className="hover:bg-green-50/50">
+                    <td className="px-6 py-4 font-bold text-green-950">Maturity Stage</td>
+                    <td className="px-6 py-4 text-emerald-800 font-semibold">85% – 90% Mature Green</td>
+                    <td className="px-6 py-4 text-neutral-600">Eliminates rubbery texture from immature fruit; ensures firm, clean slicing.</td>
+                  </tr>
+                  <tr className="hover:bg-green-50/50">
+                    <td className="px-6 py-4 font-bold text-green-950">Sugar / Ripening Level</td>
+                    <td className="px-6 py-4 text-emerald-800 font-semibold">Zero Sugar Conversion</td>
+                    <td className="px-6 py-4 text-neutral-600">Prevents caramelization, burnt black edges, and soggy, dark chips.</td>
+                  </tr>
+                  <tr className="hover:bg-green-50/50">
+                    <td className="px-6 py-4 font-bold text-green-950">Starch &amp; Dry Matter</td>
+                    <td className="px-6 py-4 text-emerald-800 font-semibold">High Dry Matter (&gt;28%)</td>
+                    <td className="px-6 py-4 text-neutral-600">Dramatically lowers oil absorption in coconut or sunflower oil; maximizes crunch.</td>
+                  </tr>
+                  <tr className="hover:bg-green-50/50">
+                    <td className="px-6 py-4 font-bold text-green-950">Finger Caliber &amp; Length</td>
+                    <td className="px-6 py-4 text-emerald-800 font-semibold">Uniform Thick Caliber</td>
+                    <td className="px-6 py-4 text-neutral-600">Fits standard manual and automated mandoline slicers with minimal trimming waste.</td>
+                  </tr>
+                  <tr className="hover:bg-green-50/50">
+                    <td className="px-6 py-4 font-bold text-green-950">Availability Note</td>
+                    <td className="px-6 py-4 text-amber-800 font-semibold">Seasonal Market Lots</td>
+                    <td className="px-6 py-4 text-neutral-600">Availability may vary based on season, quality, market arrivals and quantity.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Commercial Sectors We Supply */}
       <section className="py-16 bg-neutral-50">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -327,7 +382,10 @@ export default function BananaForChipsPage() {
           </Reveal>
 
           <div className="mt-8">
-            <EnquiryForm defaultProduct="Raw Banana for Chips / Pacha Ethakka (പച്ച ഏത്തക്ക)" />
+            <EnquiryForm
+              defaultProduct="Raw Banana for Chips / Pacha Ethakka (പച്ച ഏത്തക്ക)"
+              pageSource="Banana for Chips Page"
+            />
           </div>
         </div>
       </section>

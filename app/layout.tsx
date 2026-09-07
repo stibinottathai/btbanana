@@ -27,7 +27,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME} | Wholesale Bananas & Banana Seeds in Kerala`,
+    default: "Wholesale Banana Supplier in Kannur, Kerala | BT Banana",
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: SITE_URL,
     siteName: SITE_NAME,
-    title: `${SITE_NAME} | Wholesale Bananas & Banana Seeds in Kerala`,
+    title: "Wholesale Banana Supplier in Kannur, Kerala | BT Banana",
     description: SITE_DESCRIPTION,
   },
   icons: {
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: `${SITE_NAME} | Wholesale Bananas & Banana Seeds in Kerala`,
+    title: "Wholesale Banana Supplier in Kannur, Kerala | BT Banana",
     description: SITE_DESCRIPTION,
   },
 };
@@ -134,6 +134,25 @@ const localBusinessJsonLd = {
   },
 };
 
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "BT Banana",
+  alternateName: ["BT Banana Wholesale", "BT Banana Kannur"],
+  url: SITE_URL,
+  description: SITE_DESCRIPTION,
+  inLanguage: ["en-IN", "ml-IN"],
+  publisher: {
+    "@type": "Organization",
+    name: SITE_NAME,
+    url: SITE_URL,
+    logo: {
+      "@type": "ImageObject",
+      url: `${SITE_URL}/images/logo.png`,
+    },
+  },
+};
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
@@ -142,6 +161,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="flex min-h-full flex-col bg-white text-neutral-900">
         <JsonLd data={localBusinessJsonLd} />
+        <JsonLd data={websiteJsonLd} />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

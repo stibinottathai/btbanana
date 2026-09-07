@@ -5,10 +5,10 @@ export const SITE_URL =
 
 export const SITE_NAME = "BT Banana";
 
-export const SITE_TAGLINE = "Wholesale Bananas & Banana Seeds in Kerala";
+export const SITE_TAGLINE = "Wholesale Banana Supplier in Kannur, Kerala";
 
 export const SITE_DESCRIPTION =
-  "BT Banana supplies wholesale bananas and banana seeds (Vazhavithu) at reasonable prices from our Alakode and Nellipara branches in Kerala, serving farmers, traders, retailers, and other customers.";
+  "BT Banana is a wholesale banana supplier and banana merchant in Kannur, Kerala. Operating from Alakode and Nellipara, we supply wholesale bananas, raw green Nendran for chips, and banana suckers (Vazhavithu) to traders, retailers, chips makers, and farmers across Kannur, Kasaragod, and Wayanad.";
 
 export type Owner = {
   name: string;
@@ -36,7 +36,7 @@ export const branches: Branch[] = [
     name: "BT Banana – Alakode",
     place: "Alakode, Kannur, Kerala",
     description:
-      "Our Alakode branch supplies wholesale bananas and banana seeds (Vazhavithu) to farmers, traders, retailers, and other customers in and around Alakode.",
+      "Our Alakode branch supplies wholesale bananas, raw Nendran for chips, and banana suckers (Vazhavithu) to traders, chips makers, retailers, and farmers in and around Alakode.",
     mapQuery: "Alakode, Kannur, Kerala",
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=Alakode+Kannur+Kerala",
   },
@@ -45,7 +45,7 @@ export const branches: Branch[] = [
     name: "BT Banana – Nellipara",
     place: "Nellipara, Alakode, Kerala",
     description:
-      "Our Nellipara branch supplies wholesale bananas and banana seeds (Vazhavithu) to farmers, traders, retailers, and other customers in and around Nellipara.",
+      "Our Nellipara branch supplies wholesale bananas and banana suckers (Vazhavithu) to traders, retailers, chips manufacturers, and farmers in and around Nellipara.",
     mapQuery: "Nellipara, Alakode, Kannur, Kerala",
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=Nellipara+Alakode+Kannur+Kerala",
   },
@@ -71,16 +71,16 @@ export const primaryWhatsApp =
   owners.find((o) => o.name.includes("Albin"))?.phone ?? owners[1].phone;
 
 export const defaultEnquiryMessage =
-  "Hi BT Banana, I'd like to enquire about wholesale bananas / banana seeds.";
+  "Hi BT Banana, I'd like to enquire about wholesale bananas in Kannur.";
 
 export const navLinks = [
   { href: "/", label: "Home" },
   { href: "/wholesale-bananas", label: "Wholesale Bananas" },
   { href: "/banana-for-chips", label: "Banana for Chips" },
-  { href: "/banana-seeds", label: "Banana Seeds" },
-  { href: "/about", label: "About Us" },
+  { href: "/banana-seeds", label: "Banana Suckers / Seeds" },
   { href: "/locations", label: "Locations" },
-  { href: "/contact", label: "Contact Us" },
+  { href: "/about", label: "About Us" },
+  { href: "/contact", label: "Contact" },
   { href: "/card", label: "Digital Card" },
 ];
 

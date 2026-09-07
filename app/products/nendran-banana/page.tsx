@@ -56,19 +56,59 @@ export const metadata: Metadata = {
 const productJsonLd = {
   "@context": "https://schema.org",
   "@type": "Product",
-  name: "Nendran Banana",
+  name: "Nendran Banana Wholesale",
   description:
-    "Nendran banana, Kerala's most widely cultivated banana variety, supplied wholesale by BT Banana from Alakode and Nellipara, Kannur district, Kerala.",
+    "Fresh Nendran banana (Ethakka / ഏത്തക്ക) and raw green plantains for chips supplied wholesale by BT Banana from Alakode and Nellipara depots in Kannur district, Kerala.",
   brand: {
     "@type": "Brand",
     name: SITE_NAME,
   },
 };
 
+const breadcrumbsJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: `${SITE_URL}/`,
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Products",
+      item: `${SITE_URL}/products`,
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: "Nendran Banana",
+      item: `${SITE_URL}/products/nendran-banana`,
+    },
+  ],
+};
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: nendranFaqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer,
+    },
+  })),
+};
+
 export default function NendranBananaPage() {
   return (
     <div>
+      <JsonLd data={breadcrumbsJsonLd} />
       <JsonLd data={productJsonLd} />
+      <JsonLd data={faqJsonLd} />
       <div className="mx-auto max-w-6xl px-4 pt-10 sm:px-6">
         <Breadcrumbs
           items={[
@@ -81,13 +121,13 @@ export default function NendranBananaPage() {
       <section className="mx-auto grid max-w-6xl items-center gap-8 px-4 py-8 sm:px-6 lg:grid-cols-2">
         <div>
           <h1 className="text-4xl font-bold tracking-tight text-green-950 sm:text-5xl">
-            Nendran Banana Wholesale Supplier
+            Nendran Banana Wholesale Supplier in Kerala
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-8 text-neutral-700">
-            BT Banana is a Nendran banana wholesaler and supplier in Kerala,
-            dealing in Kerala&apos;s most widely cultivated banana variety at
-            reasonable wholesale prices from our Alakode and Nellipara
-            branches, Kannur district.
+            BT Banana is a direct Nendran banana wholesaler and merchant in Kerala,
+            supplying Kerala&apos;s most widely cultivated plantain variety at
+            competitive wholesale rates from our Alakode and Nellipara
+            depots, Kannur district.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <CallButton phone={primaryPhone} label="Get Wholesale Price" />
@@ -114,31 +154,30 @@ export default function NendranBananaPage() {
           <div className="grid gap-10 lg:grid-cols-2">
             <div>
               <h2 className="text-2xl font-bold text-green-950">
-                About Nendran Banana
+                About Nendran Banana (Ethakka / ഏത്തക്ക)
               </h2>
               <p className="mt-4 leading-7 text-neutral-700">
-                Nendran is Kerala&apos;s most widely cultivated banana
-                variety — a staple used for everyday cooking, banana chips,
-                traditional dishes, and ripe eating. It&apos;s the variety
-                most households and traders across Kerala rely on
-                day-to-day.
+                Nendran is Kerala&apos;s signature cooking and dessert plantain — a staple
+                for banana chips manufacturing, traditional Kerala sadhyas, steamed breakfast
+                dishes (Puzhukku), and ripe fruit stalls. Its firm flesh and high dry-matter
+                content make it the most traded commercial banana in South India.
               </p>
               <p className="mt-4 leading-7 text-neutral-700">
-                As a Nendran banana wholesaler, we supply this variety in
-                bulk to traders, retailers, and households from our Alakode
-                and Nellipara branches, Kannur district.
+                As a registered <Link href="/banana-merchant-kannur" className="font-semibold text-green-800 underline">banana merchant in Kannur</Link>,
+                we procure Nendran directly from local growers and primary harvesting belts,
+                supplying sorted, graded bunches daily to retailers, bakeries, and caterers.
               </p>
             </div>
             <div>
               <h2 className="text-2xl font-bold text-green-950">
-                Nendran Banana Wholesaler for Kannur &amp; Kasaragod
+                Nendran Commercial Uses &amp; Supply
               </h2>
               <ul className="mt-4 space-y-3">
                 {[
-                  "Nendran banana wholesale supplier near Kannur",
-                  "Nendran banana wholesaler serving Kasaragod district",
-                  "Bulk quantities for traders, retailers, and businesses",
-                  "Reasonable, transparent wholesale pricing",
+                  "Raw green Nendran (Pacha Ethakka) for banana chips frying",
+                  "Matured ripe Nendran for retail fruit stalls and supermarkets",
+                  "Direct mandi bulk supply across Kannur, Kasaragod & Wayanad",
+                  "Transparent wholesale pricing based on daily market arrivals",
                 ].map((item) => (
                   <li
                     key={item}
@@ -154,22 +193,47 @@ export default function NendranBananaPage() {
         </div>
       </section>
 
+      {/* Commercial Chips & Sucker Links */}
       <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
-        <h2 className="text-2xl font-bold text-green-950">
-          Looking for Nendran Banana Seeds / Planting Material?
-        </h2>
-        <p className="mt-4 max-w-2xl leading-7 text-neutral-700">
-          Nendran is also the most common variety grown from the banana
-          Vazhavithu (planting material / seedlings) we supply. Visit our{" "}
-          <Link
-            href="/banana-seeds"
-            className="font-semibold text-green-800 hover:underline"
-          >
-            Banana Seeds page
-          </Link>{" "}
-          for details, or contact us directly to confirm current
-          availability.
-        </p>
+        <div className="grid gap-8 sm:grid-cols-2">
+          <div className="rounded-3xl border border-green-100 bg-white p-8 shadow-sm">
+            <h2 className="text-2xl font-bold text-green-950">
+              Raw Nendran for Chips Manufacturers
+            </h2>
+            <p className="mt-3 leading-7 text-neutral-700">
+              Need bulk unripened green Nendran with 85–90% maturity for crispy, oil-free
+              chips frying? We supply calibrated chip-grade plantains directly to hot chips
+              units and commercial food processors.
+            </p>
+            <div className="mt-5">
+              <Link
+                href="/banana-for-chips"
+                className="font-bold text-green-800 hover:underline"
+              >
+                View Raw Banana for Chips Wholesale &rarr;
+              </Link>
+            </div>
+          </div>
+
+          <div className="rounded-3xl border border-green-100 bg-white p-8 shadow-sm">
+            <h2 className="text-2xl font-bold text-green-950">
+              Nendran Banana Suckers (Vazhavithu)
+            </h2>
+            <p className="mt-3 leading-7 text-neutral-700">
+              Cultivating Nendran on your farm? We supply disease-free sword suckers
+              (Vazhavithu / വാഴവിത്ത്) with healthy rhizomes for high bunch yields and
+              commercial plantation development across Kerala.
+            </p>
+            <div className="mt-5">
+              <Link
+                href="/banana-seeds"
+                className="font-bold text-green-800 hover:underline"
+              >
+                Explore Banana Suckers &amp; Planting Material &rarr;
+              </Link>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6">

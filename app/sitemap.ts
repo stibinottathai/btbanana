@@ -48,6 +48,11 @@ const routes = [
     changeFrequency: "monthly" as const,
   },
   {
+    path: "/banana-merchant-kannur",
+    priority: 0.95,
+    changeFrequency: "weekly" as const,
+  },
+  {
     path: "/banana-for-chips",
     priority: 0.95,
     changeFrequency: "weekly" as const,

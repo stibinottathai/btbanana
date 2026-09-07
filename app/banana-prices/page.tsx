@@ -18,16 +18,16 @@ import { Reveal } from "@/components/Reveal";
 import { CheckIcon, LeafIcon, PhoneIcon } from "@/components/icons";
 
 export const metadata: Metadata = {
-  title: "Banana Price Today Kerala | Daily Wholesale Market Rates & Quote Guide",
+  title: "Banana Wholesale Price in Kerala Today | Daily Rate Guide | BT Banana",
   description:
-    "Check daily wholesale banana rates in Kerala. Understand how Nendran (Ethakka), Njali Poovan, Robusta, and Vazhavithu prices are calculated, and get today's live rate directly via WhatsApp or phone from BT Banana.",
+    "Wholesale banana prices in Kerala fluctuate daily based on morning arrivals and variety. Wholesale prices vary based on variety, quality, quantity, market conditions and delivery location. Contact BT Banana for the current quotation.",
   alternates: {
     canonical: `${SITE_URL}/banana-prices`,
   },
   openGraph: {
-    title: "Banana Price Today Kerala | Daily Wholesale Rates | BT Banana",
+    title: "Banana Wholesale Price in Kerala Today | BT Banana",
     description:
-      "Get today's live wholesale banana and banana seed rates in Kerala. Real-time morning auction prices for Nendran, Njali Poovan, and Robusta.",
+      "Get today's live wholesale banana and banana seed rates in Kerala. Transparent daily pricing factors for Nendran, Njali Poovan, and Robusta.",
     url: `${SITE_URL}/banana-prices`,
     type: "website",
   },
@@ -276,8 +276,8 @@ export default function BananaPricesPage() {
                 </tbody>
               </table>
             </div>
-            <div className="border-t border-neutral-200 bg-amber-50/70 p-4 text-xs text-amber-900">
-              💡 <strong>Direct Wholesale Note:</strong> Actual per-kg and per-sucker rates are updated daily at 7:00 AM after morning farm arrivals. Call us directly for today&apos;s quote.
+            <div className="border-t border-neutral-200 bg-amber-50/70 p-4 text-xs text-amber-900 leading-relaxed">
+              💡 <strong>Wholesale Pricing Notice:</strong> Wholesale prices vary based on variety, quality, quantity, market conditions and delivery location. Contact BT Banana directly for the current quotation.
             </div>
           </div>
         </div>
@@ -294,7 +294,10 @@ export default function BananaPricesPage() {
           </Reveal>
 
           <div className="mt-8">
-            <EnquiryForm defaultProduct="Today's Daily Wholesale Price Enquiry" />
+            <EnquiryForm
+              defaultProduct="Today's Daily Wholesale Price Enquiry"
+              pageSource="Banana Prices Page"
+            />
           </div>
         </div>
       </section>
