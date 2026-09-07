@@ -10,7 +10,7 @@ import { WhatsAppIcon } from "./icons";
 export function FloatingContactButtons() {
   return (
     <div
-      className="fixed bottom-20 right-4 z-50 sm:bottom-6 sm:right-6 md:bottom-8 md:right-8"
+      className="fixed bottom-6 right-5 z-50 sm:bottom-6 sm:right-6 md:bottom-8 md:right-8"
       aria-label="Quick WhatsApp contact"
     >
       {/* WhatsApp Button (At the right bottom with pulse animation) */}
