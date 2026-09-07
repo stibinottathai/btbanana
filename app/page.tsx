@@ -21,9 +21,19 @@ import { serviceLocations } from "@/lib/locations";
 
 const homeFaqs = [
   {
-    question: "Which is the best banana shop in Kannur or Alakode?",
+    question: "Which is the best banana shop in Kannur or Alakode for wholesale supply?",
     answer:
-      "BT Banana is a wholesale banana and banana seed (Vazhavithu) supplier based in Alakode and Nellipara, Kannur district, Kerala — supplying farmers, traders, and retailers at reasonable prices with direct phone and WhatsApp contact.",
+      "BT Banana is a wholesale banana and banana seed (Vazhavithu) supplier based on Malayora Highway in Alakode and Nellipara, Kannur district, Kerala — supplying farmers, traders, and retailers at reasonable prices with direct phone and WhatsApp contact.",
+  },
+  {
+    question: "Do you supply raw bananas for banana chips (Pacha Ethakka)?",
+    answer:
+      "Yes. We specialize in supplying high-starch raw green Nendran (പച്ച ഏത്തക്ക) tailored for hot chips shops, snack factories, and bakeries across Kerala for crisp, golden frying with minimal oil absorption.",
+  },
+  {
+    question: "How can I check today's wholesale banana price in Kerala?",
+    answer:
+      "Wholesale banana rates fluctuate daily based on morning auction arrivals. Contact Thomas M.J (9447483169) or Albin Augustine (8086648081) directly for today's verified per-kg or per-quintal quote.",
   },
   {
     question: "Does BT Banana sell banana seeds (Vazhavithu)?",
@@ -31,14 +41,14 @@ const homeFaqs = [
       "Yes. We supply banana seeds — locally known as Vazhavithu — as planting material for farmers and growers, with delivery arranged across Kerala depending on quantity and location.",
   },
   {
-    question: "Do you supply wholesale bananas to Kasaragod district?",
+    question: "Do you supply wholesale bananas to Kasaragod and Wayanad districts?",
     answer:
-      "Yes — our Alakode branch is close to the Kannur–Kasaragod border, and we regularly supply customers across Kasaragod district, including Vellarikundu and nearby areas.",
+      "Yes — our branches sit strategically to serve customers across Kannur, Kasaragod (including Chittarikkal and Vellarikundu), and Wayanad districts with scheduled pickups and bulk vehicle transport.",
   },
   {
     question: "How do I contact BT Banana for an enquiry?",
     answer:
-      "Call or WhatsApp Thomas M.J or Albin Augustine directly, or use the enquiry form on our Contact page — we'll confirm current availability and pricing.",
+      "Call or WhatsApp Thomas M.J or Albin Augustine directly, or use the enquiry form on our website — we'll confirm current availability and pricing immediately.",
   },
 ];
 
@@ -356,6 +366,67 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Commercial B2B Spotlight: Chips Bananas & Live Daily Rates */}
+      <section className="border-t border-green-100 bg-white py-14">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="grid gap-6 md:grid-cols-2">
+            <Reveal className="rounded-3xl border border-emerald-200/80 bg-gradient-to-br from-emerald-50/70 to-white p-8 shadow-sm">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-900">
+                <LeafIcon className="h-3.5 w-3.5 text-emerald-700" />
+                For Chips Makers &amp; Snack Units
+              </span>
+              <h3 className="mt-4 text-2xl font-bold text-green-950">
+                Raw Banana for Chips (Pacha Ethakka)
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-neutral-600">
+                Sourcing raw green Nendran (പച്ച ഏത്തക്ക) with high dry matter and crisp frying quality. We supply hot chips shops, bakeries, and commercial chips factories with daily or scheduled bulk dispatches.
+              </p>
+              <div className="mt-6 flex flex-wrap items-center gap-4">
+                <Link
+                  href="/banana-for-chips"
+                  className="rounded-xl bg-green-800 px-5 py-2.5 text-xs font-bold text-white shadow-sm transition hover:bg-green-700"
+                >
+                  Chips Banana Details &amp; Specs →
+                </Link>
+                <WhatsAppButton
+                  phone={primaryWhatsApp}
+                  message="Hi BT Banana, I need a quote for raw green Nendran bananas for chips manufacturing."
+                  label="Enquire for Chips"
+                  className="px-4 py-2 text-xs"
+                />
+              </div>
+            </Reveal>
+
+            <Reveal delay={100} className="rounded-3xl border border-amber-200/80 bg-gradient-to-br from-amber-50/70 to-white p-8 shadow-sm">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-900">
+                <CheckIcon className="h-3.5 w-3.5 text-amber-700" />
+                Market Transparency
+              </span>
+              <h3 className="mt-4 text-2xl font-bold text-green-950">
+                Today&apos;s Wholesale Banana Rates
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-neutral-600">
+                Banana market rates change daily based on morning arrivals and mandi auctions. Learn how rates are set, and get today&apos;s verified farm gate and wholesale price directly over WhatsApp.
+              </p>
+              <div className="mt-6 flex flex-wrap items-center gap-4">
+                <Link
+                  href="/banana-prices"
+                  className="rounded-xl bg-amber-400 px-5 py-2.5 text-xs font-bold text-green-950 shadow-sm transition hover:bg-amber-300"
+                >
+                  View Today&apos;s Price Guide →
+                </Link>
+                <CallButton
+                  phone={primaryPhone}
+                  label="Call for Today's Rate"
+                  variant="outline"
+                  className="border-green-800 text-green-950 px-4 py-2 text-xs"
+                />
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
       {/* Why choose us */}
       <section className="border-y border-green-100 bg-green-50/50">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
@@ -426,12 +497,12 @@ export default function Home() {
               Areas We Cover
             </h2>
             <p className="mt-3 max-w-2xl text-base text-neutral-600">
-              BT Banana supplies wholesale bananas and banana seeds (Vazhavithu) across key locations in <strong className="font-semibold text-green-900">Kannur</strong> and <strong className="font-semibold text-green-900">Kasaragod</strong> districts in Kerala.
+              BT Banana supplies wholesale bananas, raw chips plantains, and banana seeds (Vazhavithu) across key locations in <strong className="font-semibold text-green-900">Kannur</strong>, <strong className="font-semibold text-green-900">Kasaragod</strong>, and <strong className="font-semibold text-green-900">Wayanad</strong> districts in Kerala.
             </p>
           </Reveal>
 
           {/* District Highlights Header Cards */}
-          <div className="mt-10 grid gap-6 sm:grid-cols-2">
+          <div className="mt-10 grid gap-6 sm:grid-cols-3">
             <Reveal className="grid">
               <div className="flex items-center gap-4 rounded-2xl border border-green-100 bg-white p-5 shadow-sm">
                 <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-amber-400 text-green-950 shadow-sm">
@@ -451,7 +522,19 @@ export default function Home() {
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-green-950">Kasaragod District</h3>
-                  <p className="text-xs font-semibold text-green-700">Northern Kerala Wholesale Network</p>
+                  <p className="text-xs font-semibold text-green-700">Northern Kerala &amp; Chittarikkal</p>
+                </div>
+              </div>
+            </Reveal>
+
+            <Reveal delay={200} className="grid">
+              <div className="flex items-center gap-4 rounded-2xl border border-green-100 bg-white p-5 shadow-sm">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-emerald-800 text-white shadow-sm">
+                  <MapPinIcon className="h-6 w-6" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-green-950">Wayanad District</h3>
+                  <p className="text-xs font-semibold text-green-700">Highland Banana &amp; Seed Belt</p>
                 </div>
               </div>
             </Reveal>

@@ -76,6 +76,7 @@ export const defaultEnquiryMessage =
 export const navLinks = [
   { href: "/", label: "Home" },
   { href: "/wholesale-bananas", label: "Wholesale Bananas" },
+  { href: "/banana-for-chips", label: "Banana for Chips" },
   { href: "/banana-seeds", label: "Banana Seeds" },
   { href: "/about", label: "About Us" },
   { href: "/locations", label: "Locations" },
@@ -84,7 +85,7 @@ export const navLinks = [
 ];
 
 export const coveredAreas = {
-  districts: ["Kannur", "Kasaragod"],
+  districts: ["Kannur", "Kasaragod", "Wayanad"],
   localities: [
     "Alakode",
     "Nellipara",
@@ -101,5 +102,8 @@ export const coveredAreas = {
     "Parappa",
     "Nileshwaram",
     "Thaliparamba",
+    "Kalpetta",
+    "Mananthavady",
+    "Sulthan Bathery",
   ],
 };

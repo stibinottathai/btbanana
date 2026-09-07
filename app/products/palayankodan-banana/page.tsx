@@ -99,7 +99,7 @@ export default function PalayankodanBananaPage() {
             />
           </div>
         </div>
-        <div className="relative hidden aspect-[4/3] overflow-hidden rounded-3xl shadow-lg sm:block">
+        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-lg">
           <Image
             src="/images/mysoor_poovan .png"
             alt="Palayankodan / Mysore Poovan banana variety supplied wholesale by BT Banana, Kerala"

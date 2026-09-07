@@ -84,7 +84,7 @@ export default function OtherBananaVarietiesPage() {
             />
           </div>
         </div>
-        <div className="relative hidden aspect-[4/3] overflow-hidden rounded-3xl shadow-lg sm:block">
+        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-lg">
           <Image
             src="/images/banana-fruit-inflorescence.jpg"
             alt="Banana fruit and inflorescence — BT Banana wholesale supply, Kerala"

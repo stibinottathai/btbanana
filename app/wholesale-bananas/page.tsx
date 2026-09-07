@@ -5,6 +5,7 @@ import { CallButton } from "@/components/CallButton";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { ProductCard } from "@/components/ProductCard";
 import { LocationCard } from "@/components/LocationCard";
+import { EnquiryForm } from "@/components/EnquiryForm";
 import { Faq } from "@/components/Faq";
 import { CheckIcon } from "@/components/icons";
 import { branches, primaryPhone, primaryWhatsApp, SITE_URL } from "@/lib/site";
@@ -44,7 +45,7 @@ export const metadata: Metadata = {
   description:
     "BT Banana is a wholesale banana shop, supplier, and banana wholesaler in Kerala, supplying fresh banana varieties in bulk to traders, retailers, and businesses across Kannur and Kasaragod districts from Alakode and Nellipara.",
   alternates: {
-    canonical: "/wholesale-bananas",
+    canonical: `${SITE_URL}/wholesale-bananas`,
   },
   openGraph: {
     title: "Wholesale Banana Shop, Supplier & Wholesaler in Kerala | BT Banana",
@@ -72,8 +73,7 @@ export default function WholesaleBananasPage() {
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-8 text-neutral-700">
             BT Banana supplies fresh bananas in bulk from our Alakode and
-            Nellipara branches, serving traders, retailers, and other
-            businesses across Kannur district and Kasaragod district, Kerala.
+            Nellipara branches, serving traders, retailers, and chips makers across Kannur, Kasaragod, and Wayanad districts, Kerala.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <CallButton phone={primaryPhone} label="Get Wholesale Price" />
@@ -82,8 +82,22 @@ export default function WholesaleBananasPage() {
               message="Hi BT Banana, I'd like to enquire about wholesale bananas."
             />
           </div>
+          <div className="mt-6 flex flex-wrap gap-3 text-xs">
+            <a
+              href="/banana-for-chips"
+              className="inline-flex items-center gap-1 rounded-lg border border-emerald-300 bg-emerald-50 px-3 py-1.5 font-bold text-emerald-950 hover:bg-emerald-100"
+            >
+              🍌 Looking for Raw Bananas for Chips? View Specs →
+            </a>
+            <a
+              href="/banana-prices"
+              className="inline-flex items-center gap-1 rounded-lg border border-amber-300 bg-amber-50 px-3 py-1.5 font-bold text-amber-950 hover:bg-amber-100"
+            >
+              📊 Check Today&apos;s Market Rates →
+            </a>
+          </div>
         </div>
-        <div className="relative hidden aspect-[4/3] overflow-hidden rounded-3xl shadow-lg sm:block">
+        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-lg">
           <Image
             src="/images/wholesale.png"
             alt="Fresh wholesale bananas supplied in bulk by BT Banana, a banana wholesaler in Alakode, Kannur"
@@ -121,7 +135,7 @@ export default function WholesaleBananasPage() {
             </h2>
             <p className="mt-4 leading-7 text-neutral-700">
               Our banana supply is set up for bulk purchasing — we work with
-              traders and retailers who need consistent quantities rather
+              traders, retailers, and chips processors who need consistent quantities rather
               than one-off small purchases. Reach out to discuss the
               quantity you need and we&apos;ll confirm what we can supply.
             </p>
@@ -145,6 +159,21 @@ export default function WholesaleBananasPage() {
                 </li>
               ))}
             </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* Embedded Quote Form */}
+      <section className="border-t border-green-100 bg-white py-16">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6">
+          <h2 className="text-3xl font-bold text-green-950 text-center">
+            Request Instant Wholesale Banana Quote
+          </h2>
+          <p className="mt-2 text-center text-sm text-neutral-600">
+            Send your variety, quantity, and destination to get verified farm gate &amp; mandi rates directly on WhatsApp:
+          </p>
+          <div className="mt-8">
+            <EnquiryForm defaultProduct="Wholesale Nendran Banana (പച്ച / പഴുത്ത ഏത്തക്ക)" />
           </div>
         </div>
       </section>

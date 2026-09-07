@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { MobileStickyCTA } from "@/components/MobileStickyCTA";
+import { FloatingContactButtons } from "@/components/FloatingContactButtons";
 import { JsonLd } from "@/components/JsonLd";
 import {
   branches,
@@ -31,58 +32,6 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
-  keywords: [
-    "wholesale banana shop in Alakode",
-    "banana wholesale Alakode",
-    "banana wholesaler Alakode",
-    "banana supplier Alakode",
-    "banana shop Alakode",
-    "fresh banana wholesale Alakode",
-    "wholesale banana shop Nellipara",
-    "banana wholesaler Nellipara",
-    "banana supplier Nellipara",
-    "wholesale banana shop in Kannur",
-    "wholesale banana supplier in Kannur district",
-    "banana wholesale Kannur",
-    "banana wholesaler Kannur",
-    "banana supplier Kannur",
-    "best banana shop in Kannur",
-    "wholesale banana supplier in Kasaragod district",
-    "banana wholesale Kasaragod",
-    "banana wholesaler Kasaragod",
-    "banana supplier Kasaragod",
-    "best banana shop in Kasaragod",
-    "banana supplier Kannur Kasaragod",
-    "wholesale banana shop Vellarikundu",
-    "banana shops in Vellarikundu",
-    "best banana shop in Cherupuzha",
-    "banana shop Cherupuzha",
-    "best banana shop in Thaliparamba",
-    "banana shop Udayagiri",
-    "banana shop Manakkadavu",
-    "banana shop Karthikapuram",
-    "Nendran banana wholesale",
-    "Nendran banana supplier Kerala",
-    "Nendran banana wholesaler Kannur",
-    "Palayankodan banana wholesale",
-    "Palayankodan banana supplier Kerala",
-    "Robusta banana wholesale",
-    "Robusta banana supplier Kerala",
-    "Poovan banana wholesale",
-    "Poovan banana supplier Kerala",
-    "banana varieties wholesale Kerala",
-    "banana seeds Kerala delivery",
-    "banana seed supplier Kerala",
-    "banana seedlings Kannur",
-    "banana planting material Kannur",
-    "banana seeds Kannur",
-    "banana seeds Alakode",
-    "vazhavithu Kerala",
-    "wholesale banana supplier Kerala",
-  ],
-  alternates: {
-    canonical: "/",
-  },
   openGraph: {
     type: "website",
     locale: "en_IN",
@@ -105,8 +54,9 @@ export const metadata: Metadata = {
 
 const localBusinessJsonLd = {
   "@context": "https://schema.org",
-  "@type": ["LocalBusiness", "Store"],
+  "@type": ["LocalBusiness", "WholesaleStore"],
   name: SITE_NAME,
+  legalName: "BT Banana Wholesale",
   description: SITE_DESCRIPTION,
   url: SITE_URL,
   image: `${SITE_URL}/images/logo.png`,
@@ -121,10 +71,33 @@ const localBusinessJsonLd = {
   })),
   address: {
     "@type": "PostalAddress",
+    streetAddress: "Malayora Highway, Opposite Rajadhani Hotel",
     addressLocality: "Alakode",
     addressRegion: "Kerala",
+    postalCode: "670571",
     addressCountry: "IN",
   },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 12.1818,
+    longitude: 75.4674,
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday",
+      ],
+      opens: "06:00",
+      closes: "21:00",
+    },
+  ],
   founder: owners.map((o) => ({
     "@type": "Person",
     name: o.name,
@@ -134,6 +107,7 @@ const localBusinessJsonLd = {
     "@type": "LocalBusiness",
     name: branch.name,
     description: branch.description,
+    hasMap: branch.mapsUrl,
     address: {
       "@type": "PostalAddress",
       addressLocality: branch.place.split(",")[0].trim(),
@@ -141,6 +115,24 @@ const localBusinessJsonLd = {
       addressCountry: "IN",
     },
   })),
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "BT Banana Wholesale Catalog",
+    itemListElement: [
+      {
+        "@type": "OfferCatalog",
+        name: "Wholesale Bananas",
+      },
+      {
+        "@type": "OfferCatalog",
+        name: "Raw Banana for Chips (Pacha Ethakka)",
+      },
+      {
+        "@type": "OfferCatalog",
+        name: "Banana Seeds / Vazhavithu Planting Material",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -155,6 +147,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <main className="flex-1 pb-16 md:pb-0">{children}</main>
         <Footer />
         <MobileStickyCTA />
+        <FloatingContactButtons />
       </body>
     </html>
   );

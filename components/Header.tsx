@@ -91,7 +91,7 @@ export function Header() {
 
           {/* Desktop Links */}
           <nav
-            className="hidden items-center gap-0.5 lg:flex xl:gap-1.5"
+            className="hidden items-center gap-1 lg:flex xl:gap-2"
             aria-label="Primary"
           >
             {navLinks.map((link) => {
@@ -141,19 +141,7 @@ export function Header() {
             })}
           </nav>
 
-          {/* CTA Actions */}
-          <div className="hidden shrink-0 items-center gap-2.5 lg:flex">
-            <a
-              href={whatsappHref(primaryWhatsApp, defaultEnquiryMessage)}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="WhatsApp Us"
-              className="flex h-9 w-9 items-center justify-center rounded-full bg-[#25D366] text-white shadow-sm transition-transform hover:scale-105"
-            >
-              <WhatsAppIcon className="h-4.5 w-4.5" />
-            </a>
-            <CallButton phone={primaryPhone} className="px-4 py-2 text-xs xl:text-sm" />
-          </div>
+
 
           {/* Mobile hamburger button */}
           <button

@@ -82,6 +82,14 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link
+                  href="/banana-prices"
+                  className="text-green-100 hover:text-white"
+                >
+                  Today&apos;s Banana Rates
+                </Link>
+              </li>
             </ul>
           </div>
         </div>

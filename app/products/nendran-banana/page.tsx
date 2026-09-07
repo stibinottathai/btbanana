@@ -97,7 +97,7 @@ export default function NendranBananaPage() {
             />
           </div>
         </div>
-        <div className="relative hidden aspect-[4/3] overflow-hidden rounded-3xl shadow-lg sm:block">
+        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-lg">
           <Image
             src="/images/wholesale.png"
             alt="Nendran bananas, Kerala's most widely used variety, supplied wholesale by BT Banana, Alakode"

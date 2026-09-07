@@ -17,6 +17,19 @@ export type Product = {
  */
 export const products: Product[] = [
   {
+    slug: "banana-for-chips",
+    name: "Raw Banana for Chips (Pacha Ethakka)",
+    shortDescription:
+      "High-starch raw green Nendran bananas (Pacha Ethakka) supplied in bulk for commercial banana chips manufacturers and hot chips units.",
+    description:
+      "We supply premium raw green Nendran plantains (പച്ച ഏത്തക്ക) specifically selected for hot chips shops, snack factories, and commercial fryers across Kerala. Harvested at peak maturity for crisp texture, optimal oil absorption, and uniform golden frying.",
+    suitableFor: "Chips manufacturers, hot chips shops, bakeries, and snack factories",
+    category: "banana",
+    image: "/images/wholesale.png",
+    imageAlt: "Raw green Nendran bananas for chips wholesale supply by BT Banana Kerala",
+    detailHref: "/banana-for-chips",
+  },
+  {
     slug: "nendran-banana",
     name: "Nendran Banana",
     shortDescription:

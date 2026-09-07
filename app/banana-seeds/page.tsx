@@ -1,65 +1,85 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CallButton } from "@/components/CallButton";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { LocationCard } from "@/components/LocationCard";
+import { EnquiryForm } from "@/components/EnquiryForm";
 import { Faq } from "@/components/Faq";
-import { CheckIcon } from "@/components/icons";
+import { CheckIcon, LeafIcon } from "@/components/icons";
 import { branches, primaryPhone, primaryWhatsApp, SITE_URL } from "@/lib/site";
 
 const bananaSeedFaqs = [
   {
     question: "Do you deliver banana seeds (Vazhavithu) across Kerala?",
     answer:
-      "We can arrange delivery of banana seeds / Vazhavithu to other parts of Kerala depending on the quantity and your location — contact us directly by phone or WhatsApp to check delivery to your area.",
+      "Yes. We arrange delivery of banana seeds / Vazhavithu to farming destinations across Kerala — including Wayanad, Kozhikode, Malappuram, and Palakkad — depending on order volume and transport arrangements.",
   },
   {
-    question: "Where can I buy banana seeds near Kannur?",
+    question: "Where can I buy healthy banana seeds near Kannur and Kasaragod?",
     answer:
-      "BT Banana supplies banana seeds / Vazhavithu from our Alakode and Nellipara branches in Kannur district, serving customers across Kannur and neighbouring Kasaragod district.",
+      "BT Banana supplies vigorous sword suckers and planting seedlings from our Alakode and Nellipara depots in Kannur district, regularly serving growers from Thaliparamba, Cherupuzha, Chittarikkal, and Vellarikundu.",
   },
   {
-    question: "Do you supply banana seedlings / planting material in Nellipara?",
+    question: "Which banana varieties of Vazhavithu do you supply?",
     answer:
-      "Yes — our Nellipara branch stocks banana seeds / Vazhavithu (planting material and seedlings) alongside our Alakode branch, subject to current availability.",
+      "We supply Nendran (Ethakka), Njali Poovan (ഞാലിപ്പൂവൻ), Mysore Poovan / Palayankodan (പാളയംകോടൻ), and Robusta planting suckers subject to seasonal nursery availability.",
   },
   {
-    question: "Is there a banana seed supplier for Kasaragod district?",
+    question: "How do you select healthy banana suckers for planting?",
     answer:
-      "Yes — we supply banana seeds / Vazhavithu to customers across Kasaragod district from our Alakode branch, close to the Kannur–Kasaragod border. Contact us to discuss quantity and delivery.",
+      "We select vigorous sword suckers with healthy corms and pointed lanceolate leaves, avoiding sluggish water suckers. This ensures fast field establishment, disease resistance, and robust bunch growth.",
   },
   {
-    question: "What is the price of banana seeds / Vazhavithu?",
+    question: "What is the price of banana seeds / Vazhavithu today?",
     answer:
-      "We don't list fixed prices online since availability and rates change. Contact us by phone or WhatsApp for the current wholesale price on banana seeds.",
+      "Vazhavithu is priced per sucker/plantlet depending on variety, grade, and ordered count. Contact Thomas M.J (9447483169) or Albin Augustine (8086648081) for current wholesale rates.",
   },
   {
-    question: "Do you supply Nendran banana seeds / planting material specifically?",
+    question: "Can I book large commercial quantities for plantation replanting?",
     answer:
-      "Nendran is the most commonly grown variety from the banana Vazhavithu we supply, since it's the most widely cultivated banana in Kerala — confirm current availability with us directly.",
-  },
-  {
-    question: "Do you supply banana seeds in bulk to farmers and traders?",
-    answer:
-      "Yes — we supply banana Vazhavithu in both small and bulk quantities to individual farmers, growers, and agricultural traders sourcing planting material.",
+      "Yes. We handle multi-hundred and thousand-sucker farm orders. We advise booking a few weeks in advance for monsoon planting or Onam crop schedules.",
   },
 ];
 
 export const metadata: Metadata = {
-  title: "Banana Seeds in Kerala — Vazhavithu Supplier, All-Kerala Delivery",
+  title: "Banana Seeds in Kerala — Vazhavithu Supplier with All-Kerala Delivery",
   description:
-    "BT Banana supplies banana seeds (Vazhavithu / വാഴവിത്ത്) — banana planting material — at reasonable wholesale prices from Alakode and Nellipara, Kannur, with delivery arranged across Kerala. Enquire for availability.",
+    "BT Banana supplies high-yield banana seeds and planting suckers (Vazhavithu / വാഴവിത്ത്) with safe, reliable delivery across all districts of Kerala. Nendran, Njali Poovan, Mysore Poovan & Robusta from Kannur.",
   alternates: {
-    canonical: "/banana-seeds",
+    canonical: `${SITE_URL}/banana-seeds`,
   },
   openGraph: {
-    title: "Banana Seeds in Kerala — Vazhavithu Supplier | BT Banana",
+    title: "Banana Seeds in Kerala — Vazhavithu Supplier with All-Kerala Delivery | BT Banana",
     description:
-      "Banana seeds / Vazhavithu (banana planting material) supplied wholesale from Alakode and Nellipara, Kannur, with delivery arranged across Kerala.",
+      "High-yield banana seeds / Vazhavithu planting material supplied wholesale from Alakode & Nellipara, Kannur, with delivery arranged across all districts of Kerala.",
     url: `${SITE_URL}/banana-seeds`,
   },
 };
+
+const seedVarieties = [
+  {
+    name: "Nendran Vazhavithu (ഏത്ത വാഴവിത്ത്)",
+    desc: "The primary commercial planting sucker in Kerala. High bunch yield, demanded for both culinary cooking and chips processing.",
+    suitable: "Commercial plantations, Onam crop, home farms",
+  },
+  {
+    name: "Njali Poovan Vazhavithu (ഞാലിപ്പൂവൻ)",
+    desc: "Premium dessert variety sucker. Yields sweet, delicate fingers commanding top retail prices across Kerala markets.",
+    suitable: "High-value fruit markets, homestead cultivation",
+  },
+  {
+    name: "Mysore Poovan / Palayankodan (പാളയംകോടൻ)",
+    desc: "Extremely hardy and drought-resilient variety with steady yield throughout drought and monsoon periods.",
+    suitable: "Intercropping, organic groves, low-maintenance plots",
+  },
+  {
+    name: "Robusta Vazhavithu (റോബസ്റ്റ)",
+    desc: "Vigorous green table variety producing heavy bunches with 10–12 hands and uniform finger sizing.",
+    suitable: "Commercial retail wholesale orchards",
+  },
+];
 
 export default function BananaSeedsPage() {
   return (
@@ -70,27 +90,41 @@ export default function BananaSeedsPage() {
 
       <section className="mx-auto grid max-w-6xl items-center gap-8 px-4 py-8 sm:px-6 lg:grid-cols-2">
         <div>
-          <h1 className="text-4xl font-bold tracking-tight text-green-950 sm:text-5xl">
-            Banana Seeds &amp; Seedlings / Vazhavithu
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-3.5 py-1 text-xs font-bold text-emerald-900">
+              <LeafIcon className="h-3.5 w-3.5 text-emerald-700" />
+              Healthy Farm Planting Material
+            </span>
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-100 px-3.5 py-1 text-xs font-bold text-amber-900">
+              🚚 All-Kerala Delivery Available
+            </span>
+          </div>
+          <h1 className="mt-3 text-4xl font-bold tracking-tight text-green-950 sm:text-5xl">
+            Banana Seeds &amp; Planting Material (Vazhavithu) with All-Kerala Delivery
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-8 text-neutral-700">
-            BT Banana supplies banana seeds and seedlings — known locally as{" "}
-            <span className="font-semibold">Vazhavithu (വാഴവിത്ത്)</span> —
-            at reasonable wholesale prices from our Alakode and Nellipara
-            branches in Kannur, Kerala.
+            BT Banana supplies genuine banana planting suckers — locally known as{" "}
+            <strong className="font-semibold text-green-900">Vazhavithu (വാഴവിത്ത്)</strong> —
+            at reasonable wholesale rates from our Alakode and Nellipara depots in Kannur, with <strong className="text-green-950">safe, reliable delivery arranged across all districts of Kerala</strong> for farmers, commercial growers, and agricultural projects.
           </p>
-          <div className="mt-8 flex flex-wrap gap-4">
-            <CallButton phone={primaryPhone} label="Call for Availability" />
+          <div className="mt-8 flex flex-row items-center gap-2.5 sm:gap-4">
+            <CallButton
+              phone={primaryPhone}
+              label="Call for Kerala Delivery"
+              className="flex-1 justify-center whitespace-nowrap px-3.5 py-3 text-xs font-bold sm:flex-initial sm:px-6 sm:py-3.5 sm:text-sm"
+            />
             <WhatsAppButton
               phone={primaryWhatsApp}
-              message="Hi BT Banana, I'd like to enquire about banana seeds / Vazhavithu."
+              message="Hi BT Banana, I'd like to enquire about banana seeds / Vazhavithu and delivery to my location in Kerala."
+              label="Enquire for All-Kerala Delivery"
+              className="flex-1 justify-center whitespace-nowrap px-3.5 py-3 text-xs font-bold sm:flex-initial sm:px-6 sm:py-3.5 sm:text-sm"
             />
           </div>
         </div>
-        <div className="relative hidden aspect-[4/3] overflow-hidden rounded-3xl shadow-lg sm:block">
+        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-lg">
           <Image
             src="/images/vazhavithu.png"
-            alt="Banana seeds / Vazhavithu planting material and seedlings supplied by BT Banana, Alakode, Kannur"
+            alt="Banana seeds / Vazhavithu planting material and seedlings supplied with All-Kerala delivery by BT Banana, Kannur"
             fill
             priority
             sizes="(min-width: 1024px) 50vw, 100vw"
@@ -99,37 +133,105 @@ export default function BananaSeedsPage() {
         </div>
       </section>
 
-      <section className="border-y border-green-100 bg-green-50/50">
-        <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+      {/* All-Kerala Delivery Spotlight Section */}
+      <section className="border-t border-green-100 bg-gradient-to-br from-amber-50/70 via-emerald-50/40 to-white py-14">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="rounded-3xl border border-amber-200/80 bg-white p-8 shadow-sm sm:p-10">
+            <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+              <div className="max-w-3xl">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-900">
+                  🚚 Statewide Farm Transport Network
+                </span>
+                <h2 className="mt-3 text-3xl font-bold text-green-950">
+                  All-Kerala Delivery for Banana Seeds (Vazhavithu)
+                </h2>
+                <p className="mt-3 text-base leading-relaxed text-neutral-700">
+                  Whether you are cultivating in <strong className="font-semibold text-green-950">Kannur, Kasaragod, Wayanad, Kozhikode, Malappuram, Palakkad, Thrissur, Ernakulam, or anywhere else in Kerala</strong>, we arrange safe road transportation directly to your farm gate or collection point.
+                </p>
+                <div className="mt-6 grid gap-4 sm:grid-cols-3">
+                  <div className="rounded-2xl border border-green-100 bg-green-50/60 p-4">
+                    <p className="text-xs font-bold uppercase tracking-wider text-green-900">Flexible Volumes</p>
+                    <p className="mt-1 text-xs text-neutral-600">From 50–100 seedlings for homesteads to 2,000+ suckers for commercial banana plantations.</p>
+                  </div>
+                  <div className="rounded-2xl border border-green-100 bg-green-50/60 p-4">
+                    <p className="text-xs font-bold uppercase tracking-wider text-green-900">Moisture-Protected</p>
+                    <p className="mt-1 text-xs text-neutral-600">Freshly harvested and protected so corms and roots remain hydrated and viable throughout road transit.</p>
+                  </div>
+                  <div className="rounded-2xl border border-green-100 bg-green-50/60 p-4">
+                    <p className="text-xs font-bold uppercase tracking-wider text-green-900">Direct Farm Gate</p>
+                    <p className="mt-1 text-xs text-neutral-600">Dispatched via dedicated vehicle or regional freight logistics tailored to your exact district.</p>
+                  </div>
+                </div>
+              </div>
+              <div className="flex flex-col gap-3 sm:flex-row lg:flex-col shrink-0">
+                <WhatsAppButton
+                  phone={primaryWhatsApp}
+                  message="Hi BT Banana, I need banana seeds (Vazhavithu) delivered to my district in Kerala. Please share delivery details and rate."
+                  label="Check Delivery to Your Area"
+                  className="px-6 py-3.5 text-sm"
+                />
+                <CallButton
+                  phone={primaryPhone}
+                  label="Call for Delivery Quote"
+                  variant="outline"
+                  className="px-6 py-3.5 text-sm border-green-800 text-green-950 hover:bg-green-50"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Seed Varieties Section */}
+      <section className="border-y border-green-100 bg-white py-14">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <h2 className="text-3xl font-bold text-green-950">
+            Vazhavithu Varieties Available for Cultivation
+          </h2>
+          <p className="mt-2 text-base text-neutral-600">
+            Healthy suckers selected for strong root establishment, rapid vegetative vigour, and high harvest return:
+          </p>
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {seedVarieties.map((v) => (
+              <div key={v.name} className="flex flex-col justify-between rounded-2xl border border-green-100 bg-green-50/50 p-6">
+                <div>
+                  <h3 className="text-lg font-bold text-green-950">{v.name}</h3>
+                  <p className="mt-2 text-xs leading-relaxed text-neutral-600">{v.desc}</p>
+                </div>
+                <div className="mt-4 border-t border-green-200/60 pt-3">
+                  <span className="text-[11px] font-semibold text-green-800">Best for: {v.suitable}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Sourcing Guide */}
+      <section className="bg-green-50/50 py-14">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="grid gap-10 lg:grid-cols-2">
             <div>
               <h2 className="text-2xl font-bold text-green-950">
-                What is Vazhavithu?
+                What is Vazhavithu &amp; Why Sucker Selection Matters
               </h2>
               <p className="mt-4 leading-7 text-neutral-700">
-                Vazhavithu is the Malayalam term for banana planting
-                material — the young banana plants, suckers, or seedlings
-                that farmers plant to start a new banana crop. It&apos;s the
-                starting point for any banana cultivation, and the quality of
-                the planting material has a direct effect on the crop that
-                follows.
+                Vazhavithu is the Malayalam term for banana vegetative planting material — usually strong sword suckers (കണ്ണികൾ) harvested with intact corms. The initial vigour and disease-freedom of your planting stock determine plant survival, bunch weight, and crop uniformity.
               </p>
               <p className="mt-4 leading-7 text-neutral-700">
-                As a banana seed supplier, we supply this planting material
-                to farmers and growers who are starting or expanding banana
-                cultivation, at reasonable wholesale prices.
+                As a dedicated agricultural supplier, BT Banana inspects planting material to supply healthy, viable suckers that produce high yields for farmers in Kannur, Kasaragod, Wayanad, and across Kerala.
               </p>
             </div>
             <div>
               <h2 className="text-2xl font-bold text-green-950">
-                Who Can Enquire
+                Who We Supply
               </h2>
               <ul className="mt-4 space-y-3">
                 {[
-                  "Individual farmers planting a new banana crop",
-                  "Growers expanding existing banana cultivation",
-                  "Agricultural traders sourcing planting material in bulk",
-                  "Anyone searching for a banana seed supplier near Alakode, Nellipara, or Kannur",
+                  "Commercial banana farmers planting multi-acre seasonal crops",
+                  "Growers preparing Onam harvest schedules (Chingam market)",
+                  "Homestead farmers looking for 20 to 100 seedlings",
+                  "Agricultural cooperatives and trading nurseries sourcing bulk suckers",
                 ].map((item) => (
                   <li
                     key={item}
@@ -145,22 +247,19 @@ export default function BananaSeedsPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
-        <h2 className="text-2xl font-bold text-green-950">
-          Wholesale Vazhavithu Enquiries
-        </h2>
-        <p className="mt-4 max-w-2xl leading-7 text-neutral-700">
-          We supply banana Vazhavithu at reasonable prices, with quantities
-          depending on current availability. Whether you need a small
-          number of plants or are sourcing banana planting material in
-          bulk, contact us directly and we&apos;ll let you know what we
-          currently have available.
-        </p>
-        <p className="mt-4 max-w-2xl leading-7 text-neutral-700">
-          We don&apos;t list fixed prices online since availability and
-          rates can change — reach out by phone or WhatsApp for the current
-          wholesale price on banana seeds.
-        </p>
+      {/* Fast Quote Form */}
+      <section className="border-t border-green-100 bg-white py-16">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6">
+          <h2 className="text-3xl font-bold text-green-950 text-center">
+            Request Banana Seeds / Vazhavithu Quote
+          </h2>
+          <p className="mt-2 text-center text-sm text-neutral-600">
+            Tell us your desired variety, sucker quantity, and delivery town to receive prompt confirmation:
+          </p>
+          <div className="mt-8">
+            <EnquiryForm defaultProduct="Banana Seeds / Vazhavithu (വാഴവിത്ത് - Nendran)" />
+          </div>
+        </div>
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
@@ -173,8 +272,7 @@ export default function BananaSeedsPage() {
             Contact Us for Banana Seeds
           </h2>
           <p className="mt-3 max-w-2xl text-neutral-700">
-            Get in touch with our Alakode or Nellipara branch for banana
-            seed / Vazhavithu enquiries.
+            Get in touch with our Alakode or Nellipara branch for banana seed / Vazhavithu enquiries across Kerala.
           </p>
           <div className="mt-8 grid gap-6 sm:grid-cols-2">
             {branches.map((branch) => (

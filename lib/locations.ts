@@ -308,6 +308,72 @@ export const serviceLocations: ServiceLocation[] = [
       },
     ],
   },
+  {
+    slug: "chittarikkal",
+    name: "Chittarikkal",
+    region: "Kasaragod District",
+    kind: "area",
+    nearestBranchSlug: "alakode",
+    intro:
+      "Chittarikkal, situated in the eastern hill tracts of Kasaragod district close to Cherupuzha and Alakode, is an active farming and trading zone. BT Banana supplies fresh wholesale bananas, raw Nendran for chips, and certified banana planting material (Vazhavithu) to farmers and merchants across Chittarikkal, Bheemanady, and Parappa.",
+    bestShopAnswer:
+      "Searching for a dependable banana wholesaler near Chittarikkal? BT Banana serves Chittarikkal farmers and retailers directly from our Alakode facility with transparent rates and fast road logistics.",
+    faqs: [
+      {
+        question: "Is there a wholesale banana supplier serving Chittarikkal?",
+        answer:
+          "Yes, BT Banana regularly supplies wholesale bananas, raw cooking plantains, and chips bananas to retailers, catering units, and merchants in Chittarikkal directly from our Alakode branch.",
+      },
+      {
+        question: "Can I buy banana seeds (Vazhavithu) in Chittarikkal?",
+        answer:
+          "Yes. We supply high-yield banana planting suckers (Vazhavithu) including Nendran, Njali Poovan, and Mysore Poovan for farmers across Chittarikkal and surrounding Kasaragod hill areas.",
+      },
+      {
+        question: "How does BT Banana handle delivery or pickup to Chittarikkal?",
+        answer:
+          "Chittarikkal is a short drive from our Alakode branch via Cherupuzha. Customers can collect orders directly from our depot or arrange bulk transport for larger commercial quantities.",
+      },
+      {
+        question: "Do you supply raw bananas for chips makers in Chittarikkal?",
+        answer:
+          "Yes, we supply premium grade raw green Nendran (Pacha Ethakka) with high starch content specifically suited for local hot chips shops and bakeries.",
+      },
+    ],
+  },
+  {
+    slug: "wayanad",
+    name: "Wayanad",
+    region: "Wayanad District",
+    kind: "area",
+    nearestBranchSlug: "alakode",
+    intro:
+      "Wayanad is one of Kerala's foremost banana cultivation heartlands, where commercial planters and smallholders require reliable bulk trading partners and healthy banana planting suckers. BT Banana bridges the Kannur–Wayanad agricultural belt, supplying high-quality banana seeds (Vazhavithu) and wholesale produce to growers, traders, and cooperatives across Mananthavady, Kalpetta, and Sulthan Bathery.",
+    bestShopAnswer:
+      "For banana growers and wholesale produce buyers in Wayanad, BT Banana provides dependable supply of high-grade Vazhavithu planting material and wholesale banana trade links from our North Kerala hubs.",
+    faqs: [
+      {
+        question: "Does BT Banana supply banana planting material (Vazhavithu) to Wayanad?",
+        answer:
+          "Yes, we supply genuine banana suckers and planting stock (Vazhavithu) for commercial banana plantations in Wayanad, including Nendran, Njali Poovan, and Robusta varieties.",
+      },
+      {
+        question: "How can farmers in Wayanad source bulk Vazhavithu from BT Banana?",
+        answer:
+          "Farmers and plantation managers can call or WhatsApp Thomas M.J or Albin Augustine directly to discuss required variety counts, booking schedules, and pickup or freight logistics to Wayanad.",
+      },
+      {
+        question: "Can traders in Wayanad buy wholesale bananas from BT Banana?",
+        answer:
+          "Yes, we coordinate bulk wholesale consignments of fresh bananas and raw plantains for merchants and distributors connecting the Malabar market corridors.",
+      },
+      {
+        question: "What banana varieties are most requested by Wayanad growers?",
+        answer:
+          "Nendran (Ethakka) and sweet dessert varieties like Njali Poovan and Palayankodan are the most requested varieties for cultivation and wholesale distribution.",
+      },
+    ],
+  },
 ];
 
 export function getLocationBySlug(slug: string): ServiceLocation | undefined {

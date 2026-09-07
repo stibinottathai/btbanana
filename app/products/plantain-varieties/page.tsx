@@ -90,7 +90,7 @@ export default function PlantainVarietiesPage() {
             />
           </div>
         </div>
-        <div className="relative hidden aspect-[4/3] overflow-hidden rounded-3xl shadow-lg sm:block">
+        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-lg">
           <Image
             src="/images/variety.png"
             alt="Plantain varieties supplied wholesale by BT Banana, Kerala"
