@@ -164,15 +164,10 @@ export default function Home() {
 
         <div className="relative mx-auto grid max-w-6xl items-start gap-12 px-4 pt-10 pb-16 sm:px-6 sm:pt-14 sm:pb-24 lg:grid-cols-2 lg:gap-16 lg:pt-16 lg:pb-28">
           <div>
-            <div className="flex flex-wrap items-center gap-2">
-              <p className="inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-1.5 text-sm font-medium text-green-800 shadow-sm ring-1 ring-green-900/10 backdrop-blur">
-                <LeafIcon className="h-4 w-4 text-green-600" />
-                Alakode &amp; Nellipara, Kannur, Kerala
-              </p>
-              <span className="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-900">
-                വാഴപ്പഴം മൊത്തവില്പന
-              </span>
-            </div>
+            <p className="inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-1.5 text-sm font-medium text-green-800 shadow-sm ring-1 ring-green-900/10 backdrop-blur">
+              <LeafIcon className="h-4 w-4 text-green-600" />
+              Alakode &amp; Nellipara, Kannur, Kerala
+            </p>
 
             <h1 className="mt-4 text-3xl font-bold leading-[1.15] tracking-tight text-green-950 sm:text-4xl lg:text-5xl">
               Wholesale Banana Supplier in Kannur, Kerala
