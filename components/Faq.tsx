@@ -36,7 +36,7 @@ export function Faq({
     <div>
       <JsonLd data={faqJsonLd} />
       <h2 className="text-2xl font-bold text-green-950">{title}</h2>
-      <dl className="mt-6 space-y-3">
+      <div className="mt-6 space-y-3">
         {items.map((item) => (
           <details
             key={item.question}
@@ -51,10 +51,10 @@ export function Faq({
                 +
               </span>
             </summary>
-            <dd className="mt-3 leading-7 text-neutral-700">{item.answer}</dd>
+            <p className="mt-3 leading-7 text-neutral-700">{item.answer}</p>
           </details>
         ))}
-      </dl>
+      </div>
     </div>
   );
 }

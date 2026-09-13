@@ -162,12 +162,12 @@ export function Header() {
       </div>
 
       {/* Mobile nav drawer */}
-      {open && (
-        <nav
-          id="mobile-nav"
-          aria-label="Mobile"
-          className="border-t border-green-100 bg-white px-4 pb-4 lg:hidden"
-        >
+      <nav
+        id="mobile-nav"
+        aria-label="Mobile"
+        hidden={!open}
+        className="border-t border-green-100 bg-white px-4 pb-4 lg:hidden"
+      >
           <ul className="flex flex-col divide-y divide-green-50">
             {navLinks.map((link) => {
               const isActive =
@@ -210,8 +210,7 @@ export function Header() {
               <WhatsAppIcon className="h-5 w-5" />
             </a>
           </div>
-        </nav>
-      )}
+      </nav>
     </header>
   );
 }
