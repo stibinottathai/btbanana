@@ -2,6 +2,11 @@ import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site";
 import { serviceLocations } from "@/lib/locations";
 
+// Keep this tied to a real site/content release. Using `new Date()` here would
+// make every URL look newly changed after each deployment, weakening the
+// sitemap's last-modified signal for crawlers.
+const LAST_CONTENT_UPDATE = new Date("2026-09-18T00:00:00.000Z");
+
 const routes = [
   { path: "", priority: 1, changeFrequency: "monthly" as const },
   { path: "/about", priority: 0.9, changeFrequency: "monthly" as const },
@@ -67,18 +72,16 @@ const routes = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
-
   const staticEntries = routes.map((route) => ({
     url: `${SITE_URL}${route.path}`,
-    lastModified,
+    lastModified: LAST_CONTENT_UPDATE,
     changeFrequency: route.changeFrequency,
     priority: route.priority,
   }));
 
   const locationEntries = serviceLocations.map((location) => ({
     url: `${SITE_URL}/locations/${location.slug}`,
-    lastModified,
+    lastModified: LAST_CONTENT_UPDATE,
     changeFrequency: "monthly" as const,
     priority: 0.75,
   }));

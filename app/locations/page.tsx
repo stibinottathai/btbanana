@@ -8,7 +8,7 @@ import { branches, SITE_URL } from "@/lib/site";
 import { serviceLocations } from "@/lib/locations";
 
 export const metadata: Metadata = {
-  title: "Wholesale Banana Supply Locations — Kannur, Kasaragod & Wayanad | BT Banana",
+  title: "Wholesale Banana Supply Locations — Kannur, Kasaragod & Wayanad",
   description:
     "BT Banana operates wholesale banana depots in Alakode and Nellipara, supplying fresh bulk bananas, raw Nendran for chips, and banana suckers (Vazhavithu) across Kannur, Kasaragod, and Wayanad districts in Kerala.",
   alternates: {
@@ -184,4 +184,3 @@ export default function LocationsPage() {
     </div>
   );
 }
-

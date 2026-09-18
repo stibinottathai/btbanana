@@ -18,7 +18,7 @@ import { Reveal } from "@/components/Reveal";
 import { CheckIcon, LeafIcon, PhoneIcon } from "@/components/icons";
 
 export const metadata: Metadata = {
-  title: "Banana Wholesale Price in Kerala Today | Daily Rate Guide | BT Banana",
+  title: "Banana Wholesale Price in Kerala Today | Daily Rate Guide",
   description:
     "Wholesale banana prices in Kerala fluctuate daily based on morning arrivals and variety. Wholesale prices vary based on variety, quality, quantity, market conditions and delivery location. Contact BT Banana for the current quotation.",
   alternates: {

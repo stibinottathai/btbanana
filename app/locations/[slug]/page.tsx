@@ -29,8 +29,8 @@ export async function generateMetadata({
 
   const title =
     location.kind === "branch"
-      ? `Wholesale Banana Shop in ${location.name} | BT Banana`
-      : `Wholesale Banana Supplier in ${location.name}, Kerala | BT Banana`;
+      ? `Wholesale Banana Shop in ${location.name}`
+      : `Wholesale Banana Supplier in ${location.name}, Kerala`;
 
   const description = `Looking for a wholesale banana supplier or banana wholesaler in ${location.name}? BT Banana supplies fresh wholesale bananas, raw Nendran for chips, and banana suckers (Vazhavithu) from our Kerala depots. Contact us for daily rates.`;
 

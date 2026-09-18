@@ -17,7 +17,7 @@ import { Reveal } from "@/components/Reveal";
 import { CheckIcon, LeafIcon } from "@/components/icons";
 
 export const metadata: Metadata = {
-  title: "Raw Nendran Banana for Chips Wholesale in Kerala | BT Banana",
+  title: "Raw Nendran Banana for Chips Wholesale in Kerala",
   description:
     "Wholesale supplier of raw green Nendran bananas (Pacha Ethakka / പച്ച ഏത്തക്ക) for banana chips makers, hot chips units, and snack manufacturers in Kerala. High starch, crisp frying, direct from Alakode & Nellipara, Kannur.",
   alternates: {

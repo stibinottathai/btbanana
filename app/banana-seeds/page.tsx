@@ -82,7 +82,7 @@ const breadcrumbJsonLd = {
 };
 
 export const metadata: Metadata = {
-  title: "Banana Suckers & Vazhavithu in Kerala | BT Banana",
+  title: "Banana Suckers & Vazhavithu in Kerala",
   description:
     "BT Banana supplies high-yield banana suckers & planting material (Vazhavithu / വാഴവിത്ത്) with safe delivery arranged across Kerala. Nendran, Njali Poovan, Mysore Poovan & Robusta from Kannur.",
   alternates: {

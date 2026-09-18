@@ -20,7 +20,7 @@ import {
 import { products } from "@/lib/products";
 
 export const metadata: Metadata = {
-  title: "Banana Merchant in Kannur | Wholesale Banana Trading Kerala | BT Banana",
+  title: "Banana Merchant in Kannur | Wholesale Banana Trading Kerala",
   description:
     "Looking for an established banana merchant in Kannur? BT Banana coordinates direct farm trading and wholesale supply of fresh Nendran, Njali Poovan, Robusta, and Palayankodan from Alakode & Nellipara across Kannur, Kasaragod, and Wayanad.",
   alternates: {
