@@ -21,6 +21,13 @@ export type ServiceLocation = {
   intro: string;
   /** A grounded sentence answering why buyers in X choose BT Banana for wholesale supply */
   bestShopAnswer: string;
+  /**
+   * Real neighbouring towns/markets this location connects to. Every entry is
+   * already named in this location's own copy, so nothing here is invented —
+   * it exists to give each page a genuinely distinct body instead of the same
+   * boilerplate with the place name swapped.
+   */
+  nearbyAreas: string[];
   faqs: LocationFaq[];
 };
 
@@ -36,6 +43,7 @@ export const serviceLocations: ServiceLocation[] = [
       "Alakode is where BT Banana operates our primary wholesale depot. If you are looking for a wholesale banana shop, a banana wholesaler, or a direct supplier in Alakode — for fresh dessert bananas, cooking plantains (Nendran), or banana suckers (Vazhavithu) — our depot here is the first stop.",
     bestShopAnswer:
       "BT Banana is Alakode's dedicated wholesale banana and planting sucker supplier — we deal directly with local growers, regional traders, and retail shops from our Alakode depot, with reasonable, transparent pricing on every order.",
+    nearbyAreas: ["Udayagiri", "Manakkadavu", "Karthikapuram", "Cherupuzha"],
     faqs: [
       {
         question: "Where is BT Banana's shop in Alakode?",
@@ -70,6 +78,7 @@ export const serviceLocations: ServiceLocation[] = [
       "Nellipara is home to our second physical branch, located on the Malayora Highway corridor near Alakode. It gives commercial buyers and growers a dedicated wholesale banana shop for fresh fruit and planting suckers without needing to travel into main Alakode town.",
     bestShopAnswer:
       "For retail merchants and farmers around Nellipara, BT Banana's Nellipara branch provides direct wholesale access to freshly harvested bananas and vegetative banana suckers (Vazhavithu) at fair wholesale rates.",
+    nearbyAreas: ["Alakode", "Udayagiri", "Manakkadavu"],
     faqs: [
       {
         question: "Where is BT Banana's branch in Nellipara?",
@@ -104,6 +113,7 @@ export const serviceLocations: ServiceLocation[] = [
       "Kannur district is the primary hub of BT Banana's wholesale trading operations. With physical depots in Alakode and Nellipara, we serve commercial buyers, fruit merchants, catering companies, chips makers, and retail markets across Thaliparamba, Payyanur, Iritty, and Kannur city.",
     bestShopAnswer:
       "For wholesale banana consignments across Kannur, BT Banana operates strategically located depots in Alakode and Nellipara, supplying graded bananas and Vazhavithu planting material directly from local farm networks.",
+    nearbyAreas: ["Thaliparamba", "Payyanur", "Iritty", "Kannur city"],
     faqs: [
       {
         question: "Where can I find a reliable wholesale banana supplier in Kannur?",
@@ -138,6 +148,7 @@ export const serviceLocations: ServiceLocation[] = [
       "Our Alakode depot sits right on the Kannur–Kasaragod border corridor, making BT Banana a dependable wholesale banana supplier and merchant for traders, chips factories, and farmers across Kasaragod district, including Vellarikundu, Chittarikkal, Kanhangad, and Nileshwar.",
     bestShopAnswer:
       "BT Banana serves Kasaragod district from our Alakode facility located right along the border corridor, offering fast road logistics and transparent wholesale rates on bulk bananas and planting suckers.",
+    nearbyAreas: ["Vellarikundu", "Chittarikkal", "Kanhangad", "Nileshwar"],
     faqs: [
       {
         question: "Which wholesale banana supplier serves Kasaragod district?",
@@ -172,6 +183,7 @@ export const serviceLocations: ServiceLocation[] = [
       "Cherupuzha is one of the key commercial towns connected directly to our Alakode depot via the Malayora Highway. Retail fruit stalls, chips makers, and local agriculturalists in Cherupuzha rely on BT Banana for wholesale banana supply and planting material.",
     bestShopAnswer:
       "For retailers, chips makers, and farmers in Cherupuzha, BT Banana's Alakode depot is just minutes away on the Malayora Highway corridor, providing direct daily access to fresh wholesale bananas and Vazhavithu.",
+    nearbyAreas: ["Alakode", "Chittarikkal", "Udayagiri"],
     faqs: [
       {
         question: "Is there a wholesale banana supplier near Cherupuzha?",
@@ -201,6 +213,7 @@ export const serviceLocations: ServiceLocation[] = [
       "Thaliparamba is a major commercial trading hub in Kannur district. BT Banana acts as a wholesale supply partner for Thaliparamba's produce merchants, caterers, and supermarket chains, bridging hill-tract banana harvests with city retail demand.",
     bestShopAnswer:
       "For commercial buyers and traders in Thaliparamba, BT Banana supplies wholesale bananas and banana suckers (Vazhavithu) directly from our Alakode facility in Kannur district with transparent daily market rates.",
+    nearbyAreas: ["Kannur city", "Payyanur", "Alakode"],
     faqs: [
       {
         question: "Is there a wholesale banana supplier near Thaliparamba?",
@@ -230,6 +243,7 @@ export const serviceLocations: ServiceLocation[] = [
       "Vellarikundu sits in the fertile hill tracts of Kasaragod district, close to our Alakode depot. We supply fresh wholesale bananas, raw cooking plantains, and planting suckers to shops, caterers, and farmers throughout the Vellarikundu taluk.",
     bestShopAnswer:
       "For businesses and farmers around Vellarikundu, BT Banana's Alakode depot, located just across the Kannur–Kasaragod border, supplies bulk bananas and banana suckers (Vazhavithu) with convenient road access.",
+    nearbyAreas: ["Chittarikkal", "Parappa", "Cherupuzha"],
     faqs: [
       {
         question: "Is there a wholesale banana supplier serving Vellarikundu?",
@@ -259,6 +273,7 @@ export const serviceLocations: ServiceLocation[] = [
       "Udayagiri is a neighboring agrarian community in the Alakode foothills. Farmers, local shops, and catering contractors in Udayagiri regularly procure fresh wholesale bananas and planting suckers (Vazhavithu) from our Alakode depot.",
     bestShopAnswer:
       "For buyers and growers in Udayagiri, BT Banana's Alakode depot provides immediate local access to bulk banana consignments and genuine planting suckers.",
+    nearbyAreas: ["Alakode", "Cherupuzha", "Manakkadavu"],
     faqs: [
       {
         question: "Is there a wholesale banana supplier near Udayagiri?",
@@ -283,6 +298,7 @@ export const serviceLocations: ServiceLocation[] = [
       "Manakkadavu is situated right in our immediate service corridor near Alakode. We supply wholesale bananas and planting material directly to local retailers, caterers, and smallholders from our Alakode depot.",
     bestShopAnswer:
       "For retail vendors and growers in Manakkadavu, BT Banana's Alakode depot is the nearest dedicated wholesale banana merchant and Vazhavithu supplier.",
+    nearbyAreas: ["Alakode", "Udayagiri", "Karthikapuram"],
     faqs: [
       {
         question: "Where can Manakkadavu retailers buy wholesale bananas?",
@@ -307,6 +323,7 @@ export const serviceLocations: ServiceLocation[] = [
       "Karthikapuram is situated close to our Alakode depot. Local grocery stores, festive caterers, and banana cultivators in Karthikapuram source their bulk bananas and planting suckers directly from BT Banana.",
     bestShopAnswer:
       "For wholesale banana requirements and Vazhavithu in Karthikapuram, BT Banana's Alakode depot offers fast local supply and transparent wholesale rates.",
+    nearbyAreas: ["Alakode", "Manakkadavu", "Udayagiri"],
     faqs: [
       {
         question: "Where can I source wholesale bananas near Karthikapuram?",
@@ -331,6 +348,7 @@ export const serviceLocations: ServiceLocation[] = [
       "Chittarikkal, situated in the eastern hill tracts of Kasaragod district close to Cherupuzha and Alakode, is an active farming and trading zone. BT Banana supplies fresh wholesale bananas, raw Nendran for chips, and certified banana planting material (Vazhavithu) to farmers and merchants across Chittarikkal, Bheemanady, and Parappa.",
     bestShopAnswer:
       "Searching for a dependable banana wholesaler near Chittarikkal? BT Banana serves Chittarikkal farmers and retailers directly from our Alakode facility with transparent rates and fast road logistics.",
+    nearbyAreas: ["Bheemanady", "Parappa", "Cherupuzha", "Vellarikundu"],
     faqs: [
       {
         question: "Is there a wholesale banana supplier serving Chittarikkal?",
@@ -365,6 +383,7 @@ export const serviceLocations: ServiceLocation[] = [
       "Wayanad is one of Kerala's foremost banana cultivation heartlands, where commercial planters and smallholders require reliable bulk trading partners and healthy banana planting suckers. BT Banana bridges the Kannur–Wayanad agricultural belt, supplying high-quality banana seeds (Vazhavithu) and wholesale produce to growers, traders, and cooperatives across Mananthavady, Kalpetta, and Sulthan Bathery.",
     bestShopAnswer:
       "For banana growers and wholesale produce buyers in Wayanad, BT Banana provides dependable supply of high-grade Vazhavithu planting material and wholesale banana trade links from our North Kerala hubs.",
+    nearbyAreas: ["Mananthavady", "Kalpetta", "Sulthan Bathery"],
     faqs: [
       {
         question: "Does BT Banana supply banana planting material (Vazhavithu) to Wayanad?",

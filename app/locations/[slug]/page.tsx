@@ -57,6 +57,14 @@ export default async function LocationPage({
 
   const branch = getNearestBranch(location);
   const others = getOtherLocations(location.slug);
+  const depotName = branch.name.replace("BT Banana – ", "");
+
+  // Grounded, location-specific phrasing so each page reads distinctly instead
+  // of sharing one block of boilerplate with only the place name swapped.
+  const nearbyList =
+    location.nearbyAreas.length > 1
+      ? `${location.nearbyAreas.slice(0, -1).join(", ")} and ${location.nearbyAreas[location.nearbyAreas.length - 1]}`
+      : location.nearbyAreas[0];
 
   const pageTitle =
     location.customH1 ||
@@ -178,12 +186,13 @@ export default async function LocationPage({
               Wholesale Bananas for {location.name}
             </h2>
             <p className="mt-4 leading-7 text-neutral-700">
-              As an established banana wholesaler supplying {location.name}, we
-              handle commercial consignments of top Kerala varieties including
-              Nendran (Ethakka), Palayankodan (Mysore Poovan), Robusta, and
-              Njali Poovan. Produce is sourced directly from regional growers,
-              carefully graded for uniform maturity, and priced according to
-              transparent wholesale market conditions.
+              As a banana wholesaler serving {location.name} in {location.region}
+              , we run commercial consignments out of our {depotName} depot to
+              buyers here and across nearby {nearbyList}. We handle top Kerala
+              varieties — Nendran (Ethakka), Palayankodan (Mysore Poovan),
+              Robusta, and Njali Poovan — sourced directly from regional growers,
+              graded for uniform maturity, and priced on transparent daily
+              wholesale market conditions.
             </p>
             <div className="mt-6">
               <Link
@@ -203,9 +212,10 @@ export default async function LocationPage({
             <p className="mt-4 leading-7 text-neutral-700">
               Need certified vegetative planting material? While bananas do not
               grow from botanical seeds, local cultivators refer to vigorous
-              sword suckers as Vazhavithu (വാഴവിത്ത്). We supply disease-screened,
-              rhizome-cleaned planting suckers to farmers and agricultural
-              commercial growers in and around {location.name}.
+              sword suckers as Vazhavithu (വാഴവിത്ത്). Growers in {location.name}{" "}
+              and the surrounding {location.region} belt collect disease-screened,
+              rhizome-cleaned planting suckers from our {depotName} depot,
+              available by variety and season.
             </p>
             <div className="mt-6">
               <Link
@@ -221,7 +231,8 @@ export default async function LocationPage({
 
         <ul className="mt-10 grid gap-3 sm:grid-cols-2">
           {[
-            `Wholesale banana supplier serving ${location.name}`,
+            `Wholesale banana supplier serving ${location.name} from our ${depotName} depot`,
+            `Also covering nearby ${nearbyList}`,
             "Fresh bananas & vegetative banana suckers (Vazhavithu)",
             "Transparent pricing based on daily market arrivals",
             "Direct phone & WhatsApp contact with depot operators",

@@ -129,9 +129,9 @@ export const products: Product[] = [
     slug: "banana-seeds-vazhavithu",
     name: "Banana Seeds / Vazhavithu",
     shortDescription:
-      "Banana planting material (Vazhavithu) supplied at reasonable prices for cultivation.",
+      "Banana planting suckers (Vazhavithu) sourced from the Trichy belt of Tamil Nadu, delivered across all Kerala.",
     description:
-      "We supply banana seeds, known locally as Vazhavithu (വാഴവിത്ത്), which are used by farmers as planting material to grow their own banana crops. Available at reasonable wholesale prices from both our branches.",
+      "We supply banana seeds, known locally as Vazhavithu (വാഴവിത്ത്) — the planting suckers farmers use to grow their own banana crops. Sourced from the Tiruchirappalli (Trichy) nursery belt of Tamil Nadu in Nendran, Njali Poovan, Palayankodan, and Robusta varieties, with delivery arranged to farms across all 14 districts of Kerala.",
     suitableFor: "Farmers and growers looking for banana planting material",
     category: "seed",
     image: "/images/vazhavithu.png",
