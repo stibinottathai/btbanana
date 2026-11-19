@@ -304,8 +304,8 @@ export default function BananaSeedsPage() {
     <div>
       <JsonLd data={productJsonLd} />
 
-      {/* ───────────────── Hero ───────────────── */}
-      <section className="relative isolate overflow-hidden bg-green-950 text-white">
+      {/* ───────────────── Hero (fills one screen on desktop) ───────────────── */}
+      <section className="relative isolate flex flex-col overflow-hidden bg-green-950 text-white lg:h-[calc(100svh-var(--header-h,4.3rem))] lg:min-h-[34rem] lg:max-h-[60rem]">
         <div
           aria-hidden="true"
           className="absolute -left-40 -top-40 -z-10 h-[32rem] w-[32rem] rounded-full bg-green-800/40 blur-3xl"
@@ -315,23 +315,23 @@ export default function BananaSeedsPage() {
           className="absolute -bottom-48 right-0 -z-10 h-[26rem] w-[26rem] rounded-full bg-amber-400/10 blur-3xl"
         />
 
-        <div className="mx-auto max-w-6xl px-4 pt-8 sm:px-6 [&_a]:text-green-100/70 [&_a:hover]:text-amber-300 [&_ol]:text-green-100/60 [&_[aria-current]]:text-white">
+        <div className="mx-auto max-w-6xl w-full px-4 pt-6 sm:px-6 lg:pt-5 [&_a]:text-green-100/70 [&_a:hover]:text-amber-300 [&_ol]:text-green-100/60 [&_[aria-current]]:text-white">
           <Breadcrumbs items={[{ label: "Vazhavithu / Banana Seeds", href: "/banana-seeds" }]} />
         </div>
 
-        <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 pb-16 pt-10 sm:px-6 lg:grid-cols-[1.1fr_1fr] lg:gap-14 lg:pb-24">
+        <div className="mx-auto grid min-h-0 w-full max-w-6xl flex-1 items-center gap-10 px-4 pb-14 pt-8 sm:px-6 lg:grid-cols-[1.1fr_1fr] lg:gap-14 lg:py-8 short:py-5">
           <div className="min-w-0">
             <p className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-sm font-medium text-green-50 backdrop-blur">
               <LeafIcon className="h-4 w-4 text-amber-300" />
               Vegetative planting stock · വാഴവിത്ത്
             </p>
 
-            <h1 className="mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-[3.5rem]">
+            <h1 className="mt-5 text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-[3.25rem] short:mt-4 short:text-[2.5rem]">
               <span className="text-amber-300">Vazhavithu</span> – Banana Suckers for Planting, Delivered Across
               Kerala
             </h1>
 
-            <p className="mt-6 max-w-xl text-base leading-7 text-green-50/85 sm:text-lg sm:leading-8">
+            <p className="mt-5 max-w-xl text-base leading-7 text-green-50/85 sm:text-lg sm:leading-8 short:mt-4 short:text-base short:leading-7">
               Searching for <strong className="font-semibold text-white">Vazhavithu (വാഴവിത്ത്)</strong>? BT Banana
               imports healthy, high-yield <strong className="font-semibold text-white">banana planting suckers</strong>{" "}
               from <strong className="font-semibold text-white">Tamil Nadu</strong> and supplies them in{" "}
@@ -339,7 +339,7 @@ export default function BananaSeedsPage() {
               <strong className="font-semibold text-white">all 14 districts of Kerala</strong>.
             </p>
 
-            <div className="mt-8 flex flex-wrap items-center gap-3">
+            <div className="mt-7 flex short:mt-5 flex-wrap items-center gap-3">
               <CallButton
                 phone={primaryPhone}
                 label="Call for Bulk Orders"
@@ -353,9 +353,9 @@ export default function BananaSeedsPage() {
               />
             </div>
 
-            <dl className="mt-10 grid max-w-lg grid-cols-3 divide-x divide-white/15 rounded-2xl border border-white/15 bg-white/5 backdrop-blur">
+            <dl className="mt-8 grid max-w-lg short:mt-5 grid-cols-3 divide-x divide-white/15 rounded-2xl border border-white/15 bg-white/5 backdrop-blur">
               {heroStats.map((stat) => (
-                <div key={stat.label} className="px-4 py-4 sm:px-5">
+                <div key={stat.label} className="px-4 py-4 sm:px-5 short:py-3">
                   <dt className="sr-only">{stat.label}</dt>
                   <dd className="text-xl font-extrabold text-amber-300 sm:text-2xl">{stat.value}</dd>
                   <dd className="mt-0.5 text-xs font-medium text-green-100/80 sm:text-sm">{stat.label}</dd>
@@ -364,8 +364,8 @@ export default function BananaSeedsPage() {
             </dl>
           </div>
 
-          <div className="relative">
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[2rem] ring-1 ring-white/10 sm:aspect-[5/4] lg:aspect-[4/5]">
+          <div className="relative min-h-0 lg:h-full">
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[2rem] ring-1 ring-white/10 sm:aspect-[5/4] lg:aspect-auto lg:h-full">
               <Image
                 src="/images/vazhavithu.webp"
                 alt="Vazhavithu (banana seeds / planting suckers) supplied with all-Kerala delivery by BT Banana, Kannur"
