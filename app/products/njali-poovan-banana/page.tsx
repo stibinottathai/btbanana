@@ -98,7 +98,7 @@ export default function NjaliPoovanBananaPage() {
         </div>
         <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-lg">
           <Image
-            src="/images/njali.png"
+            src="/images/njali.webp"
             alt="Sweet Njali Poovan bananas supplied wholesale by BT Banana, Kerala"
             fill
             priority

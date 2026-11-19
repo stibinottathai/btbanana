@@ -139,7 +139,7 @@ export default function NendranBananaPage() {
         </div>
         <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-lg">
           <Image
-            src="/images/wholesale.png"
+            src="/images/wholesale.webp"
             alt="Nendran bananas, Kerala's most widely used variety, supplied wholesale by BT Banana, Alakode"
             fill
             priority
@@ -205,14 +205,6 @@ export default function NendranBananaPage() {
               chips frying? We supply calibrated chip-grade plantains directly to hot chips
               units and commercial food processors.
             </p>
-            <div className="mt-5">
-              <Link
-                href="/banana-for-chips"
-                className="font-bold text-green-800 hover:underline"
-              >
-                View Raw Banana for Chips Wholesale &rarr;
-              </Link>
-            </div>
           </div>
 
           <div className="rounded-3xl border border-green-100 bg-white p-8 shadow-sm">

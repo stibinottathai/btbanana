@@ -147,12 +147,6 @@ export default function WholesaleBananasPage() {
           </div>
           <div className="mt-6 flex flex-wrap gap-3 text-xs">
             <Link
-              href="/banana-for-chips"
-              className="inline-flex items-center gap-1 rounded-lg border border-emerald-300 bg-emerald-50 px-3 py-1.5 font-bold text-emerald-950 hover:bg-emerald-100"
-            >
-              🍌 Raw Green Bananas for Chips →
-            </Link>
-            <Link
               href="/banana-merchant-kannur"
               className="inline-flex items-center gap-1 rounded-lg border border-green-300 bg-white px-3 py-1.5 font-bold text-green-950 hover:bg-green-50"
             >
@@ -168,7 +162,7 @@ export default function WholesaleBananasPage() {
         </div>
         <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-lg border-4 border-white">
           <Image
-            src="/images/wholesale.png"
+            src="/images/wholesale.webp"
             alt="Wholesale bananas supplied in bulk by BT Banana in Alakode, Nellipara, Kannur, Kerala"
             fill
             priority

@@ -5,7 +5,7 @@ import { serviceLocations } from "@/lib/locations";
 // Keep this tied to a real site/content release. Using `new Date()` here would
 // make every URL look newly changed after each deployment, weakening the
 // sitemap's last-modified signal for crawlers.
-const LAST_CONTENT_UPDATE = new Date("2026-09-18T00:00:00.000Z");
+const LAST_CONTENT_UPDATE = new Date("2026-11-19T00:00:00.000Z");
 
 const routes = [
   { path: "", priority: 1, changeFrequency: "monthly" as const },
@@ -46,7 +46,7 @@ const routes = [
     priority: 0.8,
     changeFrequency: "monthly" as const,
   },
-  { path: "/banana-seeds", priority: 0.9, changeFrequency: "monthly" as const },
+  { path: "/banana-seeds", priority: 1, changeFrequency: "weekly" as const },
   {
     path: "/wholesale-bananas",
     priority: 0.9,
@@ -54,11 +54,6 @@ const routes = [
   },
   {
     path: "/banana-merchant-kannur",
-    priority: 0.95,
-    changeFrequency: "weekly" as const,
-  },
-  {
-    path: "/banana-for-chips",
     priority: 0.95,
     changeFrequency: "weekly" as const,
   },

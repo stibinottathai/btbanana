@@ -265,15 +265,6 @@ export default async function LocationPage({
               </p>
             </Link>
             <Link
-              href="/banana-for-chips"
-              className="rounded-2xl border border-green-100 bg-green-50/50 p-5 transition hover:border-green-300 hover:bg-green-100/60"
-            >
-              <h3 className="font-bold text-green-950">Raw Banana for Chips</h3>
-              <p className="mt-1 text-xs text-neutral-600">
-                High-starch raw green Nendran (Pacha Ethakka) for chips units.
-              </p>
-            </Link>
-            <Link
               href="/banana-prices"
               className="rounded-2xl border border-green-100 bg-green-50/50 p-5 transition hover:border-green-300 hover:bg-green-100/60"
             >

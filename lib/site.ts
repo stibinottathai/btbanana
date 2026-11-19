@@ -8,7 +8,25 @@ export const SITE_NAME = "BT Banana";
 export const SITE_TAGLINE = "Wholesale Banana Supplier in Kannur, Kerala";
 
 export const SITE_DESCRIPTION =
-  "BT Banana is a wholesale banana supplier and banana merchant in Kannur, Kerala. Operating from Alakode and Nellipara, we supply wholesale bananas, raw green Nendran for chips, and banana suckers (Vazhavithu) to traders, retailers, chips makers, and farmers across Kannur, Kasaragod, and Wayanad.";
+  "BT Banana is a wholesale banana supplier and Vazhavithu (വാഴവിത്ത് / banana sucker) supplier based in Kannur, Kerala. We import healthy Vazhavithu from Tamil Nadu nurseries and supply it in bulk to farmers and nurseries across all 14 districts of Kerala, and supply wholesale bananas from Alakode and Nellipara to traders and retailers across Kannur, Kasaragod and Wayanad.";
+
+/** All 14 Kerala districts — Vazhavithu is delivered statewide. */
+export const keralaDistricts = [
+  "Kasaragod",
+  "Kannur",
+  "Wayanad",
+  "Kozhikode",
+  "Malappuram",
+  "Palakkad",
+  "Thrissur",
+  "Ernakulam",
+  "Idukki",
+  "Kottayam",
+  "Alappuzha",
+  "Pathanamthitta",
+  "Kollam",
+  "Thiruvananthapuram",
+];
 
 export type Owner = {
   name: string;
@@ -76,8 +94,7 @@ export const defaultEnquiryMessage =
 export const navLinks = [
   { href: "/", label: "Home" },
   { href: "/wholesale-bananas", label: "Wholesale Bananas" },
-  { href: "/banana-for-chips", label: "Banana for Chips" },
-  { href: "/banana-seeds", label: "Banana Suckers / Seeds" },
+  { href: "/banana-seeds", label: "Vazhavithu / Banana Suckers", short: "Vazhavithu" },
   { href: "/locations", label: "Locations" },
   { href: "/about", label: "About Us" },
   { href: "/contact", label: "Contact" },

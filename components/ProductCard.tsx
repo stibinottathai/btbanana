@@ -8,15 +8,15 @@ export function ProductCard({ product }: { product: Product }) {
   const enquiryMessage = `Hi BT Banana, I'd like to enquire about ${product.name}.`;
 
   return (
-    <article className="flex flex-col overflow-hidden rounded-2xl border border-green-100 bg-white shadow-sm transition-all duration-200 hover:shadow-md hover:border-green-200">
+    <article className="flex flex-col overflow-hidden group rounded-3xl bg-white ring-1 ring-green-900/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-green-900/10">
       {product.image && (
-        <div className="relative h-48 w-full overflow-hidden bg-neutral-100">
+        <div className="relative aspect-[3/2] w-full overflow-hidden bg-green-50">
           <Image
             src={product.image}
             alt={product.imageAlt ?? product.name}
             fill
             sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-            className="object-cover transition-transform duration-300 hover:scale-105"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
         </div>
       )}
@@ -40,7 +40,7 @@ export function ProductCard({ product }: { product: Product }) {
           {product.detailHref && (
             <Link
               href={product.detailHref}
-              className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-green-700 px-4 py-2.5 text-sm font-semibold text-green-800 transition-colors hover:bg-green-50"
+              className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-green-700 px-4 py-2.5 text-sm font-semibold text-green-800 transition-colors hover:bg-green-50"
             >
               View Details
             </Link>
@@ -49,7 +49,7 @@ export function ProductCard({ product }: { product: Product }) {
             href={whatsappHref(primaryWhatsApp, enquiryMessage)}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-green-700 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-green-800 shadow-sm"
+            className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-green-700 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-green-800 shadow-sm"
           >
             <WhatsAppIcon className="h-4 w-4 shrink-0" />
             Enquire Now

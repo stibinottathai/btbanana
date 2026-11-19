@@ -98,7 +98,7 @@ export default function RobustaBananaPage() {
         </div>
         <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-lg">
           <Image
-            src="/images/robusta.png"
+            src="/images/robusta.webp"
             alt="Robusta banana variety supplied wholesale by BT Banana, Kerala"
             fill
             priority

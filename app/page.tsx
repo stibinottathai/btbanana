@@ -1,38 +1,56 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
   branches,
   coveredAreas,
-  defaultEnquiryMessage,
+  formatPhone,
+  keralaDistricts,
   owners,
   primaryPhone,
   primaryWhatsApp,
-  SITE_DESCRIPTION,
   SITE_URL,
 } from "@/lib/site";
 import { products } from "@/lib/products";
 import { CallButton } from "@/components/CallButton";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { ProductCard } from "@/components/ProductCard";
-import { LocationCard } from "@/components/LocationCard";
 import { Faq } from "@/components/Faq";
 import { Reveal } from "@/components/Reveal";
-import { JsonLd } from "@/components/JsonLd";
-import { CheckIcon, LeafIcon, MapPinIcon, UserIcon } from "@/components/icons";
+import {
+  CheckIcon,
+  ChevronRightIcon,
+  LeafIcon,
+  MapPinIcon,
+  PhoneIcon,
+} from "@/components/icons";
 import { serviceLocations } from "@/lib/locations";
 
 export const metadata: Metadata = {
-  title: "Wholesale Banana Supplier in Kannur, Kerala | BT Banana",
+  title: {
+    absolute: "Vazhavithu & Wholesale Banana Supplier in Kerala | BT Banana",
+  },
   description:
-    "Looking for a wholesale banana supplier in Kannur? BT Banana supplies fresh wholesale bananas, raw green Nendran for chips, and banana suckers (Vazhavithu) from Alakode & Nellipara across Kannur, Kasaragod, and Wayanad.",
+    "Buy Vazhavithu (വാഴവിത്ത് / banana suckers) in bulk — imported from Tamil Nadu and delivered to farmers and nurseries across all 14 districts of Kerala. BT Banana, Kannur also supplies wholesale bananas from Alakode & Nellipara.",
+  keywords: [
+    "vazhavithu",
+    "vaazhavithu",
+    "vazha vithu",
+    "വാഴവിത്ത്",
+    "vazhavithu Kerala",
+    "banana suckers Kerala",
+    "banana seeds Kerala",
+    "wholesale banana supplier Kannur",
+    "banana wholesaler Kerala",
+  ],
   alternates: {
     canonical: SITE_URL,
   },
   openGraph: {
-    title: "Wholesale Banana Supplier in Kannur, Kerala | BT Banana",
+    title: "Vazhavithu & Wholesale Banana Supplier in Kerala | BT Banana",
     description:
-      "Wholesale banana supplier, banana merchant, and banana wholesaler based in Alakode and Nellipara, Kannur district, Kerala. Bulk supply for traders, chips makers, and retailers.",
+      "Bulk Vazhavithu (banana suckers) imported from Tamil Nadu and delivered across all of Kerala for farmers and nurseries, plus wholesale bananas from Alakode and Nellipara, Kannur.",
     url: SITE_URL,
     type: "website",
   },
@@ -55,9 +73,19 @@ const homeFaqs = [
       "Wholesale banana rates fluctuate daily based on morning auction arrivals and quality. Wholesale prices vary based on variety, quality, quantity, market conditions and delivery location. Contact Thomas M.J (9447483169) or Albin Augustine (8086648081) directly for today's verified quotation.",
   },
   {
-    question: "Does BT Banana sell banana suckers / seeds (Vazhavithu)?",
+    question: "Where can I buy Vazhavithu (banana suckers) in Kerala?",
     answer:
-      "Yes. We supply vigorous banana planting suckers — locally known in Malayalam as Vazhavithu (വാഴവിത്ത്) — for farmers and commercial growers, with pickup and delivery arranged across Kannur, Wayanad, and all districts of Kerala.",
+      "BT Banana supplies Vazhavithu (വാഴവിത്ത് / banana planting suckers) to farmers, nurseries and plantations in all 14 districts of Kerala — from Kasaragod to Thiruvananthapuram — with delivery arranged to your farm or nursery. Call or WhatsApp Thomas M.J (9447483169) or Albin Augustine (8086648081) for today's rate.",
+  },
+  {
+    question: "Where does your Vazhavithu come from?",
+    answer:
+      "We import our Vazhavithu from established banana nurseries in Tamil Nadu (mainly the Tiruchirappalli / Trichy belt), known for healthy, high-yield suckers, and bring it into Kerala through our Kannur base.",
+  },
+  {
+    question: "Do you supply Vazhavithu in bulk to nurseries and large farms?",
+    answer:
+      "Yes. Bulk supply is our focus — we regularly supply thousands of suckers per order to commercial farmers, plantations, nurseries, resellers and agricultural cooperatives, in Nendran, Njali Poovan, Palayankodan and Robusta varieties.",
   },
   {
     question: "Do you supply wholesale bananas to Kasaragod and Wayanad districts?",
@@ -71,42 +99,108 @@ const homeFaqs = [
   },
 ];
 
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: homeFaqs.map((faq) => ({
-    "@type": "Question",
-    name: faq.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: faq.answer,
-    },
-  })),
-};
-
-const heroTrustPoints = [
-  { icon: LeafIcon, label: "Fresh & Natural" },
-  { icon: CheckIcon, label: "Premium Quality" },
-  { icon: UserIcon, label: "Trusted by Farmers" },
+const heroStats = [
+  { value: String(keralaDistricts.length), label: "Kerala districts" },
+  { value: "Bulk", label: "Farms & nurseries" },
+  { value: "7 days", label: "6 am – 9 pm" },
 ];
 
-const aboutStats = [
-  { value: String(branches.length), label: "Branches in Kerala" },
+const vazhavithuPoints = [
   {
-    value: "5",
-    label: "Named varieties",
+    title: "Imported from Tamil Nadu",
+    description:
+      "Sourced from trusted banana nurseries in the Trichy belt — healthy sword suckers with strong corms.",
   },
-  { value: String(coveredAreas.districts.length), label: "Districts served" },
+  {
+    title: "Bulk quantities",
+    description:
+      "Thousands of suckers per order for plantations, nurseries, resellers and farmer groups.",
+  },
+  {
+    title: "All of Kerala",
+    description:
+      "Delivered to farms and nurseries in every district, from Kasaragod to Thiruvananthapuram.",
+  },
+  {
+    title: "Popular varieties",
+    description:
+      "Nendran, Njali Poovan, Palayankodan (Mysore Poovan) and Robusta, subject to season.",
+  },
 ];
 
-const aboutHighlights = [
-  "Wholesale banana supply",
-  "Different banana varieties",
-  "Banana seed / Vazhavithu supply",
-  "Reasonable pricing",
-  "Alakode branch",
-  "Nellipara branch",
+const vazhavithuMessage =
+  "Hi BT Banana, I'd like a bulk quote for Vazhavithu (banana suckers). Variety: ___, Quantity: ___, Delivery district: ___";
+
+const services = [
+  {
+    eyebrow: "Farmers & Nurseries",
+    title: "Vazhavithu / Banana Suckers",
+    malayalam: "വാഴവിത്ത്",
+    description:
+      "Healthy suckers imported from Tamil Nadu, supplied in bulk to farmers and nurseries across all 14 districts of Kerala.",
+    href: "/banana-seeds",
+    cta: "Order Vazhavithu",
+    image: "/images/vazhavithu.webp",
+    alt: "Freshly harvested Vazhavithu (banana suckers) with a young banana sapling, supplied across Kerala",
+  },
+  {
+    eyebrow: "Traders & Retailers",
+    title: "Wholesale Bananas",
+    description:
+      "Regular bulk supply of Nendran, Njali Poovan, Robusta and Palayankodan for traders, fruit shops, supermarkets and caterers across Malabar.",
+    href: "/wholesale-bananas",
+    cta: "Wholesale supply",
+    image: "/images/wholesale.webp",
+    alt: "Bunches of green wholesale bananas ready for bulk supply in Kannur",
+  },
+  {
+    eyebrow: "Chips Makers & Bakeries",
+    title: "Raw Banana for Chips",
+    malayalam: "പച്ച ഏത്തക്ക",
+    description:
+      "High dry-matter raw green Nendran for crisp, golden chips — daily or scheduled dispatches for hot chips shops and snack factories.",
+    href: "/products/nendran-banana",
+    cta: "View Nendran details",
+    image: "/images/pacha-ethakka.webp",
+    alt: "Heaps of freshly harvested raw green Nendran (pacha ethakka) bunches for banana chips",
+  },
 ];
+
+const benefits = [
+  {
+    title: "Direct from the source",
+    description:
+      "Bananas from the Alakode–Nellipara highland belt, and Vazhavithu imported straight from Tamil Nadu nurseries.",
+  },
+  {
+    title: "Many varieties, one supplier",
+    description:
+      "Nendran, Palayankodan, Robusta, Poovan and plantains — depending on seasonal availability.",
+  },
+  {
+    title: "Fair wholesale pricing",
+    description:
+      "Reasonable rates based on the day's market, quantity and delivery location.",
+  },
+  {
+    title: "Talk to the owners",
+    description:
+      "No call centres — speak directly with Thomas or Albin over phone or WhatsApp.",
+  },
+];
+
+const quickLinks = [
+  { href: "/banana-seeds", label: "Vazhavithu (വാഴവിത്ത്)" },
+  { href: "/wholesale-bananas", label: "Wholesale Bananas" },
+  { href: "/banana-merchant-kannur", label: "Banana Merchant Kannur" },
+  { href: "/banana-prices", label: "Today's Rates" },
+  { href: "/products", label: "All Varieties" },
+  { href: "/locations", label: "Locations" },
+];
+
+const featuredProducts = products
+  .filter((p) => p.category === "banana" && p.slug !== "banana-for-chips")
+  .slice(0, 6);
 
 function getInitials(name: string): string {
   return name
@@ -117,459 +211,373 @@ function getInitials(name: string): string {
     .toUpperCase();
 }
 
-const benefits = [
-  {
-    title: "Wholesale Supply",
-    description:
-      "We supply bananas and banana seeds in bulk to farmers, traders, retailers, and other businesses.",
-  },
-  {
-    title: "Multiple Banana Varieties",
-    description:
-      "Nendran, Palayankodan, Robusta, Poovan, and plantain varieties — we deal in different types of bananas depending on availability.",
-  },
-  {
-    title: "Banana Seeds / Vazhavithu Available",
-    description:
-      "Planting material for farmers looking to grow their own banana crop, supplied at reasonable prices.",
-  },
-  {
-    title: "Reasonable Pricing",
-    description:
-      "We offer our bananas and banana seeds at fair, reasonable wholesale prices.",
-  },
-  {
-    title: "Two Convenient Branches",
-    description:
-      "Supply available from our Alakode branch and our Nellipara branch in Kerala.",
-  },
-  {
-    title: "Direct Contact for Enquiries",
-    description:
-      "Speak directly with Thomas or Albin over phone or WhatsApp for any enquiry.",
-  },
-];
+function SectionLabel({ children }: { children: ReactNode }) {
+  return (
+    <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-green-700">
+      <span className="h-px w-6 bg-green-700" aria-hidden="true" />
+      {children}
+    </span>
+  );
+}
 
 export default function Home() {
   return (
     <>
-      <JsonLd data={faqJsonLd} />
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-green-50 via-green-50/50 to-white">
-        {/* Decorative ambient background */}
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute -top-24 -left-24 h-80 w-80 rounded-full bg-green-300/30 blur-3xl" />
-          <div className="absolute -bottom-24 right-0 h-96 w-96 rounded-full bg-amber-300/25 blur-3xl" />
-        </div>
+      {/* ───────────────── Hero ───────────────── */}
+      <section className="relative isolate flex min-h-[calc(100svh-var(--header-h,4rem))] flex-col justify-center overflow-hidden bg-green-950 text-white">
+        <Image
+          src="/images/wholesale.webp"
+          alt="Fresh green banana bunches at BT Banana, wholesale banana supplier in Alakode, Kannur"
+          fill
+          preload
+          quality={75}
+          sizes="100vw"
+          className="-z-20 object-cover"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 bg-gradient-to-r from-green-950 via-green-950/85 to-green-950/30"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-0 bottom-0 -z-10 h-40 bg-gradient-to-t from-green-950/80 to-transparent"
+        />
 
-        <div className="relative mx-auto grid max-w-6xl items-start gap-12 px-4 pt-10 pb-16 sm:px-6 sm:pt-14 sm:pb-24 lg:grid-cols-2 lg:gap-16 lg:pt-16 lg:pb-28">
-          <div>
-            <p className="inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-1.5 text-sm font-medium text-green-800 shadow-sm ring-1 ring-green-900/10 backdrop-blur">
-              <LeafIcon className="h-4 w-4 text-green-600" />
-              Alakode &amp; Nellipara, Kannur, Kerala
+        <div className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 sm:py-14 lg:py-16 short:py-6">
+          <div className="max-w-2xl">
+            <p className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-sm font-medium text-green-50 backdrop-blur">
+              <MapPinIcon className="h-4 w-4 text-amber-300" />
+              Kannur based · Delivering across all of Kerala
             </p>
 
-            <h1 className="mt-4 text-3xl font-bold leading-[1.15] tracking-tight text-green-950 sm:text-4xl lg:text-5xl">
-              Wholesale Banana Supplier in Kannur, Kerala
+            <h1 className="mt-5 text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl short:text-5xl">
+              <span className="text-amber-300">Vazhavithu</span> &amp;
+              Wholesale Banana Supplier in Kerala
             </h1>
 
-            <p className="mt-5 max-w-xl text-lg leading-8 text-neutral-700">
-              BT Banana is an established <strong className="font-semibold text-green-950">banana wholesaler and merchant in Kannur</strong>. From our primary depots in <strong className="font-semibold text-green-900">Alakode</strong> and <strong className="font-semibold text-green-900">Nellipara</strong>, we supply fresh wholesale bananas, raw green Nendran for chips (പച്ച ഏത്തക്ക), and healthy banana suckers / Vazhavithu (വാഴവിത്ത്) across <strong className="font-semibold text-green-900">Kannur, Kasaragod, and Wayanad</strong> districts.
+            <p className="mt-5 max-w-xl text-base leading-7 text-green-50/90 sm:text-lg sm:leading-8 short:text-base short:leading-7">
+              Bulk Vazhavithu (വാഴവിത്ത് / banana suckers) imported from Tamil
+              Nadu and delivered to farmers and nurseries in all 14 districts of
+              Kerala — plus fresh wholesale bananas from our Alakode and
+              Nellipara depots in Kannur.
             </p>
 
-            <div className="mt-8 flex flex-row flex-nowrap items-center gap-2.5 sm:gap-4">
+            <div className="mt-7 flex flex-wrap items-center gap-3 short:mt-5">
               <CallButton
                 phone={primaryPhone}
-                size="md"
-                label={
-                  <>
-                    <span className="hidden sm:inline">Call for Wholesale Orders</span>
-                    <span className="sm:hidden">Call for Orders</span>
-                  </>
-                }
-                ariaLabel="Call for Wholesale Orders"
-                className="whitespace-nowrap shadow-md shadow-green-900/10 transition-shadow hover:shadow-lg"
+                size="lg"
+                label="Call for Bulk Orders"
+                className="bg-amber-400! text-green-950! shadow-lg shadow-black/20 hover:bg-amber-300!"
               />
               <WhatsAppButton
                 phone={primaryWhatsApp}
-                message={defaultEnquiryMessage}
-                size="md"
-                label={
-                  <>
-                    <span className="hidden sm:inline">WhatsApp BT Banana</span>
-                    <span className="sm:hidden">WhatsApp Us</span>
-                  </>
-                }
-                ariaLabel="WhatsApp BT Banana"
-                className="whitespace-nowrap shadow-md shadow-green-900/10 transition-shadow hover:shadow-lg"
+                message={vazhavithuMessage}
+                size="lg"
+                label="Vazhavithu Quote"
+                className="shadow-lg shadow-black/20"
               />
             </div>
           </div>
 
-          <div className="relative group lg:mt-6 xl:mt-7">
-            {/* Ambient Background Glow */}
-            <div className="absolute -inset-2 rounded-[2rem] bg-gradient-to-br from-green-600/30 via-emerald-500/15 to-amber-500/30 blur-2xl opacity-75 transition duration-500 group-hover:opacity-100" />
-
-            {/* Main Image Frame with Premium Multi-layer Border & Shadow */}
-            <div className="relative overflow-hidden rounded-3xl border-4 border-white bg-white shadow-[0_20px_50px_rgba(6,78,59,0.2)] ring-1 ring-green-900/10">
-              <div className="relative aspect-[3/2] w-full">
-                <Image
-                  src="/images/nendran.png"
-                  alt="Fresh bananas supplied wholesale by BT Banana, Alakode & Nellipara, Kerala"
-                  fill
-                  priority
-                  sizes="(min-width: 1024px) 50vw, 100vw"
-                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                />
+          <dl className="mt-10 grid max-w-xl short:mt-6 grid-cols-3 divide-x divide-white/15 rounded-2xl border border-white/15 bg-white/5 backdrop-blur">
+            {heroStats.map((stat) => (
+              <div key={stat.label} className="px-4 py-4 sm:px-6">
+                <dt className="sr-only">{stat.label}</dt>
+                <dd className="text-xl font-extrabold text-amber-300 sm:text-2xl">
+                  {stat.value}
+                </dd>
+                <dd className="mt-0.5 text-xs font-medium text-green-100/80 sm:text-sm">
+                  {stat.label}
+                </dd>
               </div>
-            </div>
-
-            {/* Floating trust card */}
-            <div className="absolute -bottom-6 left-6 right-6 flex items-center gap-3 rounded-2xl bg-white/95 p-4 shadow-xl ring-1 ring-green-900/10 backdrop-blur sm:right-auto sm:left-8 sm:w-auto">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-amber-400 text-green-950">
-                <LeafIcon className="h-5 w-5" />
-              </span>
-              <div>
-                <p className="text-sm font-bold leading-tight text-green-950">
-                  Quality You Can Trust
-                </p>
-                <p className="text-xs font-medium text-neutral-500">
-                  From Root to Fruit
-                </p>
-              </div>
-            </div>
-          </div>
+            ))}
+          </dl>
         </div>
       </section>
 
-      {/* Scroll-Down Feature Bar: Trust Highlights & Core Service Routes */}
-      <section className="border-y border-green-100 bg-white/95 py-6 shadow-sm">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-            {/* Trust highlights */}
-            <div className="flex flex-wrap items-center gap-6 sm:gap-10">
-              {heroTrustPoints.map(({ icon: Icon, label }) => (
-                <div key={label} className="flex items-center gap-2.5">
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-green-100 text-green-700">
-                    <Icon className="h-4 w-4" />
-                  </span>
-                  <p className="text-xs sm:text-sm font-semibold text-green-950">
-                    {label}
-                  </p>
-                </div>
-              ))}
-            </div>
+      {/* ───────────────── Quick links strip ───────────────── */}
+      <nav
+        aria-label="Popular pages"
+        className="border-b border-green-100 bg-white"
+      >
+        <div className="mx-auto flex max-w-6xl gap-2 overflow-x-auto px-4 py-4 sm:px-6 [scrollbar-width:none]">
+          {quickLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="inline-flex shrink-0 items-center gap-1 rounded-full border border-green-200 px-4 py-2 text-sm font-semibold text-green-900 transition hover:border-green-700 hover:bg-green-50"
+            >
+              {link.label}
+              <ChevronRightIcon className="h-4 w-4 text-green-600" />
+            </Link>
+          ))}
+        </div>
+      </nav>
 
-            {/* Quick links */}
-            <div className="flex flex-wrap items-center gap-2 text-xs">
+      {/* ───────────────── Services ───────────────── */}
+      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:py-24">
+        <Reveal className="max-w-2xl">
+          <SectionLabel>What we do</SectionLabel>
+          <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-green-950 sm:text-4xl">
+            Vazhavithu for growers, bananas for traders
+          </h2>
+          <p className="mt-4 text-lg leading-8 text-neutral-600">
+            Whether you plant, trade or fry, we supply what you need in bulk —
+            with current availability and rates a phone call away.
+          </p>
+        </Reveal>
+
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
+          {services.map((service) => (
+            <Reveal key={service.href} className="grid">
               <Link
-                href="/wholesale-bananas"
-                className="rounded-lg border border-green-200 bg-green-50/60 px-3 py-1.5 font-semibold text-green-900 hover:bg-green-100 transition"
+                href={service.href}
+                className="group flex flex-col overflow-hidden rounded-3xl bg-white ring-1 ring-green-900/10 transition hover:-translate-y-1 hover:shadow-xl hover:shadow-green-900/10"
               >
-                🍌 Wholesale Bananas →
+                <div className="relative aspect-[4/3] overflow-hidden bg-green-50">
+                  <Image
+                    src={service.image}
+                    alt={service.alt}
+                    fill
+                    sizes="(min-width: 768px) 33vw, 100vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-bold text-green-900 backdrop-blur">
+                    {service.eyebrow}
+                  </span>
+                </div>
+                <div className="flex flex-1 flex-col p-6">
+                  <h3 className="text-xl font-bold text-green-950">
+                    {service.title}
+                    {service.malayalam && (
+                      <span className="mt-1 block text-sm font-semibold text-green-700">
+                        {service.malayalam}
+                      </span>
+                    )}
+                  </h3>
+                  <p className="mt-3 text-sm leading-6 text-neutral-600">
+                    {service.description}
+                  </p>
+                  <span className="mt-auto inline-flex items-center gap-1 pt-5 text-sm font-bold text-green-800">
+                    {service.cta}
+                    <ChevronRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </span>
+                </div>
               </Link>
-              <Link
-                href="/banana-merchant-kannur"
-                className="rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-1.5 font-semibold text-emerald-950 hover:bg-emerald-100 transition"
-              >
-                🏪 Banana Merchant Kannur →
-              </Link>
-              <Link
-                href="/banana-for-chips"
-                className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-1.5 font-semibold text-amber-950 hover:bg-amber-100 transition"
-              >
-                🍟 Chips Bananas →
-              </Link>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* ───────────────── Vazhavithu spotlight ───────────────── */}
+      <section
+        aria-labelledby="vazhavithu-heading"
+        className="relative isolate mb-20 overflow-hidden bg-green-950 text-white lg:mb-24"
+      >
+        <div
+          aria-hidden="true"
+          className="absolute -left-32 -top-32 -z-10 h-[28rem] w-[28rem] rounded-full bg-green-800/40 blur-3xl"
+        />
+        <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 py-20 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:py-24">
+          <Reveal>
+            <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-amber-300">
+              <LeafIcon className="h-4 w-4" />
+              Vazhavithu · വാഴവിത്ത്
+            </span>
+            <h2
+              id="vazhavithu-heading"
+              className="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl"
+            >
+              Bulk Vazhavithu for farmers &amp; nurseries — across all of Kerala
+            </h2>
+            <p className="mt-5 text-lg leading-8 text-green-100/85">
+              We import healthy banana suckers (Vazhavithu, also searched as
+              vaazhavithu or vazha vithu) from Tamil Nadu nurseries and supply
+              them in large quantities to farmers, plantations, nurseries and
+              resellers in every district of Kerala.
+            </p>
+
+            <ul className="mt-8 grid gap-4 sm:grid-cols-2">
+              {vazhavithuPoints.map((point) => (
+                <li
+                  key={point.title}
+                  className="rounded-2xl border border-white/10 bg-white/5 p-5"
+                >
+                  <p className="flex items-center gap-2 font-bold text-white">
+                    <CheckIcon className="h-4 w-4 shrink-0 text-amber-300" />
+                    {point.title}
+                  </p>
+                  <p className="mt-1.5 text-sm leading-6 text-green-100/75">
+                    {point.description}
+                  </p>
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <WhatsAppButton
+                phone={primaryWhatsApp}
+                message={vazhavithuMessage}
+                size="md"
+                label="Get a Bulk Vazhavithu Quote"
+              />
               <Link
                 href="/banana-seeds"
-                className="rounded-lg border border-green-200 bg-green-50/60 px-3 py-1.5 font-semibold text-green-900 hover:bg-green-100 transition"
+                className="inline-flex items-center gap-1 rounded-full border-2 border-white/30 px-5 py-2.5 text-sm font-semibold text-white transition hover:border-amber-300 hover:text-amber-300 sm:py-3 sm:text-base"
               >
-                🌱 Banana Suckers →
-              </Link>
-              <Link
-                href="/banana-prices"
-                className="rounded-lg border border-green-200 bg-green-50/60 px-3 py-1.5 font-semibold text-green-900 hover:bg-green-100 transition"
-              >
-                📊 Today&apos;s Rates →
+                Varieties, delivery &amp; FAQs
+                <ChevronRightIcon className="h-4 w-4" />
               </Link>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* About */}
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-        <div className="grid gap-10 lg:grid-cols-3">
-          <Reveal className="lg:col-span-1">
-            <span className="inline-flex items-center gap-2 rounded-full bg-green-100 px-4 py-1.5 text-sm font-medium text-green-800">
-              <LeafIcon className="h-4 w-4" />
-              Who We Are
-            </span>
-            <h2 className="mt-4 text-3xl font-bold tracking-tight text-green-950">
-              About BT Banana
-            </h2>
-            <dl className="mt-8 space-y-5 border-t border-green-900/10 pt-6">
-              {aboutStats.map((stat) => (
-                <div key={stat.label} className="flex items-baseline gap-3">
-                  <dt className="text-3xl font-bold text-green-800">
-                    {stat.value}
-                  </dt>
-                  <dd className="text-sm font-medium leading-snug text-neutral-600">
-                    {stat.label}
-                  </dd>
-                </div>
-              ))}
-            </dl>
           </Reveal>
 
-          <Reveal delay={120} className="lg:col-span-2">
-            <p className="text-lg leading-8 text-neutral-700">
-              BT Banana is a wholesale banana supplier based in Kerala,
-              supplying different varieties of bananas along with banana
-              seeds — locally known as Vazhavithu — at reasonable prices. We
-              work with farmers, traders, retailers, and other businesses who
-              need banana supply in bulk.
-            </p>
-            <p className="mt-4 text-lg leading-8 text-neutral-700">
-              We operate from two branches — our Alakode branch and our
-              Nellipara branch — supplying customers across the local area
-              and beyond. Whether you need bananas for trading and retail, or
-              banana planting material to start your own cultivation, you can
-              reach out to us directly for current availability and pricing.
-            </p>
-
-            <div className="mt-8 grid gap-3 sm:grid-cols-2">
-              {aboutHighlights.map((item) => (
-                <div
-                  key={item}
-                  className="flex items-center gap-3 rounded-xl border border-green-100 bg-green-50/60 px-4 py-3"
-                >
-                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-green-700 text-white">
-                    <CheckIcon className="h-3.5 w-3.5" />
-                  </span>
-                  <span className="text-sm font-semibold text-green-950">
-                    {item}
-                  </span>
-                </div>
-              ))}
+          <Reveal>
+            <div className="relative aspect-[4/3] overflow-hidden rounded-3xl ring-1 ring-white/10">
+              <Image
+                src="/images/vazhavithu.webp"
+                alt="Healthy Vazhavithu (banana suckers) imported from Tamil Nadu for farmers and nurseries in Kerala"
+                fill
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-cover"
+              />
             </div>
-
-            <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4 rounded-2xl border border-neutral-100 bg-neutral-50 p-5">
-              <p className="text-xs font-bold uppercase tracking-wider text-neutral-500">
-                Run Directly By
+            <div className="mt-6">
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-green-200">
+                Delivered to all 14 districts
               </p>
-              <div className="flex flex-wrap gap-5">
-                {owners.map((owner) => (
-                  <div key={owner.phone} className="flex items-center gap-2.5">
-                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-green-800 text-xs font-bold text-white">
-                      {getInitials(owner.name)}
-                    </span>
-                    <div className="leading-tight">
-                      <p className="text-sm font-bold text-green-950">
-                        {owner.name}
-                      </p>
-                      <p className="text-xs text-neutral-500">{owner.role}</p>
-                    </div>
-                  </div>
+              <ul className="mt-3 flex flex-wrap gap-2">
+                {keralaDistricts.map((district) => (
+                  <li
+                    key={district}
+                    className="rounded-full border border-white/15 px-3 py-1 text-xs font-medium text-green-50"
+                  >
+                    {district}
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           </Reveal>
         </div>
       </section>
 
-      {/* Products overview */}
-      <section className="border-y border-green-100 bg-green-50/50">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-          <Reveal className="flex flex-wrap items-end justify-between gap-4">
-            <h2 className="text-3xl font-bold text-green-950">
-              What We Supply
-            </h2>
-            <Link
-              href="/products"
-              className="text-sm font-semibold text-green-700 hover:underline"
-            >
-              View all products →
-            </Link>
-          </Reveal>
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {products.map((product, index) => (
-              <Reveal
-                key={product.slug}
-                delay={(index % 3) * 100}
-                className="grid"
-              >
-                <ProductCard product={product} />
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Vazhavithu section */}
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-        <div className="grid items-center gap-10 overflow-hidden rounded-3xl bg-amber-50 lg:grid-cols-2">
-          <Reveal className="relative h-64 lg:h-full lg:min-h-[420px]">
-            <Image
-              src="/images/vazhavithu.png"
-              alt="Freshly harvested banana seeds / Vazhavithu planting material with a young banana sapling"
-              fill
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              className="object-cover"
+      {/* ───────────────── Today's rates banner ───────────────── */}
+      <section className="mx-auto max-w-6xl px-4 sm:px-6">
+        <Reveal>
+          <div className="relative overflow-hidden rounded-3xl bg-amber-400 px-6 py-10 sm:px-12 sm:py-12">
+            <div
+              aria-hidden="true"
+              className="absolute -right-16 -top-16 h-64 w-64 rounded-full bg-amber-300"
             />
-          </Reveal>
-          <Reveal delay={120} className="p-8 sm:p-12 lg:pl-0">
-            <h2 className="text-3xl font-bold text-green-950">
-              Banana Seeds / Vazhavithu
-            </h2>
-            <p className="mt-4 text-lg leading-8 text-neutral-700">
-              Banana seeds — known in Malayalam as{" "}
-              <span className="font-semibold">Vazhavithu (വാഴവിത്ത്)</span> —
-              are the planting material farmers use to grow their own banana
-              crop. BT Banana supplies banana Vazhavithu at reasonable
-              wholesale prices, so farmers and growers across Kerala can
-              source good planting material without hassle.
-            </p>
-            <p className="mt-4 text-lg leading-8 text-neutral-700">
-              If you&apos;re a farmer near Alakode, Nellipara, Kannur, or
-              elsewhere in Kerala looking for a banana seed supplier, you can
-              contact us directly for current availability.
-            </p>
-            <Link
-              href="/banana-seeds"
-              className="mt-6 inline-flex items-center text-sm font-semibold text-green-800 hover:underline"
-            >
-              Learn more about our banana seeds →
-            </Link>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <CallButton
-                phone={primaryPhone}
-                variant="outline"
-                className="px-5 py-2.5 text-sm"
-              />
-              <WhatsAppButton
-                phone={primaryWhatsApp}
-                className="px-5 py-2.5 text-sm"
-              />
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* Commercial B2B Spotlight: Banana Merchant, Chips Bananas & Live Daily Rates */}
-      <section className="border-t border-green-100 bg-white py-14">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            <Reveal className="rounded-3xl border border-emerald-200/80 bg-gradient-to-br from-emerald-50/70 to-white p-8 shadow-sm flex flex-col justify-between">
-              <div>
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-900">
-                  <LeafIcon className="h-3.5 w-3.5 text-emerald-700" />
-                  Trading &amp; Wholesale
-                </span>
-                <h3 className="mt-4 text-2xl font-bold text-green-950">
-                  Banana Merchant in Kannur
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-neutral-600">
-                  Regular bulk supply for traders, retailers, supermarkets, and caterers across Kannur and Malabar. Fresh arrivals of Nendran, Njali Poovan, Robusta, and Palayankodan.
+            <div className="relative flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+              <div className="max-w-xl">
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-green-900">
+                  Market transparency
+                </p>
+                <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-green-950 sm:text-3xl">
+                  Need today&apos;s wholesale banana rate?
+                </h2>
+                <p className="mt-2 text-green-950/80">
+                  Prices change daily with morning arrivals and mandi auctions.
+                  Get a verified quote for your variety and quantity.
                 </p>
               </div>
-              <div className="mt-6 flex flex-wrap items-center gap-3">
-                <Link
-                  href="/banana-merchant-kannur"
-                  className="rounded-xl bg-green-800 px-4 py-2.5 text-xs font-bold text-white shadow-sm transition hover:bg-green-700"
-                >
-                  Banana Merchant Details →
-                </Link>
-                <Link
-                  href="/wholesale-bananas"
-                  className="text-xs font-semibold text-green-800 hover:underline"
-                >
-                  Wholesale Hub →
-                </Link>
-              </div>
-            </Reveal>
-
-            <Reveal delay={80} className="rounded-3xl border border-emerald-200/80 bg-gradient-to-br from-emerald-50/70 to-white p-8 shadow-sm flex flex-col justify-between">
-              <div>
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-900">
-                  <LeafIcon className="h-3.5 w-3.5 text-emerald-700" />
-                  For Chips Makers &amp; Snack Units
-                </span>
-                <h3 className="mt-4 text-2xl font-bold text-green-950">
-                  Raw Banana for Chips (Pacha Ethakka)
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-neutral-600">
-                  Sourcing raw green Nendran (പച്ച ഏത്തക്ക) with high dry matter and crisp frying quality. We supply hot chips shops, bakeries, and commercial chips factories with daily or scheduled bulk dispatches.
-                </p>
-              </div>
-              <div className="mt-6 flex flex-wrap items-center gap-3">
-                <Link
-                  href="/banana-for-chips"
-                  className="rounded-xl bg-green-800 px-4 py-2.5 text-xs font-bold text-white shadow-sm transition hover:bg-green-700"
-                >
-                  Chips Banana Specs →
-                </Link>
-                <WhatsAppButton
-                  phone={primaryWhatsApp}
-                  message="Hi BT Banana, I need a quote for raw green Nendran bananas for chips manufacturing."
-                  label="Enquire for Chips"
-                  className="px-4 py-2 text-xs"
-                />
-              </div>
-            </Reveal>
-
-            <Reveal delay={160} className="rounded-3xl border border-amber-200/80 bg-gradient-to-br from-amber-50/70 to-white p-8 shadow-sm flex flex-col justify-between md:col-span-2 lg:col-span-1">
-              <div>
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-900">
-                  <CheckIcon className="h-3.5 w-3.5 text-amber-700" />
-                  Market Transparency
-                </span>
-                <h3 className="mt-4 text-2xl font-bold text-green-950">
-                  Today&apos;s Wholesale Rates
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-neutral-600">
-                  Banana market rates change daily based on morning arrivals and mandi auctions. Learn how rates are set, and get today&apos;s verified farm gate and wholesale price directly over WhatsApp.
-                </p>
-              </div>
-              <div className="mt-6 flex flex-wrap items-center gap-3">
-                <Link
-                  href="/banana-prices"
-                  className="rounded-xl bg-amber-400 px-4 py-2.5 text-xs font-bold text-green-950 shadow-sm transition hover:bg-amber-300"
-                >
-                  View Price Guide →
-                </Link>
+              <div className="flex flex-wrap gap-3">
                 <CallButton
                   phone={primaryPhone}
                   label="Call for Rate"
-                  variant="outline"
-                  className="border-green-800 text-green-950 px-3 py-2 text-xs"
+                  size="md"
+                  className="bg-green-950! hover:bg-green-900!"
                 />
+                <Link
+                  href="/banana-prices"
+                  className="inline-flex items-center gap-1 rounded-full border-2 border-green-950 px-5 py-2.5 text-sm font-semibold text-green-950 transition hover:bg-green-950 hover:text-white sm:py-3 sm:text-base"
+                >
+                  Price guide
+                  <ChevronRightIcon className="h-4 w-4" />
+                </Link>
               </div>
-            </Reveal>
+            </div>
           </div>
+        </Reveal>
+      </section>
+
+      {/* ───────────────── Varieties ───────────────── */}
+      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:py-24">
+        <Reveal className="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <SectionLabel>Varieties</SectionLabel>
+            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-green-950 sm:text-4xl">
+              What we supply
+            </h2>
+          </div>
+          <Link
+            href="/products"
+            className="inline-flex items-center gap-1 text-sm font-bold text-green-800 hover:underline"
+          >
+            View all products
+            <ChevronRightIcon className="h-4 w-4" />
+          </Link>
+        </Reveal>
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {featuredProducts.map((product) => (
+            <Reveal key={product.slug} className="grid">
+              <ProductCard product={product} />
+            </Reveal>
+          ))}
         </div>
       </section>
 
-      {/* Why choose us */}
-      <section className="border-y border-green-100 bg-green-50/50">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+      {/* ───────────────── About / Why us ───────────────── */}
+      <section className="bg-green-50/70">
+        <div className="mx-auto grid max-w-6xl gap-12 px-4 py-20 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:py-24">
           <Reveal>
-            <h2 className="text-3xl font-bold text-green-950">
-              Why Choose BT Banana
+            <SectionLabel>About BT Banana</SectionLabel>
+            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-green-950 sm:text-4xl">
+              A family-run banana wholesaler from Kerala&apos;s highlands
             </h2>
+            <p className="mt-5 text-lg leading-8 text-neutral-700">
+              BT Banana supplies different varieties of bananas along with
+              banana seeds — locally known as Vazhavithu — at reasonable prices.
+              We work with farmers, traders, retailers and businesses who need
+              banana supply in bulk, from our Alakode and Nellipara branches.
+            </p>
+
+            <div className="mt-8 flex flex-wrap gap-4">
+              {owners.map((owner) => (
+                <div
+                  key={owner.phone}
+                  className="flex items-center gap-3 rounded-2xl bg-white px-4 py-3 ring-1 ring-green-900/10"
+                >
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-green-800 text-sm font-bold text-white">
+                    {getInitials(owner.name)}
+                  </span>
+                  <div className="leading-tight">
+                    <p className="text-sm font-bold text-green-950">
+                      {owner.name}
+                    </p>
+                    <p className="text-xs text-neutral-500">{owner.role}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <Link
+              href="/about"
+              className="mt-8 inline-flex items-center gap-1 text-sm font-bold text-green-800 hover:underline"
+            >
+              More about us
+              <ChevronRightIcon className="h-4 w-4" />
+            </Link>
           </Reveal>
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {benefits.map((benefit, index) => (
-              <Reveal
-                key={benefit.title}
-                delay={(index % 3) * 100}
-                className="grid"
-              >
-                <div className="rounded-2xl border border-green-100 bg-white p-6">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-green-100 text-green-800">
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            {benefits.map((benefit) => (
+              <Reveal key={benefit.title} className="grid">
+                <div className="rounded-2xl bg-white p-6 ring-1 ring-green-900/10">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-green-800 text-amber-300">
                     <CheckIcon className="h-5 w-5" />
                   </span>
-                  <h3 className="mt-4 font-semibold text-green-900">
+                  <h3 className="mt-4 font-bold text-green-950">
                     {benefit.title}
                   </h3>
                   <p className="mt-2 text-sm leading-6 text-neutral-600">
@@ -582,177 +590,196 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Locations */}
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-        <Reveal className="flex flex-wrap items-end justify-between gap-4">
-          <h2 className="text-3xl font-bold text-green-950">
-            Our Branches
+      {/* ───────────────── Branches & coverage ───────────────── */}
+      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:py-24">
+        <Reveal className="max-w-2xl">
+          <SectionLabel>Branches &amp; coverage</SectionLabel>
+          <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-green-950 sm:text-4xl">
+            Areas we cover
           </h2>
-          <Link
-            href="/locations"
-            className="text-sm font-semibold text-green-700 hover:underline"
-          >
-            View location details →
-          </Link>
+          <p className="mt-4 text-lg leading-8 text-neutral-600">
+            Two branches in Kannur district. Vazhavithu is delivered to all 14
+            districts of Kerala; wholesale bananas and chips plantains are
+            supplied across{" "}
+            {coveredAreas.districts.join(", ").replace(/, ([^,]*)$/, " and $1")}.
+          </p>
         </Reveal>
-        <div className="mt-8 grid gap-6 sm:grid-cols-2">
-          {branches.map((branch, index) => (
-            <Reveal
-              key={branch.slug}
-              delay={(index % 2) * 100}
-              className="grid"
-            >
-              <LocationCard branch={branch} />
+
+        <div className="mt-10 grid gap-6 md:grid-cols-2">
+          {branches.map((branch) => (
+            <Reveal key={branch.slug} className="grid">
+              <article className="flex flex-col rounded-3xl border border-green-100 bg-white p-6 sm:p-8">
+                <div className="flex items-center gap-3">
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-amber-400 text-green-950">
+                    <MapPinIcon className="h-6 w-6" />
+                  </span>
+                  <div>
+                    <h3 className="text-xl font-bold text-green-950">
+                      <Link
+                        href={`/locations/${branch.slug}`}
+                        className="hover:underline"
+                      >
+                        {branch.name}
+                      </Link>
+                    </h3>
+                    <p className="text-sm font-medium text-green-700">
+                      {branch.place}
+                    </p>
+                  </div>
+                </div>
+                <p className="mt-4 text-sm leading-6 text-neutral-600">
+                  {branch.description}
+                </p>
+                <div className="mt-auto flex flex-wrap gap-4 pt-5 text-sm font-bold">
+                  <Link
+                    href={`/locations/${branch.slug}`}
+                    className="inline-flex items-center gap-1 text-green-800 hover:underline"
+                  >
+                    Branch details
+                    <ChevronRightIcon className="h-4 w-4" />
+                  </Link>
+                  <a
+                    href={branch.mapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-neutral-600 hover:text-green-800 hover:underline"
+                  >
+                    Open in Google Maps
+                  </a>
+                </div>
+              </article>
             </Reveal>
           ))}
         </div>
+
+        <Reveal className="mt-6 rounded-3xl bg-green-950 p-6 text-white sm:p-8">
+          <div className="flex flex-wrap items-center gap-2">
+            {coveredAreas.districts.map((district) => (
+              <span
+                key={district}
+                className="rounded-full bg-amber-400 px-3 py-1 text-xs font-bold text-green-950"
+              >
+                {district} District
+              </span>
+            ))}
+          </div>
+          <h3 className="mt-5 text-sm font-bold uppercase tracking-[0.18em] text-green-200">
+            Key towns &amp; localities supplied
+          </h3>
+          <ul className="mt-4 flex flex-wrap gap-2">
+            {coveredAreas.localities.map((location) => {
+              const locationPage = serviceLocations.find(
+                (l) => l.name === location
+              );
+              const className =
+                "inline-flex items-center gap-1.5 rounded-full border border-white/15 px-3.5 py-1.5 text-sm font-medium text-green-50";
+              return (
+                <li key={location}>
+                  {locationPage ? (
+                    <Link
+                      href={`/locations/${locationPage.slug}`}
+                      className={`${className} transition hover:border-amber-300 hover:text-amber-300`}
+                    >
+                      <MapPinIcon className="h-3.5 w-3.5 text-amber-300" />
+                      {location}
+                    </Link>
+                  ) : (
+                    <span className={className}>
+                      <MapPinIcon className="h-3.5 w-3.5 text-green-400" />
+                      {location}
+                    </span>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+          <p className="mt-6 text-sm text-green-200/80">
+            Don&apos;t see your location? If you&apos;re near Kannur or
+            Kasaragod, call or WhatsApp us to check supply availability.
+          </p>
+        </Reveal>
       </section>
 
-      {/* Areas We Cover */}
-      <section className="border-t border-green-100 bg-gradient-to-b from-white via-green-50/40 to-white">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-          <Reveal className="flex flex-col items-center text-center">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-3.5 py-1 text-xs font-bold text-emerald-800">
-              <MapPinIcon className="h-3.5 w-3.5 text-emerald-700" />
-              Wholesale Delivery &amp; Supply Network
-            </span>
-            <h2 className="mt-4 text-3xl font-bold tracking-tight text-green-950 sm:text-4xl">
-              Areas We Cover
-            </h2>
-            <p className="mt-3 max-w-2xl text-base text-neutral-600">
-              BT Banana supplies wholesale bananas, raw chips plantains, and banana seeds (Vazhavithu) across key locations in <strong className="font-semibold text-green-900">Kannur</strong>, <strong className="font-semibold text-green-900">Kasaragod</strong>, and <strong className="font-semibold text-green-900">Wayanad</strong> districts in Kerala.
+      {/* ───────────────── FAQ ───────────────── */}
+      <section className="border-t border-green-100 bg-green-50/40">
+        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-20 sm:px-6 lg:grid-cols-3 lg:py-24">
+          <Reveal>
+            <SectionLabel>FAQ</SectionLabel>
+            <p className="mt-4 text-lg leading-8 text-neutral-600">
+              Quick answers about wholesale supply, chips bananas, Vazhavithu
+              and daily rates.
             </p>
-          </Reveal>
-
-          {/* District Highlights Header Cards */}
-          <div className="mt-10 grid gap-6 sm:grid-cols-3">
-            <Reveal className="grid">
-              <div className="flex items-center gap-4 rounded-2xl border border-green-100 bg-white p-5 shadow-sm">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-amber-400 text-green-950 shadow-sm">
-                  <MapPinIcon className="h-6 w-6" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold text-green-950">Kannur District</h3>
-                  <p className="text-xs font-semibold text-green-700">Primary Hub: Alakode &amp; Nellipara</p>
-                </div>
-              </div>
-            </Reveal>
-
-            <Reveal delay={100} className="grid">
-              <div className="flex items-center gap-4 rounded-2xl border border-green-100 bg-white p-5 shadow-sm">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-green-700 text-white shadow-sm">
-                  <MapPinIcon className="h-6 w-6" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold text-green-950">Kasaragod District</h3>
-                  <p className="text-xs font-semibold text-green-700">Northern Kerala &amp; Chittarikkal</p>
-                </div>
-              </div>
-            </Reveal>
-
-            <Reveal delay={200} className="grid">
-              <div className="flex items-center gap-4 rounded-2xl border border-green-100 bg-white p-5 shadow-sm">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-emerald-800 text-white shadow-sm">
-                  <MapPinIcon className="h-6 w-6" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold text-green-950">Wayanad District</h3>
-                  <p className="text-xs font-semibold text-green-700">Highland Banana &amp; Seed Belt</p>
-                </div>
-              </div>
-            </Reveal>
-          </div>
-
-          {/* Covered Locations Grid */}
-          <Reveal className="mt-8 rounded-3xl border border-green-100 bg-white p-6 shadow-sm sm:p-8">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-green-900">
-              Key Towns &amp; Localities Supplied:
-            </h3>
-            <div className="mt-4 flex flex-wrap gap-2.5">
-              {coveredAreas.localities.map((location) => {
-                const locationPage = serviceLocations.find(
-                  (l) => l.name === location
-                );
-                const className =
-                  "flex items-center gap-2 rounded-xl border border-green-200/80 bg-green-50/60 px-4 py-2.5 text-sm font-semibold text-green-950 transition hover:bg-green-100 hover:border-green-300";
-
-                if (locationPage) {
-                  return (
-                    <Link
-                      key={location}
-                      href={`/locations/${locationPage.slug}`}
-                      className={className}
-                    >
-                      <MapPinIcon className="h-4 w-4 text-emerald-600 shrink-0" />
-                      <span>{location}</span>
-                    </Link>
-                  );
-                }
-
-                return (
-                  <div key={location} className={className}>
-                    <MapPinIcon className="h-4 w-4 text-emerald-600 shrink-0" />
-                    <span>{location}</span>
-                  </div>
-                );
-              })}
+            <div className="mt-6 hidden lg:block">
+              <WhatsAppButton
+                phone={primaryWhatsApp}
+                label="Ask on WhatsApp"
+                size="md"
+              />
             </div>
-
-            <p className="mt-6 text-xs text-neutral-500">
-              Don&apos;t see your specific location listed? If you are located nearby in Kannur or Kasaragod districts, call or WhatsApp us directly to check supply availability.
-            </p>
+          </Reveal>
+          <Reveal className="lg:col-span-2">
+            <Faq items={homeFaqs} />
           </Reveal>
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-        <Reveal>
-          <Faq items={homeFaqs} />
-        </Reveal>
-      </section>
-
-      {/* Contact / Enquiry */}
-      <section className="border-t border-green-100 bg-green-950 text-white">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-          <Reveal>
-            <h2 className="text-3xl font-bold">Get In Touch</h2>
-            <p className="mt-3 max-w-2xl text-green-100">
-              {SITE_DESCRIPTION} Call or WhatsApp us directly for wholesale
-              banana or banana seed enquiries.
+      {/* ───────────────── Contact ───────────────── */}
+      <section className="relative isolate overflow-hidden bg-green-950 text-white">
+        <div
+          aria-hidden="true"
+          className="absolute -right-24 -top-24 -z-10 h-96 w-96 rounded-full bg-green-800/40 blur-3xl"
+        />
+        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:py-24">
+          <Reveal className="max-w-2xl">
+            <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-amber-300">
+              <LeafIcon className="h-4 w-4" />
+              Get in touch
+            </span>
+            <h2 className="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl">
+              Ready to order? Talk to us directly.
+            </h2>
+            <p className="mt-4 text-lg leading-8 text-green-100/85">
+              Call or WhatsApp for bulk Vazhavithu, wholesale bananas or chips
+              Nendran enquiries. Open every day, 6 am to 9 pm.
             </p>
           </Reveal>
-          <div className="mt-8 grid gap-6 sm:grid-cols-2">
-            {owners.map((owner, index) => (
-              <Reveal
-                key={owner.phone}
-                delay={(index % 2) * 100}
-                className="grid"
-              >
-                <div className="rounded-2xl bg-green-900/60 p-6">
-                  <p className="text-lg font-semibold">{owner.name}</p>
-                  <p className="text-sm text-green-300">{owner.role}</p>
-                  <div className="mt-4 flex flex-wrap gap-3">
+
+          <div className="mt-10 grid gap-5 sm:grid-cols-2">
+            {owners.map((owner) => (
+              <Reveal key={owner.phone} className="grid">
+                <div className="rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8">
+                  <div className="flex items-center gap-4">
+                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-amber-400 font-bold text-green-950">
+                      {getInitials(owner.name)}
+                    </span>
+                    <div>
+                      <p className="text-lg font-bold">{owner.name}</p>
+                      <p className="flex items-center gap-1.5 text-sm text-green-200">
+                        <PhoneIcon className="h-3.5 w-3.5" />
+                        {formatPhone(owner.phone)}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="mt-6 flex flex-wrap gap-3">
                     <CallButton
                       phone={owner.phone}
                       label={`Call ${owner.name.split(" ")[0]}`}
-                      variant="outline"
-                      className="border-white/40 px-5 py-2.5 text-sm text-white hover:bg-white/10"
+                      size="md"
+                      className="bg-white! text-green-950! hover:bg-amber-300!"
                     />
-                    <WhatsAppButton
-                      phone={owner.phone}
-                      className="px-5 py-2.5 text-sm"
-                    />
+                    <WhatsAppButton phone={owner.phone} size="md" />
                   </div>
                 </div>
               </Reveal>
             ))}
           </div>
+
           <Link
             href="/contact"
-            className="mt-8 inline-flex items-center text-sm font-semibold text-amber-300 hover:underline"
+            className="mt-8 inline-flex items-center gap-1 text-sm font-bold text-amber-300 hover:underline"
           >
-            Go to full contact page →
+            Full contact page &amp; enquiry form
+            <ChevronRightIcon className="h-4 w-4" />
           </Link>
         </div>
       </section>

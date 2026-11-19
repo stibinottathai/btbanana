@@ -92,7 +92,7 @@ export default function PlantainVarietiesPage() {
         </div>
         <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-lg">
           <Image
-            src="/images/variety.png"
+            src="/images/variety.webp"
             alt="Plantain varieties supplied wholesale by BT Banana, Kerala"
             fill
             priority

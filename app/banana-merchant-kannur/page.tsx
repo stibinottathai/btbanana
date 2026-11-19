@@ -208,12 +208,6 @@ export default function BananaMerchantKannurPage() {
                   🍌 Wholesale Banana Hub →
                 </Link>
                 <Link
-                  href="/banana-for-chips"
-                  className="rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-1.5 font-semibold text-emerald-950 hover:bg-emerald-100"
-                >
-                  🍟 Raw Bananas for Chips →
-                </Link>
-                <Link
                   href="/banana-prices"
                   className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-1.5 font-semibold text-amber-950 hover:bg-amber-100"
                 >
@@ -224,7 +218,7 @@ export default function BananaMerchantKannurPage() {
 
             <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl border-4 border-white shadow-xl">
               <Image
-                src="/images/wholesale.png"
+                src="/images/wholesale.webp"
                 alt="Banana merchant trading facility and wholesale stock in Kannur, Kerala - BT Banana"
                 fill
                 priority

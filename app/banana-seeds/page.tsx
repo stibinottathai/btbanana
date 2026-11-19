@@ -33,6 +33,16 @@ const bananaSeedFaqs = [
       "Our banana planting material is sourced from specialised banana nurseries in the Tiruchirappalli (Trichy) belt of Tamil Nadu — a region known for healthy, high-yield banana suckers and plantlets — and supplied fresh across Kerala through BT Banana's Kannur base.",
   },
   {
+    question: "Do you supply Vazhavithu in bulk to nurseries, resellers and large farms?",
+    answer:
+      "Yes — bulk supply is our main focus. We regularly supply thousands of Vazhavithu per order to commercial farmers, plantations, plant nurseries, resellers, farmer groups and agricultural cooperatives across Kerala, with volume pricing on enquiry.",
+  },
+  {
+    question: "Is Vazhavithu the same as vaazhavithu, vazha vithu or vazha kannu?",
+    answer:
+      "Yes. Vazhavithu, vaazhavithu, vazha vithu, വാഴവിത്ത് and വാഴക്കന്ന് (vazha kannu) all refer to the same thing — banana planting suckers. BT Banana supplies all of these across Kerala.",
+  },
+  {
     question: "Do you supply banana suckers or literal botanical banana seeds?",
     answer:
       "Cultivated commercial bananas in Kerala (Nendran, Njali Poovan, Palayankodan, Robusta) are seedless and do not produce botanical seeds. What farmers search for as 'banana seeds' or 'Vazhavithu' (വാഴവിത്ത്) is vegetative planting material — vigorous sword suckers and nursery-raised plantlets with viable corms. That is exactly what we supply.",
@@ -112,10 +122,19 @@ const productJsonLd = {
   "@context": "https://schema.org",
   "@type": "Product",
   name: "Banana Vazhavithu — Banana Planting Suckers / Banana Seeds",
-  alternateName: ["Vazhavithu", "വാഴവിത്ത്", "Banana suckers", "Banana planting material"],
+  alternateName: [
+    "Vazhavithu",
+    "Vaazhavithu",
+    "Vazha vithu",
+    "വാഴവിത്ത്",
+    "വാഴക്കന്ന്",
+    "Banana suckers",
+    "Banana seeds",
+    "Banana planting material",
+  ],
   description:
-    "Healthy banana planting material (Vazhavithu / വാഴവിത്ത്) — Nendran, Njali Poovan, Palayankodan, and Robusta suckers — sourced from the Tiruchirappalli (Trichy) nursery belt of Tamil Nadu and supplied with delivery across all districts of Kerala by BT Banana, Kannur.",
-  image: `${SITE_URL}/images/vazhavithu.png`,
+    "Healthy banana planting material (Vazhavithu / വാഴവിത്ത്) — Nendran, Njali Poovan, Palayankodan, and Robusta suckers — imported from the Tiruchirappalli (Trichy) nursery belt of Tamil Nadu and supplied in bulk to farmers and nurseries across all 14 districts of Kerala by BT Banana, Kannur.",
+  image: `${SITE_URL}/images/vazhavithu.webp`,
   brand: { "@type": "Brand", name: "BT Banana" },
   category: "Banana planting material (suckers)",
   additionalProperty: [
@@ -132,33 +151,40 @@ const productJsonLd = {
     availability: "https://schema.org/InStock",
     priceCurrency: "INR",
     url: `${SITE_URL}/banana-seeds`,
-    areaServed: { "@type": "State", name: "Kerala" },
-    seller: { "@type": "Organization", name: "BT Banana", url: SITE_URL },
+    areaServed: { "@type": "State", name: "Kerala" },    seller: { "@type": "Organization", name: "BT Banana", url: SITE_URL },
   },
 };
 
 export const metadata: Metadata = {
-  title: "Vazhavithu (Banana Seeds) Supplier in Kerala — Banana Suckers",
+  title: "Vazhavithu Supplier in Kerala — Bulk Banana Suckers from Tamil Nadu",
   description:
-    "Buy Vazhavithu (വാഴവിത്ത് / banana seeds) in Kerala. BT Banana supplies healthy Nendran, Njali Poovan, Palayankodan & Robusta banana suckers — sourced from the Trichy (Tamil Nadu) nursery belt — with delivery across all Kerala districts.",
+    "Buy Vazhavithu (വാഴവിത്ത് / banana suckers) in bulk. BT Banana imports healthy Nendran, Njali Poovan, Palayankodan & Robusta suckers from Tamil Nadu and delivers to farmers and nurseries across all 14 districts of Kerala.",
   keywords: [
     "vazhavithu",
+    "vaazhavithu",
+    "vazha vithu",
     "വാഴവിത്ത്",
-    "banana seeds Kerala",
-    "banana suckers Kerala",
+    "വാഴക്കന്ന്",
+    "vazhavithu Kerala",
+    "vazhavithu near me",
     "vazhavithu price",
     "Nendran vazhavithu",
+    "banana suckers Kerala",
+    "banana seeds Kerala",
+    "banana suckers wholesale",
+    "banana suckers for nursery",
+    "banana suckers from Tamil Nadu",
     "banana planting material Kerala",
-    "buy banana suckers online Kerala",
     "banana sucker supplier Kerala",
   ],
   alternates: {
     canonical: `${SITE_URL}/banana-seeds`,
   },
   openGraph: {
-    title: "Vazhavithu (Banana Seeds) Supplier in Kerala | BT Banana",
+    title: "Vazhavithu Supplier in Kerala — Bulk Banana Suckers | BT Banana",
     description:
-      "Healthy banana suckers / Vazhavithu (വാഴവിത്ത്) — Nendran, Njali Poovan, Palayankodan & Robusta — sourced from the Trichy belt of Tamil Nadu and delivered across all districts of Kerala.",
+      "Bulk Vazhavithu (വാഴവിത്ത്) — Nendran, Njali Poovan, Palayankodan & Robusta suckers — imported from Tamil Nadu and delivered to farmers and nurseries across all of Kerala.",
+    images: [{ url: "/images/vazhavithu.webp", alt: "Vazhavithu banana suckers supplied by BT Banana" }],
     url: `${SITE_URL}/banana-seeds`,
   },
 };
@@ -192,9 +218,11 @@ const keyFacts: { label: string; value: string }[] = [
   { label: "Product", value: "Banana Vazhavithu — planting suckers (“banana seeds”)" },
   { label: "Malayalam name", value: "വാഴവിത്ത് (Vazhavithu)" },
   { label: "Varieties", value: "Nendran, Njali Poovan, Palayankodan (Mysore Poovan), Robusta" },
-  { label: "Sourced from", value: "Tiruchirappalli (Trichy) nursery belt, Tamil Nadu" },
+  { label: "Imported from", value: "Tamil Nadu — Tiruchirappalli (Trichy) nursery belt" },
+  { label: "Also searched as", value: "Vaazhavithu, Vazha vithu, വാഴക്കന്ന് (banana suckers / seeds)" },
   { label: "Supplied across", value: "All 14 districts of Kerala" },
-  { label: "Order size", value: "25–50 suckers (homestead) to 2,000+ (commercial)" },
+  { label: "Who we supply", value: "Farmers, plantations, nurseries, resellers & cooperatives" },
+  { label: "Order size", value: "Bulk orders of 2,000+ suckers; smaller lots on request" },
   { label: "Best planting window", value: "Pre-monsoon & for Onam (Chingam) harvest" },
   { label: "Pricing", value: "Per sucker, quoted live on enquiry" },
 ];
@@ -211,43 +239,47 @@ export default function BananaSeedsPage() {
       </div>
 
       <section className="mx-auto grid max-w-6xl items-center gap-8 px-4 py-8 sm:px-6 lg:grid-cols-2">
-        <div>
+        <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2">
             <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-3.5 py-1 text-xs font-bold text-emerald-900">
               <LeafIcon className="h-3.5 w-3.5 text-emerald-700" />
               Vegetative Planting Stock (വാഴവിത്ത്)
             </span>
             <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-100 px-3.5 py-1 text-xs font-bold text-amber-900">
-              🚚 All-Kerala Delivery Available
+              🚚 All 14 Kerala Districts
+            </span>
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-bold text-green-900">
+              📦 Bulk for Farms &amp; Nurseries
             </span>
           </div>
-          <h1 className="mt-3 text-4xl font-bold tracking-tight text-green-950 sm:text-5xl">
-            Vazhavithu (Banana Seeds) Supplier in Kerala
+          <h1 className="mt-3 text-3xl font-bold tracking-tight text-green-950 sm:text-5xl">
+            Vazhavithu Supplier in Kerala — Bulk Banana Suckers
           </h1>
-          <p className="mt-5 max-w-2xl text-lg leading-8 text-neutral-700">
-            Searching for <strong className="font-semibold text-green-900">Vazhavithu (വാഴവിത്ത്)</strong> or
-            banana seeds in Kerala? BT Banana supplies healthy, high-yield{" "}
-            <strong className="text-green-950">banana planting suckers</strong> — sourced from the{" "}
-            <strong className="text-green-950">Tiruchirappalli (Trichy) nursery belt of Tamil Nadu</strong> — with
-            safe, reliable delivery arranged across <strong className="text-green-950">all 14 districts of Kerala</strong>.
+          <p className="mt-5 max-w-2xl text-base leading-7 text-neutral-700 sm:text-lg sm:leading-8">
+            Searching for <strong className="font-semibold text-green-900">Vazhavithu (വാഴവിത്ത്)</strong>?
+            BT Banana imports healthy, high-yield{" "}
+            <strong className="text-green-950">banana planting suckers</strong> from{" "}
+            <strong className="text-green-950">Tamil Nadu</strong> and supplies them in{" "}
+            <strong className="text-green-950">large quantities to farmers and nurseries</strong> in{" "}
+            <strong className="text-green-950">all 14 districts of Kerala</strong>.
           </p>
-          <div className="mt-8 flex flex-row items-center gap-2.5 sm:gap-4">
+          <div className="mt-8 flex flex-wrap items-center gap-3">
             <CallButton
               phone={primaryPhone}
-              label="Call for Kerala Delivery"
-              className="flex-1 justify-center whitespace-nowrap px-3.5 py-3 text-xs font-bold sm:flex-initial sm:px-6 sm:py-3.5 sm:text-sm"
+              label="Call for Bulk Orders"
+              className="flex-1 justify-center whitespace-nowrap px-4 py-3 text-sm font-bold sm:flex-initial sm:px-6 sm:py-3.5"
             />
             <WhatsAppButton
               phone={primaryWhatsApp}
-              message="Hi BT Banana, I'd like to enquire about Vazhavithu / banana seeds and delivery to my location in Kerala."
-              label="Enquire for All-Kerala Delivery"
-              className="flex-1 justify-center whitespace-nowrap px-3.5 py-3 text-xs font-bold sm:flex-initial sm:px-6 sm:py-3.5 sm:text-sm"
+              message="Hi BT Banana, I'd like a bulk quote for Vazhavithu (banana suckers). Variety: ___, Quantity: ___, Delivery district: ___"
+              label="WhatsApp Quote"
+              className="flex-1 justify-center whitespace-nowrap px-4 py-3 text-sm font-bold sm:flex-initial sm:px-6 sm:py-3.5"
             />
           </div>
         </div>
         <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-lg">
           <Image
-            src="/images/vazhavithu.png"
+            src="/images/vazhavithu.webp"
             alt="Vazhavithu (banana seeds / planting suckers) supplied with all-Kerala delivery by BT Banana, Kannur"
             fill
             priority
@@ -479,9 +511,10 @@ export default function BananaSeedsPage() {
               <ul className="mt-4 space-y-3">
                 {[
                   "Commercial banana farmers planting multi-acre seasonal crops",
+                  "Plant nurseries and resellers buying Vazhavithu in bulk for resale",
+                  "Agricultural cooperatives and farmer groups placing pooled orders",
                   "Growers preparing Onam harvest schedules (Chingam market)",
-                  "Homestead farmers looking for 20 to 100 seedlings",
-                  "Agricultural cooperatives and trading nurseries sourcing bulk suckers",
+                  "Homestead farmers needing smaller lots (on request)",
                 ].map((item) => (
                   <li
                     key={item}

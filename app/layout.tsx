@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Fraunces, Geist } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -17,17 +17,23 @@ import {
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+// Serif used only for the BT Banana wordmark
+const brandSerif = Fraunces({
+  variable: "--font-fraunces",
   subsets: ["latin"],
+  weight: "variable",
+  style: ["normal", "italic"],
+  axes: ["SOFT", "opsz"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Wholesale Banana Supplier in Kannur, Kerala | BT Banana",
+    default: "Vazhavithu & Wholesale Banana Supplier in Kerala | BT Banana",
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
@@ -47,17 +53,17 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: SITE_URL,
     siteName: SITE_NAME,
-    title: "Wholesale Banana Supplier in Kannur, Kerala | BT Banana",
+    title: "Vazhavithu & Wholesale Banana Supplier in Kerala | BT Banana",
     description: SITE_DESCRIPTION,
   },
   icons: {
-    icon: "/images/logo.png",
-    shortcut: "/images/logo.png",
-    apple: "/images/logo.png",
+    icon: "/images/logo-192.png",
+    shortcut: "/images/logo-192.png",
+    apple: "/images/logo-192.png",
   },
   twitter: {
     card: "summary",
-    title: "Wholesale Banana Supplier in Kannur, Kerala | BT Banana",
+    title: "Vazhavithu & Wholesale Banana Supplier in Kerala | BT Banana",
     description: SITE_DESCRIPTION,
   },
 };
@@ -73,12 +79,13 @@ const localBusinessJsonLd = {
   priceRange: "₹₹",
   telephone: owners.map((o) => `+91${o.phone}`),
   areaServed: [
-    ...coveredAreas.districts,
-    ...coveredAreas.localities,
-  ].map((place) => ({
-    "@type": "Place",
-    name: place,
-  })),
+    // Vazhavithu is delivered statewide
+    { "@type": "State", name: "Kerala" },
+    ...[...coveredAreas.districts, ...coveredAreas.localities].map((place) => ({
+      "@type": "Place",
+      name: place,
+    })),
+  ],
   address: {
     "@type": "PostalAddress",
     streetAddress: "Malayora Highway, Opposite Rajadhani Hotel",
@@ -139,7 +146,19 @@ const localBusinessJsonLd = {
       },
       {
         "@type": "OfferCatalog",
-        name: "Banana Seeds / Vazhavithu Planting Material",
+        name: "Vazhavithu (വാഴവിത്ത്) — Bulk Banana Suckers, delivered across Kerala",
+        itemListElement: [
+          {
+            "@type": "Offer",
+            areaServed: { "@type": "State", name: "Kerala" },
+            itemOffered: {
+              "@type": "Product",
+              name: "Vazhavithu / Banana Suckers",
+              alternateName: ["Vaazhavithu", "Vazha vithu", "വാഴവിത്ത്", "Banana seeds"],
+              url: `${SITE_URL}/banana-seeds`,
+            },
+          },
+        ],
       },
     ],
   },
@@ -168,7 +187,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${brandSerif.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-white text-neutral-900">
         <JsonLd data={localBusinessJsonLd} />

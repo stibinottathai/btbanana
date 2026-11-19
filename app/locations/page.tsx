@@ -135,15 +135,6 @@ export default function LocationsPage() {
             </p>
           </Link>
           <Link
-            href="/banana-for-chips"
-            className="rounded-2xl border border-white/80 bg-white/90 p-4 transition hover:bg-white hover:shadow-sm"
-          >
-            <h3 className="font-bold text-green-950">Raw Banana for Chips</h3>
-            <p className="mt-1 text-xs text-neutral-600">
-              Graded raw green Nendran (Pacha Ethakka) for chips frying units.
-            </p>
-          </Link>
-          <Link
             href="/banana-seeds"
             className="rounded-2xl border border-white/80 bg-white/90 p-4 transition hover:bg-white hover:shadow-sm"
           >

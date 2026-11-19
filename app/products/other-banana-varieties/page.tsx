@@ -86,7 +86,7 @@ export default function OtherBananaVarietiesPage() {
         </div>
         <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-lg">
           <Image
-            src="/images/banana-fruit-inflorescence.jpg"
+            src="/images/banana-fruit-inflorescence.webp"
             alt="Banana fruit and inflorescence — BT Banana wholesale supply, Kerala"
             fill
             priority

@@ -146,7 +146,7 @@ export default function AboutPage() {
             className="relative overflow-hidden rounded-3xl border-4 border-white bg-white shadow-xl lg:col-span-5 aspect-[4/3]"
           >
             <Image
-              src="/images/wholesale.png"
+              src="/images/wholesale.webp"
               alt="BT Banana Wholesale Supply"
               fill
               className="object-cover"
