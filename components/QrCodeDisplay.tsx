@@ -67,10 +67,10 @@ export function QrCodeDisplay({
 
   return (
     <div
-      className={`flex flex-col items-center rounded-2xl border border-emerald-100 bg-gradient-to-b from-white to-emerald-50/40 p-6 shadow-lg backdrop-blur ${className}`}
+      className={`flex flex-col items-center rounded-3xl bg-white p-6 shadow-xl shadow-green-900/5 ring-1 ring-green-900/10 sm:p-8 ${className}`}
     >
       {/* Brand Header */}
-      <div className="mb-3 flex items-center gap-2">
+      <div className="mb-5 flex items-center gap-2">
         <Image
           src="/images/logo.png"
           alt="BT Banana Logo"
@@ -78,39 +78,39 @@ export function QrCodeDisplay({
           height={28}
           className="h-7 w-7 object-contain"
         />
-        <span className="text-sm font-bold text-emerald-950">BT Banana Digital QR</span>
+        <span className="text-sm font-bold text-green-950">BT Banana QR code</span>
       </div>
 
       {/* Mode Switcher */}
-      <div className="mb-4 flex rounded-xl bg-emerald-900/5 p-1 text-xs font-semibold text-emerald-950">
+      <div className="mb-6 flex rounded-full bg-green-900/5 p-1 text-xs font-semibold text-green-950">
         <button
           type="button"
           onClick={() => setQrType("url")}
-          className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 transition-all ${
+          className={`flex items-center gap-1.5 rounded-full px-3.5 py-1.5 transition-all ${
             qrType === "url"
-              ? "bg-emerald-700 text-white shadow-sm"
-              : "text-emerald-900 hover:text-emerald-950"
+              ? "bg-green-950 text-amber-300 shadow-sm"
+              : "text-green-900 hover:text-green-950"
           }`}
         >
           <LinkIcon className="h-3.5 w-3.5" />
-          Digital Card Link
+          Opens this card
         </button>
         <button
           type="button"
           onClick={() => setQrType("vcard")}
-          className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 transition-all ${
+          className={`flex items-center gap-1.5 rounded-full px-3.5 py-1.5 transition-all ${
             qrType === "vcard"
-              ? "bg-emerald-700 text-white shadow-sm"
-              : "text-emerald-900 hover:text-emerald-950"
+              ? "bg-green-950 text-amber-300 shadow-sm"
+              : "text-green-900 hover:text-green-950"
           }`}
         >
           <QrCodeIcon className="h-3.5 w-3.5" />
-          Direct vCard QR
+          Saves contact
         </button>
       </div>
 
       {/* QR Code Container with Centered Logo Badge */}
-      <div className="relative flex h-52 w-52 items-center justify-center rounded-2xl border border-emerald-200/80 bg-white p-3 shadow-md ring-4 ring-emerald-50">
+      <div className="relative flex h-56 w-56 items-center justify-center rounded-3xl border border-green-100 bg-white p-3 shadow-md ring-8 ring-green-50">
         {qrDataUrl ? (
           <div className="relative flex h-full w-full items-center justify-center">
             <img
@@ -119,7 +119,7 @@ export function QrCodeDisplay({
               className="h-full w-full rounded-lg object-contain"
             />
             {/* Center Logo Badge */}
-            <div className="absolute flex h-10 w-10 items-center justify-center rounded-full bg-white p-1 shadow-md border border-emerald-200">
+            <div className="absolute flex h-10 w-10 items-center justify-center rounded-full bg-white p-1 shadow-md border border-green-100">
               <Image
                 src="/images/logo.png"
                 alt="BT Banana Logo"
@@ -137,28 +137,28 @@ export function QrCodeDisplay({
       </div>
 
       {/* Scan helper note */}
-      <p className="mt-3 text-center text-xs font-medium text-emerald-900/80">
+      <p className="mt-5 text-center text-sm font-medium text-neutral-600">
         {qrType === "url"
           ? "Scan with smartphone camera to open Digital Card"
           : "Scan to automatically add BT Banana to Phonebook"}
       </p>
 
       {/* Action Buttons */}
-      <div className="mt-4 flex w-full flex-wrap items-center justify-center gap-2">
+      <div className="mt-6 flex w-full flex-wrap items-center justify-center gap-2">
         <button
           type="button"
           onClick={handleDownloadQr}
-          className="flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-emerald-800 px-4 py-2.5 text-xs font-semibold text-white shadow transition hover:bg-emerald-900 active:scale-95"
+          className="flex flex-1 items-center justify-center gap-1.5 rounded-full bg-green-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-green-800 active:scale-95"
         >
           {downloaded ? (
             <>
-              <CheckIcon className="h-4 w-4 text-emerald-300" />
+              <CheckIcon className="h-4 w-4 text-amber-300" />
               QR Downloaded!
             </>
           ) : (
             <>
               <DownloadIcon className="h-4 w-4" />
-              Download QR Code (PNG)
+              Download QR (PNG)
             </>
           )}
         </button>
@@ -166,17 +166,17 @@ export function QrCodeDisplay({
         <button
           type="button"
           onClick={handleCopyLink}
-          className="flex items-center justify-center gap-1.5 rounded-xl border border-emerald-200 bg-white px-3 py-2.5 text-xs font-semibold text-emerald-900 shadow-sm transition hover:bg-emerald-50 active:scale-95"
+          className="flex items-center justify-center gap-1.5 rounded-full border border-green-200 bg-white px-4 py-3 text-sm font-semibold text-green-900 transition hover:border-green-700 hover:bg-green-50 active:scale-95"
           title="Copy Card Link"
         >
           {copied ? (
             <>
-              <CheckIcon className="h-4 w-4 text-emerald-600" />
+              <CheckIcon className="h-4 w-4 text-green-700" />
               Copied
             </>
           ) : (
             <>
-              <CopyIcon className="h-4 w-4 text-emerald-700" />
+              <CopyIcon className="h-4 w-4 text-green-700" />
               Copy Link
             </>
           )}
