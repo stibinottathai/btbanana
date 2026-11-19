@@ -529,11 +529,66 @@ export default function Home() {
       </section>
 
       {/* ───────────────── About / Why us ───────────────── */}
-      <section className="bg-green-50/70">
-        <div className="mx-auto grid max-w-6xl gap-12 px-4 py-20 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:py-24">
-          <Reveal>
+      <section
+        aria-labelledby="about-heading"
+        className="relative isolate overflow-hidden bg-green-50/70"
+      >
+        <div
+          aria-hidden="true"
+          className="absolute -right-40 top-1/3 -z-10 h-[30rem] w-[30rem] rounded-full bg-amber-200/40 blur-3xl"
+        />
+        <div className="mx-auto grid max-w-6xl items-center gap-14 px-4 py-20 sm:px-6 lg:grid-cols-12 lg:gap-16 lg:py-24">
+          {/* Image collage */}
+          <Reveal className="relative lg:col-span-5">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-green-100 shadow-xl shadow-green-900/10 lg:aspect-[4/5]">
+              <Image
+                src="/images/variety.webp"
+                alt="Different banana varieties — Nendran, Robusta, red and yellow bananas — supplied wholesale by BT Banana"
+                fill
+                sizes="(min-width: 1024px) 40vw, 100vw"
+                className="object-cover"
+              />
+              <div
+                aria-hidden="true"
+                className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-green-950/60 to-transparent"
+              />
+              <p className="absolute bottom-5 left-5 right-5 text-sm font-semibold text-white sm:bottom-6 sm:left-6 sm:right-44 lg:right-40">
+                From the Alakode–Nellipara highland belt
+              </p>
+            </div>
+
+            <div className="absolute -bottom-8 -right-2 hidden w-40 overflow-hidden rounded-2xl ring-8 ring-green-50 shadow-lg sm:block lg:-right-8 lg:w-44">
+              <div className="relative aspect-square">
+                <Image
+                  src="/images/pacha-ethakka.webp"
+                  alt="Raw green Nendran (pacha ethakka) bunches stacked for supply"
+                  fill
+                  sizes="176px"
+                  className="object-cover"
+                />
+              </div>
+            </div>
+
+            <div className="absolute -top-5 left-5 flex items-center gap-3 rounded-2xl bg-amber-400 px-4 py-3 text-green-950 shadow-lg shadow-amber-900/20">
+              <MapPinIcon className="h-5 w-5 shrink-0" />
+              <div className="leading-tight">
+                <p className="text-sm font-extrabold">
+                  {branches.length} branches
+                </p>
+                <p className="text-xs font-semibold text-green-950/75">
+                  Alakode &amp; Nellipara, Kannur
+                </p>
+              </div>
+            </div>
+          </Reveal>
+
+          {/* Story + values */}
+          <Reveal className="lg:col-span-7">
             <SectionLabel>About BT Banana</SectionLabel>
-            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-green-950 sm:text-4xl">
+            <h2
+              id="about-heading"
+              className="mt-4 text-3xl font-extrabold tracking-tight text-green-950 sm:text-4xl"
+            >
               A family-run banana wholesaler from Kerala&apos;s highlands
             </h2>
             <p className="mt-5 text-lg leading-8 text-neutral-700">
@@ -543,183 +598,324 @@ export default function Home() {
               banana supply in bulk, from our Alakode and Nellipara branches.
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-4">
-              {owners.map((owner) => (
-                <div
-                  key={owner.phone}
-                  className="flex items-center gap-3 rounded-2xl bg-white px-4 py-3 ring-1 ring-green-900/10"
-                >
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-green-800 text-sm font-bold text-white">
-                    {getInitials(owner.name)}
-                  </span>
-                  <div className="leading-tight">
-                    <p className="text-sm font-bold text-green-950">
-                      {owner.name}
-                    </p>
-                    <p className="text-xs text-neutral-500">{owner.role}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <Link
-              href="/about"
-              className="mt-8 inline-flex items-center gap-1 text-sm font-bold text-green-800 hover:underline"
-            >
-              More about us
-              <ChevronRightIcon className="h-4 w-4" />
-            </Link>
-          </Reveal>
-
-          <div className="grid gap-4 sm:grid-cols-2">
-            {benefits.map((benefit) => (
-              <Reveal key={benefit.title} className="grid">
-                <div className="rounded-2xl bg-white p-6 ring-1 ring-green-900/10">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-green-800 text-amber-300">
-                    <CheckIcon className="h-5 w-5" />
-                  </span>
-                  <h3 className="mt-4 font-bold text-green-950">
-                    {benefit.title}
-                  </h3>
+            <ol className="mt-10 grid gap-x-10 gap-y-8 sm:grid-cols-2">
+              {benefits.map((benefit, i) => (
+                <li key={benefit.title} className="border-t-2 border-green-900/10 pt-5">
+                  <p className="flex items-baseline gap-3">
+                    <span className="text-sm font-extrabold tabular-nums text-amber-600">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="font-bold text-green-950">
+                      {benefit.title}
+                    </span>
+                  </p>
                   <p className="mt-2 text-sm leading-6 text-neutral-600">
                     {benefit.description}
                   </p>
+                </li>
+              ))}
+            </ol>
+
+            <div className="mt-10 flex flex-col gap-5 rounded-3xl bg-white p-5 ring-1 ring-green-900/10 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex items-center gap-4">
+                <div className="flex -space-x-3">
+                  {owners.map((owner, i) => (
+                    <span
+                      key={owner.phone}
+                      className={`flex h-11 w-11 items-center justify-center rounded-full text-sm font-bold ring-4 ring-white ${
+                        i === 0
+                          ? "bg-green-800 text-white"
+                          : "bg-amber-400 text-green-950"
+                      }`}
+                    >
+                      {getInitials(owner.name)}
+                    </span>
+                  ))}
                 </div>
-              </Reveal>
-            ))}
-          </div>
+                <div className="leading-tight">
+                  <p className="text-sm font-bold text-green-950">
+                    {owners.map((o) => o.name).join(" & ")}
+                  </p>
+                  <p className="mt-0.5 text-xs text-neutral-500">
+                    Owners · answer every call themselves
+                  </p>
+                </div>
+              </div>
+              <Link
+                href="/about"
+                className="inline-flex items-center justify-center gap-1 rounded-full bg-green-950 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-green-800"
+              >
+                Our story
+                <ChevronRightIcon className="h-4 w-4" />
+              </Link>
+            </div>
+          </Reveal>
         </div>
       </section>
 
       {/* ───────────────── Branches & coverage ───────────────── */}
-      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:py-24">
-        <Reveal className="max-w-2xl">
-          <SectionLabel>Branches &amp; coverage</SectionLabel>
-          <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-green-950 sm:text-4xl">
-            Areas we cover
-          </h2>
-          <p className="mt-4 text-lg leading-8 text-neutral-600">
-            Two branches in Kannur district. Vazhavithu is delivered to all 14
-            districts of Kerala; wholesale bananas and chips plantains are
-            supplied across{" "}
-            {coveredAreas.districts.join(", ").replace(/, ([^,]*)$/, " and $1")}.
-          </p>
+      <section
+        aria-labelledby="locations-heading"
+        className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:py-24"
+      >
+        <Reveal className="flex flex-wrap items-end justify-between gap-6">
+          <div className="max-w-2xl">
+            <SectionLabel>Branches &amp; coverage</SectionLabel>
+            <h2
+              id="locations-heading"
+              className="mt-4 text-3xl font-extrabold tracking-tight text-green-950 sm:text-4xl"
+            >
+              Two depots in Kannur, supplying across Kerala
+            </h2>
+            <p className="mt-4 text-lg leading-8 text-neutral-600">
+              Visit us on the Malayora Highway, or have your order delivered to
+              your farm, shop or factory.
+            </p>
+          </div>
+          <Link
+            href="/locations"
+            className="inline-flex items-center gap-1 text-sm font-bold text-green-800 hover:underline"
+          >
+            All locations
+            <ChevronRightIcon className="h-4 w-4" />
+          </Link>
         </Reveal>
 
-        <div className="mt-10 grid gap-6 md:grid-cols-2">
-          {branches.map((branch) => (
-            <Reveal key={branch.slug} className="grid">
-              <article className="flex flex-col rounded-3xl border border-green-100 bg-white p-6 sm:p-8">
-                <div className="flex items-center gap-3">
-                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-amber-400 text-green-950">
-                    <MapPinIcon className="h-6 w-6" />
-                  </span>
-                  <div>
-                    <h3 className="text-xl font-bold text-green-950">
-                      <Link
-                        href={`/locations/${branch.slug}`}
-                        className="hover:underline"
-                      >
-                        {branch.name}
-                      </Link>
-                    </h3>
-                    <p className="text-sm font-medium text-green-700">
-                      {branch.place}
-                    </p>
-                  </div>
-                </div>
-                <p className="mt-4 text-sm leading-6 text-neutral-600">
-                  {branch.description}
-                </p>
-                <div className="mt-auto flex flex-wrap gap-4 pt-5 text-sm font-bold">
-                  <Link
-                    href={`/locations/${branch.slug}`}
-                    className="inline-flex items-center gap-1 text-green-800 hover:underline"
-                  >
-                    Branch details
-                    <ChevronRightIcon className="h-4 w-4" />
-                  </Link>
-                  <a
-                    href={branch.mapsUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-neutral-600 hover:text-green-800 hover:underline"
-                  >
-                    Open in Google Maps
-                  </a>
-                </div>
-              </article>
-            </Reveal>
-          ))}
-        </div>
+        <div className="mt-10 grid gap-6 lg:grid-cols-5">
+          {/* Map */}
+          <Reveal className="relative min-h-72 overflow-hidden rounded-3xl bg-green-100 ring-1 ring-green-900/10 lg:col-span-3 lg:min-h-0">
+            <iframe
+              title="Map of BT Banana branches in Alakode and Nellipara, Kannur"
+              src={`https://maps.google.com/maps?q=${encodeURIComponent(
+                "Alakode, Kannur, Kerala"
+              )}&t=&z=12&ie=UTF8&iwloc=&output=embed`}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="absolute inset-0 h-full w-full border-0"
+            />
+            <span className="pointer-events-none absolute bottom-4 left-4 inline-flex items-center gap-1.5 rounded-full bg-white/95 px-3 py-1.5 text-xs font-bold text-green-950 shadow-md backdrop-blur">
+              <MapPinIcon className="h-3.5 w-3.5 text-amber-600" />
+              Kannur district, Kerala
+            </span>
+          </Reveal>
 
-        <Reveal className="mt-6 rounded-3xl bg-green-950 p-6 text-white sm:p-8">
-          <div className="flex flex-wrap items-center gap-2">
-            {coveredAreas.districts.map((district) => (
-              <span
-                key={district}
-                className="rounded-full bg-amber-400 px-3 py-1 text-xs font-bold text-green-950"
-              >
-                {district} District
-              </span>
+          {/* Branch list */}
+          <div className="grid gap-4 lg:col-span-2">
+            {branches.map((branch, i) => (
+              <Reveal key={branch.slug} className="grid">
+                <article className="group flex flex-col rounded-3xl border border-green-100 bg-white p-6 transition hover:border-green-300 hover:shadow-lg hover:shadow-green-900/5">
+                  <div className="flex items-start gap-4">
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-green-950 text-base font-extrabold text-amber-300">
+                      {String.fromCharCode(65 + i)}
+                    </span>
+                    <div>
+                      <h3 className="text-lg font-bold text-green-950">
+                        <Link
+                          href={`/locations/${branch.slug}`}
+                          className="hover:underline"
+                        >
+                          {branch.name.replace("BT Banana – ", "")} branch
+                        </Link>
+                      </h3>
+                      <p className="text-sm font-medium text-green-700">
+                        {branch.place}
+                      </p>
+                    </div>
+                  </div>
+                  <p className="mt-4 text-sm leading-6 text-neutral-600">
+                    {branch.description}
+                  </p>
+                  <div className="mt-auto flex flex-wrap gap-2 pt-5">
+                    <a
+                      href={branch.mapsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 rounded-full bg-amber-400 px-4 py-2 text-xs font-bold text-green-950 transition hover:bg-amber-300"
+                    >
+                      <MapPinIcon className="h-3.5 w-3.5" />
+                      Directions
+                    </a>
+                    <Link
+                      href={`/locations/${branch.slug}`}
+                      className="inline-flex items-center gap-1 rounded-full border border-green-200 px-4 py-2 text-xs font-bold text-green-900 transition hover:border-green-700 hover:bg-green-50"
+                    >
+                      Branch details
+                      <ChevronRightIcon className="h-3.5 w-3.5" />
+                    </Link>
+                  </div>
+                </article>
+              </Reveal>
             ))}
           </div>
-          <h3 className="mt-5 text-sm font-bold uppercase tracking-[0.18em] text-green-200">
-            Key towns &amp; localities supplied
-          </h3>
-          <ul className="mt-4 flex flex-wrap gap-2">
-            {coveredAreas.localities.map((location) => {
-              const locationPage = serviceLocations.find(
-                (l) => l.name === location
-              );
-              const className =
-                "inline-flex items-center gap-1.5 rounded-full border border-white/15 px-3.5 py-1.5 text-sm font-medium text-green-50";
-              return (
-                <li key={location}>
-                  {locationPage ? (
-                    <Link
-                      href={`/locations/${locationPage.slug}`}
-                      className={`${className} transition hover:border-amber-300 hover:text-amber-300`}
-                    >
-                      <MapPinIcon className="h-3.5 w-3.5 text-amber-300" />
-                      {location}
-                    </Link>
-                  ) : (
-                    <span className={className}>
-                      <MapPinIcon className="h-3.5 w-3.5 text-green-400" />
-                      {location}
-                    </span>
-                  )}
-                </li>
-              );
-            })}
-          </ul>
-          <p className="mt-6 text-sm text-green-200/80">
-            Don&apos;t see your location? If you&apos;re near Kannur or
-            Kasaragod, call or WhatsApp us to check supply availability.
-          </p>
+        </div>
+
+        {/* Supply reach */}
+        <Reveal className="mt-6 overflow-hidden rounded-3xl bg-green-950 text-white">
+          <div className="grid divide-y divide-white/10 md:grid-cols-2 md:divide-x md:divide-y-0">
+            <div className="p-6 sm:p-8">
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-amber-300">
+                Vazhavithu delivery
+              </p>
+              <p className="mt-3 flex items-baseline gap-2">
+                <span className="text-5xl font-extrabold tracking-tight">
+                  {keralaDistricts.length}
+                </span>
+                <span className="text-lg font-semibold text-green-100">
+                  districts · all of Kerala
+                </span>
+              </p>
+              <p className="mt-2 text-sm leading-6 text-green-100/75">
+                Banana suckers delivered to farms and nurseries statewide, from
+                Kasaragod to Thiruvananthapuram.
+              </p>
+              <div
+                aria-hidden="true"
+                className="mt-5 grid gap-1"
+                style={{ gridTemplateColumns: `repeat(${keralaDistricts.length}, minmax(0, 1fr))` }}
+              >
+                {keralaDistricts.map((d) => (
+                  <span key={d} title={d} className="h-2 rounded-full bg-amber-400" />
+                ))}
+              </div>
+            </div>
+
+            <div className="p-6 sm:p-8">
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-amber-300">
+                Wholesale bananas &amp; chips Nendran
+              </p>
+              <ul className="mt-3 flex flex-wrap gap-2">
+                {coveredAreas.districts.map((district) => (
+                  <li
+                    key={district}
+                    className="rounded-full bg-amber-400 px-3 py-1 text-sm font-bold text-green-950"
+                  >
+                    {district}
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-4 text-sm leading-6 text-green-100/75">
+                Regular supply to traders, fruit shops and chips makers across
+                these districts, including:
+              </p>
+            </div>
+          </div>
+
+          <div className="border-t border-white/10 px-6 py-6 sm:px-8">
+            <h3 className="sr-only">Key towns and localities supplied</h3>
+            <ul className="flex flex-wrap gap-2">
+              {coveredAreas.localities.map((location) => {
+                const locationPage = serviceLocations.find(
+                  (l) => l.name === location
+                );
+                const className =
+                  "inline-flex items-center gap-1.5 rounded-full border border-white/15 px-3 py-1.5 text-xs font-medium text-green-50 sm:text-sm";
+                return (
+                  <li key={location}>
+                    {locationPage ? (
+                      <Link
+                        href={`/locations/${locationPage.slug}`}
+                        className={`${className} transition hover:border-amber-300 hover:text-amber-300`}
+                      >
+                        <MapPinIcon className="h-3.5 w-3.5 text-amber-300" />
+                        {location}
+                      </Link>
+                    ) : (
+                      <span className={className}>
+                        <MapPinIcon className="h-3.5 w-3.5 text-green-400" />
+                        {location}
+                      </span>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+            <p className="mt-5 text-sm text-green-200/80">
+              Don&apos;t see your location? If you&apos;re near Kannur or
+              Kasaragod, call or WhatsApp us to check supply availability.
+            </p>
+          </div>
         </Reveal>
       </section>
 
       {/* ───────────────── FAQ ───────────────── */}
-      <section className="border-t border-green-100 bg-green-50/40">
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-20 sm:px-6 lg:grid-cols-3 lg:py-24">
-          <Reveal>
-            <SectionLabel>FAQ</SectionLabel>
-            <p className="mt-4 text-lg leading-8 text-neutral-600">
-              Quick answers about wholesale supply, chips bananas, Vazhavithu
-              and daily rates.
-            </p>
-            <div className="mt-6 hidden lg:block">
+      <section
+        aria-labelledby="faq-heading"
+        className="border-t border-green-100 bg-white"
+      >
+        <div className="mx-auto grid max-w-6xl gap-12 px-4 py-20 sm:px-6 lg:grid-cols-12 lg:gap-16 lg:py-24">
+          <div className="lg:col-span-5">
+            <div className="lg:sticky lg:top-28">
+              <Reveal>
+                <SectionLabel>FAQ</SectionLabel>
+                <h2
+                  id="faq-heading"
+                  className="mt-4 text-3xl font-extrabold tracking-tight text-green-950 sm:text-4xl"
+                >
+                  Questions traders &amp; farmers ask us
+                </h2>
+                <p className="mt-4 text-lg leading-8 text-neutral-600">
+                  Quick answers about wholesale supply, chips bananas,
+                  Vazhavithu and daily rates.
+                </p>
+              </Reveal>
+
+              <Reveal className="mt-8 hidden rounded-3xl bg-green-950 p-6 text-white lg:block">
+                <p className="font-bold">Still have a question?</p>
+                <p className="mt-1 text-sm text-green-100/75">
+                  Talk to the owners directly — 6 am to 9 pm, every day.
+                </p>
+                <ul className="mt-5 space-y-3">
+                  {owners.map((owner) => (
+                    <li key={owner.phone}>
+                      <a
+                        href={`tel:+91${owner.phone}`}
+                        className="flex items-center justify-between gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 transition hover:border-amber-300"
+                      >
+                        <span className="text-sm font-semibold">
+                          {owner.name}
+                        </span>
+                        <span className="flex items-center gap-1.5 text-sm text-amber-300">
+                          <PhoneIcon className="h-3.5 w-3.5" />
+                          {formatPhone(owner.phone)}
+                        </span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-5 flex flex-wrap items-center gap-4">
+                  <WhatsAppButton
+                    phone={primaryWhatsApp}
+                    label="Ask on WhatsApp"
+                    size="md"
+                  />
+                  <Link
+                    href="/faq"
+                    className="inline-flex items-center gap-1 text-sm font-bold text-amber-300 hover:underline"
+                  >
+                    All FAQs
+                    <ChevronRightIcon className="h-4 w-4" />
+                  </Link>
+                </div>
+              </Reveal>
+            </div>
+          </div>
+
+          <Reveal className="lg:col-span-7">
+            <Faq items={homeFaqs} title={null} variant="numbered" name="home-faq" />
+            <div className="mt-8 flex flex-wrap items-center gap-4 lg:hidden">
               <WhatsAppButton
                 phone={primaryWhatsApp}
                 label="Ask on WhatsApp"
                 size="md"
               />
+              <Link
+                href="/faq"
+                className="inline-flex items-center gap-1 text-sm font-bold text-green-800 hover:underline"
+              >
+                All FAQs
+                <ChevronRightIcon className="h-4 w-4" />
+              </Link>
             </div>
-          </Reveal>
-          <Reveal className="lg:col-span-2">
-            <Faq items={homeFaqs} />
           </Reveal>
         </div>
       </section>

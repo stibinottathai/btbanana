@@ -53,3 +53,22 @@ html {
     transform: none;
   }
 }
+
+/* Smooth FAQ accordion open/close where ::details-content is supported. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (interpolate-size: allow-keywords) {
+    .faq-item {
+      interpolate-size: allow-keywords;
+    }
+    .faq-item::details-content {
+      block-size: 0;
+      overflow-y: clip;
+      transition:
+        block-size 0.3s ease,
+        content-visibility 0.3s allow-discrete;
+    }
+    .faq-item[open]::details-content {
+      block-size: auto;
+    }
+  }
+}
