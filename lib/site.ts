@@ -5,6 +5,13 @@ export const SITE_URL =
 
 export const SITE_NAME = "BT Banana";
 
+/**
+ * What "BT" in the brand name means. Shown on About, FAQ and llms.txt so that
+ * nobody (farmers or AI engines) reads it as a genetically modified "Bt" crop.
+ */
+export const BT_MEANING =
+  "\"BT\" in BT Banana stands for [TODO: owner to confirm]. It has nothing to do with genetically modified \"Bt\" crops. Our banana suckers are ordinary, non-GM planting material taken from banana plants.";
+
 export const SITE_TAGLINE = "Wholesale Banana Supplier in Kannur, Kerala";
 
 export const SITE_DESCRIPTION =
@@ -95,9 +102,11 @@ export const navLinks = [
   { href: "/", label: "Home" },
   { href: "/wholesale-bananas", label: "Wholesale Bananas" },
   { href: "/banana-seeds", label: "Vazhavithu / Banana Suckers", short: "Vazhavithu" },
+  { href: "/faq", label: "FAQ" },
   { href: "/locations", label: "Locations" },
   { href: "/about", label: "About Us" },
   { href: "/contact", label: "Contact" },
+  { href: "/ml", label: "മലയാളം" },
   { href: "/card", label: "Digital Card" },
 ];
 

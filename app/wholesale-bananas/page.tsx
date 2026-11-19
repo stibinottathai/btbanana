@@ -78,37 +78,7 @@ const wholesaleJsonLd = {
   },
 };
 
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: wholesaleFaqs.map((faq) => ({
-    "@type": "Question",
-    name: faq.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: faq.answer,
-    },
-  })),
-};
 
-const breadcrumbJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    {
-      "@type": "ListItem",
-      position: 1,
-      name: "Home",
-      item: SITE_URL,
-    },
-    {
-      "@type": "ListItem",
-      position: 2,
-      name: "Wholesale Bananas",
-      item: `${SITE_URL}/wholesale-bananas`,
-    },
-  ],
-};
 
 const bananaProducts = products.filter((p) => p.category === "banana");
 
@@ -116,8 +86,6 @@ export default function WholesaleBananasPage() {
   return (
     <div>
       <JsonLd data={wholesaleJsonLd} />
-      <JsonLd data={faqJsonLd} />
-      <JsonLd data={breadcrumbJsonLd} />
 
       <div className="mx-auto max-w-6xl px-4 pt-10 sm:px-6">
         <Breadcrumbs

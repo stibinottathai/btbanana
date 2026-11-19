@@ -65,50 +65,12 @@ const productJsonLd = {
   },
 };
 
-const breadcrumbsJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    {
-      "@type": "ListItem",
-      position: 1,
-      name: "Home",
-      item: `${SITE_URL}/`,
-    },
-    {
-      "@type": "ListItem",
-      position: 2,
-      name: "Products",
-      item: `${SITE_URL}/products`,
-    },
-    {
-      "@type": "ListItem",
-      position: 3,
-      name: "Nendran Banana",
-      item: `${SITE_URL}/products/nendran-banana`,
-    },
-  ],
-};
 
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: nendranFaqs.map((faq) => ({
-    "@type": "Question",
-    name: faq.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: faq.answer,
-    },
-  })),
-};
 
 export default function NendranBananaPage() {
   return (
     <div>
-      <JsonLd data={breadcrumbsJsonLd} />
       <JsonLd data={productJsonLd} />
-      <JsonLd data={faqJsonLd} />
       <div className="mx-auto max-w-6xl px-4 pt-10 sm:px-6">
         <Breadcrumbs
           items={[
@@ -212,13 +174,13 @@ export default function NendranBananaPage() {
               Nendran Banana Suckers (Vazhavithu)
             </h2>
             <p className="mt-3 leading-7 text-neutral-700">
-              Cultivating Nendran on your farm? We supply disease-free sword suckers
-              (Vazhavithu / വാഴവിത്ത്) with healthy rhizomes for high bunch yields and
+              Cultivating Nendran on your farm? We supply Nendran sword suckers
+              (Vazhavithu / വാഴവിത്ത്) for farms and
               commercial plantation development across Kerala.
             </p>
             <div className="mt-5">
               <Link
-                href="/banana-seeds"
+                href="/banana-seeds/nendran"
                 className="font-bold text-green-800 hover:underline"
               >
                 Explore Banana Suckers &amp; Planting Material &rarr;

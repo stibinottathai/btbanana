@@ -109,24 +109,6 @@ const faqJsonLd = {
   })),
 };
 
-const breadcrumbsJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    {
-      "@type": "ListItem",
-      position: 1,
-      name: "Home",
-      item: SITE_URL,
-    },
-    {
-      "@type": "ListItem",
-      position: 2,
-      name: "Banana Merchant Kannur",
-      item: `${SITE_URL}/banana-merchant-kannur`,
-    },
-  ],
-};
 
 const buyerTypes = [
   {
@@ -154,7 +136,6 @@ export default function BananaMerchantKannurPage() {
     <>
       <JsonLd data={merchantJsonLd} />
       <JsonLd data={faqJsonLd} />
-      <JsonLd data={breadcrumbsJsonLd} />
 
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-b from-green-50 via-emerald-50/40 to-white pb-16 pt-10 sm:pb-20 sm:pt-14">

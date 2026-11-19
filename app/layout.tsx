@@ -72,8 +72,8 @@ const localBusinessJsonLd = {
   "@context": "https://schema.org",
   "@type": ["LocalBusiness", "WholesaleStore"],
   name: SITE_NAME,
-  legalName: "BT Banana Wholesale",
-  description: SITE_DESCRIPTION,
+  legalName: "BT Banana Wholesale", // [TODO: owner to confirm legal name]
+  description: `${SITE_DESCRIPTION} BT Banana supplies banana suckers only, not tissue culture plants.`,
   url: SITE_URL,
   image: `${SITE_URL}/images/logo.png`,
   priceRange: "₹₹",

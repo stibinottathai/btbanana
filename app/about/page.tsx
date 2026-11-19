@@ -14,6 +14,7 @@ import {
 } from "@/components/icons";
 import {
   branches,
+  BT_MEANING,
   coveredAreas,
   defaultEnquiryMessage,
   formatPhone,
@@ -28,14 +29,14 @@ import {
 import { Reveal } from "@/components/Reveal";
 
 export const metadata: Metadata = {
-  title: "About Us | Wholesale Banana & Seed Supplier in Kerala",
+  title: { absolute: "About BT Banana – Vazhavithu & Banana Wholesale, Kannur" },
   description:
-    "Learn about BT Banana — Kerala's trusted wholesale banana & banana seed (Vazhavithu) supplier operating from Alakode and Nellipara, serving farmers, traders, and retailers across Kannur & Kasaragod districts.",
+    "BT Banana, Alakode, Kannur: banana suckers (vazhavithu) delivered across Kerala and wholesale bananas for North Kerala. What BT means and who we are.",
   alternates: {
     canonical: "/about",
   },
   openGraph: {
-    title: `About Us | ${SITE_NAME} Kerala`,
+    title: "About BT Banana – Vazhavithu & Banana Wholesale, Kannur",
     description:
       "Trusted wholesale banana and Vazhavithu planting material supplier based in Alakode and Nellipara, Kerala. Owned and managed by Thomas M.J & Albin Augustine.",
     url: `${SITE_URL}/about`,
@@ -51,7 +52,7 @@ const values = [
   {
     title: "High-Yield Planting Material",
     description:
-      "We supply premium banana seeds, locally known as Vazhavithu (വാഴവിത്ത്), giving farmers and growers reliable planting material for high crop yield.",
+      "We supply banana suckers, locally known as Vazhavithu (വാഴവിത്ത്), giving farmers reliable planting material. We do not sell tissue culture plants.",
   },
   {
     title: "Fair Wholesale Pricing",
@@ -93,7 +94,7 @@ export default function AboutPage() {
                 About BT Banana
               </h1>
               <p className="mt-2 max-w-2xl text-base text-neutral-600">
-                Supplying fresh bulk bananas and premium banana seeds (Vazhavithu) from our Alakode &amp; Nellipara branches across Kerala.
+                Supplying banana suckers (Vazhavithu) across Kerala and fresh bulk bananas from our Alakode &amp; Nellipara branches across Kerala.
               </p>
             </div>
 
@@ -113,8 +114,12 @@ export default function AboutPage() {
             <h2 className="text-2xl font-bold text-green-950 sm:text-3xl">
               Our Journey &amp; Commitment to Quality
             </h2>
+            <div id="what-bt-means" className="rounded-2xl border border-amber-200 bg-amber-50/70 p-5">
+              <h3 className="font-bold text-green-950">What does &ldquo;BT&rdquo; in BT Banana mean?</h3>
+              <p className="mt-2 text-sm leading-relaxed text-neutral-700">{BT_MEANING}</p>
+            </div>
             <p className="text-base leading-relaxed text-neutral-700">
-              <strong className="text-green-950">{SITE_NAME}</strong> is an established wholesale banana and banana seed (Vazhavithu) supplier headquartered in Alakode, Kerala. Built on principles of reliability, fresh produce quality, and fair pricing, we serve local farmers, traders, fruit shop owners, and commercial buyers.
+              <strong className="text-green-950">{SITE_NAME}</strong> is a banana sucker (Vazhavithu) and wholesale banana supplier headquartered in Alakode, Kerala. Built on principles of reliability, fresh produce quality, and fair pricing, we serve local farmers, traders, fruit shop owners, and commercial buyers.
             </p>
             <p className="text-base leading-relaxed text-neutral-700">
               We operate two strategic branches — <strong className="text-green-900">Alakode Branch</strong> and <strong className="text-green-900">Nellipara Branch</strong>. Whether you need Nendran bananas for cooking and chips, table dessert varieties, or high-grade Vazhavithu planting material to start your own banana crop, BT Banana is dedicated to delivering top quality with transparent pricing.

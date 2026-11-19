@@ -30,9 +30,9 @@ export async function generateMetadata({
   const title =
     location.kind === "branch"
       ? `Wholesale Banana Shop in ${location.name}`
-      : `Wholesale Banana Supplier in ${location.name}, Kerala`;
+      : `Wholesale Banana Supplier in ${location.name}`;
 
-  const description = `Looking for a wholesale banana supplier or banana wholesaler in ${location.name}? BT Banana supplies fresh wholesale bananas, raw Nendran for chips, and banana suckers (Vazhavithu) from our Kerala depots. Contact us for daily rates.`;
+  const description = `Wholesale bananas and raw Nendran for chips in ${location.name} from BT Banana's Alakode & Nellipara depots. Banana suckers (vazhavithu) too. Call for today's rate.`;
 
   return {
     title,
@@ -41,7 +41,7 @@ export async function generateMetadata({
       canonical: `/locations/${location.slug}`,
     },
     openGraph: {
-      title: `${title}`,
+      title: `${title} | BT Banana`,
       description,
       url: `${SITE_URL}/locations/${location.slug}`,
     },
@@ -72,30 +72,6 @@ export default async function LocationPage({
       ? `Wholesale Banana Shop in ${location.name}`
       : `Wholesale Banana Supplier serving ${location.name}`);
 
-  const breadcrumbsJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: `${SITE_URL}/`,
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Locations",
-        item: `${SITE_URL}/locations`,
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: location.name,
-        item: `${SITE_URL}/locations/${location.slug}`,
-      },
-    ],
-  };
 
   const placeJsonLd = {
     "@context": "https://schema.org",
@@ -117,24 +93,10 @@ export default async function LocationPage({
     },
   };
 
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: location.faqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: faq.answer,
-      },
-    })),
-  };
 
   return (
     <div>
-      <JsonLd data={breadcrumbsJsonLd} />
       <JsonLd data={placeJsonLd} />
-      <JsonLd data={faqJsonLd} />
 
       <div className="mx-auto max-w-6xl px-4 pt-10 sm:px-6">
         <Breadcrumbs
@@ -210,11 +172,10 @@ export default async function LocationPage({
               Banana Suckers (Vazhavithu) for {location.name}
             </h2>
             <p className="mt-4 leading-7 text-neutral-700">
-              Need certified vegetative planting material? While bananas do not
+              Need banana planting material? Bananas do not
               grow from botanical seeds, local cultivators refer to vigorous
               sword suckers as Vazhavithu (വാഴവിത്ത്). Growers in {location.name}{" "}
-              and the surrounding {location.region} belt collect disease-screened,
-              rhizome-cleaned planting suckers from our {depotName} depot,
+              and the surrounding {location.region} belt can order sword suckers through our {depotName} depot,
               available by variety and season.
             </p>
             <div className="mt-6">

@@ -18,7 +18,7 @@ import { Reveal } from "@/components/Reveal";
 import { CheckIcon, LeafIcon, PhoneIcon } from "@/components/icons";
 
 export const metadata: Metadata = {
-  title: "Banana Wholesale Price in Kerala Today | Daily Rate Guide",
+  title: "Banana Wholesale Price in Kerala Today",
   description:
     "Wholesale banana prices in Kerala fluctuate daily based on morning arrivals and variety. Wholesale prices vary based on variety, quality, quantity, market conditions and delivery location. Contact BT Banana for the current quotation.",
   alternates: {
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Banana Wholesale Price in Kerala Today | BT Banana",
     description:
-      "Get today's live wholesale banana and banana seed rates in Kerala. Transparent daily pricing factors for Nendran, Njali Poovan, and Robusta.",
+      "Get today's wholesale banana rates in Kerala. Transparent daily pricing factors for Nendran, Njali Poovan, and Robusta.",
     url: `${SITE_URL}/banana-prices`,
     type: "website",
   },
@@ -50,9 +50,9 @@ const priceFaqs = [
       "Bunches with large, uniform, unblemished fingers (Grade-A) command premium wholesale rates because they yield maximum recovery for retailers and chips makers. Smaller bunches or mixed grades are priced lower for quick retail turnover.",
   },
   {
-    question: "Are banana seeds (Vazhavithu) priced per seedling or per weight?",
+    question: "Are banana suckers (Vazhavithu) priced per sucker or per weight?",
     answer:
-      "Banana planting suckers (Vazhavithu) are generally priced per sucker/plantlet, depending on the variety (Nendran, Njali Poovan, Mysore Poovan), sucker maturity, and whether you are ordering sword suckers or bulk nursery planting material.",
+      "Banana planting suckers (Vazhavithu) are priced per sucker, depending on the variety (Nendran, Njali Poovan, Mysore Poovan), sucker size and order quantity.",
   },
   {
     question: "Do you offer wholesale discounts for multi-quintal bulk orders?",
@@ -102,18 +102,6 @@ const breadcrumbsJsonLd = {
   ],
 };
 
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: priceFaqs.map((faq) => ({
-    "@type": "Question",
-    name: faq.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: faq.answer,
-    },
-  })),
-};
 
 const pricingFactors = [
   {
@@ -162,8 +150,8 @@ const varietyPriceOverview = [
   {
     name: "Banana Seeds / Vazhavithu (വാഴവിത്ത്)",
     useCase: "Commercial farm cultivation, plantation replanting",
-    pricingNature: "Priced per vigorous sucker / seedling; seasonal discounts on volume bookings (100+ to 1,000+ suckers).",
-    unit: "Per sucker / seedling",
+    pricingNature: "Priced per sucker; seasonal discounts on volume bookings (100+ to 1,000+ suckers).",
+    unit: "Per sucker",
   },
 ];
 
@@ -172,7 +160,6 @@ export default function BananaPricesPage() {
     <>
       <JsonLd data={priceGuideJsonLd} />
       <JsonLd data={breadcrumbsJsonLd} />
-      <JsonLd data={faqJsonLd} />
 
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-b from-green-50 via-emerald-50/40 to-white pb-16 pt-10 sm:pb-24 sm:pt-16">

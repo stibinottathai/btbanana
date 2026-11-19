@@ -29,10 +29,10 @@ import { serviceLocations } from "@/lib/locations";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Vazhavithu & Wholesale Banana Supplier in Kerala | BT Banana",
+    absolute: "Vazhavithu (Banana Suckers) & Wholesale Bananas | BT Banana",
   },
   description:
-    "Buy Vazhavithu (വാഴവിത്ത് / banana suckers) in bulk — imported from Tamil Nadu and delivered to farmers and nurseries across all 14 districts of Kerala. BT Banana, Kannur also supplies wholesale bananas from Alakode & Nellipara.",
+    "Banana suckers (vazhavithu / വാഴക്കന്ന്) delivered across Kerala, plus wholesale bananas in Kannur. Nendran, Robusta, Poovan & more. Call or WhatsApp.",
   keywords: [
     "vazhavithu",
     "vaazhavithu",
@@ -46,9 +46,10 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: SITE_URL,
+    languages: { "en-IN": "/", "ml-IN": "/ml", "x-default": "/" },
   },
   openGraph: {
-    title: "Vazhavithu & Wholesale Banana Supplier in Kerala | BT Banana",
+    title: "Vazhavithu (Banana Suckers) & Wholesale Bananas | BT Banana",
     description:
       "Bulk Vazhavithu (banana suckers) imported from Tamil Nadu and delivered across all of Kerala for farmers and nurseries, plus wholesale bananas from Alakode and Nellipara, Kannur.",
     url: SITE_URL,
@@ -251,8 +252,8 @@ export default function Home() {
             </p>
 
             <h1 className="mt-5 text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl short:text-5xl">
-              <span className="text-amber-300">Vazhavithu</span> &amp;
-              Wholesale Banana Supplier in Kerala
+              <span className="text-amber-300">Vazhavithu</span> (Banana Suckers)
+              &amp; Wholesale Bananas in Kerala
             </h1>
 
             <p className="mt-5 max-w-xl text-base leading-7 text-green-50/90 sm:text-lg sm:leading-8 short:text-base short:leading-7">

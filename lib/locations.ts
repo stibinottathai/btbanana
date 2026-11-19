@@ -345,7 +345,7 @@ export const serviceLocations: ServiceLocation[] = [
     nearestBranchSlug: "alakode",
     customH1: "Wholesale Banana Supplier serving Chittarikkal",
     intro:
-      "Chittarikkal, situated in the eastern hill tracts of Kasaragod district close to Cherupuzha and Alakode, is an active farming and trading zone. BT Banana supplies fresh wholesale bananas, raw Nendran for chips, and certified banana planting material (Vazhavithu) to farmers and merchants across Chittarikkal, Bheemanady, and Parappa.",
+      "Chittarikkal, situated in the eastern hill tracts of Kasaragod district close to Cherupuzha and Alakode, is an active farming and trading zone. BT Banana supplies fresh wholesale bananas, raw Nendran for chips, and banana suckers (Vazhavithu) to farmers and merchants across Chittarikkal, Bheemanady, and Parappa.",
     bestShopAnswer:
       "Searching for a dependable banana wholesaler near Chittarikkal? BT Banana serves Chittarikkal farmers and retailers directly from our Alakode facility with transparent rates and fast road logistics.",
     nearbyAreas: ["Bheemanady", "Parappa", "Cherupuzha", "Vellarikundu"],

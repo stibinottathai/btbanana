@@ -30,12 +30,12 @@ const bananaSeedFaqs = [
   {
     question: "Where is your Vazhavithu sourced or imported from?",
     answer:
-      "Our banana planting material is sourced from specialised banana nurseries in the Tiruchirappalli (Trichy) belt of Tamil Nadu — a region known for healthy, high-yield banana suckers and plantlets — and supplied fresh across Kerala through BT Banana's Kannur base.",
+      "Our banana planting material is sourced from specialised banana nurseries in the Tiruchirappalli (Trichy) belt of Tamil Nadu — a region known for healthy, high-yield banana suckers — and supplied fresh across Kerala through BT Banana's Kannur base.",
   },
   {
     question: "Do you supply Vazhavithu in bulk to nurseries, resellers and large farms?",
     answer:
-      "Yes — bulk supply is our main focus. We regularly supply thousands of Vazhavithu per order to commercial farmers, plantations, plant nurseries, resellers, farmer groups and agricultural cooperatives across Kerala, with volume pricing on enquiry.",
+      "Yes — bulk supply is our main focus. We supply Vazhavithu in bulk to commercial farmers, plantations, plant nurseries, resellers, farmer groups and agricultural cooperatives across Kerala, with volume pricing on enquiry.",
   },
   {
     question: "Is Vazhavithu the same as vaazhavithu, vazha vithu or vazha kannu?",
@@ -45,7 +45,7 @@ const bananaSeedFaqs = [
   {
     question: "Do you supply banana suckers or literal botanical banana seeds?",
     answer:
-      "Cultivated commercial bananas in Kerala (Nendran, Njali Poovan, Palayankodan, Robusta) are seedless and do not produce botanical seeds. What farmers search for as 'banana seeds' or 'Vazhavithu' (വാഴവിത്ത്) is vegetative planting material — vigorous sword suckers and nursery-raised plantlets with viable corms. That is exactly what we supply.",
+      "Cultivated commercial bananas in Kerala (Nendran, Njali Poovan, Palayankodan, Robusta) are seedless and do not produce botanical seeds. What farmers search for as 'banana seeds' or 'Vazhavithu' (വാഴവിത്ത്) is vegetative planting material — sword suckers taken from the base of the mother plant. That is exactly what we supply. We do not sell tissue culture plants.",
   },
   {
     question: "Do you deliver Vazhavithu across all of Kerala?",
@@ -60,12 +60,12 @@ const bananaSeedFaqs = [
   {
     question: "What is the price of Vazhavithu / banana suckers today?",
     answer:
-      "Vazhavithu is priced per sucker/plantlet and varies by variety, quality, quantity, and delivery district. Because rates move with season and demand, we quote live prices on enquiry — contact Thomas M.J (9447483169) or Albin Augustine (8086648081) for today's quotation.",
+      "Vazhavithu is priced per sucker and varies by variety, quality, quantity, and delivery district. Because rates move with season and demand, we quote live prices on enquiry — contact Thomas M.J (9447483169) or Albin Augustine (8086648081) for today's quotation.",
   },
   {
     question: "What is the minimum quantity, and can I order a small amount?",
     answer:
-      "We supply both small homestead lots (from about 25–50 suckers) and large commercial orders of 2,000+ suckers for full plantation planting. Tell us your variety and count and we will confirm availability and the best delivery option.",
+      "We supply both small homestead lots (minimum order: [TODO: owner to confirm]) and large commercial orders for full plantation planting. Tell us your variety and count and we will confirm availability and the best delivery option.",
   },
   {
     question: "How soon can Vazhavithu be delivered to my district?",
@@ -78,43 +78,13 @@ const bananaSeedFaqs = [
       "Send your variety, quantity, and delivery town over WhatsApp (8086648081) or use the enquiry form on this page. We reply with availability, a rate, and delivery details — no account or online payment needed to get a quote.",
   },
   {
-    question: "How do you make sure the suckers are healthy and disease-free?",
+    question: "How do you make sure the suckers are healthy?",
     answer:
-      "We select vigorous sword suckers with healthy corms and pointed, lance-like leaves, avoiding weak water suckers. Material is kept moisture-protected in transit so corms and roots stay hydrated and viable — giving fast field establishment, better disease resistance, and strong bunch growth.",
+      "We select vigorous sword suckers with healthy corms and pointed, lance-like leaves, avoiding weak water suckers. Material is kept moisture-protected in transit so corms stay viable. [TODO: owner to confirm any cleaning, paring or treatment done before dispatch.]",
   },
 ];
 
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: bananaSeedFaqs.map((faq) => ({
-    "@type": "Question",
-    name: faq.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: faq.answer,
-    },
-  })),
-};
 
-const breadcrumbJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    {
-      "@type": "ListItem",
-      position: 1,
-      name: "Home",
-      item: SITE_URL,
-    },
-    {
-      "@type": "ListItem",
-      position: 2,
-      name: "Vazhavithu / Banana Seeds",
-      item: `${SITE_URL}/banana-seeds`,
-    },
-  ],
-};
 
 // Product schema aimed at buy-intent queries for Vazhavithu. Price is quoted on
 // request (it moves with season/variety), so no price is asserted here.
@@ -148,7 +118,6 @@ const productJsonLd = {
   ],
   offers: {
     "@type": "Offer",
-    availability: "https://schema.org/InStock",
     priceCurrency: "INR",
     url: `${SITE_URL}/banana-seeds`,
     areaServed: { "@type": "State", name: "Kerala" },    seller: { "@type": "Organization", name: "BT Banana", url: SITE_URL },
@@ -156,9 +125,9 @@ const productJsonLd = {
 };
 
 export const metadata: Metadata = {
-  title: "Vazhavithu Supplier in Kerala — Bulk Banana Suckers from Tamil Nadu",
+  title: "Vazhavithu – Banana Suckers for Sale in Kerala",
   description:
-    "Buy Vazhavithu (വാഴവിത്ത് / banana suckers) in bulk. BT Banana imports healthy Nendran, Njali Poovan, Palayankodan & Robusta suckers from Tamil Nadu and delivers to farmers and nurseries across all 14 districts of Kerala.",
+    "Banana suckers (vazhavithu / vazhakannu) for planting. Nendran, Robusta, Njali Poovan & Palayankodan, delivered across Kerala. Order on WhatsApp.",
   keywords: [
     "vazhavithu",
     "vaazhavithu",
@@ -179,9 +148,14 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: `${SITE_URL}/banana-seeds`,
+    languages: {
+      "en-IN": "/banana-seeds",
+      "ml-IN": "/ml/banana-seeds",
+      "x-default": "/banana-seeds",
+    },
   },
   openGraph: {
-    title: "Vazhavithu Supplier in Kerala — Bulk Banana Suckers | BT Banana",
+    title: "Vazhavithu – Banana Suckers for Sale in Kerala | BT Banana",
     description:
       "Bulk Vazhavithu (വാഴവിത്ത്) — Nendran, Njali Poovan, Palayankodan & Robusta suckers — imported from Tamil Nadu and delivered to farmers and nurseries across all of Kerala.",
     images: [{ url: "/images/vazhavithu.webp", alt: "Vazhavithu banana suckers supplied by BT Banana" }],
@@ -192,21 +166,25 @@ export const metadata: Metadata = {
 const seedVarieties = [
   {
     name: "Nendran Vazhavithu (ഏത്ത വാഴവിത്ത്)",
+    href: "/banana-seeds/nendran",
     desc: "The primary commercial planting sucker in Kerala. High bunch yield, demanded for both culinary cooking and chips processing.",
     suitable: "Commercial plantations, Onam crop, home farms",
   },
   {
     name: "Njali Poovan Vazhavithu (ഞാലിപ്പൂവൻ)",
+    href: "/banana-seeds/njali-poovan",
     desc: "Premium dessert variety sucker. Yields sweet, delicate fingers commanding top retail prices across Kerala markets.",
     suitable: "High-value fruit markets, homestead cultivation",
   },
   {
     name: "Mysore Poovan / Palayankodan (പാളയംകോടൻ)",
+    href: "/banana-seeds/palayankodan",
     desc: "Extremely hardy and drought-resilient variety with steady yield throughout drought and monsoon periods.",
     suitable: "Intercropping, organic groves, low-maintenance plots",
   },
   {
     name: "Robusta Vazhavithu (റോബസ്റ്റ)",
+    href: "/banana-seeds/robusta",
     desc: "Vigorous green table variety producing heavy bunches with 10–12 hands and uniform finger sizing.",
     suitable: "Commercial retail wholesale orchards",
   },
@@ -222,7 +200,8 @@ const keyFacts: { label: string; value: string }[] = [
   { label: "Also searched as", value: "Vaazhavithu, Vazha vithu, വാഴക്കന്ന് (banana suckers / seeds)" },
   { label: "Supplied across", value: "All 14 districts of Kerala" },
   { label: "Who we supply", value: "Farmers, plantations, nurseries, resellers & cooperatives" },
-  { label: "Order size", value: "Bulk orders of 2,000+ suckers; smaller lots on request" },
+  { label: "Order size", value: "Bulk orders; smaller lots on request (minimum: [TODO: owner to confirm])" },
+  { label: "Not supplied", value: "Tissue culture plants — we supply suckers only" },
   { label: "Best planting window", value: "Pre-monsoon & for Onam (Chingam) harvest" },
   { label: "Pricing", value: "Per sucker, quoted live on enquiry" },
 ];
@@ -231,8 +210,6 @@ export default function BananaSeedsPage() {
   return (
     <div>
       <JsonLd data={productJsonLd} />
-      <JsonLd data={faqJsonLd} />
-      <JsonLd data={breadcrumbJsonLd} />
 
       <div className="mx-auto max-w-6xl px-4 pt-10 sm:px-6">
         <Breadcrumbs items={[{ label: "Vazhavithu / Banana Seeds", href: "/banana-seeds" }]} />
@@ -253,7 +230,7 @@ export default function BananaSeedsPage() {
             </span>
           </div>
           <h1 className="mt-3 text-3xl font-bold tracking-tight text-green-950 sm:text-5xl">
-            Vazhavithu Supplier in Kerala — Bulk Banana Suckers
+            Vazhavithu – Banana Suckers for Planting, Delivered Across Kerala
           </h1>
           <p className="mt-5 max-w-2xl text-base leading-7 text-neutral-700 sm:text-lg sm:leading-8">
             Searching for <strong className="font-semibold text-green-900">Vazhavithu (വാഴവിത്ത്)</strong>?
@@ -297,7 +274,7 @@ export default function BananaSeedsPage() {
           </p>
           <p className="mt-2 text-base leading-relaxed text-neutral-800">
             <strong className="text-green-950">Vazhavithu (വാഴവിത്ത്)</strong> is the banana planting
-            material — vigorous suckers and plantlets — that Kerala farmers plant to grow banana crops.{" "}
+            material — sword suckers taken from the base of the mother plant — that Kerala farmers plant to grow banana crops.{" "}
             <strong className="text-green-950">BT Banana</strong> supplies Vazhavithu in Nendran, Njali Poovan,
             Palayankodan, and Robusta varieties, sourced from the <strong className="text-green-950">Trichy
             (Tamil Nadu)</strong> nursery belt, and delivers to farms <strong className="text-green-950">anywhere
@@ -353,7 +330,7 @@ export default function BananaSeedsPage() {
                 The quality of your harvest starts with the planting material. We source our Vazhavithu from
                 established banana nurseries around <strong className="text-green-950">Tiruchirappalli (Trichy)</strong>{" "}
                 in Tamil Nadu — one of South India&apos;s most reputed regions for healthy, high-yield banana
-                suckers and plantlets.
+                suckers.
               </p>
               <p className="mt-4 leading-7 text-neutral-700">
                 Each batch is selected for strong corms and variety purity, kept moisture-protected in transit,
@@ -364,8 +341,8 @@ export default function BananaSeedsPage() {
             <ul className="grid gap-4 sm:grid-cols-2">
               {[
                 { t: "Trusted nursery belt", d: "Material from the Trichy region, known for quality banana planting stock." },
-                { t: "Variety purity", d: "Nendran, Njali Poovan, Palayankodan & Robusta — true to type." },
-                { t: "Viable corms", d: "Selected sword suckers that establish fast and resist root rot." },
+                { t: "Variety purity", d: "Nendran, Njali Poovan, Palayankodan & Robusta, kept separate by variety." },
+                { t: "Viable corms", d: "Sword suckers with well-developed corms, not weak water suckers." },
                 { t: "Kerala-wide reach", d: "One source, delivered to farms in every Kerala district." },
               ].map((item) => (
                 <li
@@ -399,11 +376,11 @@ export default function BananaSeedsPage() {
                 <div className="mt-6 grid gap-4 sm:grid-cols-3">
                   <div className="rounded-2xl border border-green-100 bg-green-50/60 p-4">
                     <p className="text-xs font-bold uppercase tracking-wider text-green-900">Flexible Volumes</p>
-                    <p className="mt-1 text-xs text-neutral-600">From 50–100 seedlings for homesteads to 2,000+ suckers for commercial banana plantations.</p>
+                    <p className="mt-1 text-xs text-neutral-600">From small homestead lots to bulk orders for commercial banana plantations.</p>
                   </div>
                   <div className="rounded-2xl border border-green-100 bg-green-50/60 p-4">
                     <p className="text-xs font-bold uppercase tracking-wider text-green-900">Moisture-Protected</p>
-                    <p className="mt-1 text-xs text-neutral-600">Freshly harvested and protected so corms and roots remain hydrated and viable throughout road transit.</p>
+                    <p className="mt-1 text-xs text-neutral-600">Packed and protected so corms stay viable throughout road transit.</p>
                   </div>
                   <div className="rounded-2xl border border-green-100 bg-green-50/60 p-4">
                     <p className="text-xs font-bold uppercase tracking-wider text-green-900">Direct Farm Gate</p>
@@ -443,11 +420,16 @@ export default function BananaSeedsPage() {
             {seedVarieties.map((v) => (
               <div key={v.name} className="flex flex-col justify-between rounded-2xl border border-green-100 bg-green-50/50 p-6">
                 <div>
-                  <h3 className="text-lg font-bold text-green-950">{v.name}</h3>
+                  <h3 className="text-lg font-bold text-green-950">
+                    <Link href={v.href} className="hover:text-green-700">{v.name}</Link>
+                  </h3>
                   <p className="mt-2 text-xs leading-relaxed text-neutral-600">{v.desc}</p>
                 </div>
                 <div className="mt-4 border-t border-green-200/60 pt-3">
                   <span className="text-[11px] font-semibold text-green-800">Best for: {v.suitable}</span>
+                  <Link href={v.href} className="mt-2 block text-xs font-semibold text-green-700 hover:text-green-900">
+                    Spacing, preparation &amp; price &rarr;
+                  </Link>
                 </div>
               </div>
             ))}
@@ -481,7 +463,7 @@ export default function BananaSeedsPage() {
                   In Malayalam, these planting propagules are termed <strong className="text-green-950">Vazhavithu (വാഴവിത്ത്)</strong>. BT Banana specifically grades and supplies <strong className="text-green-950">sword suckers</strong> with narrow, lance-like leaves and robust corms.
                 </p>
                 <p className="mt-2">
-                  We avoid weak water suckers (which have broad leaves and small corms) because sword suckers establish faster in the soil, resist root rot, and produce heavy commercial bunches.
+                  We avoid weak water suckers (which have broad leaves and small corms) because Kerala Agricultural University advises against water suckers because they are not strong enough to produce healthy clumps.
                 </p>
               </div>
             </div>
@@ -533,10 +515,22 @@ export default function BananaSeedsPage() {
                   See the areas we serve &rarr;
                 </Link>
                 <Link
-                  href="/products"
+                  href="/how-to-plant-banana-suckers"
                   className="font-semibold text-green-700 hover:text-green-900"
                 >
-                  Browse all banana varieties &rarr;
+                  How to plant banana suckers &rarr;
+                </Link>
+                <Link
+                  href="/sucker-vs-tissue-culture"
+                  className="font-semibold text-green-700 hover:text-green-900"
+                >
+                  Sucker vs tissue culture &rarr;
+                </Link>
+                <Link
+                  href="/faq"
+                  className="font-semibold text-green-700 hover:text-green-900"
+                >
+                  Vazhavithu FAQs &rarr;
                 </Link>
               </div>
             </div>

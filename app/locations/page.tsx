@@ -2,20 +2,19 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { LocationCard } from "@/components/LocationCard";
-import { JsonLd } from "@/components/JsonLd";
 import { MapPinIcon, ChevronRightIcon } from "@/components/icons";
 import { branches, SITE_URL } from "@/lib/site";
 import { serviceLocations } from "@/lib/locations";
 
 export const metadata: Metadata = {
-  title: "Wholesale Banana Supply Locations — Kannur, Kasaragod & Wayanad",
+  title: "Banana Supply Locations in North Kerala",
   description:
-    "BT Banana operates wholesale banana depots in Alakode and Nellipara, supplying fresh bulk bananas, raw Nendran for chips, and banana suckers (Vazhavithu) across Kannur, Kasaragod, and Wayanad districts in Kerala.",
+    "BT Banana depots in Alakode and Nellipara supply wholesale bananas and raw Nendran across Kannur, Kasaragod and Wayanad, and vazhavithu statewide.",
   alternates: {
     canonical: "/locations",
   },
   openGraph: {
-    title: "Wholesale Banana Supply Locations — Kannur, Kasaragod & Wayanad | BT Banana",
+    title: "Banana Supply Locations in North Kerala | BT Banana",
     description:
       "BT Banana's depots in Alakode & Nellipara and wholesale distribution corridors across Kannur, Kasaragod, and Wayanad districts in Kerala.",
     url: `${SITE_URL}/locations`,
@@ -25,28 +24,9 @@ export const metadata: Metadata = {
 const areaLocations = serviceLocations.filter((l) => l.kind === "area");
 
 export default function LocationsPage() {
-  const breadcrumbsJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: `${SITE_URL}/`,
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Locations",
-        item: `${SITE_URL}/locations`,
-      },
-    ],
-  };
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
-      <JsonLd data={breadcrumbsJsonLd} />
       <Breadcrumbs items={[{ label: "Locations", href: "/locations" }]} />
 
       <h1 className="mt-4 text-4xl font-bold tracking-tight text-green-950 sm:text-5xl">

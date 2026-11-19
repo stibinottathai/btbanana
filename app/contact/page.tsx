@@ -3,19 +3,22 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CallButton } from "@/components/CallButton";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { EnquiryForm } from "@/components/EnquiryForm";
+import { LocationCard } from "@/components/LocationCard";
+import Link from "next/link";
 import { branches, owners, SITE_NAME, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Contact Us",
+  title: "Contact – Vazhavithu & Wholesale Bananas",
   description:
-    "Contact BT Banana for wholesale banana and banana seed (Vazhavithu) enquiries. Call, WhatsApp, or send an enquiry — Thomas M.J and Albin Augustine, Alakode and Nellipara, Kerala.",
+    "Call or WhatsApp BT Banana in Alakode and Nellipara, Kannur, for banana suckers (vazhavithu) across Kerala and wholesale bananas. Map and directions.",
   alternates: {
     canonical: "/contact",
+    languages: { "en-IN": "/contact", "ml-IN": "/ml/contact", "x-default": "/contact" },
   },
   openGraph: {
-    title: "Contact Us | BT Banana",
+    title: "Contact – Vazhavithu & Wholesale Bananas | BT Banana",
     description:
-      "Contact BT Banana for wholesale banana and banana seed (Vazhavithu) enquiries in Kerala.",
+      "Call or WhatsApp BT Banana for banana suckers (vazhavithu) and wholesale bananas in Kerala.",
     url: `${SITE_URL}/contact`,
   },
 };
@@ -85,6 +88,20 @@ export default function ContactPage() {
           </div>
         </div>
       </div>
+
+      <section className="mt-14">
+        <h2 className="text-2xl font-bold text-green-950">Find us on the map</h2>
+        <div className="mt-6 grid gap-6 sm:grid-cols-2">
+          {branches.map((branch) => (
+            <LocationCard key={branch.slug} branch={branch} />
+          ))}
+        </div>
+        <p className="mt-6 text-sm">
+          <Link href="/ml/contact" lang="ml" className="font-semibold text-green-700 hover:text-green-900">
+            മലയാളത്തിൽ &rarr;
+          </Link>
+        </p>
+      </section>
     </div>
   );
 }

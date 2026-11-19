@@ -13,9 +13,14 @@ export type FaqItem = {
 export function Faq({
   items,
   title = "Frequently Asked Questions",
+  id,
+  schema = true,
 }: {
   items: FaqItem[];
   title?: string;
+  id?: string;
+  /** Set false when the page emits one combined FAQPage for several blocks. */
+  schema?: boolean;
 }) {
   if (items.length === 0) return null;
 
@@ -33,8 +38,8 @@ export function Faq({
   };
 
   return (
-    <div>
-      <JsonLd data={faqJsonLd} />
+    <div id={id} className="scroll-mt-24">
+      {schema && <JsonLd data={faqJsonLd} />}
       <h2 className="text-2xl font-bold text-green-950">{title}</h2>
       <div className="mt-6 space-y-3">
         {items.map((item) => (

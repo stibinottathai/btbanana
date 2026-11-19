@@ -7,16 +7,16 @@ import { products } from "@/lib/products";
 import { primaryPhone, primaryWhatsApp, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Banana & Banana Seed Products",
+  title: "Banana Varieties & Vazhavithu",
   description:
-    "Browse the banana and banana seed products supplied wholesale by BT Banana — Nendran banana, plantain varieties, other banana varieties, and Vazhavithu planting material.",
+    "Banana varieties supplied by BT Banana: wholesale Nendran, Njali Poovan, Robusta and Palayankodan fruit, plus banana suckers (vazhavithu) for planting.",
   alternates: {
     canonical: "/products",
   },
   openGraph: {
-    title: "Banana & Banana Seed Products | BT Banana",
+    title: "Banana Varieties & Vazhavithu | BT Banana",
     description:
-      "Browse the banana and banana seed products supplied wholesale by BT Banana from Alakode and Nellipara, Kerala.",
+      "Wholesale banana varieties and banana suckers (vazhavithu) from BT Banana, Alakode and Nellipara, Kerala.",
     url: `${SITE_URL}/products`,
   },
 };
@@ -27,10 +27,10 @@ export default function ProductsPage() {
       <Breadcrumbs items={[{ label: "Products", href: "/products" }]} />
 
       <h1 className="mt-4 text-4xl font-bold tracking-tight text-green-950">
-        Banana &amp; Banana Seed Products
+        Banana Varieties &amp; Vazhavithu
       </h1>
       <p className="mt-4 max-w-2xl text-lg leading-8 text-neutral-700">
-        BT Banana supplies bananas and banana seeds (Vazhavithu) wholesale
+        BT Banana supplies bananas wholesale and banana suckers (Vazhavithu) for planting
         from our Alakode and Nellipara branches in Kerala. Below is an
         overview of what we currently supply — enquire with us for
         availability and pricing.
