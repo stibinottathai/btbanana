@@ -60,7 +60,7 @@ export function Header() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-40">
+    <header id="top" className="sticky top-0 z-40">
       {/* Main bar */}
       <div
         className={`border-b transition-all duration-300 ${

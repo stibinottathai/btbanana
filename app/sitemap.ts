@@ -59,7 +59,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [];
 
   for (const route of routes) {
-    const en = route.path || "/";
+    // Same string as the page's <link rel="canonical"> (Next renders the home
+    // canonical without a trailing slash), so canonical, <loc> and hreflang
+    // all agree exactly.
+    const en = route.path;
     entries.push({
       url: `${SITE_URL}${route.path}`,
       lastModified: LAST_CONTENT_UPDATE,

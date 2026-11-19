@@ -93,7 +93,7 @@ export default function MalayalamBananaSeedsPage() {
             src="/images/vazhavithu.webp"
             alt="BT Banana വിതരണം ചെയ്യുന്ന വാഴവിത്ത് (വാഴക്കന്ന്)"
             fill
-            priority
+            preload
             sizes="(min-width: 1024px) 50vw, 100vw"
             className="object-cover"
           />

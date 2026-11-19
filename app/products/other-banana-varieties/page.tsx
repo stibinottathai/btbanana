@@ -7,6 +7,7 @@ import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { LocationCard } from "@/components/LocationCard";
 import { Faq } from "@/components/Faq";
 import { JsonLd } from "@/components/JsonLd";
+import { RelatedVarieties } from "@/components/RelatedVarieties";
 import { CheckIcon } from "@/components/icons";
 import { BUSINESS_ID, branches, primaryPhone, primaryWhatsApp, SITE_URL } from "@/lib/site";
 
@@ -91,7 +92,7 @@ export default function OtherBananaVarietiesPage() {
             src="/images/banana-fruit-inflorescence.webp"
             alt="Banana fruit and inflorescence — BT Banana wholesale supply, Kerala"
             fill
-            priority
+            preload
             sizes="(min-width: 1024px) 50vw, 100vw"
             className="object-cover"
           />
@@ -159,6 +160,7 @@ export default function OtherBananaVarietiesPage() {
           </div>
         </div>
       </section>
+      <RelatedVarieties current="/products/other-banana-varieties" />
     </div>
   );
 }

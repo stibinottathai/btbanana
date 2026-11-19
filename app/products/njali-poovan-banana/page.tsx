@@ -7,6 +7,7 @@ import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { LocationCard } from "@/components/LocationCard";
 import { Faq } from "@/components/Faq";
 import { JsonLd } from "@/components/JsonLd";
+import { RelatedVarieties } from "@/components/RelatedVarieties";
 import { CheckIcon } from "@/components/icons";
 import { BUSINESS_ID, branches, primaryPhone, primaryWhatsApp, SITE_URL } from "@/lib/site";
 
@@ -103,7 +104,7 @@ export default function NjaliPoovanBananaPage() {
             src="/images/njali.webp"
             alt="Sweet Njali Poovan bananas supplied wholesale by BT Banana, Kerala"
             fill
-            priority
+            preload
             sizes="(min-width: 1024px) 50vw, 100vw"
             className="object-cover"
           />
@@ -177,6 +178,7 @@ export default function NjaliPoovanBananaPage() {
           </div>
         </div>
       </section>
+      <RelatedVarieties current="/products/njali-poovan-banana" />
     </div>
   );
 }

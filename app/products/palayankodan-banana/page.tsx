@@ -7,6 +7,7 @@ import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { LocationCard } from "@/components/LocationCard";
 import { Faq } from "@/components/Faq";
 import { JsonLd } from "@/components/JsonLd";
+import { RelatedVarieties } from "@/components/RelatedVarieties";
 import { CheckIcon } from "@/components/icons";
 import { BUSINESS_ID, branches, primaryPhone, primaryWhatsApp, SITE_URL } from "@/lib/site";
 
@@ -106,7 +107,7 @@ export default function PalayankodanBananaPage() {
             src="/images/mysoor-poovan.webp"
             alt="Palayankodan / Mysore Poovan banana variety supplied wholesale by BT Banana, Kerala"
             fill
-            priority
+            preload
             sizes="(min-width: 1024px) 50vw, 100vw"
             className="object-cover"
           />
@@ -180,6 +181,7 @@ export default function PalayankodanBananaPage() {
           </div>
         </div>
       </section>
+      <RelatedVarieties current="/products/palayankodan-banana" />
     </div>
   );
 }

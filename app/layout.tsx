@@ -31,6 +31,9 @@ const brandSerif = Fraunces({
   style: ["normal", "italic"],
   axes: ["SOFT", "opsz"],
   display: "swap",
+  // Only the small header wordmark uses this face. Not preloading it keeps its
+  // two font files from competing with the hero (LCP) image on mobile.
+  preload: false,
 });
 
 export const metadata: Metadata = {

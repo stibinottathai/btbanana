@@ -182,7 +182,7 @@ export default function BananaMerchantKannurPage() {
                 src="/images/wholesale.webp"
                 alt="Banana merchant trading facility and wholesale stock in Kannur, Kerala - BT Banana"
                 fill
-                priority
+                preload
                 sizes="(min-width: 1024px) 50vw, 100vw"
                 className="object-cover"
               />

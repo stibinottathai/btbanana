@@ -36,6 +36,52 @@ const companyLinks = [
   { label: "Digital Visiting Card", href: "/card" },
 ];
 
+// Sitewide links to every indexable page that isn't in the main nav. Pages
+// linked only from one or two places tend to sit in Search Console as
+// "Discovered – currently not indexed"; a footer link gives each one a crawl
+// path from every page on the site.
+const exploreGroups = [
+  {
+    heading: "Banana Varieties",
+    links: [
+      { label: "Nendran Banana", href: "/products/nendran-banana" },
+      { label: "Njali Poovan Banana", href: "/products/njali-poovan-banana" },
+      { label: "Palayankodan Banana", href: "/products/palayankodan-banana" },
+      { label: "Robusta Banana", href: "/products/robusta-banana" },
+      { label: "Poovan Banana", href: "/products/poovan-banana" },
+      { label: "Plantain Varieties", href: "/products/plantain-varieties" },
+      { label: "Other Varieties", href: "/products/other-banana-varieties" },
+    ],
+  },
+  {
+    heading: "Vazhavithu by Variety",
+    links: [
+      { label: "Nendran Vazhavithu", href: "/banana-seeds/nendran" },
+      { label: "Robusta Suckers", href: "/banana-seeds/robusta" },
+      { label: "Njali Poovan Vazhavithu", href: "/banana-seeds/njali-poovan" },
+      { label: "Palayankodan Vazhavithu", href: "/banana-seeds/palayankodan" },
+    ],
+  },
+  {
+    heading: "Growing Guides",
+    links: [
+      { label: "How to Plant Banana Suckers", href: "/how-to-plant-banana-suckers" },
+      { label: "Sucker vs Tissue Culture", href: "/sucker-vs-tissue-culture" },
+      { label: "Bulk Vazhavithu Order Guide", href: "/blog/bulk-vazhavithu-order-guide" },
+      { label: "Vazhavithu FAQ", href: "/faq" },
+    ],
+  },
+  {
+    heading: "മലയാളം",
+    links: [
+      { label: "ഹോം", href: "/ml" },
+      { label: "വാഴവിത്ത്", href: "/ml/banana-seeds" },
+      { label: "സംശയങ്ങൾ (FAQ)", href: "/ml/faq" },
+      { label: "ബന്ധപ്പെടുക", href: "/ml/contact" },
+    ],
+  },
+];
+
 function FooterHeading({ children }: { children: ReactNode }) {
   return (
     <p className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] text-amber-300/90">
@@ -239,6 +285,22 @@ export function Footer() {
               ))}
             </ul>
           </div>
+        </div>
+
+        {/* ── Explore: varieties, suckers, guides, Malayalam ── */}
+        <div className="grid grid-cols-2 gap-x-6 gap-y-10 border-t border-white/10 py-10 lg:grid-cols-4">
+          {exploreGroups.map((group) => (
+            <nav key={group.heading} aria-label={group.heading}>
+              <FooterHeading>{group.heading}</FooterHeading>
+              <ul className="mt-4 space-y-2.5">
+                {group.links.map((link) => (
+                  <li key={link.href}>
+                    <FooterLink {...link} />
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          ))}
         </div>
 
         {/* ── Service areas ── */}

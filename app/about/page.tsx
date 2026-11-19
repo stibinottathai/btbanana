@@ -157,7 +157,7 @@ export default function AboutPage() {
               alt="BT Banana Wholesale Supply"
               fill
               className="object-cover"
-              priority
+              preload
             />
           </Reveal>
         </section>
