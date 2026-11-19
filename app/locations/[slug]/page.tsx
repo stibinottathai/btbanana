@@ -12,8 +12,8 @@ import { CheckIcon, MapPinIcon, ChevronRightIcon } from "@/components/icons";
 import { BUSINESS_ID, primaryPhone, primaryWhatsApp, SITE_URL } from "@/lib/site";
 import {
   getLocationBySlug,
+  getNearbyLocations,
   getNearestBranch,
-  getOtherLocations,
   serviceLocations,
 } from "@/lib/locations";
 
@@ -58,8 +58,19 @@ export default async function LocationPage({
   if (!location) notFound();
 
   const branch = getNearestBranch(location);
-  const others = getOtherLocations(location.slug);
+  const others = getNearbyLocations(location);
   const depotName = branch.name.replace("BT Banana – ", "");
+
+  // Owner-confirmed facts only; each row appears once its field is filled in
+  // lib/locations.ts.
+  const local = location.local ?? {};
+  const localFacts = [
+    { label: "Delivery days", value: local.deliveryDays },
+    { label: `Distance from ${depotName}`, value: local.travelFromDepot },
+    { label: "Who buys from us here", value: local.typicalBuyers },
+    { label: "Order terms", value: local.orderTerms },
+    { label: "Good to know", value: local.note },
+  ].filter((f): f is { label: string; value: string } => Boolean(f.value));
 
   // Grounded, location-specific phrasing so each page reads distinctly instead
   // of sharing one block of boilerplate with only the place name swapped.
@@ -167,13 +178,11 @@ export default async function LocationPage({
               Wholesale Bananas for {location.name}
             </h2>
             <p className="mt-4 leading-7 text-neutral-700">
-              As a banana wholesaler serving {location.name} in {location.region}
-              , we run commercial consignments out of our {depotName} depot to
-              buyers here and across nearby {nearbyList}. We handle top Kerala
-              varieties — Nendran (Ethakka), Palayankodan (Mysore Poovan),
-              Robusta, and Njali Poovan — sourced directly from regional growers,
-              graded for uniform maturity, and priced on transparent daily
-              wholesale market conditions.
+              Orders for {location.name} go out from our {depotName} depot, which
+              also serves nearby {nearbyList}.{" "}
+              {location.local?.popularVarieties?.length
+                ? `Buyers here most often order ${location.local.popularVarieties.join(", ")}.`
+                : "Nendran, Njali Poovan, Palayankodan and Robusta are available, priced on the day's arrivals."}
             </p>
             <div className="mt-6">
               <Link
@@ -191,11 +200,8 @@ export default async function LocationPage({
               Banana Suckers (Vazhavithu) for {location.name}
             </h2>
             <p className="mt-4 leading-7 text-neutral-700">
-              Need banana planting material? Bananas do not
-              grow from botanical seeds, local cultivators refer to vigorous
-              sword suckers as Vazhavithu (വാഴവിത്ത്). Growers in {location.name}{" "}
-              and the surrounding {location.region} belt can order sword suckers through our {depotName} depot,
-              available by variety and season.
+              Growers in {location.name} can order sword suckers (വാഴവിത്ത്)
+              through our {depotName} depot, by variety and season.
             </p>
             <div className="mt-6">
               <Link
@@ -209,23 +215,24 @@ export default async function LocationPage({
           </div>
         </div>
 
-        <ul className="mt-10 grid gap-3 sm:grid-cols-2">
-          {[
-            `Wholesale banana supplier serving ${location.name} from our ${depotName} depot`,
-            `Also covering nearby ${nearbyList}`,
-            "Fresh bananas & vegetative banana suckers (Vazhavithu)",
-            "Transparent pricing based on daily market arrivals",
-            "Direct phone & WhatsApp contact with depot operators",
-          ].map((item) => (
-            <li
-              key={item}
-              className="flex items-center gap-2 text-sm font-medium text-green-900"
-            >
-              <CheckIcon className="h-4 w-4 shrink-0 text-green-700" />
-              {item}
-            </li>
-          ))}
-        </ul>
+        {localFacts.length > 0 && (
+          <div className="mt-10 rounded-3xl border border-green-100 bg-green-50/50 p-8">
+            <h2 className="text-2xl font-bold text-green-950">
+              Supply to {location.name}: the details
+            </h2>
+            <dl className="mt-6 grid gap-x-8 gap-y-5 sm:grid-cols-2">
+              {localFacts.map((fact) => (
+                <div key={fact.label}>
+                  <dt className="flex items-center gap-2 text-sm font-semibold text-green-800">
+                    <CheckIcon className="h-4 w-4 shrink-0 text-green-700" />
+                    {fact.label}
+                  </dt>
+                  <dd className="mt-1 pl-6 leading-7 text-neutral-700">{fact.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        )}
       </section>
 
       {/* Core Services Cross-links */}
@@ -291,12 +298,12 @@ export default async function LocationPage({
         />
       </section>
 
-      {/* Other Areas Grid */}
+      {/* Real neighbouring areas — a different set of links on every page */}
       {others.length > 0 && (
         <section className="border-t border-green-100 bg-green-50/50">
           <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
             <h2 className="text-xl font-bold text-green-950">
-              Other Wholesale Supply Locations
+              Areas near {location.name} we also supply
             </h2>
             <div className="mt-6 flex flex-wrap gap-2.5">
               {others.map((other) => (
@@ -306,7 +313,7 @@ export default async function LocationPage({
                   className="flex items-center gap-2 rounded-xl border border-green-200/80 bg-white px-4 py-2.5 text-sm font-semibold text-green-950 transition hover:bg-green-100 hover:border-green-300"
                 >
                   <MapPinIcon className="h-4 w-4 text-emerald-600 shrink-0" />
-                  Wholesale Banana Supplier — {other.name}
+                  {other.kind === "branch" ? `${other.name} depot` : other.name}
                 </Link>
               ))}
             </div>

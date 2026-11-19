@@ -29,6 +29,28 @@ export type ServiceLocation = {
    */
   nearbyAreas: string[];
   faqs: LocationFaq[];
+  /**
+   * Owner-confirmed local facts. Leave a field undefined until the owner has
+   * confirmed it — each one renders only when set, so nothing guessed goes
+   * live. These are what make a delivery-area page genuinely different from
+   * its neighbours (Google skips near-duplicate location pages).
+   */
+  local?: LocalFacts;
+};
+
+export type LocalFacts = {
+  /** e.g. "Daily, morning dispatch" or "Tuesday and Friday" */
+  deliveryDays?: string;
+  /** e.g. "About 45 minutes by road from our Alakode depot via Cherupuzha" */
+  travelFromDepot?: string;
+  /** Who actually buys from us here, e.g. "chips units in Payyanur, sadya caterers" */
+  typicalBuyers?: string;
+  /** Varieties most ordered from this area */
+  popularVarieties?: string[];
+  /** Minimum order / delivery terms specific to this area */
+  orderTerms?: string;
+  /** Any other true, local detail (markets served, landmarks, seasonal demand) */
+  note?: string;
 };
 
 export const serviceLocations: ServiceLocation[] = [
@@ -419,4 +441,20 @@ export function getNearestBranch(location: ServiceLocation) {
 
 export function getOtherLocations(slug: string, limit = 6): ServiceLocation[] {
   return serviceLocations.filter((l) => l.slug !== slug).slice(0, limit);
+}
+
+/**
+ * Location pages that are genuinely near this one — named in its nearbyAreas,
+ * or naming it in theirs — then the branches. Each page links to its real
+ * neighbours instead of every page linking to the same first six.
+ */
+export function getNearbyLocations(location: ServiceLocation, limit = 6): ServiceLocation[] {
+  const others = serviceLocations.filter((l) => l.slug !== location.slug);
+  const isNear = (l: ServiceLocation) =>
+    location.nearbyAreas.includes(l.name) || l.nearbyAreas.includes(location.name);
+  const ranked = [
+    ...others.filter(isNear),
+    ...others.filter((l) => !isNear(l) && l.kind === "branch"),
+  ];
+  return ranked.slice(0, limit);
 }
