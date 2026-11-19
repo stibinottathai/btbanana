@@ -19,7 +19,7 @@ export const LOGO_URL = `${SITE_URL}/images/logo.png`;
  * nobody (farmers or AI engines) reads it as a genetically modified "Bt" crop.
  */
 export const BT_MEANING =
-  "\"BT\" in BT Banana stands for [TODO: owner to confirm]. It has nothing to do with genetically modified \"Bt\" crops. Our banana suckers are ordinary, non-GM planting material taken from banana plants.";
+  "\"BT Banana\" is our brand name. It has nothing to do with genetically modified \"Bt\" crops. Our banana suckers are ordinary, non-GM planting material taken from banana plants.";
 
 export const SITE_TAGLINE = "Wholesale Banana Supplier in Kannur, Kerala";
 

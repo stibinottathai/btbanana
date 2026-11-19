@@ -147,8 +147,7 @@ export default function PlantingGuidePage() {
         <div className="mt-6 rounded-2xl border border-green-100 bg-green-50/60 p-4 text-sm text-neutral-700">
           <p>
             <strong className="text-green-950">Written by:</strong>{" "}
-            {owners.map((o) => o.name).join(" & ")}, BT Banana — [TODO: owner to confirm years
-            of experience].
+            {owners.map((o) => o.name).join(" & ")}, BT Banana, Alakode, Kannur.{/* TODO(owner): add years of experience */}
           </p>
           <p className="mt-1">
             <strong className="text-green-950">Source:</strong> figures follow{" "}
@@ -199,7 +198,7 @@ export default function PlantingGuidePage() {
                         {v.name}
                       </Link>
                     </td>
-                    <td className="px-4 py-3">{v.spacing?.metres ?? "[TODO: owner to confirm]"}</td>
+                    <td className="px-4 py-3">{v.spacing?.metres ?? "Ask us"}</td>
                     <td className="px-4 py-3">{v.spacing ? `~${v.spacing.perHectare.toLocaleString("en-IN")}` : "—"}</td>
                     <td className="px-4 py-3">{d ? `~${d.acre.toLocaleString("en-IN")}` : "—"}</td>
                     <td className="px-4 py-3">{d ? `~${d.cent}` : "—"}</td>
@@ -246,6 +245,9 @@ export default function PlantingGuidePage() {
             </Link>
             <Link href="/sucker-vs-tissue-culture" className="text-sm font-semibold text-green-700 hover:text-green-900">
               Sucker vs tissue culture &rarr;
+            </Link>
+            <Link href="/blog/bulk-vazhavithu-order-guide" className="text-sm font-semibold text-green-700 hover:text-green-900">
+              Ordering suckers in bulk? Read the guide &rarr;
             </Link>
           </div>
         </div>

@@ -85,7 +85,8 @@ const bananaSeedFaqs = [
   {
     question: "What is the minimum quantity, and can I order a small amount?",
     answer:
-      "We supply both small homestead lots (minimum order: [TODO: owner to confirm]) and large commercial orders for full plantation planting. Tell us your variety and count and we will confirm availability and the best delivery option.",
+      // TODO(owner): add the minimum order quantity here once confirmed.
+      "We supply both small homestead lots and large commercial orders for full plantation planting. Tell us your variety and count and we will confirm availability and the best delivery option.",
   },
   {
     question: "How soon can Vazhavithu be delivered to my district?",
@@ -100,7 +101,7 @@ const bananaSeedFaqs = [
   {
     question: "How do you make sure the suckers are healthy?",
     answer:
-      "We select vigorous sword suckers with healthy corms and pointed, lance-like leaves, avoiding weak water suckers. Material is kept moisture-protected in transit so corms stay viable. [TODO: owner to confirm any cleaning, paring or treatment done before dispatch.]",
+      "We select vigorous sword suckers with healthy corms and pointed, lance-like leaves, avoiding weak water suckers. Material is kept moisture-protected in transit so corms stay viable.", // TODO(owner): add any cleaning, paring or treatment done before dispatch.
   },
 ];
 
@@ -262,7 +263,7 @@ const keyFacts: { label: string; value: string }[] = [
   { label: "Also searched as", value: "Vaazhavithu, Vazha vithu, വാഴക്കന്ന് (banana suckers / seeds)" },
   { label: "Supplied across", value: "All 14 districts of Kerala" },
   { label: "Who we supply", value: "Farmers, plantations, nurseries, resellers & cooperatives" },
-  { label: "Order size", value: "Bulk orders; smaller lots on request (minimum: [TODO: owner to confirm])" },
+  { label: "Order size", value: "Bulk orders; smaller lots on request" }, // TODO(owner): add minimum order
   { label: "Not supplied", value: "Tissue culture plants — we supply suckers only" },
   { label: "Best planting window", value: "Pre-monsoon & for Onam (Chingam) harvest" },
   { label: "Pricing", value: "Per sucker, quoted live on enquiry" },

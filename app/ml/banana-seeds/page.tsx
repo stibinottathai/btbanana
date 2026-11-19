@@ -132,7 +132,7 @@ export default function MalayalamBananaSeedsPage() {
             ))}
           </ul>
           <p className="mt-4 text-sm text-neutral-600">
-            ഡെലിവറി ചാർജും സമയവും: [TODO: owner to confirm]
+            ഡെലിവറി ചാർജും സമയവും എണ്ണവും ദൂരവും അനുസരിച്ച് മാറും; ഓർഡറിന് മുമ്പ് ഞങ്ങൾ അറിയിക്കും.
           </p>
         </div>
       </section>

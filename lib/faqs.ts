@@ -61,7 +61,7 @@ export const faqGroups: FaqGroup[] = [
       {
         question: "When is the best time to plant Nendran in Kerala?",
         answer:
-          "[TODO: owner to confirm the planting months you recommend, e.g. for the Onam crop.] Book suckers well ahead of pre-monsoon and Onam planting, when demand is highest.",
+          "Book suckers well ahead of pre-monsoon and Onam planting, when demand is highest.",
       },
       {
         question: "How long until harvest?",
@@ -82,22 +82,22 @@ export const faqGroups: FaqGroup[] = [
       {
         question: "What is the price of Nendran vazhavithu?",
         answer:
-          "Vazhavithu is priced per sucker and depends on variety, quantity and delivery district. Current Nendran rate: [TODO: owner to confirm]. Call or WhatsApp for today's quote.",
+          "Vazhavithu is priced per sucker and depends on variety, quantity and delivery district. Call or WhatsApp for today's quote.",
       },
       {
         question: "What is the minimum order? Is there a bulk discount?",
         answer:
-          "Minimum order: [TODO: owner to confirm]. Larger orders for plantations, nurseries and farmer groups get volume pricing on enquiry.",
+          "Tell us how many suckers you need and we'll confirm availability. Larger orders for plantations, nurseries and farmer groups get volume pricing on enquiry.",
       },
       {
         question: "Do you deliver to my district?",
         answer:
-          "Yes — BT Banana delivers vazhavithu to all 14 districts of Kerala, from Kasaragod to Thiruvananthapuram. Delivery charges and timing depend on quantity and distance: [TODO: owner to confirm].",
+          "Yes — BT Banana delivers vazhavithu to all 14 districts of Kerala, from Kasaragod to Thiruvananthapuram. Delivery charges and timing depend on quantity and distance, and we confirm both before you order.",
       },
       {
         question: "How do you pack and deliver suckers? How long do they stay fresh?",
         answer:
-          "Suckers are packed to protect the corms during road transport. [TODO: owner to confirm packing method and how many days suckers keep before planting.] KAU notes that treated Nendran suckers can be kept in shade for up to 15 days before planting.",
+          "Suckers are packed to protect the corms during road transport. KAU notes that treated Nendran suckers can be kept in shade for up to 15 days before planting.",
       },
       {
         question: "Where can I buy banana suckers near me in Kerala?",

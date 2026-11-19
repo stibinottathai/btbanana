@@ -171,6 +171,9 @@ export default function SuckerVsTcPage() {
             <Link href="/banana-seeds" className="text-sm font-semibold text-green-700 hover:text-green-900">
               See all varieties &rarr;
             </Link>
+            <Link href="/blog/bulk-vazhavithu-order-guide" className="text-sm font-semibold text-green-700 hover:text-green-900">
+              Bulk vazhavithu order guide &rarr;
+            </Link>
           </div>
         </div>
       </article>

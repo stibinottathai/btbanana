@@ -137,7 +137,7 @@ export const suckerVarieties: SuckerVariety[] = [
     treatment:
       "Trim off old roots, large side buds and damaged parts. Unlike Nendran, Palayankodan suckers don't need to be dried before planting. For a rainfed crop planted in January, KAU suggests giving each plant about 9 litres of water once every 15 days until April–May.",
     notes: [
-      "Often sold as Poovan or Mysore Poovan in Kerala markets. [TODO: owner to confirm whether you sell Poovan as a separate variety]",
+      "Often sold as Poovan or Mysore Poovan in Kerala markets.",
     ],
     image: "/images/mysoor-poovan.webp",
     imageAlt: "Palayankodan (Mysore Poovan) bananas — Palayankodan vazhavithu supplied by BT Banana",

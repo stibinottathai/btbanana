@@ -82,11 +82,11 @@ export default async function SuckerVarietyPage({
       question: `How much space does ${v.name} need?`,
       answer: v.spacing && density
         ? `KAU recommends ${v.spacing.metres} spacing for ${v.name}, which works out to about ${v.spacing.perHectare.toLocaleString("en-IN")} plants per hectare — roughly ${density.acre.toLocaleString("en-IN")} per acre or ${density.cent} per cent.`
-        : `KAU doesn't publish a separate spacing figure for ${v.name}. [TODO: owner to confirm the spacing you recommend to customers.]`,
+        : `KAU doesn't publish a separate spacing figure for ${v.name}. Call or WhatsApp us and we'll share the spacing growers commonly use for it.` // TODO(owner): replace with your recommended spacing,
     },
     {
       question: `What is the price of ${v.name} vazhavithu?`,
-      answer: `${v.name} suckers are priced per sucker and depend on quantity and delivery district. Current rate: [TODO: owner to confirm]. Call or WhatsApp for today's quote.`,
+      answer: `${v.name} suckers are priced per sucker and depend on quantity and delivery district. Call or WhatsApp for today's quote.` // TODO(owner): add current price range,
     },
     {
       question: `Are your ${v.name} plants tissue culture?`,
@@ -159,10 +159,10 @@ export default async function SuckerVarietyPage({
                   "Spacing (KAU)",
                   v.spacing && density
                     ? `${v.spacing.metres} · ~${v.spacing.perHectare.toLocaleString("en-IN")}/ha · ~${density.acre.toLocaleString("en-IN")}/acre · ~${density.cent}/cent`
-                    : "[TODO: owner to confirm]",
+                    : "Ask us for the spacing to use",
                 ],
                 ["Best for", v.bestFor],
-                ["Price", "Per sucker — [TODO: owner to confirm]"],
+                ["Price", "Per sucker — call or WhatsApp for today's rate"], // TODO(owner): add price range
                 ["Delivery", "All 14 districts of Kerala"],
               ].map(([label, value], i) => (
                 <tr key={label} className={i % 2 === 0 ? "bg-white" : "bg-green-50/50"}>
@@ -245,6 +245,9 @@ export default async function SuckerVarietyPage({
             </Link>
             <Link href="/faq" className="font-semibold text-green-700 hover:text-green-900">
               Vazhavithu FAQs &rarr;
+            </Link>
+            <Link href="/blog/bulk-vazhavithu-order-guide" className="font-semibold text-green-700 hover:text-green-900">
+              How to order {v.name} vazhavithu in bulk &rarr;
             </Link>
             {v.fruitHref && (
               <Link href={v.fruitHref} className="font-semibold text-green-700 hover:text-green-900">

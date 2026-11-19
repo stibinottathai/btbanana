@@ -103,6 +103,9 @@ export default function FaqPage() {
             <Link href="/sucker-vs-tissue-culture" className="font-semibold text-green-700 hover:text-green-900">
               Sucker vs tissue culture &rarr;
             </Link>
+            <Link href="/blog/bulk-vazhavithu-order-guide" className="font-semibold text-green-700 hover:text-green-900">
+              Bulk vazhavithu order guide &rarr;
+            </Link>
           </div>
         </div>
       </section>
