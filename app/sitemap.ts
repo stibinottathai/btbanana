@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site";
 import { serviceLocations } from "@/lib/locations";
 import { suckerVarieties } from "@/lib/suckers";
+import { blogPosts } from "@/lib/blog";
 
 // Keep this tied to a real site/content release. Using `new Date()` here would
 // make every URL look newly changed after each deployment, weakening the
@@ -27,6 +28,7 @@ const routes: Route[] = [
   { path: "/how-to-plant-banana-suckers", priority: 0.8, changeFrequency: "monthly" },
   { path: "/sucker-vs-tissue-culture", priority: 0.7, changeFrequency: "monthly" },
   { path: "/faq", priority: 0.8, changeFrequency: "monthly", ml: "/ml/faq" },
+  { path: "/blog", priority: 0.7, changeFrequency: "weekly" },
   { path: "/about", priority: 0.9, changeFrequency: "monthly" },
   { path: "/contact", priority: 0.7, changeFrequency: "yearly", ml: "/ml/contact" },
   { path: "/products", priority: 0.9, changeFrequency: "monthly" },
@@ -82,6 +84,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: LAST_CONTENT_UPDATE,
       changeFrequency: "monthly",
       priority: 0.75,
+    });
+  }
+
+  for (const post of blogPosts) {
+    entries.push({
+      url: `${SITE_URL}/blog/${post.slug}`,
+      lastModified: new Date(`${post.dateModified}T00:00:00.000Z`),
+      changeFrequency: "monthly",
+      priority: 0.7,
     });
   }
 

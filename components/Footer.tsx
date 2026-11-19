@@ -31,6 +31,7 @@ const productLinks = [
 const companyLinks = [
   { label: "About BT Banana", href: "/about" },
   { label: "All Locations", href: "/locations" },
+  { label: "Blog & Growing Guides", href: "/blog" },
   { label: "Contact & Enquiries", href: "/contact" },
   { label: "Digital Visiting Card", href: "/card" },
 ];

@@ -103,6 +103,7 @@ export const navLinks = [
   { href: "/wholesale-bananas", label: "Wholesale Bananas" },
   { href: "/banana-seeds", label: "Vazhavithu / Banana Suckers", short: "Vazhavithu" },
   { href: "/faq", label: "FAQ" },
+  { href: "/blog", label: "Blog" },
   { href: "/locations", label: "Locations" },
   { href: "/about", label: "About Us" },
   { href: "/contact", label: "Contact" },

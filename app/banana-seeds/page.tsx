@@ -276,6 +276,7 @@ const customers = [
 ];
 
 const guideLinks = [
+  { href: "/blog/bulk-vazhavithu-order-guide", label: "Bulk order guide", desc: "How many suckers per acre and when to book." },
   { href: "/how-to-plant-banana-suckers", label: "How to plant banana suckers", desc: "Pit size, spacing and first-month care." },
   { href: "/sucker-vs-tissue-culture", label: "Sucker vs tissue culture", desc: "Which planting material suits your farm." },
   { href: "/locations", label: "Areas we serve", desc: "Delivery towns across all 14 districts." },
