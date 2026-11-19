@@ -8,7 +8,7 @@ import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { Faq } from "@/components/Faq";
 import { JsonLd } from "@/components/JsonLd";
 import { CheckIcon, ChevronRightIcon } from "@/components/icons";
-import { primaryPhone, primaryWhatsApp, SITE_URL } from "@/lib/site";
+import { BUSINESS_ID, primaryPhone, primaryWhatsApp, SITE_URL } from "@/lib/site";
 import {
   getSuckerVariety,
   KAU_SOURCE,
@@ -55,16 +55,19 @@ export default async function SuckerVarietyPage({
   const density = v.spacing ? plantsPer(v.spacing.perHectare) : null;
   const others = suckerVarieties.filter((o) => o.slug !== v.slug);
 
-  // Price is deliberately left out until the owner confirms real rates, so no
-  // Offer is asserted here.
+  // Typed as a Service (supply by BT Banana), not a Product: Google rejects
+  // any Product without offers/review/aggregateRating, and prices aren't confirmed.
+  // TODO(owner): once sucker prices are confirmed, this can become a Product
+  // with an AggregateOffer (INR lowPrice/highPrice) for price rich results.
   const productJsonLd = {
     "@context": "https://schema.org",
-    "@type": "Product",
+    "@type": "Service",
+    serviceType: "Supply of banana suckers (vazhavithu) for planting",
     name: `${v.name} Banana Sucker (Vazhavithu)`,
     alternateName: [`${v.name} vazhavithu`, `${v.malayalam} വാഴവിത്ത്`, ...v.alsoCalled],
     description: v.quickAnswer,
     image: `${SITE_URL}${v.image}`,
-    brand: { "@type": "Brand", name: "BT Banana" },
+    provider: { "@id": BUSINESS_ID },
     category: "Banana planting material (suckers)",
     url: `${SITE_URL}${path}`,
   };

@@ -8,7 +8,7 @@ import { LocationCard } from "@/components/LocationCard";
 import { Faq } from "@/components/Faq";
 import { JsonLd } from "@/components/JsonLd";
 import { CheckIcon } from "@/components/icons";
-import { branches, primaryPhone, primaryWhatsApp, SITE_NAME, SITE_URL } from "@/lib/site";
+import { BUSINESS_ID, branches, primaryPhone, primaryWhatsApp, SITE_URL } from "@/lib/site";
 
 const robustaFaqs = [
   {
@@ -54,16 +54,16 @@ export const metadata: Metadata = {
   },
 };
 
+// Typed as a Service (supply by BT Banana), not a Product: Google rejects
+// any Product without offers/review/aggregateRating, and prices aren't confirmed.
 const productJsonLd = {
   "@context": "https://schema.org",
-  "@type": "Product",
+  "@type": "Service",
+  serviceType: "Wholesale banana supply",
   name: "Robusta Banana",
   description:
     "Robusta banana, a widely cultivated commercial banana variety, supplied wholesale by BT Banana from Alakode and Nellipara, Kannur district, Kerala.",
-  brand: {
-    "@type": "Brand",
-    name: SITE_NAME,
-  },
+  provider: { "@id": BUSINESS_ID },
 };
 
 export default function RobustaBananaPage() {

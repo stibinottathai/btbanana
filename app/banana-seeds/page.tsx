@@ -18,6 +18,7 @@ import {
   PhoneIcon,
 } from "@/components/icons";
 import {
+  BUSINESS_ID,
   branches,
   formatPhone,
   keralaDistricts,
@@ -107,11 +108,14 @@ const bananaSeedFaqs = [
 
 
 
-// Product schema aimed at buy-intent queries for Vazhavithu. Price is quoted on
-// request (it moves with season/variety), so no price is asserted here.
+// Typed as a Service (supply by BT Banana), not a Product: Google rejects
+// any Product without offers/review/aggregateRating, and prices aren't confirmed.
+// TODO(owner): once sucker prices are confirmed, this can become a Product
+// with an AggregateOffer (INR lowPrice/highPrice) for price rich results.
 const productJsonLd = {
   "@context": "https://schema.org",
-  "@type": "Product",
+  "@type": "Service",
+  serviceType: "Supply of banana suckers (vazhavithu) for planting",
   name: "Banana Vazhavithu — Banana Planting Suckers / Banana Seeds",
   alternateName: [
     "Vazhavithu",
@@ -129,23 +133,9 @@ const productJsonLd = {
   description:
     "Healthy banana planting material (Vazhavithu / വാഴവിത്ത്) — Nendran, Njali Poovan, Palayankodan, and Robusta suckers — imported from the Tiruchirappalli (Trichy) nursery belt of Tamil Nadu and supplied in bulk to farmers and nurseries across all 14 districts of Kerala by BT Banana, Kannur.",
   image: `${SITE_URL}/images/vazhavithu.webp`,
-  brand: { "@type": "Brand", name: "BT Banana" },
+  provider: { "@id": BUSINESS_ID },
   category: "Banana planting material (suckers)",
-  additionalProperty: [
-    { "@type": "PropertyValue", name: "Local name", value: "Vazhavithu (വാഴവിത്ത്)" },
-    { "@type": "PropertyValue", name: "Source region", value: "Tiruchirappalli (Trichy), Tamil Nadu" },
-    {
-      "@type": "PropertyValue",
-      name: "Varieties",
-      value: "Nendran, Njali Poovan, Palayankodan (Mysore Poovan), Robusta",
-    },
-  ],
-  offers: {
-    "@type": "Offer",
-    priceCurrency: "INR",
-    url: `${SITE_URL}/banana-seeds`,
-    areaServed: { "@type": "State", name: "Kerala" },    seller: { "@type": "Organization", name: "BT Banana", url: SITE_URL },
-  },
+  areaServed: { "@type": "State", name: "Kerala" },
 };
 
 export const metadata: Metadata = {

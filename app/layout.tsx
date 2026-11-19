@@ -171,8 +171,12 @@ const localBusinessJsonLd = {
           {
             "@type": "Offer",
             areaServed: { "@type": "State", name: "Kerala" },
+            // Service, not Product: Google flags any Product (even nested in
+            // an Offer) that lacks a price, review or rating — and this one
+            // ships on every page via the layout.
             itemOffered: {
-              "@type": "Product",
+              "@type": "Service",
+              serviceType: "Supply of banana suckers (vazhavithu) for planting",
               name: "Vazhavithu / Banana Suckers",
               alternateName: ["Vaazhavithu", "Vazha vithu", "വാഴവിത്ത്", "Banana seeds"],
               url: `${SITE_URL}/banana-seeds`,
