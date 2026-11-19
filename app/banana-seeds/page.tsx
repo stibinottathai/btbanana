@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
@@ -8,14 +9,23 @@ import { LocationCard } from "@/components/LocationCard";
 import { EnquiryForm } from "@/components/EnquiryForm";
 import { Faq } from "@/components/Faq";
 import { JsonLd } from "@/components/JsonLd";
-import { CheckIcon, LeafIcon } from "@/components/icons";
+import { Reveal } from "@/components/Reveal";
+import {
+  CheckIcon,
+  ChevronRightIcon,
+  LeafIcon,
+  MapPinIcon,
+  PhoneIcon,
+} from "@/components/icons";
 import {
   branches,
   formatPhone,
+  keralaDistricts,
   owners,
   primaryPhone,
   primaryWhatsApp,
   SITE_URL,
+  telHref,
 } from "@/lib/site";
 
 // Direct, citable answers kept tight so answer engines (Google snippets, AI
@@ -165,26 +175,34 @@ export const metadata: Metadata = {
 
 const seedVarieties = [
   {
-    name: "Nendran Vazhavithu (ഏത്ത വാഴവിത്ത്)",
+    name: "Nendran Vazhavithu",
+    ml: "ഏത്ത വാഴവിത്ത്",
     href: "/banana-seeds/nendran",
+    image: "/images/nendran.webp",
     desc: "The primary commercial planting sucker in Kerala. High bunch yield, demanded for both culinary cooking and chips processing.",
     suitable: "Commercial plantations, Onam crop, home farms",
   },
   {
-    name: "Njali Poovan Vazhavithu (ഞാലിപ്പൂവൻ)",
+    name: "Njali Poovan Vazhavithu",
+    ml: "ഞാലിപ്പൂവൻ",
     href: "/banana-seeds/njali-poovan",
+    image: "/images/njali.webp",
     desc: "Premium dessert variety sucker. Yields sweet, delicate fingers commanding top retail prices across Kerala markets.",
     suitable: "High-value fruit markets, homestead cultivation",
   },
   {
-    name: "Mysore Poovan / Palayankodan (പാളയംകോടൻ)",
+    name: "Mysore Poovan / Palayankodan",
+    ml: "പാളയംകോടൻ",
     href: "/banana-seeds/palayankodan",
+    image: "/images/mysoor-poovan.webp",
     desc: "Extremely hardy and drought-resilient variety with steady yield throughout drought and monsoon periods.",
     suitable: "Intercropping, organic groves, low-maintenance plots",
   },
   {
-    name: "Robusta Vazhavithu (റോബസ്റ്റ)",
+    name: "Robusta Vazhavithu",
+    ml: "റോബസ്റ്റ",
     href: "/banana-seeds/robusta",
+    image: "/images/robusta.webp",
     desc: "Vigorous green table variety producing heavy bunches with 10–12 hands and uniform finger sizing.",
     suitable: "Commercial retail wholesale orchards",
   },
@@ -206,348 +224,540 @@ const keyFacts: { label: string; value: string }[] = [
   { label: "Pricing", value: "Per sucker, quoted live on enquiry" },
 ];
 
+const quoteMessage =
+  "Hi BT Banana, I'd like a bulk quote for Vazhavithu (banana suckers). Variety: ___, Quantity: ___, Delivery district: ___";
+
+const heroStats = [
+  { value: String(keralaDistricts.length), label: "Kerala districts" },
+  { value: String(seedVarieties.length), label: "Sucker varieties" },
+  { value: "Bulk", label: "Farms & nurseries" },
+];
+
+const sourcingRoute = [
+  {
+    step: "01",
+    place: "Trichy, Tamil Nadu",
+    title: "Selected at the nursery",
+    desc: "Sword suckers picked from established nurseries in the Tiruchirappalli belt for strong corms and variety purity.",
+  },
+  {
+    step: "02",
+    place: "Kannur base",
+    title: "Checked & sorted",
+    desc: "Batches arrive at our Kannur base, kept separate by variety and moisture-protected so corms stay viable.",
+  },
+  {
+    step: "03",
+    place: "Your farm gate",
+    title: "Delivered across Kerala",
+    desc: "Road delivery by dedicated vehicle or regional freight to farms and nurseries in every district.",
+  },
+];
+
+const qualityPoints = [
+  { t: "Trusted nursery belt", d: "Material from the Trichy region, known for quality banana planting stock." },
+  { t: "Variety purity", d: "Nendran, Njali Poovan, Palayankodan & Robusta, kept separate by variety." },
+  { t: "Viable corms", d: "Sword suckers with well-developed corms, not weak water suckers." },
+  { t: "Kerala-wide reach", d: "One source, delivered to farms in every Kerala district." },
+];
+
+const deliveryFeatures = [
+  { t: "Flexible volumes", d: "From small homestead lots to bulk orders for commercial banana plantations." },
+  { t: "Moisture-protected", d: "Packed and protected so corms stay viable throughout road transit." },
+  { t: "Direct to farm gate", d: "Dispatched via dedicated vehicle or regional freight logistics tailored to your district." },
+];
+
+const customers = [
+  "Commercial banana farmers planting multi-acre seasonal crops",
+  "Plant nurseries and resellers buying Vazhavithu in bulk for resale",
+  "Agricultural cooperatives and farmer groups placing pooled orders",
+  "Growers preparing Onam harvest schedules (Chingam market)",
+  "Homestead farmers needing smaller lots (on request)",
+];
+
+const guideLinks = [
+  { href: "/how-to-plant-banana-suckers", label: "How to plant banana suckers", desc: "Pit size, spacing and first-month care." },
+  { href: "/sucker-vs-tissue-culture", label: "Sucker vs tissue culture", desc: "Which planting material suits your farm." },
+  { href: "/locations", label: "Areas we serve", desc: "Delivery towns across all 14 districts." },
+  { href: "/faq", label: "Vazhavithu FAQs", desc: "Prices, ordering, delivery and more." },
+];
+
+const quoteSteps = [
+  "Share variety, quantity & district",
+  "We confirm stock and today's rate",
+  "Delivery scheduled to your farm",
+];
+
+function SectionLabel({ children, tone = "dark" }: { children: ReactNode; tone?: "dark" | "light" }) {
+  const color = tone === "light" ? "text-amber-300" : "text-green-700";
+  const bar = tone === "light" ? "bg-amber-300" : "bg-green-700";
+  return (
+    <span className={`inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] ${color}`}>
+      <span className={`h-px w-6 ${bar}`} aria-hidden="true" />
+      {children}
+    </span>
+  );
+}
+
 export default function BananaSeedsPage() {
   return (
     <div>
       <JsonLd data={productJsonLd} />
 
-      <div className="mx-auto max-w-6xl px-4 pt-10 sm:px-6">
-        <Breadcrumbs items={[{ label: "Vazhavithu / Banana Seeds", href: "/banana-seeds" }]} />
-      </div>
+      {/* ───────────────── Hero ───────────────── */}
+      <section className="relative isolate overflow-hidden bg-green-950 text-white">
+        <div
+          aria-hidden="true"
+          className="absolute -left-40 -top-40 -z-10 h-[32rem] w-[32rem] rounded-full bg-green-800/40 blur-3xl"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute -bottom-48 right-0 -z-10 h-[26rem] w-[26rem] rounded-full bg-amber-400/10 blur-3xl"
+        />
 
-      <section className="mx-auto grid max-w-6xl items-center gap-8 px-4 py-8 sm:px-6 lg:grid-cols-2">
-        <div className="min-w-0">
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-3.5 py-1 text-xs font-bold text-emerald-900">
-              <LeafIcon className="h-3.5 w-3.5 text-emerald-700" />
-              Vegetative Planting Stock (വാഴവിത്ത്)
-            </span>
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-100 px-3.5 py-1 text-xs font-bold text-amber-900">
-              🚚 All 14 Kerala Districts
-            </span>
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-bold text-green-900">
-              📦 Bulk for Farms &amp; Nurseries
-            </span>
-          </div>
-          <h1 className="mt-3 text-3xl font-bold tracking-tight text-green-950 sm:text-5xl">
-            Vazhavithu – Banana Suckers for Planting, Delivered Across Kerala
-          </h1>
-          <p className="mt-5 max-w-2xl text-base leading-7 text-neutral-700 sm:text-lg sm:leading-8">
-            Searching for <strong className="font-semibold text-green-900">Vazhavithu (വാഴവിത്ത്)</strong>?
-            BT Banana imports healthy, high-yield{" "}
-            <strong className="text-green-950">banana planting suckers</strong> from{" "}
-            <strong className="text-green-950">Tamil Nadu</strong> and supplies them in{" "}
-            <strong className="text-green-950">large quantities to farmers and nurseries</strong> in{" "}
-            <strong className="text-green-950">all 14 districts of Kerala</strong>.
-          </p>
-          <div className="mt-8 flex flex-wrap items-center gap-3">
-            <CallButton
-              phone={primaryPhone}
-              label="Call for Bulk Orders"
-              className="flex-1 justify-center whitespace-nowrap px-4 py-3 text-sm font-bold sm:flex-initial sm:px-6 sm:py-3.5"
-            />
-            <WhatsAppButton
-              phone={primaryWhatsApp}
-              message="Hi BT Banana, I'd like a bulk quote for Vazhavithu (banana suckers). Variety: ___, Quantity: ___, Delivery district: ___"
-              label="WhatsApp Quote"
-              className="flex-1 justify-center whitespace-nowrap px-4 py-3 text-sm font-bold sm:flex-initial sm:px-6 sm:py-3.5"
-            />
-          </div>
+        <div className="mx-auto max-w-6xl px-4 pt-8 sm:px-6 [&_a]:text-green-100/70 [&_a:hover]:text-amber-300 [&_ol]:text-green-100/60 [&_[aria-current]]:text-white">
+          <Breadcrumbs items={[{ label: "Vazhavithu / Banana Seeds", href: "/banana-seeds" }]} />
         </div>
-        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-lg">
-          <Image
-            src="/images/vazhavithu.webp"
-            alt="Vazhavithu (banana seeds / planting suckers) supplied with all-Kerala delivery by BT Banana, Kannur"
-            fill
-            priority
-            sizes="(min-width: 1024px) 50vw, 100vw"
-            className="object-cover"
-          />
-        </div>
-      </section>
 
-      {/* Quick Answer — AEO/GEO friendly, direct and citable */}
-      <section className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="rounded-3xl border border-emerald-200 bg-emerald-50/70 p-6 sm:p-8">
-          <p className="text-xs font-bold uppercase tracking-wider text-emerald-900">
-            Quick answer
-          </p>
-          <p className="mt-2 text-base leading-relaxed text-neutral-800">
-            <strong className="text-green-950">Vazhavithu (വാഴവിത്ത്)</strong> is the banana planting
-            material — sword suckers taken from the base of the mother plant — that Kerala farmers plant to grow banana crops.{" "}
-            <strong className="text-green-950">BT Banana</strong> supplies Vazhavithu in Nendran, Njali Poovan,
-            Palayankodan, and Robusta varieties, sourced from the <strong className="text-green-950">Trichy
-            (Tamil Nadu)</strong> nursery belt, and delivers to farms <strong className="text-green-950">anywhere
-            in Kerala</strong>. For a live rate, contact{" "}
-            {owners.map((o, i) => (
-              <span key={o.phone}>
-                {i > 0 ? " or " : ""}
-                {o.name} ({formatPhone(o.phone)})
-              </span>
-            ))}
-            .
-          </p>
-        </div>
-      </section>
+        <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 pb-16 pt-10 sm:px-6 lg:grid-cols-[1.1fr_1fr] lg:gap-14 lg:pb-24">
+          <div className="min-w-0">
+            <p className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-sm font-medium text-green-50 backdrop-blur">
+              <LeafIcon className="h-4 w-4 text-amber-300" />
+              Vegetative planting stock · വാഴവിത്ത്
+            </p>
 
-      {/* Key Facts table — entity-dense block for GEO + at-a-glance clarity */}
-      <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
-        <h2 className="text-2xl font-bold text-green-950">Vazhavithu at a glance</h2>
-        <div className="mt-6 overflow-hidden rounded-2xl border border-green-100">
-          <table className="w-full text-left text-sm">
-            <tbody>
-              {keyFacts.map((fact, i) => (
-                <tr
-                  key={fact.label}
-                  className={i % 2 === 0 ? "bg-white" : "bg-green-50/50"}
-                >
-                  <th
-                    scope="row"
-                    className="w-1/3 px-4 py-3 align-top font-semibold text-green-950"
-                  >
-                    {fact.label}
-                  </th>
-                  <td className="px-4 py-3 align-top text-neutral-700">{fact.value}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
+            <h1 className="mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-[3.5rem]">
+              <span className="text-amber-300">Vazhavithu</span> – Banana Suckers for Planting, Delivered Across
+              Kerala
+            </h1>
 
-      {/* Sourced from Tamil Nadu (Trichy) — unique differentiator + trust story */}
-      <section className="border-y border-green-100 bg-green-50/50 py-14">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-            <div>
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-900">
-                Sourcing &amp; Quality
-              </span>
-              <h2 className="mt-3 text-3xl font-bold text-green-950">
-                Vazhavithu Sourced from Tamil Nadu&apos;s Trichy Belt
-              </h2>
-              <p className="mt-4 leading-7 text-neutral-700">
-                The quality of your harvest starts with the planting material. We source our Vazhavithu from
-                established banana nurseries around <strong className="text-green-950">Tiruchirappalli (Trichy)</strong>{" "}
-                in Tamil Nadu — one of South India&apos;s most reputed regions for healthy, high-yield banana
-                suckers.
-              </p>
-              <p className="mt-4 leading-7 text-neutral-700">
-                Each batch is selected for strong corms and variety purity, kept moisture-protected in transit,
-                and brought into Kerala through our Kannur base — so farmers from Kasaragod to Thiruvananthapuram
-                get vigorous, field-ready planting stock without sourcing it themselves across the border.
-              </p>
+            <p className="mt-6 max-w-xl text-base leading-7 text-green-50/85 sm:text-lg sm:leading-8">
+              Searching for <strong className="font-semibold text-white">Vazhavithu (വാഴവിത്ത്)</strong>? BT Banana
+              imports healthy, high-yield <strong className="font-semibold text-white">banana planting suckers</strong>{" "}
+              from <strong className="font-semibold text-white">Tamil Nadu</strong> and supplies them in{" "}
+              <strong className="font-semibold text-white">large quantities to farmers and nurseries</strong> in{" "}
+              <strong className="font-semibold text-white">all 14 districts of Kerala</strong>.
+            </p>
+
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <CallButton
+                phone={primaryPhone}
+                label="Call for Bulk Orders"
+                className="flex-1 whitespace-nowrap bg-amber-400! text-green-950! shadow-lg shadow-black/20 hover:bg-amber-300! sm:flex-initial"
+              />
+              <WhatsAppButton
+                phone={primaryWhatsApp}
+                message={quoteMessage}
+                label="WhatsApp Quote"
+                className="flex-1 whitespace-nowrap shadow-lg shadow-black/20 sm:flex-initial"
+              />
             </div>
-            <ul className="grid gap-4 sm:grid-cols-2">
-              {[
-                { t: "Trusted nursery belt", d: "Material from the Trichy region, known for quality banana planting stock." },
-                { t: "Variety purity", d: "Nendran, Njali Poovan, Palayankodan & Robusta, kept separate by variety." },
-                { t: "Viable corms", d: "Sword suckers with well-developed corms, not weak water suckers." },
-                { t: "Kerala-wide reach", d: "One source, delivered to farms in every Kerala district." },
-              ].map((item) => (
-                <li
-                  key={item.t}
-                  className="rounded-2xl border border-green-100 bg-white p-5"
-                >
-                  <p className="font-bold text-green-950">{item.t}</p>
-                  <p className="mt-1 text-xs leading-relaxed text-neutral-600">{item.d}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
 
-      {/* All-Kerala Delivery Spotlight Section */}
-      <section className="border-t border-green-100 bg-gradient-to-br from-amber-50/70 via-emerald-50/40 to-white py-14">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="rounded-3xl border border-amber-200/80 bg-white p-8 shadow-sm sm:p-10">
-            <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-              <div className="max-w-3xl">
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-900">
-                  🚚 Statewide Farm Transport Network
+            <dl className="mt-10 grid max-w-lg grid-cols-3 divide-x divide-white/15 rounded-2xl border border-white/15 bg-white/5 backdrop-blur">
+              {heroStats.map((stat) => (
+                <div key={stat.label} className="px-4 py-4 sm:px-5">
+                  <dt className="sr-only">{stat.label}</dt>
+                  <dd className="text-xl font-extrabold text-amber-300 sm:text-2xl">{stat.value}</dd>
+                  <dd className="mt-0.5 text-xs font-medium text-green-100/80 sm:text-sm">{stat.label}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+
+          <div className="relative">
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[2rem] ring-1 ring-white/10 sm:aspect-[5/4] lg:aspect-[4/5]">
+              <Image
+                src="/images/vazhavithu.webp"
+                alt="Vazhavithu (banana seeds / planting suckers) supplied with all-Kerala delivery by BT Banana, Kannur"
+                fill
+                preload
+                sizes="(min-width: 1024px) 45vw, 100vw"
+                className="object-cover"
+              />
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 bg-gradient-to-t from-green-950/70 via-transparent to-transparent"
+              />
+              <div className="absolute inset-x-4 bottom-4 flex flex-wrap gap-2 sm:inset-x-5 sm:bottom-5">
+                <span className="rounded-full bg-white/90 px-3 py-1 text-xs font-bold text-green-900 backdrop-blur">
+                  Sword suckers only
                 </span>
-                <h2 className="mt-3 text-3xl font-bold text-green-950">
-                  All-Kerala Delivery for Vazhavithu (Banana Seeds)
-                </h2>
-                <p className="mt-3 text-base leading-relaxed text-neutral-700">
-                  Whether you are cultivating in <strong className="font-semibold text-green-950">Kannur, Kasaragod, Wayanad, Kozhikode, Malappuram, Palakkad, Thrissur, Ernakulam, Kottayam, Idukki, or anywhere else in Kerala</strong>, we arrange safe road transportation directly to your farm gate or collection point.
-                </p>
-                <div className="mt-6 grid gap-4 sm:grid-cols-3">
-                  <div className="rounded-2xl border border-green-100 bg-green-50/60 p-4">
-                    <p className="text-xs font-bold uppercase tracking-wider text-green-900">Flexible Volumes</p>
-                    <p className="mt-1 text-xs text-neutral-600">From small homestead lots to bulk orders for commercial banana plantations.</p>
-                  </div>
-                  <div className="rounded-2xl border border-green-100 bg-green-50/60 p-4">
-                    <p className="text-xs font-bold uppercase tracking-wider text-green-900">Moisture-Protected</p>
-                    <p className="mt-1 text-xs text-neutral-600">Packed and protected so corms stay viable throughout road transit.</p>
-                  </div>
-                  <div className="rounded-2xl border border-green-100 bg-green-50/60 p-4">
-                    <p className="text-xs font-bold uppercase tracking-wider text-green-900">Direct Farm Gate</p>
-                    <p className="mt-1 text-xs text-neutral-600">Dispatched via dedicated vehicle or regional freight logistics tailored to your exact district.</p>
-                  </div>
-                </div>
+                <span className="rounded-full bg-white/90 px-3 py-1 text-xs font-bold text-green-900 backdrop-blur">
+                  Sourced from Trichy, TN
+                </span>
               </div>
-              <div className="flex flex-col gap-3 sm:flex-row lg:flex-col shrink-0">
-                <WhatsAppButton
-                  phone={primaryWhatsApp}
-                  message="Hi BT Banana, I need Vazhavithu (banana seeds) delivered to my district in Kerala. Please share delivery details and rate."
-                  label="Check Delivery to Your Area"
-                  className="px-6 py-3.5 text-sm"
-                />
-                <CallButton
-                  phone={primaryPhone}
-                  label="Call for Delivery Quote"
-                  variant="outline"
-                  className="px-6 py-3.5 text-sm border-green-800 text-green-950 hover:bg-green-50"
-                />
-              </div>
+            </div>
+            <div className="absolute -left-4 top-8 hidden rotate-[-4deg] rounded-2xl bg-amber-400 px-5 py-3 text-green-950 shadow-xl shadow-black/30 sm:block lg:-left-8">
+              <p className="text-[11px] font-bold uppercase tracking-wider">Delivered to</p>
+              <p className="text-lg font-extrabold leading-tight">All 14 districts</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Seed Varieties Section */}
-      <section className="border-y border-green-100 bg-white py-14">
+      {/* ───────────────── Quick answer + key facts ───────────────── */}
+      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:py-24">
+        <div className="grid gap-10 lg:grid-cols-[1fr_1.25fr] lg:gap-14">
+          <Reveal>
+            <SectionLabel>Quick answer</SectionLabel>
+            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-green-950 sm:text-4xl">
+              What is Vazhavithu?
+            </h2>
+            <div className="mt-6 border-l-4 border-amber-400 pl-5">
+              <p className="text-lg leading-8 text-neutral-700">
+                <strong className="text-green-950">Vazhavithu (വാഴവിത്ത്)</strong> is the banana planting material —
+                sword suckers taken from the base of the mother plant — that Kerala farmers plant to grow banana
+                crops. <strong className="text-green-950">BT Banana</strong> supplies Vazhavithu in Nendran, Njali
+                Poovan, Palayankodan, and Robusta varieties, sourced from the{" "}
+                <strong className="text-green-950">Trichy (Tamil Nadu)</strong> nursery belt, and delivers to farms{" "}
+                <strong className="text-green-950">anywhere in Kerala</strong>.
+              </p>
+            </div>
+            <div className="mt-8 space-y-3">
+              {owners.map((o) => (
+                <a
+                  key={o.phone}
+                  href={telHref(o.phone)}
+                  className="group flex flex-wrap items-center justify-between gap-x-4 gap-y-1 rounded-2xl bg-green-50 px-5 py-4 ring-1 ring-green-900/10 transition hover:bg-green-100"
+                >
+                  <span>
+                    <span className="block text-xs font-semibold uppercase tracking-wider text-green-700">
+                      Live rate · {o.role}
+                    </span>
+                    <span className="block font-bold text-green-950">{o.name}</span>
+                  </span>
+                  <span className="inline-flex items-center gap-2 font-bold text-green-800">
+                    <PhoneIcon className="h-4 w-4" />
+                    {formatPhone(o.phone)}
+                  </span>
+                </a>
+              ))}
+            </div>
+          </Reveal>
+
+          <Reveal>
+            <div className="rounded-3xl bg-white p-6 ring-1 ring-green-900/10 sm:p-8">
+              <h2 className="text-xl font-bold text-green-950">Vazhavithu at a glance</h2>
+              <dl className="mt-6 grid gap-x-8 sm:grid-cols-2">
+                {keyFacts.map((fact) => (
+                  <div key={fact.label} className="border-t border-green-100 py-3.5">
+                    <dt className="text-xs font-bold uppercase tracking-wider text-green-700">{fact.label}</dt>
+                    <dd className="mt-1 text-sm leading-6 text-neutral-800">{fact.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ───────────────── Varieties ───────────────── */}
+      <section className="bg-[#f7f5ec] py-20 lg:py-24">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <h2 className="text-3xl font-bold text-green-950">
-            Vazhavithu Varieties Available for Cultivation
-          </h2>
-          <p className="mt-2 text-base text-neutral-600">
-            Healthy suckers selected for strong root establishment, rapid vegetative vigour, and high harvest return:
-          </p>
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <Reveal className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div className="max-w-2xl">
+              <SectionLabel>Varieties</SectionLabel>
+              <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-green-950 sm:text-4xl">
+                Vazhavithu Varieties Available for Cultivation
+              </h2>
+              <p className="mt-4 text-lg leading-8 text-neutral-600">
+                Healthy suckers selected for strong root establishment, rapid vegetative vigour, and high harvest
+                return.
+              </p>
+            </div>
+            <p className="shrink-0 text-sm text-neutral-500">Subject to seasonal nursery availability</p>
+          </Reveal>
+
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {seedVarieties.map((v) => (
-              <div key={v.name} className="flex flex-col justify-between rounded-2xl border border-green-100 bg-green-50/50 p-6">
-                <div>
-                  <h3 className="text-lg font-bold text-green-950">
-                    <Link href={v.href} className="hover:text-green-700">{v.name}</Link>
-                  </h3>
-                  <p className="mt-2 text-xs leading-relaxed text-neutral-600">{v.desc}</p>
-                </div>
-                <div className="mt-4 border-t border-green-200/60 pt-3">
-                  <span className="text-[11px] font-semibold text-green-800">Best for: {v.suitable}</span>
-                  <Link href={v.href} className="mt-2 block text-xs font-semibold text-green-700 hover:text-green-900">
-                    Spacing, preparation &amp; price &rarr;
-                  </Link>
-                </div>
-              </div>
+              <Reveal key={v.href} className="grid">
+                <Link
+                  href={v.href}
+                  className="group flex flex-col overflow-hidden rounded-3xl bg-white ring-1 ring-green-900/10 transition hover:-translate-y-1 hover:shadow-xl hover:shadow-green-900/10"
+                >
+                  <div className="relative aspect-[4/3] overflow-hidden bg-green-50">
+                    <Image
+                      src={v.image}
+                      alt={`${v.name} (${v.ml}) banana variety`}
+                      fill
+                      sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="flex flex-1 flex-col p-6">
+                    <h3 className="text-lg font-bold leading-snug text-green-950">
+                      {v.name}
+                      <span className="mt-1 block text-sm font-semibold text-green-700">{v.ml}</span>
+                    </h3>
+                    <p className="mt-3 text-sm leading-6 text-neutral-600">{v.desc}</p>
+                    <p className="mt-4 rounded-xl bg-green-50 px-3 py-2 text-xs leading-5 text-green-900">
+                      <span className="font-bold">Best for:</span> {v.suitable}
+                    </p>
+                    <span className="mt-auto inline-flex items-center gap-1 pt-5 text-sm font-bold text-green-800">
+                      Spacing, preparation &amp; price
+                      <ChevronRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </span>
+                  </div>
+                </Link>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Botanical Clarity Section */}
-      <section className="border-t border-green-100 bg-white py-14">
+      {/* ───────────────── Sourcing route ───────────────── */}
+      <section className="relative isolate overflow-hidden bg-green-950 py-20 text-white lg:py-24">
+        <div
+          aria-hidden="true"
+          className="absolute -right-32 top-0 -z-10 h-[28rem] w-[28rem] rounded-full bg-green-800/40 blur-3xl"
+        />
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="rounded-3xl border border-emerald-200 bg-emerald-50/60 p-8 sm:p-10">
-            <span className="text-xs font-bold uppercase tracking-wider text-emerald-900">
-              Agronomy &amp; Farming Clarity
-            </span>
-            <h2 className="mt-2 text-2xl font-bold text-green-950 sm:text-3xl">
-              Banana Seeds vs. Banana Suckers (വാഴവിത്ത്): What Kerala Farmers Need to Know
+          <Reveal className="max-w-2xl">
+            <SectionLabel tone="light">Sourcing &amp; quality</SectionLabel>
+            <h2 className="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl">
+              Vazhavithu Sourced from Tamil Nadu&apos;s Trichy Belt
             </h2>
-            <div className="mt-4 grid gap-6 md:grid-cols-2 text-sm leading-relaxed text-neutral-700">
-              <div>
-                <h3 className="font-bold text-green-950">Why Edible Bananas Have No Botanical Seeds</h3>
-                <p className="mt-1">
-                  All commercial culinary and table bananas grown in Kerala—including Nendran, Njali Poovan, Palayankodan, and Robusta—are parthenocarpic triploid plants. They produce delicious fruit without fertilization and do not contain viable botanical seeds.
+            <p className="mt-4 text-lg leading-8 text-green-50/80">
+              The quality of your harvest starts with the planting material. We source from established banana
+              nurseries around <strong className="text-white">Tiruchirappalli (Trichy)</strong> — one of South
+              India&apos;s most reputed regions for healthy, high-yield banana suckers — so farmers from Kasaragod to
+              Thiruvananthapuram get field-ready stock without sourcing it across the border themselves.
+            </p>
+          </Reveal>
+
+          <ol className="relative mt-14 grid gap-10 md:grid-cols-3 md:gap-6">
+            <span
+              aria-hidden="true"
+              className="absolute left-7 right-0 top-7 hidden border-t border-dashed border-amber-300/40 md:block"
+            />
+            {sourcingRoute.map((s) => (
+              <li key={s.step} className="relative">
+                <span className="relative flex h-14 w-14 items-center justify-center rounded-full bg-amber-400 text-lg font-extrabold text-green-950 ring-8 ring-green-950">
+                  {s.step}
+                </span>
+                <p className="mt-5 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-amber-300">
+                  <MapPinIcon className="h-3.5 w-3.5" />
+                  {s.place}
                 </p>
-                <p className="mt-2">
-                  When Kerala farmers and growers search for &quot;banana seeds,&quot; they are referring to vegetative propagules—the side shoots that grow from the mother rhizome corm.
-                </p>
-              </div>
-              <div>
-                <h3 className="font-bold text-green-950">Sword Suckers (വാഴക്കണ്ണികൾ) vs. Water Suckers</h3>
-                <p className="mt-1">
-                  In Malayalam, these planting propagules are termed <strong className="text-green-950">Vazhavithu (വാഴവിത്ത്)</strong>. BT Banana specifically grades and supplies <strong className="text-green-950">sword suckers</strong> with narrow, lance-like leaves and robust corms.
-                </p>
-                <p className="mt-2">
-                  We avoid weak water suckers (which have broad leaves and small corms) because Kerala Agricultural University advises against water suckers because they are not strong enough to produce healthy clumps.
-                </p>
-              </div>
-            </div>
-          </div>
+                <h3 className="mt-2 text-xl font-bold">{s.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-green-50/75">{s.desc}</p>
+              </li>
+            ))}
+          </ol>
+
+          <ul className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {qualityPoints.map((item) => (
+              <li key={item.t} className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur">
+                <CheckIcon className="h-5 w-5 text-amber-300" />
+                <p className="mt-3 font-bold">{item.t}</p>
+                <p className="mt-1 text-sm leading-6 text-green-50/70">{item.d}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
-      {/* Sourcing Guide */}
-      <section className="bg-green-50/50 py-14">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="grid gap-10 lg:grid-cols-2">
-            <div>
-              <h2 className="text-2xl font-bold text-green-950">
-                Why Sucker Selection Determines Your Yield
-              </h2>
-              <p className="mt-4 leading-7 text-neutral-700">
-                Vazhavithu is the foundation of your banana plantation. The initial vigour, corm health, and variety purity of your planting stock dictate plant survival rate during monsoon, pest resilience, and harvest timing for peak markets like Onam.
-              </p>
-              <p className="mt-4 leading-7 text-neutral-700">
-                BT Banana sources vigorous, viable suckers from the Trichy nursery belt and supplies them to farmers in Kannur, Kasaragod, Wayanad, and across every district of Kerala — so your crop starts strong.
-              </p>
+      {/* ───────────────── All-Kerala delivery ───────────────── */}
+      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:py-24">
+        <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+          <Reveal>
+            <SectionLabel>Statewide delivery</SectionLabel>
+            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-green-950 sm:text-4xl">
+              All-Kerala Delivery for Vazhavithu (Banana Seeds)
+            </h2>
+            <p className="mt-4 text-lg leading-8 text-neutral-600">
+              Wherever you cultivate, we arrange safe road transportation directly to your farm gate or collection
+              point.
+            </p>
+            <div className="mt-8 space-y-5">
+              {deliveryFeatures.map((f) => (
+                <div key={f.t} className="flex gap-4">
+                  <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-green-100">
+                    <CheckIcon className="h-4 w-4 text-green-800" />
+                  </span>
+                  <div>
+                    <p className="font-bold text-green-950">{f.t}</p>
+                    <p className="mt-0.5 text-sm leading-6 text-neutral-600">{f.d}</p>
+                  </div>
+                </div>
+              ))}
             </div>
-            <div>
-              <h2 className="text-2xl font-bold text-green-950">
-                Who We Supply
-              </h2>
-              <ul className="mt-4 space-y-3">
-                {[
-                  "Commercial banana farmers planting multi-acre seasonal crops",
-                  "Plant nurseries and resellers buying Vazhavithu in bulk for resale",
-                  "Agricultural cooperatives and farmer groups placing pooled orders",
-                  "Growers preparing Onam harvest schedules (Chingam market)",
-                  "Homestead farmers needing smaller lots (on request)",
-                ].map((item) => (
+            <div className="mt-8 flex flex-wrap gap-3">
+              <WhatsAppButton
+                phone={primaryWhatsApp}
+                message="Hi BT Banana, I need Vazhavithu (banana seeds) delivered to my district in Kerala. Please share delivery details and rate."
+                label="Check Delivery to Your Area"
+                size="md"
+              />
+              <CallButton phone={primaryPhone} label="Call for Delivery Quote" variant="outline" size="md" />
+            </div>
+          </Reveal>
+
+          <Reveal>
+            <div className="rounded-3xl bg-gradient-to-br from-amber-50 to-green-50 p-6 ring-1 ring-green-900/10 sm:p-8">
+              <p className="text-sm font-bold text-green-950">Districts we deliver to</p>
+              <ul className="mt-5 flex flex-wrap gap-2">
+                {keralaDistricts.map((d) => (
                   <li
-                    key={item}
-                    className="flex items-start gap-2 leading-7 text-neutral-700"
+                    key={d}
+                    className="inline-flex items-center gap-1.5 rounded-full bg-white px-3.5 py-2 text-sm font-semibold text-green-900 ring-1 ring-green-900/10"
                   >
-                    <CheckIcon className="mt-1 h-4 w-4 shrink-0 text-green-700" />
-                    {item}
+                    <MapPinIcon className="h-3.5 w-3.5 text-amber-500" />
+                    {d}
                   </li>
                 ))}
               </ul>
-              <div className="mt-6 flex flex-wrap gap-3 text-sm">
-                <Link
-                  href="/locations"
-                  className="font-semibold text-green-700 hover:text-green-900"
-                >
-                  See the areas we serve &rarr;
-                </Link>
-                <Link
-                  href="/how-to-plant-banana-suckers"
-                  className="font-semibold text-green-700 hover:text-green-900"
-                >
-                  How to plant banana suckers &rarr;
-                </Link>
-                <Link
-                  href="/sucker-vs-tissue-culture"
-                  className="font-semibold text-green-700 hover:text-green-900"
-                >
-                  Sucker vs tissue culture &rarr;
-                </Link>
-                <Link
-                  href="/faq"
-                  className="font-semibold text-green-700 hover:text-green-900"
-                >
-                  Vazhavithu FAQs &rarr;
-                </Link>
-              </div>
+              <p className="mt-6 text-xs leading-5 text-neutral-500">
+                Delivery depends on order volume and transport arrangements. Book ahead for pre-monsoon and Onam
+                (Chingam) planting.
+              </p>
             </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ───────────────── Seeds vs suckers ───────────────── */}
+      <section className="border-y border-green-100 bg-green-50/60 py-20 lg:py-24">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <Reveal className="max-w-3xl">
+            <SectionLabel>Agronomy &amp; farming clarity</SectionLabel>
+            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-green-950 sm:text-4xl">
+              Banana Seeds vs. Banana Suckers (വാഴവിത്ത്): What Kerala Farmers Need to Know
+            </h2>
+          </Reveal>
+
+          <div className="mt-12 grid gap-6 lg:grid-cols-3">
+            <Reveal className="grid">
+              <div className="rounded-3xl bg-white p-7 ring-1 ring-green-900/10">
+                <h3 className="text-lg font-bold text-green-950">Why Edible Bananas Have No Botanical Seeds</h3>
+                <p className="mt-3 text-sm leading-6 text-neutral-700">
+                  All commercial culinary and table bananas grown in Kerala—including Nendran, Njali Poovan,
+                  Palayankodan, and Robusta—are parthenocarpic triploid plants. They produce delicious fruit without
+                  fertilization and do not contain viable botanical seeds.
+                </p>
+                <p className="mt-3 text-sm leading-6 text-neutral-700">
+                  When Kerala farmers search for &quot;banana seeds,&quot; they mean vegetative propagules—the side
+                  shoots that grow from the mother rhizome corm.
+                </p>
+              </div>
+            </Reveal>
+            <Reveal className="grid">
+              <div className="rounded-3xl bg-green-900 p-7 text-white">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-400 px-3 py-1 text-xs font-bold text-green-950">
+                  <CheckIcon className="h-3.5 w-3.5" /> What we supply
+                </span>
+                <h3 className="mt-4 text-lg font-bold">Sword Suckers (വാഴക്കണ്ണികൾ)</h3>
+                <p className="mt-3 text-sm leading-6 text-green-50/85">
+                  In Malayalam, these planting propagules are termed{" "}
+                  <strong className="text-white">Vazhavithu (വാഴവിത്ത്)</strong>. BT Banana specifically grades and
+                  supplies <strong className="text-white">sword suckers</strong> with narrow, lance-like leaves and
+                  robust corms.
+                </p>
+              </div>
+            </Reveal>
+            <Reveal className="grid">
+              <div className="rounded-3xl bg-white p-7 ring-1 ring-green-900/10">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-neutral-100 px-3 py-1 text-xs font-bold text-neutral-600">
+                  <span aria-hidden="true">✕</span> What we avoid
+                </span>
+                <h3 className="mt-4 text-lg font-bold text-green-950">Water Suckers</h3>
+                <p className="mt-3 text-sm leading-6 text-neutral-700">
+                  We avoid weak water suckers (broad leaves, small corms) because Kerala Agricultural University
+                  advises against them — they are not strong enough to produce healthy clumps.
+                </p>
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
 
-      {/* Fast Quote Form */}
-      <section className="border-t border-green-100 bg-white py-16">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6">
-          <h2 className="text-3xl font-bold text-green-950 text-center">
-            Request a Vazhavithu / Banana Seeds Quote
-          </h2>
-          <p className="mt-2 text-center text-sm text-neutral-600">
-            Tell us your desired variety, sucker quantity, and delivery town to receive prompt confirmation:
-          </p>
-          <div className="mt-8">
+      {/* ───────────────── Why selection + who we supply ───────────────── */}
+      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:py-24">
+        <div className="grid gap-12 lg:grid-cols-2">
+          <Reveal>
+            <SectionLabel>Start strong</SectionLabel>
+            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-green-950">
+              Why Sucker Selection Determines Your Yield
+            </h2>
+            <p className="mt-4 leading-7 text-neutral-700">
+              Vazhavithu is the foundation of your banana plantation. The initial vigour, corm health, and variety
+              purity of your planting stock dictate plant survival rate during monsoon, pest resilience, and harvest
+              timing for peak markets like Onam.
+            </p>
+            <p className="mt-4 leading-7 text-neutral-700">
+              BT Banana sources vigorous, viable suckers from the Trichy nursery belt and supplies them to farmers in
+              Kannur, Kasaragod, Wayanad, and across every district of Kerala — so your crop starts strong.
+            </p>
+          </Reveal>
+          <Reveal>
+            <SectionLabel>Customers</SectionLabel>
+            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-green-950">Who We Supply</h2>
+            <ul className="mt-6 divide-y divide-green-100 rounded-3xl bg-white ring-1 ring-green-900/10">
+              {customers.map((item) => (
+                <li key={item} className="flex items-start gap-3 px-5 py-4 leading-6 text-neutral-700">
+                  <CheckIcon className="mt-1 h-4 w-4 shrink-0 text-green-700" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+        </div>
+
+        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {guideLinks.map((g) => (
+            <Link
+              key={g.href}
+              href={g.href}
+              className="group rounded-2xl border border-green-100 p-5 transition hover:border-green-700 hover:bg-green-50"
+            >
+              <span className="flex items-center justify-between gap-2 font-bold text-green-950">
+                {g.label}
+                <ChevronRightIcon className="h-4 w-4 shrink-0 text-green-700 transition-transform group-hover:translate-x-1" />
+              </span>
+              <span className="mt-1 block text-sm text-neutral-600">{g.desc}</span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* ───────────────── Quote form ───────────────── */}
+      <section id="quote" className="scroll-mt-24 bg-[#f7f5ec] py-20 lg:py-24">
+        <div className="mx-auto grid max-w-6xl gap-8 px-4 sm:px-6 lg:grid-cols-[0.85fr_1.15fr]">
+          <div className="relative isolate overflow-hidden rounded-3xl bg-green-950 p-8 text-white sm:p-10">
+            <div
+              aria-hidden="true"
+              className="absolute -bottom-24 -right-24 -z-10 h-72 w-72 rounded-full bg-amber-400/15 blur-2xl"
+            />
+            <SectionLabel tone="light">Get a quote</SectionLabel>
+            <h2 className="mt-4 text-3xl font-extrabold tracking-tight">Request a Vazhavithu / Banana Seeds Quote</h2>
+            <p className="mt-4 leading-7 text-green-50/80">
+              Tell us your desired variety, sucker quantity, and delivery town to receive prompt confirmation. No
+              account or online payment needed.
+            </p>
+            <ol className="mt-8 space-y-4 text-sm">
+              {quoteSteps.map((t, i) => (
+                <li key={t} className="flex items-center gap-3">
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white/10 text-xs font-bold text-amber-300">
+                    {i + 1}
+                  </span>
+                  {t}
+                </li>
+              ))}
+            </ol>
+            <div className="mt-10 border-t border-white/10 pt-6">
+              <p className="text-xs font-bold uppercase tracking-wider text-green-100/60">Prefer to talk?</p>
+              <div className="mt-3 flex flex-wrap gap-3">
+                <CallButton
+                  phone={primaryPhone}
+                  label={formatPhone(primaryPhone)}
+                  size="md"
+                  className="bg-amber-400! text-green-950! hover:bg-amber-300!"
+                />
+                <WhatsAppButton phone={primaryWhatsApp} message={quoteMessage} label="WhatsApp" size="md" />
+              </div>
+            </div>
+          </div>
+          <div className="min-w-0">
             <EnquiryForm
               defaultProduct="Banana Seeds / Vazhavithu (വാഴവിത്ത് - Nendran)"
               pageSource="Vazhavithu / Banana Seeds Page"
@@ -556,19 +766,23 @@ export default function BananaSeedsPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+      {/* ───────────────── FAQ ───────────────── */}
+      <section className="mx-auto max-w-4xl px-4 py-20 sm:px-6 lg:py-24">
         <Faq items={bananaSeedFaqs} title="Vazhavithu / Banana Seeds — FAQs" />
       </section>
 
+      {/* ───────────────── Branches ───────────────── */}
       <section className="border-t border-green-100 bg-green-50/50">
-        <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
-          <h2 className="text-2xl font-bold text-green-950">
+        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+          <SectionLabel>Visit or call</SectionLabel>
+          <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-green-950">
             Contact Us for Vazhavithu (Banana Seeds)
           </h2>
           <p className="mt-3 max-w-2xl text-neutral-700">
-            Get in touch with our Alakode or Nellipara branch for Vazhavithu / banana seed enquiries and delivery anywhere in Kerala.
+            Get in touch with our Alakode or Nellipara branch for Vazhavithu / banana seed enquiries and delivery
+            anywhere in Kerala.
           </p>
-          <div className="mt-8 grid gap-6 sm:grid-cols-2">
+          <div className="mt-10 grid gap-6 sm:grid-cols-2">
             {branches.map((branch) => (
               <LocationCard key={branch.slug} branch={branch} />
             ))}
