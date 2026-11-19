@@ -38,6 +38,16 @@ const bananaSeedFaqs = [
       "BT Banana supplies Vazhavithu (banana planting suckers, വാഴവിത്ത്) to farmers across all 14 districts of Kerala, with delivery arranged to your farm gate. Call or WhatsApp Thomas M.J (9447483169) or Albin Augustine (8086648081) for current rates and availability.",
   },
   {
+    question: "Can I buy Vazhavithu wholesale in Kerala?",
+    answer:
+      "Yes. BT Banana is a wholesale Vazhavithu (vaazhavithu / banana seeds) supplier for Kerala. Farmers, nurseries and resellers can buy vazhavithu in bulk at wholesale rates, with delivery to any district from Kasaragod to Thiruvananthapuram. Call 9447483169 or WhatsApp 8086648081 for today's wholesale price.",
+  },
+  {
+    question: "Where to buy banana seeds in Kerala?",
+    answer:
+      "In Kerala, 'banana seeds' means banana suckers (vazhavithu), since cultivated bananas have no usable seeds. You can buy banana seeds from BT Banana in Alakode, Kannur, or order on WhatsApp for delivery anywhere in Kerala. Nendran, Robusta, Njali Poovan and Palayankodan suckers are available.",
+  },
+  {
     question: "Where is your Vazhavithu sourced or imported from?",
     answer:
       "Our banana planting material is sourced from specialised banana nurseries in the Tiruchirappalli (Trichy) belt of Tamil Nadu — a region known for healthy, high-yield banana suckers — and supplied fresh across Kerala through BT Banana's Kannur base.",
@@ -48,9 +58,9 @@ const bananaSeedFaqs = [
       "Yes — bulk supply is our main focus. We supply Vazhavithu in bulk to commercial farmers, plantations, plant nurseries, resellers, farmer groups and agricultural cooperatives across Kerala, with volume pricing on enquiry.",
   },
   {
-    question: "Is Vazhavithu the same as vaazhavithu, vazha vithu or vazha kannu?",
+    question: "Is Vazhavithu the same as vaazhavithu, vaazhvithu, vazha vithu or vazha kannu?",
     answer:
-      "Yes. Vazhavithu, vaazhavithu, vazha vithu, വാഴവിത്ത് and വാഴക്കന്ന് (vazha kannu) all refer to the same thing — banana planting suckers. BT Banana supplies all of these across Kerala.",
+      "Yes. Vazhavithu, vaazhavithu, vaazhvithu, vazha vithu, വാഴവിത്ത് and വാഴക്കന്ന് (vazha kannu) all refer to the same thing — banana planting suckers. BT Banana supplies all of these across Kerala.",
   },
   {
     question: "Do you supply banana suckers or literal botanical banana seeds?",
@@ -106,8 +116,11 @@ const productJsonLd = {
     "Vazhavithu",
     "Vaazhavithu",
     "Vazha vithu",
+    "Vaazhvithu",
+    "Vazhavith",
     "വാഴവിത്ത്",
     "വാഴക്കന്ന്",
+    "Wholesale vazhavithu",
     "Banana suckers",
     "Banana seeds",
     "Banana planting material",
@@ -135,9 +148,9 @@ const productJsonLd = {
 };
 
 export const metadata: Metadata = {
-  title: "Vazhavithu – Banana Suckers for Sale in Kerala",
+  title: "Buy Vazhavithu in Kerala – Wholesale Banana Seeds & Suckers",
   description:
-    "Banana suckers (vazhavithu / vazhakannu) for planting. Nendran, Robusta, Njali Poovan & Palayankodan, delivered across Kerala. Order on WhatsApp.",
+    "Buy vazhavithu (vaazhavithu / banana seeds) in Kerala, retail or wholesale. Nendran, Robusta, Njali Poovan & Palayankodan suckers delivered to all 14 districts. Order on WhatsApp.",
   keywords: [
     "vazhavithu",
     "vaazhavithu",
@@ -155,6 +168,35 @@ export const metadata: Metadata = {
     "banana suckers from Tamil Nadu",
     "banana planting material Kerala",
     "banana sucker supplier Kerala",
+    // Buy-intent searches
+    "buy vazhavithu Kerala",
+    "buy vaazhavithu Kerala",
+    "buy vaazhvithu Kerala",
+    "buy vazha vithu",
+    "vazhavithu for sale Kerala",
+    "order vazhavithu online",
+    "buy banana seeds Kerala",
+    "buy banana suckers Kerala",
+    "banana seeds for sale Kerala",
+    "banana seeds online Kerala",
+    "buy Nendran vazhavithu",
+    "buy Nendran banana suckers",
+    // Wholesale / bulk searches
+    "wholesale vazhavithu Kerala",
+    "wholesale vaazhavithu Kerala",
+    "vazhavithu wholesale price",
+    "vazhavithu wholesale supplier",
+    "vazhavithu wholesalers in Kerala",
+    "bulk vazhavithu Kerala",
+    "banana seeds wholesale Kerala",
+    "banana suckers wholesale Kerala",
+    "vazhavithu supplier Kerala",
+    "vazhavithu Kannur",
+    "vazhavithu Kozhikode",
+    "vazhavithu Thrissur",
+    "vazhavithu Malappuram",
+    "വാഴവിത്ത് വാങ്ങാൻ",
+    "വാഴവിത്ത് മൊത്തവില",
   ],
   alternates: {
     canonical: `${SITE_URL}/banana-seeds`,
@@ -165,7 +207,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Vazhavithu – Banana Suckers for Sale in Kerala | BT Banana",
+    title: "Buy Vazhavithu in Kerala – Wholesale Banana Seeds & Suckers | BT Banana",
     description:
       "Bulk Vazhavithu (വാഴവിത്ത്) — Nendran, Njali Poovan, Palayankodan & Robusta suckers — imported from Tamil Nadu and delivered to farmers and nurseries across all of Kerala.",
     images: [{ url: "/images/vazhavithu.webp", alt: "Vazhavithu banana suckers supplied by BT Banana" }],
@@ -326,7 +368,8 @@ export default function BananaSeedsPage() {
               imports healthy, high-yield <strong className="font-semibold text-white">banana planting suckers</strong>{" "}
               from <strong className="font-semibold text-white">Tamil Nadu</strong> and supplies them in{" "}
               <strong className="font-semibold text-white">large quantities to farmers and nurseries</strong> in{" "}
-              <strong className="font-semibold text-white">all 14 districts of Kerala</strong>.
+              <strong className="font-semibold text-white">all 14 districts of Kerala</strong>. Buy vazhavithu
+              wholesale for your plantation or nursery, or a small lot for your homestead.
             </p>
 
             <div className="mt-7 flex short:mt-5 flex-wrap items-center gap-3">

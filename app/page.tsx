@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     absolute: "Vazhavithu (Banana Suckers) & Wholesale Bananas | BT Banana",
   },
   description:
-    "Banana suckers (vazhavithu / വാഴക്കന്ന്) delivered across Kerala, plus wholesale bananas in Kannur. Nendran, Robusta, Poovan & more. Call or WhatsApp.",
+    "Buy vazhavithu (banana seeds / suckers) in Kerala, retail or wholesale, plus wholesale bananas in Kannur. Nendran, Robusta, Poovan & more. Call or WhatsApp.",
   keywords: [
     "vazhavithu",
     "vaazhavithu",
@@ -43,6 +43,15 @@ export const metadata: Metadata = {
     "banana seeds Kerala",
     "wholesale banana supplier Kannur",
     "banana wholesaler Kerala",
+    "buy vazhavithu Kerala",
+    "buy vaazhavithu Kerala",
+    "wholesale vazhavithu Kerala",
+    "wholesale vaazhavithu Kerala",
+    "buy banana seeds Kerala",
+    "buy banana suckers Kerala",
+    "banana seeds wholesale Kerala",
+    "vazhavithu supplier Kerala",
+    "wholesale bananas Kerala",
   ],
   alternates: {
     canonical: SITE_URL,

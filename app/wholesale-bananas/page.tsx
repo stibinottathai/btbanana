@@ -46,6 +46,11 @@ export const metadata: Metadata = {
 
 const wholesaleFaqs = [
   {
+    question: "Do you also supply wholesale Vazhavithu (banana seeds) in Kerala?",
+    answer:
+      "Yes. Along with wholesale bananas, BT Banana supplies wholesale Vazhavithu (vaazhavithu / banana suckers for planting) to farmers, nurseries and resellers across all 14 districts of Kerala. See our Vazhavithu page at btbanana.com/banana-seeds, or WhatsApp 8086648081 for bulk rates.",
+  },
+  {
     question: "Who is a wholesale banana supplier in Kannur?",
     answer:
       "BT Banana is a dedicated wholesale banana supplier, banana wholesaler, and merchant in Kannur district, Kerala. We operate from Alakode and Nellipara, supplying fresh bulk bananas to traders, retailers, chips factories, and caterers across Kannur, Kasaragod, and Wayanad.",
