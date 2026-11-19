@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
@@ -10,6 +9,7 @@ import { EnquiryForm } from "@/components/EnquiryForm";
 import { Faq } from "@/components/Faq";
 import { JsonLd } from "@/components/JsonLd";
 import { Reveal } from "@/components/Reveal";
+import { SectionLabel } from "@/components/SectionLabel";
 import {
   CheckIcon,
   ChevronRightIcon,
@@ -287,17 +287,6 @@ const quoteSteps = [
   "We confirm stock and today's rate",
   "Delivery scheduled to your farm",
 ];
-
-function SectionLabel({ children, tone = "dark" }: { children: ReactNode; tone?: "dark" | "light" }) {
-  const color = tone === "light" ? "text-amber-300" : "text-green-700";
-  const bar = tone === "light" ? "bg-amber-300" : "bg-green-700";
-  return (
-    <span className={`inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] ${color}`}>
-      <span className={`h-px w-6 ${bar}`} aria-hidden="true" />
-      {children}
-    </span>
-  );
-}
 
 export default function BananaSeedsPage() {
   return (
