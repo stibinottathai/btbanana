@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { DEFAULT_OG_IMAGE } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
@@ -20,6 +21,7 @@ import {
 } from "@/components/icons";
 import {
   branches,
+  BUSINESS_ID,
   formatPhone,
   owners,
   primaryPhone,
@@ -32,11 +34,12 @@ import { products } from "@/lib/products";
 export const metadata: Metadata = {
   title: "Wholesale Banana Supplier in Kannur, Kerala",
   description:
-    "Looking for a wholesale banana supplier in Kannur? BT Banana supplies fresh wholesale bananas (Nendran, Njali Poovan, Robusta, Palayankodan) from Alakode & Nellipara across Kannur, Kasaragod, and Wayanad.",
+    "Wholesale banana supplier in Kannur: Nendran, Njali Poovan, Robusta & Palayankodan in bulk from Alakode & Nellipara to Kannur, Kasaragod & Wayanad.",
   alternates: {
     canonical: `${SITE_URL}/wholesale-bananas`,
   },
   openGraph: {
+    images: [DEFAULT_OG_IMAGE],
     title: "Wholesale Banana Supplier in Kannur, Kerala | BT Banana",
     description:
       "Wholesale banana supply from Alakode and Nellipara, Kannur — fresh banana varieties, bulk quantities, chips bananas, and daily quotations across Kerala.",
@@ -85,6 +88,8 @@ const wholesaleFaqs = [
 const wholesaleJsonLd = {
   "@context": "https://schema.org",
   "@type": "WholesaleStore",
+  // Same business as the root LocalBusiness — share its @id so it merges.
+  "@id": BUSINESS_ID,
   name: "BT Banana Wholesale",
   description:
     "Wholesale banana supplier in Kannur, Kerala, offering fresh bulk bananas, Nendran for chips, and banana suckers from Alakode and Nellipara.",
@@ -93,8 +98,10 @@ const wholesaleJsonLd = {
   priceRange: "₹₹",
   address: {
     "@type": "PostalAddress",
+    streetAddress: "Malayora Highway, Opposite Rajadhani Hotel",
     addressLocality: "Alakode",
     addressRegion: "Kerala",
+    postalCode: "670571",
     addressCountry: "IN",
   },
 };

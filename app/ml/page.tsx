@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { DEFAULT_OG_IMAGE } from "@/lib/seo";
 import Link from "next/link";
 import { CallButton } from "@/components/CallButton";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
     languages: { "en-IN": "/", "ml-IN": "/ml", "x-default": "/" },
   },
   openGraph: {
+    images: [DEFAULT_OG_IMAGE],
     title: "വാഴവിത്ത് – കേരളം മുഴുവൻ ഡെലിവറി | BT Banana",
     description: "നേന്ത്രൻ, റോബസ്റ്റ, ഞാലിപ്പൂവൻ, പാളയംകോടൻ വാഴക്കന്നുകൾ — കേരളം മുഴുവൻ ഡെലിവറി.",
     url: `${SITE_URL}/ml`,

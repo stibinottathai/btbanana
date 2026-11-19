@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { DEFAULT_OG_IMAGE } from "@/lib/seo";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { LocationCard } from "@/components/LocationCard";
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
     canonical: "/locations",
   },
   openGraph: {
+    images: [DEFAULT_OG_IMAGE],
     title: "Banana Supply Locations in North Kerala | BT Banana",
     description:
       "BT Banana's depots in Alakode & Nellipara and wholesale distribution corridors across Kannur, Kasaragod, and Wayanad districts in Kerala.",

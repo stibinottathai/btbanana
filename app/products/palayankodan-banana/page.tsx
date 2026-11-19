@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { DEFAULT_OG_IMAGE } from "@/lib/seo";
 import Image from "next/image";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CallButton } from "@/components/CallButton";
@@ -40,11 +41,12 @@ const palayankodanFaqs = [
 export const metadata: Metadata = {
   title: "Palayankodan Banana Wholesale Supplier in Kerala",
   description:
-    "Palayankodan banana wholesale from BT Banana — a Palayankodan banana supplier and wholesaler in Alakode and Nellipara, Kannur, serving Kannur and Kasaragod districts, Kerala.",
+    "Palayankodan (Mysore Poovan) banana wholesale in Kannur: a hardy, everyday table banana supplied in bulk by BT Banana from Alakode & Nellipara.",
   alternates: {
     canonical: "/products/palayankodan-banana",
   },
   openGraph: {
+    images: [DEFAULT_OG_IMAGE],
     title: "Palayankodan Banana Wholesale Supplier in Kerala | BT Banana",
     description:
       "Palayankodan banana wholesale supplied from Alakode and Nellipara, Kannur district, Kerala — serving traders, retailers, and businesses across Kannur and Kasaragod.",

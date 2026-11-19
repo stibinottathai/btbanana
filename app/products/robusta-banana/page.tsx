@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { DEFAULT_OG_IMAGE } from "@/lib/seo";
 import Image from "next/image";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CallButton } from "@/components/CallButton";
@@ -40,11 +41,12 @@ const robustaFaqs = [
 export const metadata: Metadata = {
   title: "Robusta Banana Wholesale Supplier in Kerala",
   description:
-    "Robusta banana wholesale from BT Banana — a Robusta banana supplier and wholesaler in Alakode and Nellipara, Kannur, serving Kannur and Kasaragod districts, Kerala.",
+    "Robusta banana wholesale in Kannur: large green Robusta bunches in bulk for traders and retailers across Kannur & Kasaragod, from BT Banana.",
   alternates: {
     canonical: "/products/robusta-banana",
   },
   openGraph: {
+    images: [DEFAULT_OG_IMAGE],
     title: "Robusta Banana Wholesale Supplier in Kerala | BT Banana",
     description:
       "Robusta banana wholesale supplied from Alakode and Nellipara, Kannur district, Kerala — serving traders, retailers, and businesses across Kannur and Kasaragod.",

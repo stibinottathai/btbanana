@@ -6,6 +6,15 @@ export const SITE_URL =
 export const SITE_NAME = "BT Banana";
 
 /**
+ * Stable JSON-LD node id for the business. Every page-level business, article
+ * and offer block points back to this id so search and AI engines merge them
+ * into one entity instead of seeing a dozen unrelated "BT Banana" businesses.
+ */
+export const BUSINESS_ID = `${SITE_URL}/#business`;
+export const WEBSITE_ID = `${SITE_URL}/#website`;
+export const LOGO_URL = `${SITE_URL}/images/logo.png`;
+
+/**
  * What "BT" in the brand name means. Shown on About, FAQ and llms.txt so that
  * nobody (farmers or AI engines) reads it as a genetically modified "Bt" crop.
  */

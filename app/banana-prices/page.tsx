@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { DEFAULT_OG_IMAGE } from "@/lib/seo";
 import Link from "next/link";
 import {
+  BUSINESS_ID,
   owners,
   primaryPhone,
   primaryWhatsApp,
@@ -20,11 +22,12 @@ import { CheckIcon, LeafIcon, PhoneIcon } from "@/components/icons";
 export const metadata: Metadata = {
   title: "Banana Wholesale Price in Kerala Today",
   description:
-    "Wholesale banana prices in Kerala fluctuate daily based on morning arrivals and variety. Wholesale prices vary based on variety, quality, quantity, market conditions and delivery location. Contact BT Banana for the current quotation.",
+    "Banana wholesale prices in Kerala change daily. See what drives Nendran, Njali Poovan & Robusta rates, then call BT Banana for today's quote.",
   alternates: {
     canonical: `${SITE_URL}/banana-prices`,
   },
   openGraph: {
+    images: [DEFAULT_OG_IMAGE],
     title: "Banana Wholesale Price in Kerala Today | BT Banana",
     description:
       "Get today's wholesale banana rates in Kerala. Transparent daily pricing factors for Nendran, Njali Poovan, and Robusta.",
@@ -72,14 +75,11 @@ const priceGuideJsonLd = {
     name: SITE_NAME,
     url: SITE_URL,
   },
-  publisher: {
-    "@type": "Organization",
-    name: SITE_NAME,
-    logo: {
-      "@type": "ImageObject",
-      url: `${SITE_URL}/images/logo.png`,
-    },
-  },
+  image: `${SITE_URL}/opengraph-image`,
+  datePublished: "2026-11-19",
+  dateModified: "2026-11-19",
+  inLanguage: "en-IN",
+  publisher: { "@id": BUSINESS_ID, name: SITE_NAME },
   mainEntityOfPage: `${SITE_URL}/banana-prices`,
 };
 

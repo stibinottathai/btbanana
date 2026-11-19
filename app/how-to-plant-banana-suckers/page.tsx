@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import { DEFAULT_OG_IMAGE } from "@/lib/seo";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { Faq } from "@/components/Faq";
 import { JsonLd } from "@/components/JsonLd";
-import { owners, primaryWhatsApp, SITE_URL } from "@/lib/site";
+import { BUSINESS_ID, owners, primaryWhatsApp, SITE_URL } from "@/lib/site";
 import {
   KAU_SOURCE,
   KAU_SPACING_SOURCE,
@@ -22,6 +23,7 @@ export const metadata: Metadata = {
     "Step-by-step guide to planting banana suckers: choosing sword suckers, treatment, pit size, spacing for Nendran, manure and watering. Based on KAU advice.",
   alternates: { canonical: PATH },
   openGraph: {
+    images: [DEFAULT_OG_IMAGE],
     title: "How to Plant Banana Suckers (Vazhavithu) | BT Banana",
     description:
       "Choosing sword suckers, treatment, pit size, spacing, manure and watering — following Kerala Agricultural University advice.",
@@ -87,9 +89,16 @@ const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline: "How to Plant Banana Suckers (Vazhavithu): Step-by-Step",
+  datePublished: LAST_REVIEWED,
   dateModified: LAST_REVIEWED,
-  author: owners.map((o) => ({ "@type": "Person", name: o.name })),
-  publisher: { "@type": "Organization", name: "BT Banana", url: SITE_URL },
+  image: `${SITE_URL}/opengraph-image`,
+  inLanguage: "en-IN",
+  author: owners.map((o) => ({
+    "@type": "Person",
+    name: o.name,
+    worksFor: { "@id": BUSINESS_ID },
+  })),
+  publisher: { "@id": BUSINESS_ID },
   mainEntityOfPage: `${SITE_URL}${PATH}`,
   citation: [KAU_SOURCE.url, KAU_SPACING_SOURCE.url],
 };

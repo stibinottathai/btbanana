@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { DEFAULT_OG_IMAGE } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
     "Practical guides for Kerala banana growers: how many suckers to order, when to plant Nendran, choosing healthy vazhavithu and buying in bulk.",
   alternates: { canonical: "/blog" },
   openGraph: {
+    images: [DEFAULT_OG_IMAGE],
     title: `Vazhavithu & Banana Farming Blog | ${SITE_NAME}`,
     description:
       "Practical guides for Kerala banana growers on buying and planting vazhavithu (banana suckers).",

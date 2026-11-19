@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { DEFAULT_OG_IMAGE } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
@@ -11,6 +12,7 @@ import { LocationCard } from "@/components/LocationCard";
 import { CheckIcon, LeafIcon, MapPinIcon } from "@/components/icons";
 import {
   branches,
+  BUSINESS_ID,
   owners,
   primaryPhone,
   primaryWhatsApp,
@@ -20,13 +22,14 @@ import {
 import { products } from "@/lib/products";
 
 export const metadata: Metadata = {
-  title: "Banana Merchant in Kannur | Wholesale Banana Trading Kerala",
+  title: "Banana Merchant in Kannur – Wholesale Trader",
   description:
-    "Looking for an established banana merchant in Kannur? BT Banana coordinates direct farm trading and wholesale supply of fresh Nendran, Njali Poovan, Robusta, and Palayankodan from Alakode & Nellipara across Kannur, Kasaragod, and Wayanad.",
+    "Banana merchant in Kannur: BT Banana trades Nendran, Njali Poovan, Robusta & Palayankodan in bulk from Alakode & Nellipara to Kannur, Kasaragod & Wayanad.",
   alternates: {
     canonical: `${SITE_URL}/banana-merchant-kannur`,
   },
   openGraph: {
+    images: [DEFAULT_OG_IMAGE],
     title: "Banana Merchant in Kannur | BT Banana Wholesale Trading",
     description:
       "Direct banana merchant and wholesaler based in Kannur district, Kerala. Bulk supply for traders, retailers, chips factories, and catering networks.",
@@ -68,23 +71,13 @@ const merchantFaqs = [
   },
 ];
 
+// Same business as the root LocalBusiness (same address and phone), so it
+// shares its @id and only adds this page's service area — one entity, not two.
 const merchantJsonLd = {
   "@context": "https://schema.org",
   "@type": ["LocalBusiness", "WholesaleStore"],
-  name: "BT Banana — Banana Merchant in Kannur",
-  description:
-    "Banana merchant and wholesale banana trader in Kannur district, Kerala, supplying fresh bananas in bulk from Alakode and Nellipara depots.",
-  url: `${SITE_URL}/banana-merchant-kannur`,
-  telephone: `+91${primaryPhone}`,
-  priceRange: "₹₹",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Malayora Highway, Opposite Rajadhani Hotel",
-    addressLocality: "Alakode",
-    addressRegion: "Kerala",
-    postalCode: "670571",
-    addressCountry: "IN",
-  },
+  "@id": BUSINESS_ID,
+  name: SITE_NAME,
   areaServed: [
     { "@type": "Place", name: "Kannur" },
     { "@type": "Place", name: "Alakode" },
@@ -96,18 +89,6 @@ const merchantJsonLd = {
   ],
 };
 
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: merchantFaqs.map((faq) => ({
-    "@type": "Question",
-    name: faq.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: faq.answer,
-    },
-  })),
-};
 
 
 const buyerTypes = [
@@ -135,7 +116,6 @@ export default function BananaMerchantKannurPage() {
   return (
     <>
       <JsonLd data={merchantJsonLd} />
-      <JsonLd data={faqJsonLd} />
 
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-b from-green-50 via-emerald-50/40 to-white pb-16 pt-10 sm:pb-20 sm:pt-14">

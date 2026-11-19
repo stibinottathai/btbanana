@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { DEFAULT_OG_IMAGE } from "@/lib/seo";
 import Image from "next/image";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CallButton } from "@/components/CallButton";
@@ -35,11 +36,12 @@ const plantainFaqs = [
 export const metadata: Metadata = {
   title: "Plantain Varieties Wholesale Supplier in Kerala",
   description:
-    "Plantain varieties wholesale from BT Banana — a trusted cooking banana supplier and wholesaler in Alakode and Nellipara, Kannur, serving Kannur and Kasaragod districts, Kerala.",
+    "Plantain and cooking banana wholesale in Kannur: Nendran and other cooking varieties for kitchens, caterers and chips makers, from BT Banana.",
   alternates: {
     canonical: "/products/plantain-varieties",
   },
   openGraph: {
+    images: [DEFAULT_OG_IMAGE],
     title: "Plantain Varieties Wholesale Supplier in Kerala | BT Banana",
     description:
       "Wholesale plantain varieties supplied from Alakode and Nellipara, Kannur district, Kerala — serving traders, retailers, and businesses across Kannur and Kasaragod.",

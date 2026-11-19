@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { DEFAULT_OG_IMAGE } from "@/lib/seo";
 import Image from "next/image";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CallButton } from "@/components/CallButton";
@@ -28,13 +29,14 @@ const otherVarietiesFaqs = [
 ];
 
 export const metadata: Metadata = {
-  title: "Other Banana Varieties Wholesale Supplier in Kerala",
+  title: "Other Banana Varieties – Wholesale in Kerala",
   description:
     "Explore additional banana and plantain varieties supplied wholesale by BT Banana from Alakode and Nellipara, Kannur district, Kerala.",
   alternates: {
     canonical: "/products/other-banana-varieties",
   },
   openGraph: {
+    images: [DEFAULT_OG_IMAGE],
     title: "Other Banana Varieties Wholesale Supplier in Kerala | BT Banana",
     description:
       "Seasonal and regional banana varieties supplied wholesale from Alakode and Nellipara, Kannur district, Kerala.",

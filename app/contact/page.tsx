@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { DEFAULT_OG_IMAGE } from "@/lib/seo";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CallButton } from "@/components/CallButton";
@@ -31,6 +32,7 @@ export const metadata: Metadata = {
     languages: { "en-IN": "/contact", "ml-IN": "/ml/contact", "x-default": "/contact" },
   },
   openGraph: {
+    images: [DEFAULT_OG_IMAGE],
     title: "Contact – Vazhavithu & Wholesale Bananas | BT Banana",
     description:
       "Call or WhatsApp BT Banana for banana suckers (vazhavithu) and wholesale bananas in Kerala.",

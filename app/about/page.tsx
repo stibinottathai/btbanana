@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { DEFAULT_OG_IMAGE } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
@@ -36,6 +37,7 @@ export const metadata: Metadata = {
     canonical: "/about",
   },
   openGraph: {
+    images: [DEFAULT_OG_IMAGE],
     title: "About BT Banana – Vazhavithu & Banana Wholesale, Kannur",
     description:
       "Trusted wholesale banana and Vazhavithu planting material supplier based in Alakode and Nellipara, Kerala. Owned and managed by Thomas M.J & Albin Augustine.",

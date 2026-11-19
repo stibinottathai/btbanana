@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { DEFAULT_OG_IMAGE } from "@/lib/seo";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CallButton } from "@/components/CallButton";
@@ -17,6 +18,7 @@ export const metadata: Metadata = {
     languages: { "en-IN": "/faq", "ml-IN": "/ml/faq", "x-default": "/faq" },
   },
   openGraph: {
+    images: [DEFAULT_OG_IMAGE],
     title: "Vazhavithu & Banana Sucker FAQs | BT Banana",
     description:
       "Seeds vs suckers, choosing and treating banana suckers, spacing, price and delivery across Kerala.",

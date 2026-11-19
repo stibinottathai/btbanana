@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { DEFAULT_OG_IMAGE } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
@@ -41,11 +42,12 @@ const nendranFaqs = [
 export const metadata: Metadata = {
   title: "Nendran Banana Wholesale Supplier in Kerala",
   description:
-    "Nendran banana wholesale from BT Banana — a Nendran banana supplier and wholesaler in Alakode and Nellipara, Kannur, serving Kannur and Kasaragod districts, Kerala.",
+    "Nendran banana wholesale in Kannur: ripe Ethakka and raw green Nendran (Pacha Ethakka) for chips units, from BT Banana depots at Alakode & Nellipara.",
   alternates: {
     canonical: "/products/nendran-banana",
   },
   openGraph: {
+    images: [DEFAULT_OG_IMAGE],
     title: "Nendran Banana Wholesale Supplier in Kerala | BT Banana",
     description:
       "Nendran banana wholesale supplied from Alakode and Nellipara, Kannur district, Kerala — serving traders, retailers, and businesses across Kannur and Kasaragod.",

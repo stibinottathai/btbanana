@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { DEFAULT_OG_IMAGE } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ProductCard } from "@/components/ProductCard";
 import { CallButton } from "@/components/CallButton";
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
     canonical: "/products",
   },
   openGraph: {
+    images: [DEFAULT_OG_IMAGE],
     title: "Banana Varieties & Vazhavithu | BT Banana",
     description:
       "Wholesale banana varieties and banana suckers (vazhavithu) from BT Banana, Alakode and Nellipara, Kerala.",

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { DEFAULT_OG_IMAGE } from "@/lib/seo";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { DigitalCard } from "@/components/DigitalCard";
@@ -11,11 +12,12 @@ import { SITE_NAME, SITE_URL } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Digital Business Card | Contact & QR Code",
   description:
-    "Official Digital Business Card for BT Banana. Save contacts directly into phonebook (.vcf), scan or download QR code, and contact wholesale banana and banana seed suppliers in Alakode & Nellipara, Kerala.",
+    "BT Banana's digital business card: save our numbers to your phone (.vcf), scan or download the QR code, and call or WhatsApp our Alakode & Nellipara depots.",
   alternates: {
     canonical: "/card",
   },
   openGraph: {
+    images: [DEFAULT_OG_IMAGE],
     title: `Digital Business Card | ${SITE_NAME}`,
     description:
       "Save contacts directly into phonebook (.vcf), download printable QR code, and connect with BT Banana wholesale suppliers in Kerala.",

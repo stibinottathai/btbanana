@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { DEFAULT_OG_IMAGE } from "@/lib/seo";
 import Image from "next/image";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CallButton } from "@/components/CallButton";
@@ -40,11 +41,12 @@ const poovanFaqs = [
 export const metadata: Metadata = {
   title: "Poovan Banana Wholesale Supplier in Kerala",
   description:
-    "Poovan banana wholesale from BT Banana — a Poovan banana supplier and wholesaler in Alakode and Nellipara, Kannur, serving Kannur and Kasaragod districts, Kerala.",
+    "Poovan banana wholesale in Kannur: bulk table bananas for fruit shops, supermarkets and traders, supplied by BT Banana from Alakode & Nellipara.",
   alternates: {
     canonical: "/products/poovan-banana",
   },
   openGraph: {
+    images: [DEFAULT_OG_IMAGE],
     title: "Poovan Banana Wholesale Supplier in Kerala | BT Banana",
     description:
       "Poovan banana wholesale supplied from Alakode and Nellipara, Kannur district, Kerala — serving traders, retailers, and businesses across Kannur and Kasaragod.",

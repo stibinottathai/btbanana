@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { DEFAULT_OG_IMAGE } from "@/lib/seo";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CallButton } from "@/components/CallButton";
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
     languages: { "en-IN": "/contact", "ml-IN": "/ml/contact", "x-default": "/contact" },
   },
   openGraph: {
+    images: [DEFAULT_OG_IMAGE],
     title: "ബന്ധപ്പെടുക – വാഴവിത്ത്, മൊത്തവ്യാപാരം | BT Banana",
     description: "ആലക്കോട്, നെല്ലിപ്പാറ — ഫോൺ, WhatsApp.",
     url: `${SITE_URL}/ml/contact`,

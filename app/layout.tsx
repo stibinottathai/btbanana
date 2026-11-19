@@ -7,8 +7,11 @@ import { FloatingContactButtons } from "@/components/FloatingContactButtons";
 import { JsonLd } from "@/components/JsonLd";
 import {
   branches,
+  BUSINESS_ID,
   coveredAreas,
+  LOGO_URL,
   owners,
+  WEBSITE_ID,
   SITE_DESCRIPTION,
   SITE_NAME,
   SITE_URL,
@@ -62,7 +65,7 @@ export const metadata: Metadata = {
     apple: "/images/logo-192.png",
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Vazhavithu & Wholesale Banana Supplier in Kerala | BT Banana",
     description: SITE_DESCRIPTION,
   },
@@ -71,11 +74,28 @@ export const metadata: Metadata = {
 const localBusinessJsonLd = {
   "@context": "https://schema.org",
   "@type": ["LocalBusiness", "WholesaleStore"],
+  "@id": BUSINESS_ID,
   name: SITE_NAME,
+  alternateName: ["BT Banana Wholesale", "BT Banana Kannur", "ബി.ടി ബനാന"],
   legalName: "BT Banana Wholesale", // [TODO: owner to confirm legal name]
   description: `${SITE_DESCRIPTION} BT Banana supplies banana suckers only, not tissue culture plants.`,
   url: SITE_URL,
-  image: `${SITE_URL}/images/logo.png`,
+  logo: LOGO_URL,
+  image: [`${SITE_URL}/opengraph-image`, LOGO_URL],
+  hasMap: branches[0].mapsUrl,
+  knowsAbout: [
+    "Vazhavithu (banana suckers)",
+    "Banana sucker selection and planting",
+    "Nendran banana",
+    "Robusta banana",
+    "Njali Poovan banana",
+    "Palayankodan (Mysore Poovan) banana",
+    "Wholesale banana trade in Kerala",
+    "Raw Nendran for banana chips",
+  ],
+  // [TODO: add Google Business Profile / Facebook / Instagram URLs here as
+  // `sameAs` once the owner shares them — the strongest entity signal for AI
+  // engines after the website itself.]
   priceRange: "₹₹",
   telephone: owners.map((o) => `+91${o.phone}`),
   areaServed: [
@@ -167,20 +187,13 @@ const localBusinessJsonLd = {
 const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": WEBSITE_ID,
   name: "BT Banana",
   alternateName: ["BT Banana Wholesale", "BT Banana Kannur"],
   url: SITE_URL,
   description: SITE_DESCRIPTION,
   inLanguage: ["en-IN", "ml-IN"],
-  publisher: {
-    "@type": "Organization",
-    name: SITE_NAME,
-    url: SITE_URL,
-    logo: {
-      "@type": "ImageObject",
-      url: `${SITE_URL}/images/logo.png`,
-    },
-  },
+  publisher: { "@id": BUSINESS_ID },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

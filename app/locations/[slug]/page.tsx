@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { DEFAULT_OG_IMAGE } from "@/lib/seo";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
@@ -8,7 +9,7 @@ import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { Faq } from "@/components/Faq";
 import { JsonLd } from "@/components/JsonLd";
 import { CheckIcon, MapPinIcon, ChevronRightIcon } from "@/components/icons";
-import { primaryPhone, primaryWhatsApp, SITE_URL } from "@/lib/site";
+import { BUSINESS_ID, primaryPhone, primaryWhatsApp, SITE_URL } from "@/lib/site";
 import {
   getLocationBySlug,
   getNearestBranch,
@@ -32,7 +33,7 @@ export async function generateMetadata({
       ? `Wholesale Banana Shop in ${location.name}`
       : `Wholesale Banana Supplier in ${location.name}`;
 
-  const description = `Wholesale bananas and raw Nendran for chips in ${location.name} from BT Banana's Alakode & Nellipara depots. Banana suckers (vazhavithu) too. Call for today's rate.`;
+  const description = `Wholesale bananas and raw Nendran for chips in ${location.name} from BT Banana's Alakode & Nellipara depots. Vazhavithu too. Call for today's rate.`;
 
   return {
     title,
@@ -41,6 +42,7 @@ export async function generateMetadata({
       canonical: `/locations/${location.slug}`,
     },
     openGraph: {
+      images: [DEFAULT_OG_IMAGE],
       title: `${title} | BT Banana`,
       description,
       url: `${SITE_URL}/locations/${location.slug}`,
@@ -73,25 +75,42 @@ export default async function LocationPage({
       : `Wholesale Banana Supplier serving ${location.name}`);
 
 
-  const placeJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    name: `BT Banana — ${pageTitle}`,
-    description: location.bestShopAnswer,
-    url: `${SITE_URL}/locations/${location.slug}`,
-    telephone: `+91${primaryPhone}`,
-    areaServed: {
-      "@type": "Place",
-      name: location.name,
-    },
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: branch.place,
-      addressLocality: branch.place.split(",")[0].trim(),
-      addressRegion: "Kerala",
-      addressCountry: "IN",
-    },
-  };
+  // Only the two real depots are physical businesses. Towns we deliver to are
+  // described as a Service area of the main business — claiming a separate
+  // LocalBusiness per town (all at the Alakode address) looks like a doorway /
+  // fake-listing pattern to Google and confuses AI engines about where we are.
+  const placeJsonLd =
+    location.kind === "branch"
+      ? {
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          "@id": `${SITE_URL}/locations/${location.slug}#branch`,
+          name: `BT Banana – ${location.name}`,
+          description: location.bestShopAnswer,
+          url: `${SITE_URL}/locations/${location.slug}`,
+          telephone: `+91${primaryPhone}`,
+          image: `${SITE_URL}/opengraph-image`,
+          parentOrganization: { "@id": BUSINESS_ID },
+          areaServed: { "@type": "Place", name: location.name },
+          hasMap: branch.mapsUrl,
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: branch.place,
+            addressLocality: branch.place.split(",")[0].trim(),
+            addressRegion: "Kerala",
+            addressCountry: "IN",
+          },
+        }
+      : {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          name: pageTitle,
+          serviceType: "Wholesale banana supply",
+          description: location.bestShopAnswer,
+          url: `${SITE_URL}/locations/${location.slug}`,
+          provider: { "@id": BUSINESS_ID },
+          areaServed: { "@type": "Place", name: `${location.name}, Kerala` },
+        };
 
 
   return (

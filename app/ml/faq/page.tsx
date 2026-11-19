@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { DEFAULT_OG_IMAGE } from "@/lib/seo";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
     languages: { "en-IN": "/faq", "ml-IN": "/ml/faq", "x-default": "/faq" },
   },
   openGraph: {
+    images: [DEFAULT_OG_IMAGE],
     title: "വാഴവിത്ത് – സംശയങ്ങളും മറുപടികളും | BT Banana",
     description: "വാഴവിത്തിനെക്കുറിച്ച് കർഷകർ ചോദിക്കുന്ന ചോദ്യങ്ങൾക്ക് മറുപടി.",
     url: `${SITE_URL}/ml/faq`,

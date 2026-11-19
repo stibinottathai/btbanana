@@ -148,9 +148,11 @@ const productJsonLd = {
 };
 
 export const metadata: Metadata = {
-  title: "Buy Vazhavithu in Kerala – Wholesale Banana Seeds & Suckers",
+  // `absolute` skips the " | BT Banana" suffix so the full keyword title fits
+  // in Google's ~60-character display instead of being cut mid-phrase.
+  title: { absolute: "Buy Vazhavithu in Kerala – Wholesale Banana Seeds & Suckers" },
   description:
-    "Buy vazhavithu (vaazhavithu / banana seeds) in Kerala, retail or wholesale. Nendran, Robusta, Njali Poovan & Palayankodan suckers delivered to all 14 districts. Order on WhatsApp.",
+    "Buy vazhavithu (vaazhavithu / banana seeds) in Kerala, retail or wholesale: Nendran, Robusta, Njali Poovan & Palayankodan suckers to all 14 districts.",
   keywords: [
     "vazhavithu",
     "vaazhavithu",
