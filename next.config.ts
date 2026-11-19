@@ -1,7 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  experimental: {
+    // Ship the (small, Tailwind) CSS inside the HTML instead of as
+    // render-blocking <link> files: removes a round trip before first paint,
+    // which is what mobile PageSpeed (slow 4G) penalises most.
+    inlineCss: true,
+  },
   images: {
+    qualities: [55, 75],
     formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 60 * 60 * 24 * 30,
   },

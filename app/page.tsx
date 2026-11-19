@@ -240,7 +240,9 @@ export default function Home() {
           alt="Fresh green banana bunches at BT Banana, wholesale banana supplier in Alakode, Kannur"
           fill
           preload
-          quality={75}
+          // Sits under an ~85% green overlay, so lower quality is invisible
+          // but shrinks the LCP image download on mobile.
+          quality={55}
           sizes="100vw"
           className="-z-20 object-cover"
         />
