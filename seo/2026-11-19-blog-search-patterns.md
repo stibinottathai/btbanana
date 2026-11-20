@@ -52,7 +52,7 @@ Each post ends with a pre-filled WhatsApp quote. None duplicates an existing gui
 | 4 | Tamil Nadu (Trichy) suckers in Kerala: what to know before buying | trichy banana sucker, theni vazhavithu | commercial | Needs owner sourcing details |
 | 5 | Bunchy top and nematodes: how to avoid buying diseased suckers | bunchy top banana, healthy sucker | informational | Can write from KAU |
 | 6 | Banana for coconut-garden intercropping: which variety and how many | intercrop banana coconut | informational → commercial | Can write from KAU |
-| 7 | Nendran vs Robusta vs Njali Poovan: which to plant for profit | best banana variety kerala | comparison | Can write |
+| 7 | Nendran vs Robusta vs Njali Poovan: which to plant for profit | best banana variety kerala | comparison | **Written (2026-11-20)**: `/blog/which-vazhavithu-to-plant` |
 | 8 | Malayalam: വാഴവിത്ത് ബൾക്കായി വാങ്ങുമ്പോൾ ശ്രദ്ധിക്കേണ്ടത് (Malayalam version of #1) | വാഴവിത്ത്, വാഴക്കന്ന് | commercial | Needs native review |
 
 ## 5. Rules for every post

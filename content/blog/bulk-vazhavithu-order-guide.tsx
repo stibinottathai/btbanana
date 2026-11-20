@@ -271,7 +271,11 @@ export default function BulkVazhavithuOrderGuide() {
         Nendran is the variety most Kerala growers ask us for. It serves the
         chips, cooking and festival markets. If you&apos;re unsure, tell us
         where you plan to sell and whether your plot is irrigated, and
-        we&apos;ll suggest a variety.
+        we&apos;ll suggest a variety. Our guide to{" "}
+        <Link href="/blog/which-vazhavithu-to-plant">
+          choosing the right vazhavithu
+        </Link>{" "}
+        compares the four varieties in detail.
       </p>
 
       <QuoteCta message={quoteMessage} />

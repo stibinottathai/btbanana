@@ -1,5 +1,6 @@
 import type { ComponentType } from "react";
 import * as bulkVazhavithuGuide from "@/content/blog/bulk-vazhavithu-order-guide";
+import * as whichVazhavithuToPlant from "@/content/blog/which-vazhavithu-to-plant";
 
 /**
  * Static blog. Each post lives in `content/blog/<slug>.tsx` and exports:
@@ -47,7 +48,7 @@ type PostModule = {
   default: ComponentType;
 };
 
-const modules: PostModule[] = [bulkVazhavithuGuide];
+const modules: PostModule[] = [bulkVazhavithuGuide, whichVazhavithuToPlant];
 
 /** All posts, newest first. */
 export const blogPosts: BlogPost[] = modules
